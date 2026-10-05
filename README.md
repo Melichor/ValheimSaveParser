@@ -78,10 +78,23 @@ By default every list is shown, and only the missing entries are printed (each l
 
 ## Where is my save file?
 
-Valheim keeps character files in a `characters_local` folder (or `characters` when Steam Cloud is used):
+**Local saves** (Steam Cloud off) are in a `characters_local` folder:
 
-- **Linux:** `~/.config/unity3d/IronGate/Valheim/`
-- **Windows:** `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\`
+- **Windows:** `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local`
+- **Linux:** `~/.config/unity3d/IronGate/Valheim/characters_local`
+
+**Steam Cloud saves** are not in the game's own folder. Steam keeps them in its `userdata` folder:
+
+```
+<Steam folder>/userdata/<your Steam ID number>/892970/remote/characters
+```
+
+- `<Steam folder>` is `C:\Program Files (x86)\Steam` on Windows, and `~/.steam/steam` or `~/.local/share/Steam` on Linux and Steam Deck (some distros, e.g. Debian, use `~/.steam/debian-installation`).
+- `<your Steam ID number>` is the numeric folder inside `userdata`. If there are several, open the one that was modified most recently.
+- `892970` is Valheim's Steam app id.
+- Shortcut: in Steam, right-click Valheim → **Manage → Browse local files**. That opens `.../Steam/steamapps/common/Valheim`; go up three folders to reach the Steam folder, then follow the path above.
+
+The file is named after your character (e.g. `Ragnar.fch`). Next to it you may see `.fch.old` files and `..._backup_...fch` copies; use the plain `.fch` file for the current state of the character.
 
 The tool only reads the file; it never writes to it. Copy it somewhere first if you want to be extra careful.
 

@@ -25,9 +25,17 @@
     <p class="privacy">Your file is analysed in this tab by the real <a href="achi_hunter.py">achi_hunter.py</a> script and is never uploaded.</p>
     <details class="where">
       <summary>Where is my character file?</summary>
-      <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code></p>
-      <p><b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
-      <p>Characters stored with Steam Cloud are in a folder named <code>characters</code> next to it. The file is named after your character, e.g. <code>Ragnar.fch</code>.</p>
+      <p><b>Local saves</b> (Steam Cloud off) are in a <code>characters_local</code> folder:</p>
+      <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code><br>
+         <b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
+      <p><b>Steam Cloud saves</b> are kept by Steam, not in the game's own folder:</p>
+      <p><code>&lt;Steam folder&gt;/userdata/&lt;your Steam ID number&gt;/892970/remote/characters</code></p>
+      <ul>
+        <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
+        <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
+        <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
+      </ul>
+      <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
     </details>
   </section>
 
