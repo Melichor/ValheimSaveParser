@@ -8,7 +8,13 @@ It is a single Python file with no dependencies (Python 3, standard library only
 python3 achi_hunter.py path/to/Character.fch
 ```
 
+## Web version
+
+You can visit the web version here: [https://melichor.github.io/ValheimSaveParser/index.html](https://melichor.github.io/ValheimSaveParser/index.html)
+
 ## Quick start
+
+You can download just the `achi_hunter.py` no other file is needed for this.
 
 ```bash
 # everything you're still missing, for all lists
@@ -29,7 +35,7 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 
 == Ways to die: 3 / 8 ==
   [ ] Drowning
-  [ ] EdgeOfWorld
+  [ ] Edge of the world
   [ ] Freezing
   [ ] Poisoned
   [ ] Smoke
@@ -47,6 +53,7 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 | `save` | Path to the `.fch` file (required). |
 | `-f`, `--full` | Also list completed entries (`[x]`, with counts), not just the missing ones (`[ ]`). |
 | `-o LIST`, `--only LIST` | Show only these lists. Comma-separated, or repeat the option. |
+| `--json` | Print the result as JSON (every entry of the chosen lists, with its count) instead of text. This is what the web page uses. |
 | `-h`, `--help` | Show help. |
 
 By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading).
@@ -71,10 +78,23 @@ By default every list is shown, and only the missing entries are printed (each l
 
 ## Where is my save file?
 
-Valheim keeps character files in a `characters_local` folder (or `characters` when Steam Cloud is used):
+**Local saves** (Steam Cloud off) are in a `characters_local` folder:
 
-- **Linux:** `~/.config/unity3d/IronGate/Valheim/`
-- **Windows:** `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\`
+- **Windows:** `%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local`
+- **Linux:** `~/.config/unity3d/IronGate/Valheim/characters_local`
+
+**Steam Cloud saves** are not in the game's own folder. Steam keeps them in its `userdata` folder:
+
+```
+<Steam folder>/userdata/<your Steam ID number>/892970/remote/characters
+```
+
+- `<Steam folder>` is `C:\Program Files (x86)\Steam` on Windows, and `~/.steam/steam` or `~/.local/share/Steam` on Linux and Steam Deck (some distros, e.g. Debian, use `~/.steam/debian-installation`).
+- `<your Steam ID number>` is the numeric folder inside `userdata`. If there are several, open the one that was modified most recently.
+- `892970` is Valheim's Steam app id.
+- Shortcut: in Steam, right-click Valheim → **Manage → Browse local files**. That opens `.../Steam/steamapps/common/Valheim`; go up three folders to reach the Steam folder, then follow the path above.
+
+The file is named after your character (e.g. `Ragnar.fch`). Next to it you may see `.fch.old` files and `..._backup_...fch` copies; use the plain `.fch` file for the current state of the character.
 
 The tool only reads the file; it never writes to it. Copy it somewhere first if you want to be extra careful.
 
@@ -91,6 +111,6 @@ The save stores ten sets of statistics, one per difficulty (`RawStats`, `Any`, `
 
 ## Limitations
 
-- Written for **profile version 46** saves from **Valheim 1.0.16**. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python lists and need regenerating after an update. Saves from other profile versions are not checked and may fail with an error or give wrong results.
-- Names are shown as the game's internal names (for example `charred_melee_Dyrnwyn`, `item_trophy_boar`) without the `$item_` / `$enemy_` prefixes.
+- Written for **profile version 46** saves from **Valheim 1.0.16**. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python dictionaries (token to display name) and need regenerating after an update. Saves from other profile versions are rejected with an error message.
+- The terminal output shows the game's internal names (for example `charred_melee_Dyrnwyn`, `trophy_boar`) without the `$item_` / `$enemy_` prefixes; the web page and `--json` also carry display names where the game has one.
 - The in-game achievement list can differ slightly if the game build you play has a different item set (for example a modded game).

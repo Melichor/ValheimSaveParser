@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valheim Achievement Hunter</title>
+<meta name="description" content="Upload a Valheim character file (.fch) and see exactly what you are still missing for each achievement. The analysis runs in your browser.">
+<link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Valheim Achievement Hunter</h1>
+    <p class="lead">Upload a character file and see what each achievement still needs from you.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="intro">
+    <label id="drop" class="drop" tabindex="0">
+      <input id="file" type="file" accept=".fch,.old,.new" hidden>
+      <strong>Drop your <code>.fch</code> file here</strong>
+      <span>or click to choose one</span>
+    </label>
+    <p class="privacy">Your file is analysed in this tab by the real <a href="achi_hunter.py">achi_hunter.py</a> script and is never uploaded.</p>
+    <details class="where">
+      <summary>Where is my character file?</summary>
+      <p><b>Local saves</b> (Steam Cloud off) are in a <code>characters_local</code> folder:</p>
+      <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code><br>
+         <b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
+      <p><b>Steam Cloud saves</b> are kept by Steam, not in the game's own folder:</p>
+      <p><code>&lt;Steam folder&gt;/userdata/&lt;your Steam ID number&gt;/892970/remote/characters</code></p>
+      <ul>
+        <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
+        <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
+        <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
+      </ul>
+      <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
+    </details>
+  </section>
+
+  <div id="status" class="status" role="status" hidden><span class="spin"></span><span id="statusText"></span></div>
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <section id="results" hidden>
+    <div class="bar">
+      <div class="who"><strong id="fname"></strong><span id="worlds"></span></div>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search items…" aria-label="Search items">
+        <label class="check"><input id="showDone" type="checkbox"> Show completed</label>
+        <label class="check"><input id="hideDone" type="checkbox"> Hide finished lists</label>
+        <button id="download" type="button">Download JSON</button>
+        <button id="reset" type="button">Choose another file</button>
+      </div>
+    </div>
+    <div id="cards" class="cards"></div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Built from the game's own achievement rules (<span id="game">Valheim 1.0.16</span>). Source and command-line version on
+  <a href="https://github.com/Melichor/ValheimSaveParser">GitHub</a>. Not affiliated with Iron Gate.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
+<script src="web/app.js"></script>
+</body>
+</html>
