@@ -8,7 +8,13 @@ It is a single Python file with no dependencies (Python 3, standard library only
 python3 achi_hunter.py path/to/Character.fch
 ```
 
+## Web version
+
+You can visit the web version here: [https://melichor.github.io/ValheimSaveParser/index.html](https://melichor.github.io/ValheimSaveParser/index.html)
+
 ## Quick start
+
+You can download just the `achi_hunter.py` no other file is needed for this.
 
 ```bash
 # everything you're still missing, for all lists
@@ -29,7 +35,7 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 
 == Ways to die: 3 / 8 ==
   [ ] Drowning
-  [ ] EdgeOfWorld
+  [ ] Edge of the world
   [ ] Freezing
   [ ] Poisoned
   [ ] Smoke
@@ -47,6 +53,7 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 | `save` | Path to the `.fch` file (required). |
 | `-f`, `--full` | Also list completed entries (`[x]`, with counts), not just the missing ones (`[ ]`). |
 | `-o LIST`, `--only LIST` | Show only these lists. Comma-separated, or repeat the option. |
+| `--json` | Print the result as JSON (every entry of the chosen lists, with its count) instead of text. This is what the web page uses. |
 | `-h`, `--help` | Show help. |
 
 By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading).
@@ -91,6 +98,6 @@ The save stores ten sets of statistics, one per difficulty (`RawStats`, `Any`, `
 
 ## Limitations
 
-- Written for **profile version 46** saves from **Valheim 1.0.16**. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python lists and need regenerating after an update. Saves from other profile versions are not checked and may fail with an error or give wrong results.
-- Names are shown as the game's internal names (for example `charred_melee_Dyrnwyn`, `item_trophy_boar`) without the `$item_` / `$enemy_` prefixes.
+- Written for **profile version 46** saves from **Valheim 1.0.16**. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python dictionaries (token to display name) and need regenerating after an update. Saves from other profile versions are rejected with an error message.
+- The terminal output shows the game's internal names (for example `charred_melee_Dyrnwyn`, `trophy_boar`) without the `$item_` / `$enemy_` prefixes; the web page and `--json` also carry display names where the game has one.
 - The in-game achievement list can differ slightly if the game build you play has a different item set (for example a modded game).
