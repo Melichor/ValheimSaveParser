@@ -1,0 +1,4 @@
+__pycache__/
+*.fch
+*.fch.old
+*.fch.new

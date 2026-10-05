@@ -1,0 +1,1502 @@
+#!/usr/bin/env python3
+"""achi_hunter: Valheim achievement progress from a .fch save (profile version 46).
+
+Shows what is still missing for crafted items, weapons, cooked food, built pieces, causes of death (incl. tree deaths), enemy/boss/mini-boss kills (any difficulty, Normal+, Hard), fishing and trophies.
+
+Usage: python3 achi_hunter.py [-f] [-o LIST] [file.fch]   (see -h)
+
+File layout (little-endian). Strings are 7-bit-length-prefixed UTF-8. "dict" = int32 count + (string, float32)*count,
+"list" = int32 count + string*count. There are no delimiters or magic markers; you find each section by parsing the
+previous one.
+
+    int32 payload_len | payload | int32 64 | SHA-512(payload)
+    payload:
+        int32 version (46), int32 205 (stat count), int32 10 (stat sets)
+        10 STAT SETS back to back, indexed by the game's DifficultyRequirement enum:
+            0 RawStats  1 Any  2 Hammer  3 Casual  4 VeryEasy  5 Easy  6 Default (Normal)  7 Hard  8 VeryHard  9 Hardcore
+            each set:
+                float32[205]          PlayerStatType values (deaths by cause, tree/mine counts, ...)
+                dict known worlds     world name -> seconds played
+                dict known world keys, dict known commands
+                int32 5, then 5 enemy-kill dicts: total, unarmed, magic, ranged, melee ($enemy_* -> kills)
+                dict items picked up, dict items CRAFTED, dict pickables, dict foods eaten, dict pieces built
+        world/map data (mostly zeros)
+        player blob: name, id, stats, GP, inventory (items stored as 32-bit hashes), then
+            list known recipes, dict stations (name -> level), list known materials, list tutorials,
+            list uniques, list TROPHIES, list biomes, ...
+
+Which set an achievement reads (from the game's Achievement code): its difficulty requirement picks the set. "Any" is
+set 1; "Default" (Normal) is set 6; "Hard" is set 7. Kills made on a harder difficulty also count in every easier set from
+Casual up, so a set means "this difficulty or harder". Set 0 is raw and is never used by achievements.
+"""
+import struct
+import sys
+
+
+
+# ---------------------------------------------------------------------------
+# What each achievement requires, rebuilt from the game's own rules (Valheim 1.0.16, Deep North included).
+# The game fills these lists at start-up from its item database, so they are derived here the same way
+# (Achievements.Initialize / ObjectDB in assembly_valheim.dll). Tokens match the keys in the save's stat tables.
+# Regenerate after a game update.
+# ---------------------------------------------------------------------------
+
+# AllItemCraft: every recipe that needs a crafting station, minus the items the game excludes.
+# Station-less hand recipes (stone axe, club, ...), cooked food and smelting do not count here.
+CRAFTABLE = [
+    '$item_arrow_bloodgold',
+    '$item_arrow_bronze',  # Bronzehead Arrow
+    '$item_arrow_carapace',  # Carapace Arrow
+    '$item_arrow_charred',  # Charred Arrow
+    '$item_arrow_fire',  # Fire Arrow
+    '$item_arrow_flint',  # Flinthead Arrow
+    '$item_arrow_frost',  # Frost Arrow
+    '$item_arrow_iron',  # Ironhead Arrow
+    '$item_arrow_needle',  # Needle Arrow
+    '$item_arrow_obsidian',  # Obsidian Arrow
+    '$item_arrow_poison',  # Poison Arrow
+    '$item_arrow_silver',  # Silver Arrow
+    '$item_arrow_wood',  # Wood Arrow
+    '$item_atgeir_blackmetal',  # Black Metal Atgeir
+    '$item_atgeir_bronze',  # Bronze Atgeir
+    '$item_atgeir_gold',
+    '$item_atgeir_gold_bloodlightning',
+    '$item_atgeir_gold_frostfire',
+    '$item_atgeir_gold_uncooked',
+    '$item_atgeir_himminafl',  # Himminafl
+    '$item_atgeir_iron',  # Iron Atgeir
+    '$item_axe2h_gold',
+    '$item_axe2h_gold_bloodlightning',
+    '$item_axe2h_gold_frostfire',
+    '$item_axe_berzerkr',  # Berserkir Axes
+    '$item_axe_berzerkr_blood',  # Bleeding Berserkir Axes
+    '$item_axe_berzerkr_lightning',  # Thundering Berserkir Axes
+    '$item_axe_berzerkr_nature',  # Primal Berserkir Axes
+    '$item_axe_blackmetal',  # Black Metal Axe
+    '$item_axe_bronze',  # Bronze Axe
+    '$item_axe_early',
+    '$item_axe_flint',  # Flint Axe
+    '$item_axe_gold',
+    '$item_axe_gold_bloodlightning',
+    '$item_axe_gold_frostfire',
+    '$item_axe_gold_uncooked',
+    '$item_axe_iron',  # Iron Axe
+    '$item_axe_jotunbane',  # Jotun Bane
+    '$item_bakedpoteitr_uncooked',
+    '$item_barleywinebase',  # Barley Wine Base: Fire Resistance
+    '$item_battleaxe',  # Battleaxe
+    '$item_battleaxe_blackmetal',
+    '$item_battleaxe_crystal',  # Crystal Battleaxe
+    '$item_battleaxe_gold_uncooked',
+    '$item_battleaxe_skullsplittur',
+    '$item_bell',  # Bell
+    '$item_bilebomb',  # Bile Bomb
+    '$item_blacksoup',  # Black Soup
+    '$item_bloodpudding',  # Blood Pudding
+    '$item_boarjerky',  # Boar Jerky
+    '$item_bolt_blackmetal',  # Black Metal Bolt
+    '$item_bolt_bloodgold',
+    '$item_bolt_bone',  # Bone Bolt
+    '$item_bolt_carapace',  # Carapace Bolt
+    '$item_bolt_charred',  # Charred Bolt
+    '$item_bolt_iron',  # Iron Bolt
+    '$item_bomb_dynamite',
+    '$item_bombblob_frost',
+    '$item_bombblob_lava',
+    '$item_bombblob_morkhalla',
+    '$item_bombblob_poison',
+    '$item_bombblob_poisonelite',
+    '$item_bombblob_tar',
+    '$item_bow',  # Crude Bow
+    '$item_bow_ashlands',  # Ash Fang
+    '$item_bow_ashlandsblood',  # Blood Fang
+    '$item_bow_ashlandsroot',  # Root Fang
+    '$item_bow_ashlandsstorm',  # Storm Fang
+    '$item_bow_draugrfang',  # Draugr Fang
+    '$item_bow_finewood',  # Finewood Bow
+    '$item_bow_gold',
+    '$item_bow_gold_bloodlightning',
+    '$item_bow_gold_frostfire',
+    '$item_bow_gold_uncooked',
+    '$item_bow_huntsman',  # Huntsman Bow
+    '$item_bow_snipesnap',  # Spinesnap
+    '$item_breaddough',  # Bread Dough
+    '$item_bronze',  # Bronze
+    '$item_bronzenails',  # Bronze Nails
+    '$item_cape_ash',  # Ashen Cape
+    '$item_cape_asksvin',  # Asksvin Cloak
+    '$item_cape_deepnorth',
+    '$item_cape_deepnorth_mage',
+    '$item_cape_deerhide',  # Deer Hide Cape
+    '$item_cape_feather',  # Feather Cape
+    '$item_cape_linen',  # Linen Cape
+    '$item_cape_lox',  # Lox Cape
+    '$item_cape_trollhide',  # Troll Hide Cape
+    '$item_cape_wolf',  # Wolf Fur Cape
+    '$item_carrotsoup',  # Carrot Soup
+    '$item_catapult_ammo',  # Explosive Payload
+    '$item_catapult_bloodgold_ammo',
+    '$item_catapult_training_ammo',  # Grausten Payload
+    '$item_ceramicplate',  # Ceramic Plate
+    '$item_chest_berserker',
+    '$item_chest_berserker_undead',
+    '$item_chest_bronze',  # Bronze Plate Tunic
+    '$item_chest_carapace',  # Carapace Breastplate
+    '$item_chest_fenris',  # Fenris Coat
+    '$item_chest_flametal',  # Flametal Breastplate
+    '$item_chest_heavy_deepnorth',
+    '$item_chest_heavy_gold_uncooked',
+    '$item_chest_iron',  # Iron Scale Mail
+    '$item_chest_leather',  # Leather Tunic
+    '$item_chest_lox',
+    '$item_chest_mage',  # Eitr-weave Robe
+    '$item_chest_mage_ashlands',  # Robes of Embla
+    '$item_chest_mage_deepnorth',
+    '$item_chest_mage_gold_uncooked',
+    '$item_chest_medium_ashlands',  # Breastplate of Ask
+    '$item_chest_medium_deepnorth',
+    '$item_chest_medium_gold_uncooked',
+    '$item_chest_pcuirass',  # Padded Cuirass
+    '$item_chest_rags',  # Rag Tunic
+    '$item_chest_root',  # Root Harnesk
+    '$item_chest_trollleather',  # Troll Leather Tunic
+    '$item_chest_wolf',  # Wolf Hide Chestpiece
+    '$item_crossbow_arbalest',  # Arbalest
+    '$item_crossbow_bloodlightning_gold',
+    '$item_crossbow_frostfire_gold',
+    '$item_crossbow_gold',
+    '$item_crossbow_gold_uncooked',
+    '$item_crossbow_ripper',  # Ripper
+    '$item_crossbow_ripper_blood',  # Wound Ripper
+    '$item_crossbow_ripper_lightning',  # Storm Ripper
+    '$item_crossbow_ripper_nature',  # Root Ripper
+    '$item_cultivator',  # Cultivator
+    '$item_deerstew',  # Deer Stew
+    '$item_demister',  # Wisplight
+    '$item_dvergrkey',  # Sealbreaker
+    '$item_egg_cooked',  # Cooked Egg
+    '$item_eyescream',  # Eyescream
+    '$item_feastashlands',
+    '$item_feastblackforest',
+    '$item_feastdeepnorth',
+    '$item_feastmeadows',  # Whole Roasted Meadow Boar
+    '$item_feastmistlands',
+    '$item_feastmountains',
+    '$item_feastoceans',
+    '$item_feastplains',
+    '$item_feastswamps',
+    '$item_fierysvinstew',  # Fiery Svinstew
+    '$item_fireworkrocket_blue',  # Blue Fireworks
+    '$item_fireworkrocket_cyan',  # Cyan Fireworks
+    '$item_fireworkrocket_green',  # Green Fireworks
+    '$item_fireworkrocket_purple',  # Purple Fireworks
+    '$item_fireworkrocket_red',  # Red Fireworks
+    '$item_fireworkrocket_yellow',  # Yellow Fireworks
+    '$item_fish_raw',  # Raw Fish
+    '$item_fishandbreaduncooked',  # Uncooked Fish 'n' Bread
+    '$item_fishingbait_ashlands',  # Hot Fishing Bait
+    '$item_fishingbait_cave',  # Cold Fishing Bait
+    '$item_fishingbait_deepnorth',  # Frosty Fishing Bait
+    '$item_fishingbait_forest',  # Mossy Fishing Bait
+    '$item_fishingbait_mistlands',  # Misty Fishing Bait
+    '$item_fishingbait_ocean',  # Heavy Fishing Bait
+    '$item_fishingbait_plains',  # Stingy Fishing Bait
+    '$item_fishingbait_swamp',  # Sticky Fishing Bait
+    '$item_fishsoup',
+    '$item_fishwraps',  # Fish Wraps
+    '$item_fistweapon_bjorn',
+    '$item_fistweapon_bjorn_undead',
+    '$item_fistweapon_fenris',  # Flesh Rippers
+    '$item_fistweapon_frostfire_gold',
+    '$item_fistweapon_gold',
+    '$item_fistweapon_gold_bloodlightning',
+    '$item_fistweapon_gold_uncooked',
+    '$item_frostorbs_uncooked',
+    '$item_graplinghook',
+    '$item_helmet_berserker',
+    '$item_helmet_berserker_undead',
+    '$item_helmet_bronze',  # Bronze Helmet
+    '$item_helmet_carapace',  # Carapace Helmet
+    '$item_helmet_celebration',
+    '$item_helmet_crown_of_valheim',
+    '$item_helmet_drake',  # Drake Helmet
+    '$item_helmet_fenris',  # Fenris Hood
+    '$item_helmet_fishinghat',  # Fishing Hat
+    '$item_helmet_flametal',  # Flametal Helmet
+    '$item_helmet_heavy_deepnorth',
+    '$item_helmet_heavy_gold_uncooked',
+    '$item_helmet_iron',  # Iron Helmet
+    '$item_helmet_leather',  # Leather Helmet
+    '$item_helmet_lox',
+    '$item_helmet_mage',  # Eitr-weave Hood
+    '$item_helmet_mage_ashlands',  # Hood of Embla
+    '$item_helmet_mage_deepnorth',
+    '$item_helmet_mage_gold_uncooked',
+    '$item_helmet_medium_ashlands',  # Hood of Ask
+    '$item_helmet_medium_deepnorth',
+    '$item_helmet_medium_gold_uncooked',
+    '$item_helmet_padded',  # Padded Helmet
+    '$item_helmet_root',  # Root Mask
+    '$item_helmet_trollleather',  # Troll Leather Hood
+    '$item_hoe',  # Hoe
+    '$item_honeyglazedchickenuncooked',  # Uncooked Honey Glazed Chicken
+    '$item_ironnails',  # Iron Nails
+    '$item_kalechips_uncooked',
+    '$item_keys_gold_uncooked',
+    '$item_knife_blackmetal',  # Black Metal Knife
+    '$item_knife_butcher',  # Butcher Knife
+    '$item_knife_chitin',  # Abyssal Razor
+    '$item_knife_copper',  # Copper Knife
+    '$item_knife_flint',  # Flint Knife
+    '$item_knife_gold',
+    '$item_knife_gold_bloodlightning',
+    '$item_knife_gold_frostfire',
+    '$item_knife_gold_uncooked',
+    '$item_knife_silver',  # Silver Knife
+    '$item_knife_skollandhati',  # Skoll and Hati
+    '$item_legs_berserker',
+    '$item_legs_berserker_undead',
+    '$item_legs_bronze',  # Bronze Plate Leggings
+    '$item_legs_carapace',  # Carapace Greaves
+    '$item_legs_fenris',  # Fenris Leggings
+    '$item_legs_flametal',  # Flametal Greaves
+    '$item_legs_heavy_deepnorth',
+    '$item_legs_heavy_gold_uncooked',
+    '$item_legs_iron',  # Iron Greaves
+    '$item_legs_leather',  # Leather Trousers
+    '$item_legs_lox',
+    '$item_legs_mage',  # Eitr-weave Trousers
+    '$item_legs_mage_ashlands',  # Trousers of Embla
+    '$item_legs_mage_deepnorth',
+    '$item_legs_mage_gold_uncooked',
+    '$item_legs_medium_ashlands',  # Trousers of Ask
+    '$item_legs_medium_deepnorth',
+    '$item_legs_medium_gold_uncooked',
+    '$item_legs_pgreaves',  # Padded Greaves
+    '$item_legs_rags',  # Rag Trousers
+    '$item_legs_root',  # Root Leggings
+    '$item_legs_trollleather',  # Troll Leather Trousers
+    '$item_legs_wolf',  # Wolf Hide Trousers
+    '$item_lingondricka',
+    '$item_loxpie_uncooked',  # Unbaked Lox Pie
+    '$item_mace2h_gold_bloodlightning',
+    '$item_mace2h_gold_frostfire',
+    '$item_mace_bronze',  # Bronze Mace
+    '$item_mace_eldner',  # Flametal Mace
+    '$item_mace_eldner_blood',  # Bloodgeon
+    '$item_mace_eldner_lightning',  # Storm Star
+    '$item_mace_eldner_nature',  # Klossen
+    '$item_mace_gold',
+    '$item_mace_gold_bloodlightning',
+    '$item_mace_gold_frostfire',
+    '$item_mace_gold_uncooked',
+    '$item_mace_iron',  # Iron Mace
+    '$item_mace_needle',  # Porcupine
+    '$item_mace_silver',  # Frostner
+    '$item_magicallystuffedmushroomuncooked',  # Uncooked Stuffed Mushroom
+    '$item_marinatedgreens',  # Marinated Greens
+    '$item_mashedmeat',  # Mashed Meat
+    '$item_meadbasebugrepellent',
+    '$item_meadbasebzerker',
+    '$item_meadbaseeitr',  # Mead Base: Minor Eitr
+    '$item_meadbaseeitr_lingering',  # Mead Base: Lingering Eitr
+    '$item_meadbasefrostresist',  # Mead Base: Frost Resistance
+    '$item_meadbasehasty',
+    '$item_meadbasehealth',  # Mead Base: Minor Healing
+    '$item_meadbasehealth_lingering',  # Mead Base: Lingering Health
+    '$item_meadbasehealth_major',  # Mead Base: Major Healing
+    '$item_meadbasehealth_medium',  # Mead Base: Medium Healing
+    '$item_meadbaselightfoot',
+    '$item_meadbasepoisonresist',  # Mead Base: Poison Resistance
+    '$item_meadbasestamina',  # Mead Base: Minor Stamina
+    '$item_meadbasestamina_lingering',  # Mead Base: Lingering Stamina
+    '$item_meadbasestamina_medium',  # Mead Base: Medium Stamina
+    '$item_meadbasestrength',
+    '$item_meadbaseswimmer',
+    '$item_meadbasetamer',
+    '$item_meadbasetasty',  # Mead Base: Tasty
+    '$item_meatballsmashedpoteitr',
+    '$item_meatplatteruncooked',  # Uncooked Meat Platter
+    '$item_mechanicalspring',  # Mechanical Spring
+    '$item_mincemeatsauce',  # Minced Meat Sauce
+    '$item_mistharesupremeuncooked',  # Uncooked Misthare Supreme
+    '$item_moosekebab',
+    '$item_mushroomomelette',  # Mushroom Omelette
+    '$item_oatmeallingonberryjam',
+    '$item_oatmilk',
+    '$item_onionsoup',  # Onion Soup
+    '$item_oozebomb',  # Ooze Bomb
+    '$item_ovenpancake_uncooked',
+    '$item_pancakes',
+    '$item_pickaxe_antler',  # Antler Pickaxe
+    '$item_pickaxe_blackmetal',  # Black Metal Pickaxe
+    '$item_pickaxe_bronze',  # Bronze Pickaxe
+    '$item_pickaxe_iron',  # Iron Pickaxe
+    '$item_piquantpie_uncooked',  # Uncooked Piquant Pie
+    '$item_pulledbear',
+    '$item_queensjam',  # Queen's Jam
+    '$item_roastedcrustpie_uncooked',  # Uncooked Roasted Crust Pie
+    '$item_saddleasksvin',  # Asksvin Saddle
+    '$item_saddlelox',  # Lox Saddle
+    '$item_saddlemoose',
+    '$item_salad',  # Salad
+    '$item_sausages',  # Sausages
+    '$item_scorchingmedley',  # Scorching Medley
+    '$item_scythe',
+    '$item_sealsoup',
+    '$item_seekeraspic',  # Seeker Aspic
+    '$item_serpentstew',  # Serpent Stew
+    '$item_sharpeningstone',  # Sharpening Stone
+    '$item_shield_banded',  # Banded Shield
+    '$item_shield_blackmetal',  # Black Metal Shield
+    '$item_shield_blackmetal_tower',  # Black Metal Tower Shield
+    '$item_shield_bonetower',  # Bone Tower Shield
+    '$item_shield_bronzebuckler',  # Bronze Buckler
+    '$item_shield_buckler_gold_uncooked',
+    '$item_shield_carapace',  # Carapace Shield
+    '$item_shield_carapacebuckler',  # Carapace Buckler
+    '$item_shield_flametal',  # Flametal Shield
+    '$item_shield_flametal_tower',  # Flametal Tower Shield
+    '$item_shield_gold',
+    '$item_shield_gold_tower',
+    '$item_shield_goldbuckler',
+    '$item_shield_iron_tower',  # Iron Tower Shield
+    '$item_shield_ironbuckler',  # Iron Buckler
+    '$item_shield_roots',
+    '$item_shield_round_gold_uncooked',
+    '$item_shield_serpentscale',  # Serpent Scale Shield
+    '$item_shield_silver',  # Silver Shield
+    '$item_shield_tower_gold_uncooked',
+    '$item_shield_wood',  # Wood Shield
+    '$item_shield_woodtower',  # Wood Tower Shield
+    '$item_shieldcore',  # Shield Core
+    '$item_shocklatesmoothie',  # Muckshake
+    '$item_sizzlingberrybroth',  # Sizzling Berry Broth
+    '$item_sledge_demolisher',  # Demolisher
+    '$item_sledge_gold',
+    '$item_sledge_gold_uncooked',
+    '$item_sledge_iron',  # Iron Sledge
+    '$item_smokedfish',
+    '$item_smokedmoosemeat',
+    '$item_sparklingshroomshake',  # Sparkling Shroomshake
+    '$item_spear_ancientbark',  # Ancient Bark Spear
+    '$item_spear_bronze',  # Bronze Spear
+    '$item_spear_carapace',  # Carapace Spear
+    '$item_spear_chitin',  # Abyssal Harpoon
+    '$item_spear_flint',  # Flint Spear
+    '$item_spear_gold',
+    '$item_spear_gold_bloodlightning',
+    '$item_spear_gold_frostfire',
+    '$item_spear_gold_uncooked',
+    '$item_spear_splitner',  # Splitnir
+    '$item_spear_splitner_blood',  # Splitnir the Bleeding
+    '$item_spear_splitner_lightning',  # Splitnir the Storming
+    '$item_spear_splitner_nature',  # Splitnir the Primal
+    '$item_spear_wolffang',  # Fang Spear
+    '$item_spicymarmalade',  # Spicy Marmalade
+    '$item_staff_frostorbs',
+    '$item_staff_lightning',  # Dundr
+    '$item_staff_orbofahri',
+    '$item_staff_orbofahri_uncooked',
+    '$item_staff_spiritcaller',
+    '$item_staff_spiritcaller_uncooked',
+    '$item_staff_thunderblood',
+    '$item_staff_thunderblood_uncooked',
+    '$item_staffclusterbomb',  # Staff of Fracturing
+    '$item_stafffireball',  # Staff of Embers
+    '$item_staffgreenroots',  # Staff of the Wild
+    '$item_stafficeshards',  # Staff of Frost
+    '$item_staffredtroll',  # Trollstav
+    '$item_staffshield',  # Staff of Protection
+    '$item_staffskeleton',  # Dead Raiser
+    '$item_stagbreaker',  # Stagbreaker
+    '$item_sword2h_gold',
+    '$item_sword2h_gold_bloodlightning',
+    '$item_sword2h_gold_frostfire',
+    '$item_sword2h_gold_uncooked',
+    '$item_sword_blackmetal',  # Black Metal Sword
+    '$item_sword_bronze',  # Bronze Sword
+    '$item_sword_dyrnwyn',  # Dyrnwyn
+    '$item_sword_gold',
+    '$item_sword_gold_bloodlightning',
+    '$item_sword_gold_frostfire',
+    '$item_sword_gold_uncooked',
+    '$item_sword_iron',  # Iron Sword
+    '$item_sword_krom',  # Krom
+    '$item_sword_mistwalker',  # Mistwalker
+    '$item_sword_niedhogg',  # Nidhögg
+    '$item_sword_niedhogg_blood',  # Nidhögg the Bleeding
+    '$item_sword_niedhogg_lightning',  # Nidhögg the Thundering
+    '$item_sword_niedhogg_nature',  # Nidhögg the Primal
+    '$item_sword_silver',  # Silver Sword
+    '$item_sword_slayer',  # Slayer
+    '$item_sword_slayer_blood',  # Brutal Slayer
+    '$item_sword_slayer_lightning',  # Scourging Slayer
+    '$item_sword_slayer_nature',  # Primal Slayer
+    '$item_sword_wood',
+    '$item_trinketblackdamagedealth',
+    '$item_trinketblackdtamina',
+    '$item_trinketbloodgoldhealth',
+    '$item_trinketbloodgoldstamina',
+    '$item_trinketbronzehealth',
+    '$item_trinketbronzestamina',
+    '$item_trinketcarapaceeitr',
+    '$item_trinketchitinswim',
+    '$item_trinketflametaleitr',
+    '$item_trinketflametalstaminahealth',
+    '$item_trinketironhealth',
+    '$item_trinketironstamina',
+    '$item_trinketscalestaminadamage',
+    '$item_trinketsilverdamage',
+    '$item_trinketsilverresist',
+    '$item_turnipstew',  # Turnip Stew
+    '$item_turretbolt',  # Black Metal Missile
+    '$item_turretbolt_bloodgold',
+    '$item_turretbolt_flametal',  # Flametal Missile
+    '$item_turretboltwood',  # Wooden Missile
+    '$item_vikingcupcake_uncooked',
+    '$item_wolf_skewer',  # Wolf Skewer
+    '$item_wolfjerky',  # Wolf Jerky
+    '$item_yggdrasilporridge',  # Yggdrasil Porridge
+]
+
+# AllBuildPieces: every piece in a build table that allows removing pieces (Hammer), except the repair tool.
+# Cultivator and Hoe pieces do not count. Hidden/seasonal pieces do.
+BUILDABLE = [
+    '$item_hardrock',
+    '$piece_BlackwoodStakewall',  # Ashwood Stakewall
+    '$piece_archerytarget',
+    '$piece_armorstand',  # Armour Stand
+    '$piece_artisan_ext1',  # Artisan Press
+    '$piece_artisanstation',  # Artisan Table
+    '$piece_ashwood_archedwall',  # Ashwood Arched Wall
+    '$piece_ashwood_beam_1m',  # Ashwood Beam 1 m
+    '$piece_ashwood_beam_2m',  # Ashwood Beam 2 m
+    '$piece_ashwood_bed',  # Ashwood Bed
+    '$piece_ashwood_decowall',  # Ashwood Decorative Wall
+    '$piece_ashwood_decowall_divider',  # Ashwood Divider
+    '$piece_ashwood_decowall_tree',  # Ashwood Decorative Window
+    '$piece_ashwood_door',  # Ashwood Door
+    '$piece_ashwood_floor_1x1',  # Ashwood Floor 1x1
+    '$piece_ashwood_floor_2x2',  # Ashwood Floor 2x2
+    '$piece_ashwood_floor_deco',  # Ashwood Decorative Floor
+    '$piece_ashwood_halfwall',  # Ashwood Half Wall
+    '$piece_ashwood_pole_1m',  # Ashwood Pole 1 m
+    '$piece_ashwood_pole_2m',  # Ashwood Pole 2 m
+    '$piece_ashwood_quarterwall',  # Ashwood Quarter Wall
+    '$piece_ashwood_wall',  # Ashwood Wall
+    '$piece_ashwoodarch_big',  # Ashwood Arch
+    '$piece_ashwoodbeam26',  # Ashwood Beam 26°
+    '$piece_ashwoodbeam45',  # Ashwood Beam 45°
+    '$piece_ashwoodbeam67',
+    '$piece_ashwoodcross26',  # Ashwood Roof Cross 26°
+    '$piece_ashwoodcross45',  # Ashwood Roof Cross 45°
+    '$piece_ashwoodstair',  # Ashwood Stair
+    '$piece_ashwoodwallroof67',
+    '$piece_ashwoodwallroof67upsidedown',
+    '$piece_ashwoodwallroof_26',  # Ashwood Wall 26°
+    '$piece_ashwoodwallroof_26_upsidedown',  # Ashwood Wall 26° (Inverted)
+    '$piece_ashwoodwallroof_45',  # Ashwood Wall 45°
+    '$piece_ashwoodwallroof_45_upsidedown',  # Ashwood Wall 45° (Inverted)
+    '$piece_ashwoodwallrooftop67',
+    '$piece_asksvinskeleton',  # Asksvin Skeleton
+    '$piece_banner01',  # Black Banner
+    '$piece_banner02',  # Blue Banner
+    '$piece_banner03',  # White and Red Striped Banner
+    '$piece_banner04',  # Red Banner
+    '$piece_banner05',  # Green Banner
+    '$piece_banner06',  # Blue, Red and White Banner
+    '$piece_banner07',  # White and Blue Striped Banner
+    '$piece_banner08',  # Yellow Banner
+    '$piece_banner09',  # Purple Banner
+    '$piece_banner10',  # Orange Banner
+    '$piece_banner11',  # White Banner
+    '$piece_barber',  # Barber Station
+    '$piece_bathtub',  # Hot Tub
+    '$piece_bed',  # Bed
+    '$piece_bed02',  # Dragon Bed
+    '$piece_beehive',  # Beehive
+    '$piece_bench01',  # Wood Bench
+    '$piece_bench_runed',
+    '$piece_benchlog',  # Sitting Log
+    '$piece_birdnest',
+    '$piece_blackforge',  # Black Forge
+    '$piece_blackforge_ext1',  # Black Forge Cooler
+    '$piece_blackforge_ext2',  # Vice
+    '$piece_blackforge_ext3',  # Metal Cutter
+    '$piece_blackforge_ext4',  # Gem Cutter
+    '$piece_blackforge_ext5',
+    '$piece_blackmarble1x1',  # Black Marble 1x1x1
+    '$piece_blackmarble2x1x1',  # Black Marble 2x1x1
+    '$piece_blackmarble2x2x2',  # Black Marble 2x2x2
+    '$piece_blackmarble_arch',  # Black Marble Arch
+    '$piece_blackmarble_base1',  # Black Marble Plinth
+    '$piece_blackmarble_basecorner',  # Black Marble Plinth Corner
+    '$piece_blackmarble_bench',  # Black Marble Bench
+    '$piece_blackmarble_column_1',  # Black Marble Column Small
+    '$piece_blackmarble_column_2',  # Black Marble Column Wide
+    '$piece_blackmarble_floor',  # Black Marble Floor
+    '$piece_blackmarble_floor_triangle',  # Black Marble Floor Triangle
+    '$piece_blackmarble_out1',  # Black Marble Cornice
+    '$piece_blackmarble_outcorner',  # Black Marble Cornice Corner
+    '$piece_blackmarble_stair',  # Black Marble Stair
+    '$piece_blackmarble_table',  # Black Marble Table
+    '$piece_blackmarble_throne',  # Black Marble Throne
+    '$piece_blackmarble_tip',  # Black Marble Quarter Spire
+    '$piece_blackmetalbarstack',
+    '$piece_blackwoodbench01',  # Ashwood Bench
+    '$piece_blackwoodstack',  # Ashwood Stack
+    '$piece_blastfurnace',  # Blast Furnace
+    '$piece_bloodgoldbarstack',
+    '$piece_bone_throne',  # Bone Throne
+    '$piece_bonestack',  # Bone Stack
+    '$piece_bonfire',  # Bonfire
+    '$piece_brazierceiling01',  # Hanging Brazier
+    '$piece_brazierfloor01',  # Standing Brazier
+    '$piece_brazierfloor02',  # Blue Standing Brazier
+    '$piece_bronzebarstack',
+    '$piece_candle',
+    '$piece_cartographytable',  # Cartography Table
+    '$piece_cauldron',  # Cauldron
+    '$piece_cauldron_ext1_spice',  # Spice Rack
+    '$piece_cauldron_ext3_butchertable',  # Butcher's Table
+    '$piece_cauldron_ext4_pans',  # Pots and Pans
+    '$piece_cauldron_ext5_mortarandpestle',  # Mortar and Pestle
+    '$piece_cauldron_ext6_rollingpins',  # Rolling Pins and Cutting Boards
+    '$piece_cauldron_ext7_smoker',
+    '$piece_celebrationgarland',
+    '$piece_chair',  # Wood Chair
+    '$piece_chair_runed',
+    '$piece_charcoalkiln',  # Charcoal Kiln
+    '$piece_chest',  # Reinforced Chest
+    '$piece_chestbarrel',
+    '$piece_chestblackmetal',  # Black Metal Chest
+    '$piece_chestgrausten',
+    '$piece_chestprivate',  # Personal Chest
+    '$piece_chesttreasure',  # Treasure Chest
+    '$piece_chestwarderobe',
+    '$piece_chestwood',  # Chest
+    '$piece_clothdoor',  # Red Jute Curtain
+    '$piece_coalpile',  # Coal Pile
+    '$piece_cookingstation',  # Cooking Station
+    '$piece_cookingstation_iron',  # Iron Cooking Station
+    '$piece_copperbarstack',
+    '$piece_crystalwall1x1',  # Crystal Wall 1x1
+    '$piece_darkwoodarch',  # Darkwood Arch
+    '$piece_darkwoodbeam',  # Darkwood Beam 2 m
+    '$piece_darkwoodbeam4',  # Darkwood Beam 4 m
+    '$piece_darkwoodbeam67',
+    '$piece_darkwoodbeam_26',  # Darkwood Beam 26°
+    '$piece_darkwoodbeam_45',  # Darkwood Beam 45°
+    '$piece_darkwoodchair',  # Darkwood Chair
+    '$piece_darkwooddecowall',  # Carved Darkwood Divider
+    '$piece_darkwoodgate',  # Darkwood Gate
+    '$piece_darkwoodpole',  # Darkwood Pole 2m
+    '$piece_darkwoodpole4',  # Darkwood Pole 4m
+    '$piece_darkwoodraven',  # Raven Adornment
+    '$piece_darkwoodroof26',  # Shingle Roof 26°
+    '$piece_darkwoodroof45',  # Shingle Roof 45°
+    '$piece_darkwoodroof67',
+    '$piece_darkwoodrooficorner',  # Shingle Roof Inner Corner 26°
+    '$piece_darkwoodrooficorner45',  # Shingle Roof Inner Corner 45°
+    '$piece_darkwoodrooficorner67',
+    '$piece_darkwoodroofocorner',  # Shingle Roof Outer Corner 26°
+    '$piece_darkwoodroofocorner45',  # Shingle Roof Outer Corner 45°
+    '$piece_darkwoodroofocorner67',
+    '$piece_darkwoodrooftop',  # Shingle Roof Ridge 26°
+    '$piece_darkwoodrooftop45',  # Shingle Roof Ridge 45°
+    '$piece_darkwoodrooftop67',
+    '$piece_darkwoodwolf',  # Wolf Adornment
+    '$piece_deco_stave_wall',
+    '$piece_drawbridge_dn',
+    '$piece_drawbridge_log',
+    '$piece_dvergr_lantern',  # Dvergr Wall Lantern
+    '$piece_dvergr_lantern_pole',  # Dvergr Pole Lantern
+    '$piece_dvergr_metal_wall',  # Dvergr Metal Wall
+    '$piece_dvergr_sharpstakes',  # Dvergr Sharp Stakes
+    '$piece_dvergr_spiralstair',  # Dvergr Spiral Staircase Left
+    '$piece_dvergr_spiralstair_right',  # Dvergr Spiral Staircase Right
+    '$piece_dvergr_stake_wall',  # Dvergr Stakewall
+    '$piece_eitrrefinery',  # Eitr Refinery
+    '$piece_faderember',
+    '$piece_fairylightgarland',
+    '$piece_fermenter',  # Fermenter
+    '$piece_firepit',  # Campfire
+    '$piece_firepit_iron',  # Iron Fire Pit
+    '$piece_flametal_beam',  # Flametal Beam
+    '$piece_flametal_pillar',  # Flametal Pillar
+    '$piece_flametalbarstack',
+    '$piece_flametalgate',  # Flametal Gate
+    '$piece_flintpile',
+    '$piece_forge',  # Forge
+    '$piece_forge_ext1',  # Forge Bellows
+    '$piece_forge_ext2',  # Anvils
+    '$piece_forge_ext3',  # Grinding Wheel
+    '$piece_forge_ext4',  # Smith's Anvil
+    '$piece_forge_ext5',  # Forge Cooler
+    '$piece_forge_ext6',  # Forge Tool Rack
+    '$piece_frostfoundry',
+    '$piece_frostkiln',
+    '$piece_grausten_archmedium',  # Grausten Medium Arch
+    '$piece_grausten_archsmall',  # Grausten Small Arch
+    '$piece_grausten_beammedium',  # Grausten Medium Beam
+    '$piece_grausten_beamsmall',  # Grausten Small Beam
+    '$piece_grausten_floor1x1',  # Grausten Floor 1x1
+    '$piece_grausten_floor2x2',  # Grausten Floor 2x2
+    '$piece_grausten_floor4x4',  # Grausten Floor 4x4
+    '$piece_grausten_pillarmedium',  # Grausten Medium Pillar
+    '$piece_grausten_pillarsmall',  # Grausten Small Pillar
+    '$piece_grausten_pillartapered',  # Grausten Tapered Pillar
+    '$piece_grausten_pillartaperedinverted',  # Grausten Tapered Pillar (Inverted)
+    '$piece_grausten_roof45',  # Grausten Roof
+    '$piece_grausten_roof45_arch',  # Grausten Arched Roof
+    '$piece_grausten_roof45_archcorner',  # Grausten Arched Roof Corner
+    '$piece_grausten_roof45_archcorner2',  # Grausten Arched Roof Corner
+    '$piece_grausten_roof45_corner',  # Grausten Roof Corner
+    '$piece_grausten_roof45_corner2',  # Grausten Roof Corner
+    '$piece_grausten_stair',  # Grausten Stairs
+    '$piece_grausten_stoneladder',  # Grausten Steep Stairs
+    '$piece_grausten_wall1x2',  # Grausten Wall 1x2
+    '$piece_grausten_wall2x2',  # Grausten Wall 2x2
+    '$piece_grausten_wall4x2',  # Grausten Wall 4x2
+    '$piece_grausten_wallarch',  # Grausten Wall Arch
+    '$piece_grausten_wallarchinv',  # Grausten Wall Arch (Inverted)
+    '$piece_grausten_window2x2',  # Grausten Window 2x2
+    '$piece_grausten_window4x2',  # Grausten Window 4x2
+    '$piece_graustenpile',  # Grausten Pile
+    '$piece_groundtorch',  # Standing Iron Torch
+    '$piece_groundtorchblue',  # Standing Blue-burning Iron Torch
+    '$piece_groundtorchdemister',  # Wisp Torch
+    '$piece_groundtorchgreen',  # Standing Green-burning Iron Torch
+    '$piece_groundtorchwood',  # Standing Wood Torch
+    '$piece_guardstone',  # Ward
+    '$piece_hanging_cloth_blue1',  # Blue Jute Drapes
+    '$piece_hanging_cloth_blue2',  # Blue Jute Curtain
+    '$piece_hearth',  # Hearth
+    '$piece_hexagonalgate',  # Hexagonal Gate
+    '$piece_hoodedlantern',
+    '$piece_icecube',
+    '$piece_incinerator',  # Obliterator
+    '$piece_ironbarstack',
+    '$piece_ironfloor',  # Cage Floor 2x2
+    '$piece_ironfloorSmall',  # Cage Floor 1x1
+    '$piece_irongate',  # Iron Gate
+    '$piece_ironwall',  # Cage Wall 2x2
+    '$piece_ironwallSmall',  # Cage Wall 1x1
+    '$piece_ironwoodbeam67',
+    '$piece_itemstand',  # Item Stand
+    '$piece_jackoturnip',  # Jack-o-turnip
+    '$piece_jute_carpet',  # Red Jute Carpet
+    '$piece_juteblue_carpet',  # Blue Jute Carpet
+    '$piece_lavalantern',  # Lava Lantern
+    '$piece_logbeam2',  # Log Beam 2 m
+    '$piece_logbeam4',  # Log Beam 4 m
+    '$piece_logpole2',  # Log Pole 2 m
+    '$piece_logpole4',  # Log Pole 4 m
+    '$piece_magetable',  # Galdr Table
+    '$piece_magetable_ext',  # Rune Table
+    '$piece_magetable_ext2',  # Unfading Candles
+    '$piece_magetable_ext3',  # Feathery Wreath
+    '$piece_magetable_ext4',
+    '$piece_marblepile',  # Black Marble Pile
+    '$piece_maypole',  # Maypole
+    '$piece_meadcauldron',
+    '$piece_mistletoe',  # Mistletoe
+    '$piece_moose_throne',
+    '$piece_oven',  # Stone Oven
+    '$piece_portal',  # Portal
+    '$piece_portal_stone',  # Portal – Stone
+    '$piece_pot_large_green',  # Large Green Pot
+    '$piece_pot_medium_green',  # Medium Green Pot
+    '$piece_pot_small_green',  # Small Green Pot
+    '$piece_preptable',
+    '$piece_rug_asksvin',  # Asksvin Rug
+    '$piece_rug_bjorn',
+    '$piece_rug_deer',  # Deer Rug
+    '$piece_rug_hare',  # Hare Rug
+    '$piece_rug_lox',  # Lox Rug
+    '$piece_rug_moose',
+    '$piece_rug_seal',
+    '$piece_rug_straw',  # Straw
+    '$piece_rug_wolf',  # Wolf Rug
+    '$piece_sapcollector',  # Sap Extractor
+    '$piece_scale_26',
+    '$piece_scale_26_flipped',
+    '$piece_scale_26_upsidedown',
+    '$piece_scale_26_upsidedown_flipped',
+    '$piece_scale_45',
+    '$piece_scale_45_flipped',
+    '$piece_scale_45_upsidedown',
+    '$piece_scale_45_upsidedown_flipped',
+    '$piece_scale_67',
+    '$piece_scale_67_flipped',
+    '$piece_scale_67_upsidedown',
+    '$piece_scale_67_upsidedown_flipped',
+    '$piece_scale_halfwall',
+    '$piece_scale_quarterwall',
+    '$piece_scale_wall',
+    '$piece_sconce',  # Sconce
+    '$piece_sharpstakes',  # Sharp Stakes
+    '$piece_shieldgenerator',  # Shield Generator
+    '$piece_sign',  # Sign
+    '$piece_silverbarstack',
+    '$piece_skullpile',  # Pile of Skulls
+    '$piece_smelter',  # Smelter
+    '$piece_snowlantern',
+    '$piece_spinningwheel',  # Spinning Wheel
+    '$piece_stakewall',  # Stakewall
+    '$piece_stave_deco_beam_2m',
+    '$piece_stave_deco_pole_2m',
+    '$piece_stave_pole_2m',
+    '$piece_stave_pole_4m',
+    '$piece_stave_wall',
+    '$piece_stavebeam2',
+    '$piece_stavebeam26',
+    '$piece_stavebeam4',
+    '$piece_stavebeam45',
+    '$piece_stavebeam67',
+    '$piece_stavecross26',
+    '$piece_stavecross45',
+    '$piece_stavedecobeam26',
+    '$piece_stavedecobeam45',
+    '$piece_stavedecobeam67',
+    '$piece_stavegate',
+    '$piece_stavewallrooftop67',
+    '$piece_stonearch',  # Stone Arch
+    '$piece_stonecutter',  # Stonecutter
+    '$piece_stonefence',
+    '$piece_stonefloor2x2',  # Stone Floor 2x2
+    '$piece_stonepile',  # Stone Pile
+    '$piece_stonepillar',  # Stone Pillar
+    '$piece_stonestair',  # Stone Stair
+    '$piece_stonethrone',  # Stone Throne
+    '$piece_stonewall1x1',  # Stone Wall 1x1
+    '$piece_stonewall2x1',  # Stone Wall 2x1
+    '$piece_stonewall4x2',  # Stone Wall 4x2
+    '$piece_stool',  # Stool
+    '$piece_table',  # Table
+    '$piece_table_oak',  # Long Heavy Table
+    '$piece_table_round',  # Round Table
+    '$piece_table_runed',
+    '$piece_table_runed_small',
+    '$piece_throne01',  # Raven Throne
+    '$piece_tinbarstack',
+    '$piece_trainingdummy',
+    '$piece_trap',  # Trap
+    '$piece_treasure_pile',  # Coin Pile
+    '$piece_treasure_stack',  # Coin Stack
+    '$piece_turret',  # Ballista
+    '$piece_windmill',  # Windmill
+    '$piece_wisplure',  # Wisp Fountain
+    '$piece_woodbeam1',  # Wood Beam 1 m
+    '$piece_woodbeam2',  # Wood Beam 2 m
+    '$piece_woodbeam26',  # Wood Beam 26°
+    '$piece_woodbeam45',  # Wood Beam 45°
+    '$piece_woodbeam67',
+    '$piece_woodcorestack',  # Corewood Stack
+    '$piece_wooddoor',  # Wood Door
+    '$piece_wooddragon',  # Wood Dragon Adornment
+    '$piece_woodfence',  # Roundpole Fence
+    '$piece_woodfencegate',
+    '$piece_woodfinestack',  # Finewood Stack
+    '$piece_woodfloor1x1',  # Wood Floor 1x1
+    '$piece_woodfloor2x2',  # Wood Floor 2x2
+    '$piece_woodfroststack',
+    '$piece_woodgate',  # Wood Gate
+    '$piece_woodironbeam',  # Wood Iron Beam
+    '$piece_woodironbeam_26',  # Wood Iron Beam 26°
+    '$piece_woodironbeam_45',  # Wood Iron Beam 45°
+    '$piece_woodironpole',  # Wood Iron Pole
+    '$piece_woodlog26',  # Log Beam 26°
+    '$piece_woodlog45',  # Log Beam 45°
+    '$piece_woodlog67',
+    '$piece_woodpole',  # Wood Pole 1 m
+    '$piece_woodpole2',  # Wood Pole 2 m
+    '$piece_woodroof26',  # Thatch Roof 26°
+    '$piece_woodroof45',  # Thatch Roof 45°
+    '$piece_woodroof67',
+    '$piece_woodrooficorner',  # Thatch Roof Inner Corner 26°
+    '$piece_woodrooficorner45',  # Thatch Roof Inner Corner 45°
+    '$piece_woodrooficorner67',
+    '$piece_woodroofocorner',  # Thatch Roof Outer Corner 26°
+    '$piece_woodroofocorner45',  # Thatch Roof Outer Corner 45°
+    '$piece_woodroofocorner67',
+    '$piece_woodrooftop',  # Thatch Roof Ridge 26°
+    '$piece_woodrooftop45',  # Thatch Roof Ridge 45°
+    '$piece_woodrooftop67',
+    '$piece_woodstack',  # Wood Stack
+    '$piece_woodstair',  # Wood Stairs
+    '$piece_woodstepladder',  # Wood Ladder
+    '$piece_woodwall',  # Wood Wall
+    '$piece_woodwallhalf',  # Wood Wall Half
+    '$piece_woodwallquarter',  # Wood Wall 1x1
+    '$piece_woodwallroof',  # Wood Wall 26°
+    '$piece_woodwallroof45',  # Wood Wall 45°
+    '$piece_woodwallroof45_upsidedown',  # Wood Wall 45° (Inverted)
+    '$piece_woodwallroof67',
+    '$piece_woodwallroof67upsidedown',
+    '$piece_woodwallroof_upsidedown',  # Wood Wall 26° (Inverted)
+    '$piece_woodwallrooftop',  # Wood Roof Cross 26°
+    '$piece_woodwallrooftop45',  # Wood Roof Cross 45°
+    '$piece_woodwallrooftop67',
+    '$piece_woodwindowshutter',  # Wood Shutter
+    '$piece_workbench',  # Workbench
+    '$piece_workbench_ext1',  # Chopping Block
+    '$piece_workbench_ext2',  # Tanning Rack
+    '$piece_workbench_ext3',  # Adze
+    '$piece_workbench_ext4',  # Tool Shelf
+    '$piece_yggdrasilstack',  # Yggdrasil Wood Stack
+    '$piece_yulecrown',  # Yule Wreath
+    '$piece_yulegarland',  # Yule Garland
+    '$piece_yuleklapp',  # Yuleklapp
+    '$piece_yuletree',  # Yule Tree
+    '$ship_karve',  # Karve
+    '$ship_longship',  # Longship
+    '$ship_longship_ashlands',  # Drakkar
+    '$ship_raft',  # Raft
+    '$tool_batteringram',  # Battering Ram
+    '$tool_cart',  # Cart
+    '$tool_catapult',  # Catapult
+]
+
+# KillAllCreatures / KillAllCreaturesHard: every character the game flags as "killed for achievements",
+# bosses split out into BOSSES below (the game lists them together, 108 in total).
+ENEMIES = [
+    '$enemy_abomination',  # Abomination
+    '$enemy_asksvin',  # Asksvin
+    '$enemy_asksvin_hatchling',  # Asksvin Hatchling
+    '$enemy_aspect_bonemass',
+    '$enemy_aspect_dragon',
+    '$enemy_aspect_eikthyr',
+    '$enemy_aspect_fader',
+    '$enemy_aspect_gdking',
+    '$enemy_aspect_goblinking',
+    '$enemy_aspect_seekerqueen',
+    '$enemy_babyseeker',  # Seeker Brood
+    '$enemy_barka',
+    '$enemy_bat',  # Bat
+    '$enemy_bjorn',
+    '$enemy_blob',  # Blob
+    '$enemy_blobelite',  # Oozer
+    '$enemy_blobfrost',
+    '$enemy_bloblava',  # Lava Blob
+    '$enemy_blobmork',
+    '$enemy_blobmorkmini',
+    '$enemy_blobtar',  # Growth
+    '$enemy_boar',  # Boar
+    '$enemy_boarpiggy',  # Piggy
+    '$enemy_bonemawserpent',  # Bonemaw
+    '$enemy_charred_archer',  # Charred Marksman
+    '$enemy_charred_mage',  # Charred Warlock
+    '$enemy_charred_melee',  # Charred Warrior
+    '$enemy_charred_melee_Dyrnwyn',  # <color=orange>Lord Reto</color>
+    '$enemy_charred_melee_Fader',  # Summoned Charred Warrior
+    '$enemy_charred_twitcher',  # Charred Twitcher
+    '$enemy_charred_twitcher_summoned',  # Summoned Twitcher
+    '$enemy_chicken',  # Chicken
+    '$enemy_deathsquito',  # Deathsquito
+    '$enemy_deer',  # Deer
+    '$enemy_drake',  # Drake
+    '$enemy_draugr',  # Draugr
+    '$enemy_draugrelite',  # Draugr Elite
+    '$enemy_dvergr',  # Dvergr Rogue
+    '$enemy_dvergr_deepnorth',
+    '$enemy_dvergr_mage',  # Dvergr Mage
+    '$enemy_elaking',
+    '$enemy_elakingmole',
+    '$enemy_fallenvalkyrie',  # Fallen Valkyrie
+    '$enemy_fallenwarrior',
+    '$enemy_fenring',  # Fenring
+    '$enemy_fenringcultist',  # Cultist
+    '$enemy_fenringcultist_hildir',  # <color=orange>Geirrhafa</color>
+    '$enemy_frozenking',
+    '$enemy_ghost',  # Ghost
+    '$enemy_gjall',  # Gjall
+    '$enemy_goblin',  # Fuling
+    '$enemy_goblin_deepnorth',
+    '$enemy_goblin_hildir',  # <color=orange>Zil</color> 
+    '$enemy_goblinbrute',  # Fuling Berserker
+    '$enemy_goblinbrute_hildircombined',  # <color=orange>Zil & Thungr</color>
+    '$enemy_goblinshaman',  # Fuling Shaman
+    '$enemy_greydwarf',  # Greydwarf
+    '$enemy_greydwarfbrute',  # Greydwarf Brute
+    '$enemy_greydwarfshaman',  # Greydwarf Shaman
+    '$enemy_greyling',  # Greyling
+    '$enemy_hare',  # Hare
+    '$enemy_hen',  # Hen
+    '$enemy_jotun_warrior',
+    '$enemy_jotun_witch',
+    '$enemy_kvastur',
+    '$enemy_leech',  # Leech
+    '$enemy_lox',  # Lox
+    '$enemy_loxcalf',  # Lox Calf
+    '$enemy_moose',
+    '$enemy_moosecalf',
+    '$enemy_morgen',  # Morgen
+    '$enemy_neck',  # Neck
+    '$enemy_root',
+    '$enemy_seal',
+    '$enemy_seal_baby',
+    '$enemy_seeker',  # Seeker
+    '$enemy_seekerbrute',  # Seeker Soldier
+    '$enemy_serpent',  # Serpent
+    '$enemy_skeleton',  # Skeleton
+    '$enemy_skeleton_summoned',  # Skelett
+    '$enemy_skeletonfire',  # <color=orange>Brenna</color>
+    '$enemy_skeletonpoison',  # Rancid Remains
+    '$enemy_stonegolem',  # Stone Golem
+    '$enemy_summonedtroll',  # Summoned Troll
+    '$enemy_surtling',  # Surtling
+    '$enemy_tick',  # Tick
+    '$enemy_troll',  # Troll
+    '$enemy_trollfrost',
+    '$enemy_ulv',  # Ulv
+    '$enemy_unbjorn',
+    '$enemy_volture',  # Volture
+    '$enemy_wolf',  # Wolf
+    '$enemy_wolfcub',  # Wolf Cub
+    '$enemy_wraith',  # Wraith
+    '$enemy_writhan',
+    '$piece_trainingdummy',
+    '$spiritcaller_bjorn',
+    '$spiritcaller_boar',
+    '$spiritcaller_moose',
+    '$spiritcaller_wolf',
+]
+
+# AllBosses / AllBossesNormal / AllBossesHard (identical list; Frozen King counts via its phase 3 form)
+BOSSES = [
+    '$enemy_eikthyr',  # Eikthyr
+    '$enemy_gdking',  # The Elder
+    '$enemy_bonemass',  # Bonemass
+    '$enemy_dragon',  # Moder
+    '$enemy_goblinking',  # Yagluth
+    '$enemy_seekerqueen',  # The Queen
+    '$enemy_fader',  # Fader
+    '$enemy_frozenking_p3',
+]
+
+# FindAllTrophies: every trophy item (one per name) minus excluded ones. Counted from the item pick-up stats.
+TROPHIES = [
+    '$enemy_kvastur',
+    '$item_trophy_abomination',  # Abomination Trophy
+    '$item_trophy_asksvin',  # Asksvin Trophy
+    '$item_trophy_barka',
+    '$item_trophy_bjorn',
+    '$item_trophy_bjorn_undead',
+    '$item_trophy_blob',  # Blob Trophy
+    '$item_trophy_blob_frost',
+    '$item_trophy_blob_lava',
+    '$item_trophy_blob_morkhalla',
+    '$item_trophy_boar',  # Boar Trophy
+    '$item_trophy_bonemass',  # Bonemass Trophy
+    '$item_trophy_bonemaw',  # Bonemaw Trophy
+    '$item_trophy_brutebro',  # Thungr Trophy
+    '$item_trophy_charredarcher',  # Marksman Trophy
+    '$item_trophy_charredmage',  # Warlock Trophy
+    '$item_trophy_charredmelee',  # Warrior Trophy
+    '$item_trophy_cultist',  # Cultist Trophy
+    '$item_trophy_cultist_hildir',  # Geirrhafa Trophy
+    '$item_trophy_deathsquito',  # Deathsquito Trophy
+    '$item_trophy_deer',  # Deer Trophy
+    '$item_trophy_dragonqueen',  # Moder Trophy
+    '$item_trophy_draugr',  # Draugr Trophy
+    '$item_trophy_draugrelite',  # Draugr Elite Trophy
+    '$item_trophy_dvergr',  # Dvergr Trophy
+    '$item_trophy_eikthyr',  # Eikthyr Trophy
+    '$item_trophy_elaking',
+    '$item_trophy_elder',  # The Elder Trophy
+    '$item_trophy_fader',  # Fader Trophy
+    '$item_trophy_fallenvalkyrie',  # Fallen Valkyrie Trophy
+    '$item_trophy_fenring',  # Fenring Trophy
+    '$item_trophy_ghost',
+    '$item_trophy_gjall',  # Gjall Trophy
+    '$item_trophy_goblin',  # Fuling Trophy
+    '$item_trophy_goblinbrute',  # Fuling Berserker Trophy
+    '$item_trophy_goblinking',  # Yagluth Trophy
+    '$item_trophy_goblinshaman',  # Fuling Shaman Trophy
+    '$item_trophy_greydwarf',  # Greydwarf Trophy
+    '$item_trophy_greydwarfbrute',  # Greydwarf Brute Trophy
+    '$item_trophy_greydwarfshaman',  # Greydwarf Shaman Trophy
+    '$item_trophy_growth',  # Growth Trophy
+    '$item_trophy_hare',  # Hare Trophy
+    '$item_trophy_hatchling',  # Drake Trophy
+    '$item_trophy_jotunwarrior',
+    '$item_trophy_jotunwitch',
+    '$item_trophy_leech',  # Leech Trophy
+    '$item_trophy_lox',  # Lox Trophy
+    '$item_trophy_mole',
+    '$item_trophy_moose',
+    '$item_trophy_morgen',  # Morgen Trophy
+    '$item_trophy_neck',  # Neck Trophy
+    '$item_trophy_seal',
+    '$item_trophy_seeker',  # Seeker Trophy
+    '$item_trophy_seeker_brute',  # Seeker Soldier Trophy
+    '$item_trophy_seekerqueen',  # The Queen Trophy
+    '$item_trophy_serpent',  # Serpent Trophy
+    '$item_trophy_sgolem',  # Stone Golem Trophy
+    '$item_trophy_shamanbro',  # Zil Trophy
+    '$item_trophy_skeleton',  # Skeleton Trophy
+    '$item_trophy_skeleton_hildir',  # Brenna Trophy
+    '$item_trophy_skeletonpoison',  # Rancid Remains Trophy
+    '$item_trophy_surtling',  # Surtling Trophy
+    '$item_trophy_tick',  # Tick Trophy
+    '$item_trophy_ulv',  # Ulv Trophy
+    '$item_trophy_volture',  # Volture Trophy
+    '$item_trophy_wolf',  # Wolf Trophy
+    '$item_trophy_wraith',  # Wraith Trophy
+    '$item_trophy_writhan',
+]
+
+# AllWeaponCraft: every weapon (1h, 2h, bows, torches) with a recipe, minus excluded items. Hand recipes with no station count here.
+CRAFTABLE_WEAPONS = [
+    '$item_atgeir_blackmetal',  # Black Metal Atgeir
+    '$item_atgeir_bronze',  # Bronze Atgeir
+    '$item_atgeir_gold',
+    '$item_atgeir_gold_bloodlightning',
+    '$item_atgeir_gold_frostfire',
+    '$item_atgeir_himminafl',  # Himminafl
+    '$item_atgeir_iron',  # Iron Atgeir
+    '$item_axe2h_gold',
+    '$item_axe2h_gold_bloodlightning',
+    '$item_axe2h_gold_frostfire',
+    '$item_axe_berzerkr',  # Berserkir Axes
+    '$item_axe_berzerkr_blood',  # Bleeding Berserkir Axes
+    '$item_axe_berzerkr_lightning',  # Thundering Berserkir Axes
+    '$item_axe_berzerkr_nature',  # Primal Berserkir Axes
+    '$item_axe_blackmetal',  # Black Metal Axe
+    '$item_axe_bronze',  # Bronze Axe
+    '$item_axe_early',
+    '$item_axe_flint',  # Flint Axe
+    '$item_axe_gold',
+    '$item_axe_gold_bloodlightning',
+    '$item_axe_gold_frostfire',
+    '$item_axe_iron',  # Iron Axe
+    '$item_axe_jotunbane',  # Jotun Bane
+    '$item_axe_stone',  # Stone Axe
+    '$item_battleaxe',  # Battleaxe
+    '$item_battleaxe_blackmetal',
+    '$item_battleaxe_crystal',  # Crystal Battleaxe
+    '$item_battleaxe_skullsplittur',
+    '$item_bilebomb',  # Bile Bomb
+    '$item_bomb_dynamite',
+    '$item_bombblob_frost',
+    '$item_bombblob_lava',
+    '$item_bombblob_morkhalla',
+    '$item_bombblob_poison',
+    '$item_bombblob_poisonelite',
+    '$item_bombblob_tar',
+    '$item_bow',  # Crude Bow
+    '$item_bow_ashlands',  # Ash Fang
+    '$item_bow_ashlandsblood',  # Blood Fang
+    '$item_bow_ashlandsroot',  # Root Fang
+    '$item_bow_ashlandsstorm',  # Storm Fang
+    '$item_bow_draugrfang',  # Draugr Fang
+    '$item_bow_finewood',  # Finewood Bow
+    '$item_bow_gold',
+    '$item_bow_gold_bloodlightning',
+    '$item_bow_gold_frostfire',
+    '$item_bow_huntsman',  # Huntsman Bow
+    '$item_bow_snipesnap',  # Spinesnap
+    '$item_club',  # Club
+    '$item_crossbow_arbalest',  # Arbalest
+    '$item_crossbow_bloodlightning_gold',
+    '$item_crossbow_frostfire_gold',
+    '$item_crossbow_gold',
+    '$item_crossbow_ripper',  # Ripper
+    '$item_crossbow_ripper_blood',  # Wound Ripper
+    '$item_crossbow_ripper_lightning',  # Storm Ripper
+    '$item_crossbow_ripper_nature',  # Root Ripper
+    '$item_fistweapon_bjorn',
+    '$item_fistweapon_bjorn_undead',
+    '$item_fistweapon_fenris',  # Flesh Rippers
+    '$item_fistweapon_frostfire_gold',
+    '$item_fistweapon_gold',
+    '$item_fistweapon_gold_bloodlightning',
+    '$item_graplinghook',
+    '$item_knife_blackmetal',  # Black Metal Knife
+    '$item_knife_butcher',  # Butcher Knife
+    '$item_knife_chitin',  # Abyssal Razor
+    '$item_knife_copper',  # Copper Knife
+    '$item_knife_flint',  # Flint Knife
+    '$item_knife_gold',
+    '$item_knife_gold_bloodlightning',
+    '$item_knife_gold_frostfire',
+    '$item_knife_silver',  # Silver Knife
+    '$item_knife_skollandhati',  # Skoll and Hati
+    '$item_mace2h_gold_bloodlightning',
+    '$item_mace2h_gold_frostfire',
+    '$item_mace_bronze',  # Bronze Mace
+    '$item_mace_eldner',  # Flametal Mace
+    '$item_mace_eldner_blood',  # Bloodgeon
+    '$item_mace_eldner_lightning',  # Storm Star
+    '$item_mace_eldner_nature',  # Klossen
+    '$item_mace_gold',
+    '$item_mace_gold_bloodlightning',
+    '$item_mace_gold_frostfire',
+    '$item_mace_iron',  # Iron Mace
+    '$item_mace_needle',  # Porcupine
+    '$item_mace_silver',  # Frostner
+    '$item_oozebomb',  # Ooze Bomb
+    '$item_pickaxe_antler',  # Antler Pickaxe
+    '$item_pickaxe_blackmetal',  # Black Metal Pickaxe
+    '$item_pickaxe_bronze',  # Bronze Pickaxe
+    '$item_pickaxe_iron',  # Iron Pickaxe
+    '$item_scythe',
+    '$item_sledge_demolisher',  # Demolisher
+    '$item_sledge_gold',
+    '$item_sledge_iron',  # Iron Sledge
+    '$item_spear_ancientbark',  # Ancient Bark Spear
+    '$item_spear_bronze',  # Bronze Spear
+    '$item_spear_carapace',  # Carapace Spear
+    '$item_spear_chitin',  # Abyssal Harpoon
+    '$item_spear_flint',  # Flint Spear
+    '$item_spear_gold',
+    '$item_spear_gold_bloodlightning',
+    '$item_spear_gold_frostfire',
+    '$item_spear_splitner',  # Splitnir
+    '$item_spear_splitner_blood',  # Splitnir the Bleeding
+    '$item_spear_splitner_lightning',  # Splitnir the Storming
+    '$item_spear_splitner_nature',  # Splitnir the Primal
+    '$item_spear_wolffang',  # Fang Spear
+    '$item_staff_frostorbs',
+    '$item_staff_lightning',  # Dundr
+    '$item_staff_orbofahri',
+    '$item_staff_spiritcaller',
+    '$item_staff_thunderblood',
+    '$item_staffclusterbomb',  # Staff of Fracturing
+    '$item_stafffireball',  # Staff of Embers
+    '$item_staffgreenroots',  # Staff of the Wild
+    '$item_stafficeshards',  # Staff of Frost
+    '$item_staffredtroll',  # Trollstav
+    '$item_staffshield',  # Staff of Protection
+    '$item_staffskeleton',  # Dead Raiser
+    '$item_stagbreaker',  # Stagbreaker
+    '$item_sword2h_gold',
+    '$item_sword2h_gold_bloodlightning',
+    '$item_sword2h_gold_frostfire',
+    '$item_sword_blackmetal',  # Black Metal Sword
+    '$item_sword_bronze',  # Bronze Sword
+    '$item_sword_dyrnwyn',  # Dyrnwyn
+    '$item_sword_gold',
+    '$item_sword_gold_bloodlightning',
+    '$item_sword_gold_frostfire',
+    '$item_sword_iron',  # Iron Sword
+    '$item_sword_krom',  # Krom
+    '$item_sword_mistwalker',  # Mistwalker
+    '$item_sword_niedhogg',  # Nidhögg
+    '$item_sword_niedhogg_blood',  # Nidhögg the Bleeding
+    '$item_sword_niedhogg_lightning',  # Nidhögg the Thundering
+    '$item_sword_niedhogg_nature',  # Nidhögg the Primal
+    '$item_sword_silver',  # Silver Sword
+    '$item_sword_slayer',  # Slayer
+    '$item_sword_slayer_blood',  # Brutal Slayer
+    '$item_sword_slayer_lightning',  # Scourging Slayer
+    '$item_sword_slayer_nature',  # Primal Slayer
+    '$item_sword_wood',
+    '$item_torch',  # Torch
+]
+
+# AllFoodCooked: every food with a recipe, plus every food a cooking station/oven can produce.
+COOKED_FOOD = [
+    '$item_asksvin_meat_cooked',  # Cooked Asksvin Tail
+    '$item_bakedpoteitr',
+    '$item_bakedpoteitr_uncooked',
+    '$item_bjorn_meat_cooked',
+    '$item_blacksoup',  # Black Soup
+    '$item_bloodpudding',  # Blood Pudding
+    '$item_blubber_cooked',
+    '$item_boar_meat_cooked',  # Cooked Boar Meat
+    '$item_boarjerky',  # Boar Jerky
+    '$item_bonemawmeat_cooked',  # Cooked Bonemaw Meat
+    '$item_bread',  # Bread
+    '$item_breaddough',  # Bread Dough
+    '$item_bug_meat_cooked',  # Cooked Seeker Meat
+    '$item_carrotsoup',  # Carrot Soup
+    '$item_chicken_meat_cooked',  # Cooked Chicken Meat
+    '$item_deer_meat_cooked',  # Cooked Deer Meat
+    '$item_deerstew',  # Deer Stew
+    '$item_egg_cooked',  # Cooked Egg
+    '$item_eyescream',  # Eyescream
+    '$item_fierysvinstew',  # Fiery Svinstew
+    '$item_fish_cooked',  # Cooked Fish
+    '$item_fish_raw',  # Raw Fish
+    '$item_fishandbread',  # Fish 'n' Bread
+    '$item_fishandbreaduncooked',  # Uncooked Fish 'n' Bread
+    '$item_fishsoup',
+    '$item_fishwraps',  # Fish Wraps
+    '$item_hare_meat_cooked',  # Cooked Hare Meat
+    '$item_honeyglazedchicken',  # Honey Glazed Chicken
+    '$item_honeyglazedchickenuncooked',  # Uncooked Honey Glazed Chicken
+    '$item_kalechips',
+    '$item_kalechips_uncooked',
+    '$item_lingondricka',
+    '$item_loxmeat_cooked',  # Cooked Lox Meat
+    '$item_loxpie',  # Lox Meat Pie
+    '$item_loxpie_uncooked',  # Unbaked Lox Pie
+    '$item_magicallystuffedmushroom',  # Stuffed Mushroom
+    '$item_magicallystuffedmushroomuncooked',  # Uncooked Stuffed Mushroom
+    '$item_marinatedgreens',  # Marinated Greens
+    '$item_mashedmeat',  # Mashed Meat
+    '$item_meatballsmashedpoteitr',
+    '$item_meatplatter',  # Meat Platter
+    '$item_meatplatteruncooked',  # Uncooked Meat Platter
+    '$item_mincemeatsauce',  # Minced Meat Sauce
+    '$item_mistharesupreme',  # Misthare Supreme
+    '$item_mistharesupremeuncooked',  # Uncooked Misthare Supreme
+    '$item_moose_meat_cooked',
+    '$item_moosekebab',
+    '$item_mushroomomelette',  # Mushroom Omelette
+    '$item_necktailgrilled',  # Grilled Neck Tail
+    '$item_oatmeallingonberryjam',
+    '$item_oatmilk',
+    '$item_onionsoup',  # Onion Soup
+    '$item_ovenpancake',
+    '$item_ovenpancake_uncooked',
+    '$item_pancakes',
+    '$item_piquantpie',  # Piquant Pie
+    '$item_piquantpie_uncooked',  # Uncooked Piquant Pie
+    '$item_pulledbear',
+    '$item_queensjam',  # Queen's Jam
+    '$item_roastedcrustpie',  # Roasted Crust Pie
+    '$item_roastedcrustpie_uncooked',  # Uncooked Roasted Crust Pie
+    '$item_salad',  # Salad
+    '$item_sausages',  # Sausages
+    '$item_scorchingmedley',  # Scorching Medley
+    '$item_sealsoup',
+    '$item_seekeraspic',  # Seeker Aspic
+    '$item_serpentmeatcooked',  # Cooked Serpent Meat
+    '$item_serpentstew',  # Serpent Stew
+    '$item_shocklatesmoothie',  # Muckshake
+    '$item_sizzlingberrybroth',  # Sizzling Berry Broth
+    '$item_smokedfish',
+    '$item_smokedmoosemeat',
+    '$item_sparklingshroomshake',  # Sparkling Shroomshake
+    '$item_spicymarmalade',  # Spicy Marmalade
+    '$item_turnipstew',  # Turnip Stew
+    '$item_vikingcupcake',
+    '$item_vikingcupcake_uncooked',
+    '$item_volture_meat_cooked',  # Cooked Volture Meat
+    '$item_wolf_meat_cooked',  # Cooked Wolf Meat
+    '$item_wolf_skewer',  # Wolf Skewer
+    '$item_wolfjerky',  # Wolf Jerky
+    '$item_yggdrasilporridge',  # Yggdrasil Porridge
+]
+
+# AllMiniBosses (any difficulty): the five Hildir mini-bosses and Dyrnwyn-related fights
+MINIBOSSES = [
+    '$enemy_fenringcultist_hildir',  # <color=orange>Geirrhafa</color>
+    '$enemy_skeletonfire',  # <color=orange>Brenna</color>
+    '$enemy_charred_melee_Dyrnwyn',  # <color=orange>Lord Reto</color>
+    '$enemy_goblinbrute_hildircombined',  # <color=orange>Zil & Thungr</color>
+    '$enemy_goblin_hildir',  # <color=orange>Zil</color> 
+]
+
+# GrindFish: every fish species must be caught (reeled in) once. Counted in the pickables table, not by picking the fish up.
+FISH = {
+    '$animal_fish1': 'Perch',
+    '$animal_fish2': 'Pike',
+    '$animal_fish3': 'Tuna',
+    '$animal_fish4': 'Tetra',
+    '$animal_fish5': 'Trollfish',
+    '$animal_fish6': 'Giant Herring',
+    '$animal_fish7': 'Grouper',
+    '$animal_fish8': 'Coral Cod',
+    '$animal_fish9': 'Anglerfish',
+    '$animal_fish10': 'Northern Salmon',
+    '$animal_fish11': 'Magmafish',
+    '$animal_fish12': 'Pufferfish',
+}
+
+# Death achievements, from the game's Achievement assets (stat -> index into the 205 PlayerStatType values).
+# "DeathByAllTypes" needs all 8 of these kinds at least once.
+DEATH_KINDS = {"EnemyHit": 56, "Fall": 58, "Drowning": 59, "Burning": 60,
+               "Freezing": 61, "Poisoned": 62, "Smoke": 63, "EdgeOfWorld": 65}
+# "DeathByTree" needs DeathByTree (index 68). "DeathByTreeAll" needs a death by each of these 8 tree varieties.
+DEATH_BY_TREE = 68
+TREE_VARIETIES = {"Fir": 193, "Oak": 194, "Pine": 195, "Ashlands": 196,
+                  "Beech": 199, "Birch": 200, "SnowFir": 201, "SnowPine": 202}
+
+
+class Reader:
+    def __init__(self, data, pos=0):
+        self.d, self.p = data, pos
+
+    def i32(self):
+        v = struct.unpack_from("<i", self.d, self.p)[0]
+        self.p += 4
+        return v
+
+    def string(self):
+        n = shift = 0
+        while True:
+            b = self.d[self.p]
+            self.p += 1
+            n |= (b & 0x7F) << shift
+            shift += 7
+            if b < 0x80:
+                break
+        s = self.d[self.p:self.p + n].decode("utf8")
+        self.p += n
+        return s
+
+    def sdict(self):
+        out = {}
+        for _ in range(self.i32()):
+            k = self.string()
+            out[k] = struct.unpack_from("<f", self.d, self.p)[0]
+            self.p += 4
+        return out
+
+    def slist(self):
+        return [self.string() for _ in range(self.i32())]
+
+
+def parse(path):
+    raw = open(path, "rb").read()
+    data = raw[4:4 + struct.unpack_from("<i", raw, 0)[0]]
+    r = Reader(data)
+    version = r.i32()
+    n_stats = r.i32()
+    n_sets = r.i32()
+    sets = []
+    for _ in range(n_sets):
+        st = {"stats": struct.unpack_from(f"<{n_stats}f", data, r.p)}
+        r.p += 4 * n_stats
+        st["worlds"] = r.sdict()
+        r.sdict()                   # known world keys
+        r.sdict()                   # known commands
+        enemy = [r.sdict() for _ in range(r.i32())]
+        st["kills"] = enemy[0]      # MixedAndTotal; 1-4 = unarmed, magic, ranged, melee
+        st["picked_up"] = r.sdict()
+        st["crafted"] = r.sdict()
+        st["pickables"] = r.sdict()
+        st["foods_eaten"] = r.sdict()
+        st["pieces_built"] = r.sdict()
+        sets.append(st)
+    # player blob: first list of >100 "$..." strings = known recipes
+    r.p = _find_recipes(data, r.p)
+    recipes = r.slist()
+    stations = {}
+    for _ in range(r.i32()):
+        k = r.string()
+        stations[k] = r.i32()
+    materials = r.slist()
+    tutorials = r.slist()
+    uniques = r.slist()
+    trophies = r.slist()
+    return {"version": version, "sets": sets, "recipes": recipes, "stations": stations,
+            "materials": materials, "tutorials": tutorials, "uniques": uniques, "trophies": trophies}
+
+
+def _find_recipes(data, p):
+    for q in range(p, len(data) - 8):
+        n = struct.unpack_from("<i", data, q)[0]
+        if 100 < n < 5000:
+            try:
+                r = Reader(data, q + 4)
+                first = [r.string() for _ in range(3)]
+                if all(s.startswith("$") for s in first):
+                    return q
+            except Exception:
+                pass
+    raise ValueError("player blob not found")
+
+
+def strip(k):
+    for pre in ("$enemy_", "$item_", "$piece_"):
+        if k.startswith(pre):
+            return k[len(pre):]
+    return k
+
+
+# Stat sets in the file, indexed by the game's DifficultyRequirement enum. Each kill/craft is added to set 0 (raw,
+# includes cheated and pre-tracking data) and, when achievements are allowed, to set 1 (Any) and to every set from
+# 3 (Casual) up to the difficulty it happened on. Achievements read these sets, never set 0.
+SET_ANY, SET_NORMAL, SET_HARD = 1, 6, 7
+
+SECTIONS = ["crafted", "weapons", "cooked", "built", "deaths", "tree-deaths", "enemies", "enemies-hard", "bosses", "bosses-hard", "minibosses", "fishing", "trophies"]
+
+
+def show(title, done, universe, full=False, label=lambda k: strip(k), ignore=frozenset()):
+    """Print progress against a universe: the missing entries, plus completed ones when full=True."""
+    done_in = {k: v for k, v in done.items() if k in universe}
+    missing = sorted(set(universe) - set(done))
+    extra = sorted(set(done) - set(universe) - set(ignore))
+    print(f"\n== {title}: {len(done_in)} / {len(universe)} ==")
+    if full:
+        for k, v in sorted(done_in.items()):
+            print(f"  [x] {label(k):35s} x{int(v)}")
+    for k in missing:
+        print(f"  [ ] {label(k)}")
+    if extra:
+        print(f"  -- in save but not in the built-in lists ({len(extra)}): {', '.join(extra)}")
+
+
+def main(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser(
+        description="Show Valheim character progress (crafting, kills, trophies) from a .fch save. "
+                    "By default only what is still missing is listed.")
+    ap.add_argument("save", help="path to the .fch file")
+    ap.add_argument("-f", "--full", action="store_true", help="also list completed entries, with counts")
+    ap.add_argument("-o", "--only", metavar="LIST", action="append",
+                    help="only show these lists (comma-separated or repeat the option); one of: " + ", ".join(SECTIONS))
+    args = ap.parse_args(argv)
+
+    wanted = SECTIONS
+    if args.only:
+        wanted = [x.strip() for part in args.only for x in part.split(",") if x.strip()]
+        bad = [x for x in wanted if x not in SECTIONS]
+        if bad:
+            ap.error(f"unknown list(s): {', '.join(bad)} (choose from {', '.join(SECTIONS)})")
+
+    try:
+        s = parse(args.save)
+    except FileNotFoundError:
+        ap.error(f"file not found: {args.save}")
+    except OSError as e:
+        ap.error(f"cannot read {args.save}: {e.strerror or e}")
+    except (struct.error, IndexError, UnicodeDecodeError, AssertionError, ValueError):
+        ap.error(f"{args.save} is not a supported Valheim .fch character file (profile version 46)")
+    sets = s["sets"]
+    anyd, normal, hard = sets[SET_ANY], sets[SET_NORMAL], sets[SET_HARD]
+    enemies, bosses = set(ENEMIES), set(BOSSES)
+    f = args.full
+    stats = anyd["stats"]
+
+    print(f"{args.save}: profile v{s['version']}, worlds: {', '.join(sets[0]['worlds'])}")
+    if "crafted" in wanted:
+        show("Items crafted (any difficulty)", anyd["crafted"], set(CRAFTABLE), f, ignore=set(anyd["crafted"]))
+    if "weapons" in wanted:
+        show("Weapons crafted (any difficulty)", anyd["crafted"], set(CRAFTABLE_WEAPONS), f, ignore=set(anyd["crafted"]))
+    if "cooked" in wanted:
+        show("Food cooked/crafted (any difficulty)", anyd["crafted"], set(COOKED_FOOD), f, ignore=set(anyd["crafted"]))
+    if "built" in wanted:
+        show("Pieces built (any difficulty)", anyd["pieces_built"], set(BUILDABLE), f, ignore=set(anyd["pieces_built"]))
+    if "deaths" in wanted:
+        died = {k: stats[i] for k, i in DEATH_KINDS.items() if stats[i] > 0}
+        show("Ways to die", died, set(DEATH_KINDS), f, label=lambda k: k)
+    if "tree-deaths" in wanted:
+        died = {k: stats[i] for k, i in TREE_VARIETIES.items() if stats[i] > 0}
+        show("Killed by each tree variety", died, set(TREE_VARIETIES), f, label=lambda k: k)
+    if "enemies" in wanted:
+        show("Enemies killed (any difficulty)", anyd["kills"], enemies, f, ignore=bosses | {"$piece_trainingdummy"})
+    if "enemies-hard" in wanted:
+        show("Enemies killed (Hard)", hard["kills"], enemies, f, ignore=bosses)
+    if "bosses" in wanted:
+        show("Bosses killed (Normal or higher)", normal["kills"], bosses, f, ignore=enemies)
+    if "bosses-hard" in wanted:
+        show("Bosses killed (Hard)", hard["kills"], bosses, f, ignore=enemies)
+    if "minibosses" in wanted:
+        show("Mini-bosses killed (any difficulty)", anyd["kills"], set(MINIBOSSES), f, ignore=set(anyd["kills"]))
+    if "fishing" in wanted:
+        # fish only count when reeled in (pickables table); picking one up by hand does not
+        show("Fish caught", anyd["pickables"], set(FISH), f, label=lambda t: FISH[t], ignore=set(anyd["pickables"]))
+    if "trophies" in wanted:
+        # the game counts a trophy once it has been picked up while achievements were allowed
+        show("Trophies collected", anyd["picked_up"], set(TROPHIES), f, ignore=set(anyd["picked_up"]))
+
+
+if __name__ == "__main__":
+    main()
