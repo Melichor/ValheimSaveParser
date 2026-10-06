@@ -20,10 +20,8 @@ previous one.
                 dict known world keys, dict known commands
                 int32 5, then 5 enemy-kill dicts: total, unarmed, magic, ranged, melee ($enemy_* -> kills)
                 dict items picked up, dict items CRAFTED, dict pickables, dict foods eaten, dict pieces built
-        world/map data (mostly zeros)
-        player blob: name, id, stats, GP, inventory (items stored as 32-bit hashes), then
-            list known recipes, dict stations (name -> level), list known materials, list tutorials,
-            list uniques, list TROPHIES, list biomes, ...
+        everything after the stat sets (world/map data and the player data: inventory, known recipes, skills, ...)
+        is not read. No output needs it, and modded games store their own data there.
 
 Which set an achievement reads (from the game's Achievement code): its difficulty requirement picks the set. "Any" is
 set 1; "Default" (Normal) is set 6; "Hard" is set 7. Kills made on a harder difficulty also count in every easier set from
@@ -1346,9 +1344,6 @@ class Reader:
             self.p += 4
         return out
 
-    def slist(self):
-        return [self.string() for _ in range(self.i32())]
-
 
 class SaveError(Exception):
     """The input is not a save this tool can read."""
@@ -1382,33 +1377,7 @@ def parse(source):
         st["foods_eaten"] = r.sdict()
         st["pieces_built"] = r.sdict()
         sets.append(st)
-    # player blob: first list of >100 "$..." strings = known recipes
-    r.p = _find_recipes(data, r.p)
-    recipes = r.slist()
-    stations = {}
-    for _ in range(r.i32()):
-        k = r.string()
-        stations[k] = r.i32()
-    materials = r.slist()
-    tutorials = r.slist()
-    uniques = r.slist()
-    trophies = r.slist()
-    return {"version": version, "sets": sets, "recipes": recipes, "stations": stations,
-            "materials": materials, "tutorials": tutorials, "uniques": uniques, "trophies": trophies}
-
-
-def _find_recipes(data, p):
-    for q in range(p, len(data) - 8):
-        n = struct.unpack_from("<i", data, q)[0]
-        if 100 < n < 5000:
-            try:
-                r = Reader(data, q + 4)
-                first = [r.string() for _ in range(3)]
-                if all(s.startswith("$") for s in first):
-                    return q
-            except Exception:
-                pass
-    raise ValueError("player blob not found")
+    return {"version": version, "sets": sets}
 
 
 def strip(k):
