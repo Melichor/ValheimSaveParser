@@ -1322,6 +1322,16 @@ PROFILE_VERSION = 46
 GAME = "Valheim 1.0.16"
 
 
+# Earliest biome in which each death can happen (stated by hand, not read from the game files). Enemy hit, fall,
+# drowning, burning and smoke are possible from the start; poison needs a Greydwarf Shaman (Black Forest), freezing
+# needs the cold of the Mountain, and the edge of the world is reached by sailing.
+DEATH_BIOME = {"EnemyHit": "Meadows", "Fall": "Meadows", "Drowning": "Meadows", "Burning": "Meadows",
+               "Smoke": "Meadows", "Poisoned": "Black Forest", "Freezing": "Mountain", "EdgeOfWorld": "Ocean"}
+# Where each tree can be cut down (Beech, Birch and Oak can be cut with the early axes).
+TREE_BIOME = {"Beech": "Meadows", "Birch": "Meadows", "Oak": "Meadows", "Pine": "Black Forest", "Fir": "Black Forest",
+              "Ashlands": "Ashlands", "SnowFir": "Deep North", "SnowPine": "Deep North"}
+
+
 # BEGIN GENERATED BIOMES (tools/update_script_biomes.py rewrites everything up to END GENERATED BIOMES)
 # Earliest biome per token, in progression order below. Craft = where the item can be made, Piece = where a build
 # piece can be built, Found = where a trophy or fish can be obtained, Creature = where a creature lives.
@@ -2205,8 +2215,8 @@ BIOME_FOUND = {
     '$item_trophy_deathsquito': 'Plains',
     '$item_trophy_deer': 'Meadows',
     '$item_trophy_dragonqueen': 'Mountain',
-    '$item_trophy_draugr': 'Meadows',
-    '$item_trophy_draugrelite': 'Meadows',
+    '$item_trophy_draugr': 'Swamp',
+    '$item_trophy_draugrelite': 'Swamp',
     '$item_trophy_dvergr': 'Mistlands',
     '$item_trophy_eikthyr': 'Meadows',
     '$item_trophy_elaking': 'Deep North',
@@ -2285,13 +2295,13 @@ BIOME_CREATURE = {
     '$enemy_charred_melee_Fader': 'Ashlands',
     '$enemy_charred_twitcher': 'Ashlands',
     '$enemy_charred_twitcher_summoned': 'Ashlands',
-    '$enemy_chicken': 'Meadows',
+    '$enemy_chicken': 'Plains',
     '$enemy_deathsquito': 'Plains',
     '$enemy_deer': 'Meadows',
     '$enemy_dragon': 'Mountain',
     '$enemy_drake': 'Mountain',
-    '$enemy_draugr': 'Meadows',
-    '$enemy_draugrelite': 'Meadows',
+    '$enemy_draugr': 'Swamp',
+    '$enemy_draugrelite': 'Swamp',
     '$enemy_dvergr': 'Mistlands',
     '$enemy_dvergr_deepnorth': 'Deep North',
     '$enemy_dvergr_mage': 'Mistlands',
@@ -2321,7 +2331,7 @@ BIOME_CREATURE = {
     '$enemy_greydwarfshaman': 'Black Forest',
     '$enemy_greyling': 'Meadows',
     '$enemy_hare': 'Mistlands',
-    '$enemy_hen': 'Meadows',
+    '$enemy_hen': 'Plains',
     '$enemy_jotun_warrior': 'Deep North',
     '$enemy_jotun_witch': 'Deep North',
     '$enemy_kvastur': 'Swamp',
@@ -2340,9 +2350,11 @@ BIOME_CREATURE = {
     '$enemy_seekerqueen': 'Mistlands',
     '$enemy_serpent': 'Ocean',
     '$enemy_skeleton': 'Meadows',
+    '$enemy_skeleton_summoned': 'Mistlands',
     '$enemy_skeletonfire': 'Black Forest',
     '$enemy_skeletonpoison': 'Black Forest',
     '$enemy_stonegolem': 'Mountain',
+    '$enemy_summonedtroll': 'Ashlands',
     '$enemy_surtling': 'Swamp',
     '$enemy_tick': 'Mistlands',
     '$enemy_troll': 'Black Forest',
@@ -2354,6 +2366,11 @@ BIOME_CREATURE = {
     '$enemy_wolfcub': 'Mountain',
     '$enemy_wraith': 'Swamp',
     '$enemy_writhan': 'Swamp',
+    '$piece_trainingdummy': 'Black Forest',
+    '$spiritcaller_bjorn': 'Deep North',
+    '$spiritcaller_boar': 'Deep North',
+    '$spiritcaller_moose': 'Deep North',
+    '$spiritcaller_wolf': 'Deep North',
 }
 # END GENERATED BIOMES
 
@@ -2436,11 +2453,11 @@ def strip(k):
 # 3 (Casual) up to the difficulty it happened on. Achievements read these sets, never set 0.
 SET_ANY, SET_NORMAL, SET_HARD = 1, 6, 7
 
-# which biome table belongs to which list (lists without an entry, like the ways to die, have no biome)
+# which biome table belongs to which list
 SECTION_BIOMES = {"crafted": BIOME_CRAFT, "weapons": BIOME_CRAFT, "cooked": BIOME_CRAFT, "built": BIOME_PIECE,
                   "enemies": BIOME_CREATURE, "enemies-hard": BIOME_CREATURE, "bosses": BIOME_CREATURE,
                   "bosses-hard": BIOME_CREATURE, "minibosses": BIOME_CREATURE, "fishing": BIOME_FOUND,
-                  "trophies": BIOME_FOUND}
+                  "trophies": BIOME_FOUND, "deaths": DEATH_BIOME, "tree-deaths": TREE_BIOME}
 
 
 def build_sections(s):

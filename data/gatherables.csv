@@ -18,7 +18,6 @@ Curious Axe Head,Material,Meadows,,Meadows,loot,loot: Meadows,WoodHouse6,$item_a
 Dandelion,Material,Meadows,Meadows,Meadows; Black Forest; Plains,creature; pickable,creature: Black Forest; pickable: Meadows,GoblinCamp2; Ruin2; StoneTowerRuins03; WoodFarm1; WoodHouse8; greydwarf ELITE,$item_dandelion
 Deer Hide,Material,Meadows,Meadows,Meadows; Black Forest; Plains,creature; destructible; loot,creature: Meadows; destructible: Black Forest; loot: Black Forest,GoblinCamp2; Hildir_plainsfortress; Ruin2; StoneTower1; StoneTower3; TrollCave02,$item_deerhide
 Deer Meat,Material,Meadows,Meadows,Meadows; Black Forest,creature,creature: Meadows,deer,$item_deer_meat
-Entrails,Material,Meadows,Meadows,Meadows; Swamp; Mountain; Ashlands; Deep North,creature; pickable,creature: Meadows; pickable: Mountain,Draugr Elite; Grave1; Hildir_cave; Marsh draugr; MorgenHole1; MorgenHole2,$item_entrails
 Feathers,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; loot; tree,creature: Ashlands; destructible: Meadows; loot: Meadows; tree: Meadows,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; Crypt2; Crypt3,$item_feathers
 Finewood,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,destructible; tree,destructible: Black Forest; tree: Meadows,CharredTowerRuins1_dvergr; Hildir_cave; Mistlands_DvergrBossEntrance1; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_finewood
 Flint,Material,Meadows,Meadows,Meadows; Black Forest,destructible; fishing bonus; loot; pickable,destructible: Black Forest; fishing bonus: Meadows; loot: Meadows; pickable: Meadows,Fish2; Ruin2; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11,$item_flint
@@ -45,8 +44,6 @@ Salvaged Lantern,Torch,Meadows,Meadows,Meadows,destructible,destructible: Meadow
 Torch,Torch,Meadows,,Meadows,loot,loot: Meadows,WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12; WoodHouse13,$item_torch
 Boar Trophy,Trophy,Meadows,Meadows,Meadows,creature,creature: Meadows,Boar; Runestone_Boars; WoodFarm1,$item_trophy_boar
 Deer Trophy,Trophy,Meadows,Meadows,Meadows; Black Forest,creature,creature: Meadows,deer,$item_trophy_deer
-Draugr Elite Trophy,Trophy,Meadows,Meadows,Meadows; Swamp,creature,creature: Meadows,Draugr Elite; SunkenCrypt4; SwampRuin1; SwampRuin2; SwampWell1; WoodVillage1,$item_trophy_draugrelite
-Draugr Trophy,Trophy,Meadows,Meadows,Meadows; Swamp,creature,creature: Meadows,Grave1; Marsh draugr; Runestone_Draugr; SunkenCrypt4; SwampHut4; SwampRuin1,$item_trophy_draugr
 Eikthyr Trophy,Trophy,Meadows,,Meadows,boss,boss: Meadows,Eikthyrnir,$item_trophy_eikthyr
 Greydwarf Trophy,Trophy,Meadows,Meadows,Meadows; Black Forest; Deep North,creature,creature: Meadows,Frozen GD; Ruin1; Ruin2; Runestone_Greydwarfs; StoneHouse3; StoneHouse4,$item_trophy_greydwarf
 Neck Trophy,Trophy,Meadows,Meadows,Meadows,creature,creature: Meadows,Neck lakes,$item_trophy_neck
@@ -96,6 +93,7 @@ Giant Herring,Fish,Swamp,Swamp,Swamp,fishing,fishing: Swamp,Fish6,$animal_fish6
 Ancient Bark,Material,Swamp,Swamp,Swamp,loot; tree,loot: Swamp; tree: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2; swamptree1,$item_elderbark
 Bloodbag,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Leech,$item_bloodbag
 Chain,Material,Swamp,Swamp,Swamp; Plains; Mistlands,creature; destructible; fishing bonus; loot,creature: Swamp; destructible: Mistlands; fishing bonus: Swamp; loot: Swamp,Fish6; Grave1; Hildir_plainsfortress; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_chain
+Entrails,Material,Swamp,Swamp,Swamp; Mountain; Ashlands; Deep North,creature; pickable,creature: Swamp; pickable: Mountain,Hildir_cave; MorgenHole1; MorgenHole2; MorgenHole3; MountainCave02; creature (override),$item_entrails
 Guck,Material,Swamp,Swamp,Swamp,creature; destructible,creature: Swamp; destructible: Swamp,Abomination; InfestedTree01,$item_guck
 Ooze,Material,Swamp,Swamp,Swamp,creature; fishing bonus,creature: Swamp; fishing bonus: Ocean,Blob; BlobElite; Fish12; SunkenCrypt4,$item_ooze
 Root,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Abomination,$item_root
@@ -108,6 +106,8 @@ item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name,Material,Swamp,,Sw
 Abomination Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Abomination,$item_trophy_abomination
 Blob Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Blob; BlobElite; SunkenCrypt4,$item_trophy_blob
 Bonemass Trophy,Trophy,Swamp,,Swamp,boss,boss: Swamp,Bonemass,$item_trophy_bonemass
+Draugr Elite Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,creature (override),$item_trophy_draugrelite
+Draugr Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,creature (override),$item_trophy_draugr
 Kvastur,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,BogWitch_Camp,$enemy_kvastur
 Leech Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Leech,$item_trophy_leech
 Surtling Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,FireHole,$item_trophy_surtling

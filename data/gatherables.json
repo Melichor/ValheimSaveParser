@@ -334,8 +334,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "creature": "Meadows",
     "pickable": "Meadows",
+    "creature": "Meadows",
     "loot": "Black Forest",
     "destructible": "Mountain"
    },
@@ -481,36 +481,6 @@
    },
    "examples": [
     "deer"
-   ]
-  },
-  {
-   "item": "$item_entrails",
-   "name": "Entrails",
-   "item_type": "Material",
-   "earliest_biome": "Meadows",
-   "earliest_biome_direct": "Meadows",
-   "biomes": [
-    "Meadows",
-    "Swamp",
-    "Mountain",
-    "Ashlands",
-    "Deep North"
-   ],
-   "sources": [
-    "creature",
-    "pickable"
-   ],
-   "earliest_by_source": {
-    "creature": "Meadows",
-    "pickable": "Mountain"
-   },
-   "examples": [
-    "Draugr Elite",
-    "Grave1",
-    "Hildir_cave",
-    "Marsh draugr",
-    "MorgenHole1",
-    "MorgenHole2"
    ]
   },
   {
@@ -1207,56 +1177,6 @@
    },
    "examples": [
     "deer"
-   ]
-  },
-  {
-   "item": "$item_trophy_draugrelite",
-   "name": "Draugr Elite Trophy",
-   "item_type": "Trophy",
-   "earliest_biome": "Meadows",
-   "earliest_biome_direct": "Meadows",
-   "biomes": [
-    "Meadows",
-    "Swamp"
-   ],
-   "sources": [
-    "creature"
-   ],
-   "earliest_by_source": {
-    "creature": "Meadows"
-   },
-   "examples": [
-    "Draugr Elite",
-    "SunkenCrypt4",
-    "SwampRuin1",
-    "SwampRuin2",
-    "SwampWell1",
-    "WoodVillage1"
-   ]
-  },
-  {
-   "item": "$item_trophy_draugr",
-   "name": "Draugr Trophy",
-   "item_type": "Trophy",
-   "earliest_biome": "Meadows",
-   "earliest_biome_direct": "Meadows",
-   "biomes": [
-    "Meadows",
-    "Swamp"
-   ],
-   "sources": [
-    "creature"
-   ],
-   "earliest_by_source": {
-    "creature": "Meadows"
-   },
-   "examples": [
-    "Grave1",
-    "Marsh draugr",
-    "Runestone_Draugr",
-    "SunkenCrypt4",
-    "SwampHut4",
-    "SwampRuin1"
    ]
   },
   {
@@ -2351,6 +2271,35 @@
    ]
   },
   {
+   "item": "$item_entrails",
+   "name": "Entrails",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp",
+    "Mountain",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain",
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "MountainCave02",
+    "creature (override)"
+   ]
+  },
+  {
    "item": "$item_guck",
    "name": "Guck",
    "item_type": "Material",
@@ -2620,6 +2569,44 @@
    },
    "examples": [
     "Bonemass"
+   ]
+  },
+  {
+   "item": "$item_trophy_draugrelite",
+   "name": "Draugr Elite Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "creature (override)"
+   ]
+  },
+  {
+   "item": "$item_trophy_draugr",
+   "name": "Draugr Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "creature (override)"
    ]
   },
   {
@@ -3554,8 +3541,8 @@
    ],
    "earliest_by_source": {
     "loot": "Plains",
-    "destructible": "Plains",
     "pickable": "Plains",
+    "destructible": "Plains",
     "fishing bonus": "Plains"
    },
    "examples": [
@@ -3582,8 +3569,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Plains",
     "creature": "Plains",
+    "loot": "Plains",
     "fishing bonus": "Plains"
    },
    "examples": [
@@ -3609,8 +3596,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "destructible": "Plains",
-    "pickable": "Plains"
+    "pickable": "Plains",
+    "destructible": "Plains"
    },
    "examples": [
     "GoblinCamp2"
@@ -3719,8 +3706,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "creature": "Plains",
-    "pickable": "Plains"
+    "pickable": "Plains",
+    "creature": "Plains"
    },
    "examples": [
     "TarPit1",
@@ -5407,8 +5394,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "creature": "Ashlands",
-    "loot": "Ashlands"
+    "loot": "Ashlands",
+    "creature": "Ashlands"
    },
    "examples": [
     "Charred Archer",
@@ -5890,8 +5877,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Ashlands",
-    "creature": "Ashlands"
+    "creature": "Ashlands",
+    "pickable": "Ashlands"
    },
    "examples": [
     "Volture",

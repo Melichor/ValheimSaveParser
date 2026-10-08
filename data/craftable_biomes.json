@@ -9293,10 +9293,12 @@
    "inferred_from": [],
    "limited_by": [
     "Ancient Bark",
+    "Draugr Elite Trophy",
     "Iron"
    ],
    "limited_by_direct": [
     "Ancient Bark",
+    "Draugr Elite Trophy",
     "Iron"
    ],
    "blocked_by": [],
@@ -10114,12 +10116,10 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Cauldron",
-    "Thistle"
+    "Entrails"
    ],
    "limited_by_direct": [
-    "Cauldron",
-    "Thistle"
+    "Entrails"
    ],
    "blocked_by": [],
    "still_blocked_by": [],

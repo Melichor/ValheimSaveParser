@@ -265,7 +265,7 @@ Iron Mace,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x4; Iron x
 Iron Nails,item,Material,Swamp,Iron,Swamp,Iron,,,,,Forge,1,Iron x1,0,$item_ironnails
 Iron Pickaxe,item,TwoHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Corewood x3 (+1/upgrade level); Iron x20 (+10/upgrade level),0,$item_pickaxe_iron
 Iron Scale Mail,item,Chest,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Iron x20 (+5/upgrade level); Deer Hide x2,0,$item_chest_iron
-Iron Sledge,item,TwoHandedWeapon,Swamp,Ancient Bark; Iron,Swamp,Ancient Bark; Iron,,,,,Forge,2,Ancient Bark x10 (+2/upgrade level); Iron x30 (+15/upgrade level); Ymir Flesh x4 (+2/upgrade level); Draugr Elite Trophy x1,0,$item_sledge_iron
+Iron Sledge,item,TwoHandedWeapon,Swamp,Ancient Bark; Draugr Elite Trophy; Iron,Swamp,Ancient Bark; Draugr Elite Trophy; Iron,,,,,Forge,2,Ancient Bark x10 (+2/upgrade level); Iron x30 (+15/upgrade level); Ymir Flesh x4 (+2/upgrade level); Draugr Elite Trophy x1,0,$item_sledge_iron
 Iron Sword,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x2 (+1/upgrade level); Iron x20 (+10/upgrade level); Leather Scraps x3 (+2/upgrade level),0,$item_sword_iron
 Iron Tower Shield,item,Shield,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Finewood x15 (+10/upgrade level); Iron x10 (+5/upgrade level),0,$item_shield_iron_tower
 Ironhead Arrow,item,Ammo,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x8; Iron x1; Feathers x2,0,$item_arrow_iron
@@ -283,7 +283,7 @@ Root Harnesk,item,Chest,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Wo
 Root Leggings,item,Legs,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Workbench,2,Root x10 (+2/upgrade level); Ancient Bark x10 (+5/upgrade level); Deer Hide x2,0,$item_legs_root
 Root Mask,item,Helmet,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Workbench,2,Root x10 (+2/upgrade level); Ancient Bark x10 (+5/upgrade level); Leather Scraps x4,0,$item_helmet_root
 Sailor's Bounty,item,Material,Swamp,Cooked Fish; Cooked Serpent Meat; Food Preparation Table; Seafarer's Herbs,Swamp,Cooked Fish; Cooked Serpent Meat; Food Preparation Table; Seafarer's Herbs,,,,,Food Preparation Table,1,Cooked Fish x5; Thistle x4; Cooked Serpent Meat x2; Seafarer's Herbs x1,0,$item_feastoceans
-Sausages,item,Consumable,Swamp,Cauldron; Thistle,Swamp,Cauldron; Thistle,,,,,Cauldron,2,Entrails x4; Boar Meat x1; Thistle x1,0,$item_sausages
+Sausages,item,Consumable,Swamp,Entrails,Swamp,Entrails,,,,,Cauldron,2,Entrails x4; Boar Meat x1; Thistle x1,0,$item_sausages
 Serpent Scale Shield,item,Shield,Swamp,Iron,Swamp,Iron,,,,,Forge,3,Finewood x10 (+10/upgrade level); Iron x4 (+2/upgrade level); Serpent Scale x8 (+4/upgrade level),0,$item_shield_serpentscale
 Serpent Stew,item,Consumable,Swamp,Cooked Serpent Meat,Swamp,Cooked Serpent Meat,,,,,Cauldron,2,Mushroom x1; Cooked Serpent Meat x1; Honey x2,0,$item_serpentstew
 Sharpening Stone,item,Material,Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,1,Stone x5,0,$item_sharpeningstone

@@ -62,19 +62,27 @@ MANUAL_ITEM_BIOME = {"$item_wolfclaw": (4, "loot", "dungeons (assumed)"),
 MANUAL_ITEM_PREFIX = {"$item_mold": (64, "loot", "Deep North dungeons and mobs")}
 # Creatures the data does not place (nested prefabs, summons, offspring): token -> biome bit, or another creature's token
 # whose biome they share. Young animals follow their parents; the "aspects" and the Fallen Warrior are Deep North.
-# Left without a biome: the training dummy and creatures a player summons (Skeleton_Friendly, Troll_Summoned, the
-# Spirit Caller animals).
+# The Spirit Caller animals only exist in Deep North (that is where the staff is). Things a player makes or summons
+# follow whatever makes them: ("piece", token) / ("item", token) take the biome in which that piece can be built or that
+# item can be crafted (the training dummy T.W.I.G.; the Dead Raiser's skeleton; the Trollstav's troll).
 CREATURE_BIOME_RULES = {
     "$enemy_asksvin_hatchling": "$enemy_asksvin", "$enemy_boarpiggy": "$enemy_boar", "$enemy_loxcalf": "$enemy_lox",
     "$enemy_moosecalf": "$enemy_moose", "$enemy_wolfcub": "$enemy_wolf", "$enemy_babyseeker": "$enemy_seeker",
     "$enemy_charred_twitcher_summoned": "$enemy_charred_twitcher", "$enemy_charred_melee_Fader": "$enemy_charred_melee",
-    "$enemy_chicken": 1, "$enemy_hen": 1,                 # the farm spawners of the Meadows
+    "$enemy_chicken": 16, "$enemy_hen": 16,               # only from eggs, which Haldor sells after Yagluth (Plains)
     "$enemy_kvastur": 2,                                   # the Bog Witch's familiar (Swamp)
     "$enemy_root": 512,                                    # Yggdrasil roots (Mistlands)
     "$enemy_dvergr_deepnorth": 64, "$enemy_goblin_deepnorth": 64, "$enemy_fallenwarrior": 64,
     "$enemy_aspect_bonemass": 64, "$enemy_aspect_dragon": 64, "$enemy_aspect_eikthyr": 64, "$enemy_aspect_fader": 64,
     "$enemy_aspect_gdking": 64, "$enemy_aspect_goblinking": 64, "$enemy_aspect_seekerqueen": 64,
+    "$piece_trainingdummy": ("piece", "$piece_trainingdummy"),
+    "$enemy_skeleton_summoned": ("item", "$item_staffskeleton"),
+    "$enemy_summonedtroll": ("item", "$item_staffredtroll"),
+    "$spiritcaller_bjorn": 64, "$spiritcaller_boar": 64, "$spiritcaller_moose": 64, "$spiritcaller_wolf": 64,
 }
+# Creatures that live in a different biome than the spawn data suggests (token -> biome bit): Draugr also appear in the
+# Meadows village ruins, but they belong to the Swamp.
+CREATURE_BIOME_OVERRIDE = {"$enemy_draugr": 2, "$enemy_draugrelite": 2}
 # A trader item that needs a defeated boss is only as early as that boss's biome (key -> Heightmap.Biome bit).
 KEY_BIOME = {"defeated_eikthyr": 1, "defeated_gdking": 8, "defeated_bonemass": 2, "defeated_dragon": 4,
              "defeated_goblinking": 16, "defeated_queen": 512, "defeated_fader": 32, "defeated_frozenking_p3": 64,
@@ -183,13 +191,15 @@ def derive(raw, out):
         if it.get("root") and it["root"] != it["go"] and it["token"]:
             by_root[it["root"]].append(("placed", it))
 
+    skip = [set()]   # creature prefabs ignored by yields()/creatures_of() while spawn data is read (see CREATURE_BIOME_OVERRIDE)
+
     def table_items(t):
         return [d["item"] for d in t["drops"]] if t else []
 
     def yields(root, kind_hint=None, depth=0, seen=None):
         """Items that a prefab (and everything inside it) can give, as {(token, source kind)}."""
         seen = seen if seen is not None else set()
-        if root in seen or depth > 8:
+        if root in seen or root in skip[0] or depth > 8:
             return set()
         seen.add(root)
         out = set()
@@ -283,13 +293,10 @@ def derive(raw, out):
 
     found = defaultdict(lambda: {"biomes": defaultdict(set), "labels": defaultdict(set)})
     bought = defaultdict(lambda: {"biomes": defaultdict(set), "labels": defaultdict(set)})   # sold by traders
-    for root, mask, where, label in sources:
-        got = yields(root)
-        themes = gens.get(root)
-        if themes:   # dungeons: rooms are placed from the generator's themes
-            for room in rooms:
-                if room["enabled"] and room["theme"] & themes and room["root"]:
-                    got |= {(t, "loot" if k == "loot" else k) for t, k in yields(room["root"])}
+    char_by_root = {c["root"]: c for c in raw["characters"] if c.get("root") and c["root"] == c["go"]}
+    override_roots = {r for r, c in char_by_root.items() if c["token"] in CREATURE_BIOME_OVERRIDE}
+
+    def record(got, mask, label):
         for token, kind in got:
             m = mask
             if kind.startswith("trader"):
@@ -304,16 +311,25 @@ def derive(raw, out):
                 if m & bit:
                     f["biomes"][kind].add(bit)
             f["labels"][kind].add(label)
+
+    skip[0] = override_roots
+    for root, mask, where, label in sources:
+        got = yields(root)
+        themes = gens.get(root)
+        if themes:   # dungeons: rooms are placed from the generator's themes
+            for room in rooms:
+                if room["enabled"] and room["theme"] & themes and room["root"]:
+                    got |= {(t, "loot" if k == "loot" else k) for t, k in yields(room["root"])}
+        record(got, mask, label)
     manual = dict(MANUAL_ITEM_BIOME)
     for prefix, rule in MANUAL_ITEM_PREFIX.items():
         manual.update({i["token"]: rule for i in items if i["token"] and i["token"].startswith(prefix)})
-    char_by_root = {c["root"]: c for c in raw["characters"] if c.get("root") and c["root"] == c["go"]}
     creature_bits = defaultdict(set)
 
     def creatures_of(root, seen=None, depth=0):
         """Character tokens that a prefab is, or spawns (through spawners and boss altars)."""
         seen = seen if seen is not None else set()
-        if root in seen or depth > 6:
+        if root in seen or root in skip[0] or depth > 6:
             return set()
         seen.add(root)
         out = {char_by_root[root]["token"]} if root in char_by_root else set()
@@ -331,6 +347,14 @@ def derive(raw, out):
                     names |= creatures_of(room["root"])
         for tok in names:
             creature_bits[tok] |= {b for b, _ in BIOMES if mask & b}
+    # creatures with a fixed biome: what they drop and where they are come from that biome only
+    skip[0] = set()
+    for root in override_roots:
+        tok = char_by_root[root]["token"]
+        bit = CREATURE_BIOME_OVERRIDE[tok]
+        record(yields(root), bit, "creature (override)")
+        creature_bits[tok] = {bit}
+    skip[0] = override_roots
     for token, (bit, how, why) in manual.items():
         found[token]["biomes"][how].add(bit)
         found[token]["labels"][how].add(why)
@@ -647,6 +671,12 @@ def derive(raw, out):
             if bits:
                 return earliest(bits)[1]
         rule = CREATURE_BIOME_RULES.get(tok)
+        if isinstance(rule, tuple):   # follows a piece or an item
+            what, ref = rule
+            for r in craft_rows:
+                if r["item"] == ref and (r["kind"] == "piece") == (what == "piece"):
+                    return r["earliest_biome"]
+            return ""
         if isinstance(rule, int):
             return earliest({rule})[1]
         if isinstance(rule, str) and depth < 3:

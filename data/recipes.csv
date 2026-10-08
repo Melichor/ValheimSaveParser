@@ -1130,8 +1130,8 @@ Anti-Sting Concoction,piece,Food,1,(none),,Anti-Sting Concoction x1,,,Plains,Pla
 Love Potion,piece,Food,1,(none),,Love Potion x1,,,Swamp,Swamp,,,True,MeadTrollPheromones,$item_mead_trollpheromones
 Carrot,farming,Crop,1,Cultivator + planting Carrot,,Carrot Seeds x1,False,,Black Forest,Black Forest,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_carrot,$item_carrot
 Carrot Seeds,farming,Crop,1,Cultivator + planting Seed-carrot,,Carrot x1,False,,Black Forest,Black Forest,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedcarrot,$item_carrotseeds
-Vineberry Seeds,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberryseeds
 Vineberry Cluster,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberry
+Vineberry Seeds,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberryseeds
 Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitr
 Seed Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitrseeds
 Flax,farming,Crop,1,Cultivator + planting Flax,,Flax x1,False,,Plains,Plains,,grows in: Plains,True,$piece_sapling_flax,$item_flax

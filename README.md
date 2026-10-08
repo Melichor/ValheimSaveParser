@@ -63,7 +63,7 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 | `--json` | Print the result as JSON (every entry of the chosen lists, with its count and earliest biome) instead of text. This is what the web page uses. |
 | `-h`, `--help` | Show help. |
 
-By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading). Next to each entry is the earliest biome in which it can be done. The biome order is Meadows, Black Forest, Ocean, Swamp, Mountain, Plains, Mistlands, Ashlands, Deep North.
+By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading). Next to each entry is the earliest biome in which it can be done. The biome order is Meadows, Black Forest, Ocean, Swamp, Mountain, Plains, Mistlands, Ashlands, Deep North. The biomes for the ways to die and the tree deaths are stated by hand in the script (`DEATH_BIOME`, `TREE_BIOME`); all other biomes come from the game data.
 
 ## Lists
 

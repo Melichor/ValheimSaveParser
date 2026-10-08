@@ -35404,8 +35404,8 @@
  },
  {
   "kind": "farming",
-  "output": "$item_vineberryseeds",
-  "output_name": "Vineberry Seeds",
+  "output": "$item_vineberry",
+  "output_name": "Vineberry Cluster",
   "item_type": "Crop",
   "output_amount": 1,
   "ingredients": [
@@ -35434,8 +35434,8 @@
  },
  {
   "kind": "farming",
-  "output": "$item_vineberry",
-  "output_name": "Vineberry Cluster",
+  "output": "$item_vineberryseeds",
+  "output_name": "Vineberry Seeds",
   "item_type": "Crop",
   "output_amount": 1,
   "ingredients": [
