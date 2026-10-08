@@ -2,7 +2,7 @@
 
 /* Valheim Achievement Hunter web page.
    The analysis is done by achi_hunter.py itself, run in the browser with Pyodide (Python compiled to WebAssembly).
-   This file only loads the runtime, hands it the uploaded file and draws the JSON that the script returns. */
+   This file only loads the runtime, hands it the dropped file and draws the JSON that the script returns. */
 
 const PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.29.5/full/";
 
@@ -30,7 +30,7 @@ function loadScript() {
       py.FS.writeFile("achi_hunter.py", source);
       return py.pyimport("achi_hunter");
     })();
-    runtime.catch(() => { runtime = null; }); // allow a retry on the next upload
+    runtime.catch(() => { runtime = null; }); // allow a retry on the next file
   }
   return runtime;
 }
@@ -215,5 +215,5 @@ for (const ev of ["dragenter", "dragover"]) els.drop.addEventListener(ev, (e) =>
 for (const ev of ["dragleave", "drop"]) els.drop.addEventListener(ev, (e) => { e.preventDefault(); els.drop.classList.remove("over"); });
 els.drop.addEventListener("drop", (e) => { const f = e.dataTransfer.files[0]; if (f) analyse(f); });
 
-// start downloading the runtime right away so the first upload is quick
+// start downloading the runtime right away so the first file is quick
 window.addEventListener("load", () => { loadScript().catch(() => {}); });

@@ -100,6 +100,7 @@ By default every list is shown, and only the missing entries are printed (each l
 - `<your Steam ID number>` is the numeric folder inside `userdata`. If there are several, open the one that was modified most recently.
 - `892970` is Valheim's Steam app id.
 - Shortcut: in Steam, right-click Valheim → **Manage → Browse local files**. That opens `.../Steam/steamapps/common/Valheim`; go up three folders to reach the Steam folder, then follow the path above.
+- Tip: once you are in the `userdata` folder, search it for your character's name or for `892970`. That finds the right folder and file straight away.
 
 The file is named after your character (e.g. `Ragnar.fch`). Next to it you may see `.fch.old` files and `..._backup_...fch` copies; use the plain `.fch` file for the current state of the character.
 

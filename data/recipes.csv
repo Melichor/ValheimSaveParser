@@ -1132,8 +1132,8 @@ Carrot,farming,Crop,1,Cultivator + planting Carrot,,Carrot Seeds x1,False,,Black
 Carrot Seeds,farming,Crop,1,Cultivator + planting Seed-carrot,,Carrot x1,False,,Black Forest,Black Forest,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedcarrot,$item_carrotseeds
 Vineberry Cluster,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberry
 Vineberry Seeds,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberryseeds
-Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitr
 Seed Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitrseeds
+Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitr
 Flax,farming,Crop,1,Cultivator + planting Flax,,Flax x1,False,,Plains,Plains,,grows in: Plains,True,$piece_sapling_flax,$item_flax
 Barley,farming,Crop,1,Cultivator + planting Barley,,Barley x1,False,,Plains,Plains,,grows in: Plains,True,$piece_sapling_barley,$item_barley
 Kale Seeds,farming,Crop,1,Cultivator + planting Seed Kale,,Kale Seeds x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedkale,$item_kaleseeds
@@ -1152,8 +1152,8 @@ Onion,farming,Crop,1,Cultivator + planting Onion,,Onion Seeds x1,False,,Mountain
 Wisp,structure,Material,1,Built structure: Wisp Fountain,,,False,,Plains,,,,True,$piece_wisplure,$item_wisp
 Embers,structure,Material,1,Built structure: Eternal Pyre,,,False,,Ashlands,,,,True,$piece_faderember,$item_faderember
 Sap,structure,Material,1,Built structure: Sap Extractor,,,False,,Mistlands,,,,True,$piece_sapcollector,$item_sap
-Chicken Meat,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_chicken_meat
 Feathers,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_feathers
+Chicken Meat,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_chicken_meat
 Asksvin Hide,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askhide
-Asksvin Bladder,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askbladder
 Asksvin Tail,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_asksvin_meat
+Asksvin Bladder,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askbladder

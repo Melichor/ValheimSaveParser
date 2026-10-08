@@ -71,7 +71,7 @@ CREATURE_BIOME_RULES = {
     "$enemy_charred_twitcher_summoned": "$enemy_charred_twitcher", "$enemy_charred_melee_Fader": "$enemy_charred_melee",
     "$enemy_chicken": 16, "$enemy_hen": 16,               # only from eggs, which Haldor sells after Yagluth (Plains)
     "$enemy_kvastur": 2,                                   # the Bog Witch's familiar (Swamp)
-    "$enemy_root": 512,                                    # Yggdrasil roots (Mistlands)
+    "$enemy_root": 8,                                      # the roots The Elder summons in his fight (Black Forest)
     "$enemy_dvergr_deepnorth": 64, "$enemy_goblin_deepnorth": 64, "$enemy_fallenwarrior": 64,
     "$enemy_aspect_bonemass": 64, "$enemy_aspect_dragon": 64, "$enemy_aspect_eikthyr": 64, "$enemy_aspect_fader": 64,
     "$enemy_aspect_gdking": 64, "$enemy_aspect_goblinking": 64, "$enemy_aspect_seekerqueen": 64,

@@ -2342,7 +2342,7 @@ BIOME_CREATURE = {
     '$enemy_moosecalf': 'Deep North',
     '$enemy_morgen': 'Ashlands',
     '$enemy_neck': 'Meadows',
-    '$enemy_root': 'Mistlands',
+    '$enemy_root': 'Black Forest',
     '$enemy_seal': 'Deep North',
     '$enemy_seal_baby': 'Deep North',
     '$enemy_seeker': 'Mistlands',

@@ -35464,8 +35464,8 @@
  },
  {
   "kind": "farming",
-  "output": "$item_poteitr",
-  "output_name": "Poteitr",
+  "output": "$item_poteitrseeds",
+  "output_name": "Seed Poteitr",
   "item_type": "Crop",
   "output_amount": 1,
   "ingredients": [
@@ -35494,8 +35494,8 @@
  },
  {
   "kind": "farming",
-  "output": "$item_poteitrseeds",
-  "output_name": "Seed Poteitr",
+  "output": "$item_poteitr",
+  "output_name": "Poteitr",
   "item_type": "Crop",
   "output_amount": 1,
   "ingredients": [
@@ -36040,8 +36040,8 @@
  },
  {
   "kind": "hatching",
-  "output": "$item_chicken_meat",
-  "output_name": "Chicken Meat",
+  "output": "$item_feathers",
+  "output_name": "Feathers",
   "item_type": "Material",
   "output_amount": 1,
   "ingredients": [
@@ -36066,8 +36066,8 @@
  },
  {
   "kind": "hatching",
-  "output": "$item_feathers",
-  "output_name": "Feathers",
+  "output": "$item_chicken_meat",
+  "output_name": "Chicken Meat",
   "item_type": "Material",
   "output_amount": 1,
   "ingredients": [
@@ -36118,8 +36118,8 @@
  },
  {
   "kind": "hatching",
-  "output": "$item_askbladder",
-  "output_name": "Asksvin Bladder",
+  "output": "$item_asksvin_meat",
+  "output_name": "Asksvin Tail",
   "item_type": "Material",
   "output_amount": 1,
   "ingredients": [
@@ -36144,8 +36144,8 @@
  },
  {
   "kind": "hatching",
-  "output": "$item_asksvin_meat",
-  "output_name": "Asksvin Tail",
+  "output": "$item_askbladder",
+  "output_name": "Asksvin Bladder",
   "item_type": "Material",
   "output_amount": 1,
   "ingredients": [

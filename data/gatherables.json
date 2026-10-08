@@ -2858,8 +2858,8 @@
    ],
    "earliest_by_source": {
     "creature": "Mountain",
-    "destructible": "Mountain",
-    "pickable": "Mountain"
+    "pickable": "Mountain",
+    "destructible": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -2904,8 +2904,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "destructible": "Mountain",
-    "pickable": "Mountain"
+    "pickable": "Mountain",
+    "destructible": "Mountain"
    },
    "examples": [
     "Hildir_cave",
@@ -2977,8 +2977,8 @@
    "earliest_by_source": {
     "destructible": "Mountain",
     "loot": "Mountain",
-    "fishing bonus": "Mountain",
-    "creature": "Mountain"
+    "creature": "Mountain",
+    "fishing bonus": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -3030,8 +3030,8 @@
     "destructible"
    ],
    "earliest_by_source": {
-    "destructible": "Mountain",
-    "creature": "Mountain"
+    "creature": "Mountain",
+    "destructible": "Mountain"
    },
    "examples": [
     "Hildir_cave",
@@ -3706,8 +3706,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Plains",
-    "creature": "Plains"
+    "creature": "Plains",
+    "pickable": "Plains"
    },
    "examples": [
     "TarPit1",
@@ -3824,8 +3824,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Plains",
     "creature": "Plains",
+    "pickable": "Plains",
     "loot": "Plains"
    },
    "examples": [
@@ -5394,8 +5394,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Ashlands",
-    "creature": "Ashlands"
+    "creature": "Ashlands",
+    "loot": "Ashlands"
    },
    "examples": [
     "Charred Archer",
