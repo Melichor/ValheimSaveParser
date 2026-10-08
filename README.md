@@ -12,6 +12,12 @@ python3 achi_hunter.py path/to/Character.fch
 
 You can visit the web version here: [https://melichor.github.io/ValheimSaveParser/index.html](https://melichor.github.io/ValheimSaveParser/index.html)
 
+It has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome and every list only shows the items you are missing that can be done up to that biome; each item shows its earliest biome.
+
+## Game data tables
+
+`data/` holds tables extracted from the game files: every recipe (`recipes.csv`) and every item that can be found in the world with the earliest biome it appears in (`gatherables.csv`), plus the earliest biome in which each craftable item can be made (`craftable_biomes.csv`). See [`data/README.md`](data/README.md) for the columns and the rules, and `tools/extract_game_data.py` to regenerate them.
+
 ## Quick start
 
 You can download just the `achi_hunter.py` no other file is needed for this.
@@ -41,8 +47,9 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
   [ ] Smoke
 
 == Bosses killed (Hard): 1 / 8 ==
-  [ ] bonemass
-  [ ] dragon
+  [ ] gdking                                 Black Forest
+  [ ] bonemass                               Swamp
+  [ ] dragon                                 Mountain
   ...
 ```
 
@@ -53,10 +60,10 @@ MyCharacter.fch: profile v46, worlds: Home, Hard
 | `save` | Path to the `.fch` file (required). |
 | `-f`, `--full` | Also list completed entries (`[x]`, with counts), not just the missing ones (`[ ]`). |
 | `-o LIST`, `--only LIST` | Show only these lists. Comma-separated, or repeat the option. |
-| `--json` | Print the result as JSON (every entry of the chosen lists, with its count) instead of text. This is what the web page uses. |
+| `--json` | Print the result as JSON (every entry of the chosen lists, with its count and earliest biome) instead of text. This is what the web page uses. |
 | `-h`, `--help` | Show help. |
 
-By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading).
+By default every list is shown, and only the missing entries are printed (each list still shows `done / total` in its heading). Next to each entry is the earliest biome in which it can be done. The biome order is Meadows, Black Forest, Ocean, Swamp, Mountain, Plains, Mistlands, Ashlands, Deep North.
 
 ## Lists
 

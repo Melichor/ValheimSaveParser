@@ -75,3 +75,9 @@ button:hover { border-color: var(--accent); }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
 .drop.busy { opacity: .6; pointer-events: none; }
+
+select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font: inherit; }
+.biome { gap: 8px; }
+.body li .b { color: var(--muted); font-size: .8rem; white-space: nowrap; margin-left: auto; padding-left: 10px; align-self: center; }
+.body li .b + .n { margin-left: 10px; }
+.head .later { color: var(--muted); }

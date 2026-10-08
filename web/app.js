@@ -10,7 +10,7 @@ const $ = (id) => document.getElementById(id);
 const els = {
   drop: $("drop"), file: $("file"), status: $("status"), statusText: $("statusText"), error: $("error"),
   intro: $("intro"), results: $("results"), fname: $("fname"), worlds: $("worlds"), cards: $("cards"),
-  search: $("search"), showDone: $("showDone"), hideDone: $("hideDone"), reset: $("reset"), download: $("download"),
+  biome: $("biome"), search: $("search"), showDone: $("showDone"), hideDone: $("hideDone"), reset: $("reset"), download: $("download"),
 };
 
 // ---------- Python runtime ----------
@@ -74,6 +74,8 @@ async function analyse(file) {
 function render(name) {
   els.fname.textContent = name;
   els.worlds.textContent = "Worlds: " + (report.worlds.join(", ") || "none");
+  els.biome.replaceChildren(...report.biomes.map((b) => new Option(b, b)));
+  els.biome.value = report.biomes[report.biomes.length - 1];   // default: the last biome, so nothing is hidden
   els.cards.replaceChildren();
   model = report.sections.map((section) => {
     const entry = { section, ...buildCard(section) };
@@ -87,7 +89,7 @@ function render(name) {
 
 function buildCard(section) {
   const card = document.createElement("article");
-  card.className = "card" + (section.done === section.total ? " complete" : "");
+  card.className = "card";
 
   const head = document.createElement("button");
   head.type = "button";
@@ -96,9 +98,6 @@ function buildCard(section) {
   head.innerHTML = `<div class="row"><span class="title"></span><span class="count"></span></div>
     <div class="hint"></div><div class="meter"><i></i></div>`;
   head.querySelector(".title").textContent = section.title;
-  head.querySelector(".count").textContent = `${section.done} / ${section.total}`;
-  head.querySelector(".hint").textContent = section.hint;
-  head.querySelector(".meter i").style.width = (section.total ? (100 * section.done) / section.total : 0) + "%";
 
   const body = document.createElement("div");
   body.className = "body";
@@ -112,11 +111,22 @@ function buildCard(section) {
   return { card, head, body };
 }
 
+// Entries with no biome (ways to die, ...) are always shown. Otherwise an entry is shown when its biome is the
+// selected one or an earlier one in the progression order.
+function inReach(e) {
+  const limit = report.biomes.indexOf(els.biome.value);
+  const at = report.biomes.indexOf(e.biome);
+  return !e.biome || at < 0 || at <= limit;
+}
+
 function fillBody(entry, query) {
   const { section, body } = entry;
+  // earliest biome first, so the next things to do come on top; entries without a biome go last
+  const rank = (e) => { const i = report.biomes.indexOf(e.biome); return i < 0 ? 99 : i; };
+  const pool = section.entries.filter(inReach).sort((x, y) => rank(x) - rank(y) || x.name.localeCompare(y.name));
   const match = (e) => !query || e.name.toLowerCase().includes(query) || e.token.toLowerCase().includes(query);
-  const todo = section.entries.filter((e) => e.count === 0 && match(e));
-  const done = section.entries.filter((e) => e.count > 0 && match(e));
+  const todo = pool.filter((e) => e.count === 0 && match(e));
+  const done = pool.filter((e) => e.count > 0 && match(e));
   body.replaceChildren();
 
   const add = (heading, list, cls) => {
@@ -131,6 +141,12 @@ function fillBody(entry, query) {
       l.className = "l";
       l.textContent = e.name;
       li.append(l);
+      if (e.biome) {
+        const b = document.createElement("span");
+        b.className = "b";
+        b.textContent = e.biome;
+        li.append(b);
+      }
       if (cls === "done") {
         const n = document.createElement("span");
         n.className = "n";
@@ -146,18 +162,31 @@ function fillBody(entry, query) {
   if (!body.children.length) {
     const p = document.createElement("p");
     p.className = "empty";
-    p.textContent = section.done === section.total ? "All done." : "Nothing matches.";
+    p.textContent = query ? "Nothing matches." : `Nothing missing up to ${els.biome.value}.`;
     body.append(p);
   }
   return todo.length + (els.showDone.checked ? done.length : 0);
 }
 
+function updateHeader(entry) {
+  const pool = entry.section.entries.filter(inReach);
+  const done = pool.filter((e) => e.count > 0).length;
+  const later = entry.section.entries.length - pool.length;
+  const head = entry.head;
+  head.querySelector(".count").textContent = `${done} / ${pool.length}`;
+  head.querySelector(".hint").textContent = entry.section.hint + (later ? ` · ${later} more in later biomes` : "");
+  head.querySelector(".meter i").style.width = (pool.length ? (100 * done) / pool.length : 0) + "%";
+  entry.card.classList.toggle("complete", pool.length > 0 && done === pool.length);
+  return { total: pool.length, done };
+}
+
 function update() {
   const query = els.search.value.trim().toLowerCase();
   for (const entry of model) {
+    const { total, done } = updateHeader(entry);
     const shown = fillBody(entry, query);
-    const finished = entry.section.done === entry.section.total;
-    entry.card.hidden = (els.hideDone.checked && finished) || (query !== "" && shown === 0);
+    const finished = total > 0 && done === total;
+    entry.card.hidden = total === 0 || (els.hideDone.checked && finished) || (query !== "" && shown === 0);
     if (query) { // searching opens the lists that have matches
       entry.body.hidden = shown === 0;
       entry.head.setAttribute("aria-expanded", String(shown > 0));
@@ -165,6 +194,7 @@ function update() {
   }
 }
 
+els.biome.addEventListener("change", update);
 els.search.addEventListener("input", update);
 els.showDone.addEventListener("change", update);
 els.hideDone.addEventListener("change", update);

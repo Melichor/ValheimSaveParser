@@ -1,0 +1,1054 @@
+name,kind,type_or_category,earliest_biome,limited_by,earliest_biome_direct,limited_by_direct,blocked_by,earliest_biome_inferred,inferred_from,still_blocked_by,station,min_station_level,ingredients,other_recipes,token
+Cooked Boar Meat,cooking,Consumable,Meadows,Boar Meat; Cooking Station,Meadows,Boar Meat; Cooking Station,,,,,Cooking Station,,Boar Meat x1,1,$item_boar_meat_cooked
+Cooked Deer Meat,cooking,Consumable,Meadows,Cooking Station; Deer Meat,Meadows,Cooking Station; Deer Meat,,,,,Cooking Station,,Deer Meat x1,1,$item_deer_meat_cooked
+Grilled Neck Tail,cooking,Consumable,Meadows,Cooking Station; Neck Tail,Meadows,Cooking Station; Neck Tail,,,,,Cooking Station,,Neck Tail x1,1,$item_necktailgrilled
+Antler Pickaxe,item,TwoHandedWeapon,Meadows,Hard Antler; Wood; Workbench,,,,,,,Workbench,1,Wood x10; Hard Antler x1,0,$item_pickaxe_antler
+Bone Tower Shield,item,Shield,Meadows,Bone Fragments; Skeleton Trophy; Wood; Workbench,Meadows,Bone Fragments; Skeleton Trophy; Wood; Workbench,,,,,Workbench,3,Wood x10 (+5/upgrade level); Bone Fragments x10 (+5/upgrade level); Skeleton Trophy x3,0,$item_shield_bonetower
+Club,item,OneHandedWeapon,Meadows,Bone Fragments; Wood,Meadows,Bone Fragments; Wood,,,,,(hand / no station),,Wood x6; Bone Fragments x0 (+5/upgrade level),0,$item_club
+Crude Bow,item,Bow,Meadows,Deer Hide; Leather Scraps; Wood; Workbench,Meadows,Deer Hide; Leather Scraps; Wood; Workbench,,,,,Workbench,1,Wood x10 (+5/upgrade level); Leather Scraps x8 (+4/upgrade level); Deer Hide x0 (+1/upgrade level),0,$item_bow
+Deer Hide Cape,item,Shoulder,Meadows,Bone Fragments; Deer Hide; Workbench,Meadows,Bone Fragments; Deer Hide; Workbench,,,,,Workbench,2,Deer Hide x4 (+4/upgrade level); Bone Fragments x5 (+5/upgrade level),0,$item_cape_deerhide
+Early Axes,item,TwoHandedWeapon,Meadows,Curious Axe Head; Leather Scraps; Mysterious Axe Head; Wood; Workbench,,,,,,,Workbench,1,Wood x4 (+2/upgrade level); Leather Scraps x0 (+2/upgrade level); Curious Axe Head x1; Mysterious Axe Head x1,0,$item_axe_early
+Fire Arrow,item,Ammo,Meadows,Feathers; Resin; Wood; Workbench,Meadows,Feathers; Resin; Wood; Workbench,,,,,Workbench,2,Wood x8; Resin x8; Feathers x2,0,$item_arrow_fire
+Flint Axe,item,OneHandedWeapon,Meadows,Flint; Leather Scraps; Wood; Workbench,Meadows,Flint; Leather Scraps; Wood; Workbench,,,,,Workbench,1,Wood x4; Flint x6 (+3/upgrade level); Leather Scraps x0 (+2/upgrade level),0,$item_axe_flint
+Flint Knife,item,OneHandedWeapon,Meadows,Flint; Leather Scraps; Wood; Workbench,Meadows,Flint; Leather Scraps; Wood; Workbench,,,,,Workbench,1,Wood x2; Flint x4 (+2/upgrade level); Leather Scraps x2,0,$item_knife_flint
+Flint Spear,item,OneHandedWeapon,Meadows,Flint; Leather Scraps; Wood; Workbench,Meadows,Flint; Leather Scraps; Wood; Workbench,,,,,Workbench,1,Wood x5 (+3/upgrade level); Flint x10 (+5/upgrade level); Leather Scraps x2 (+1/upgrade level),0,$item_spear_flint
+Flinthead Arrow,item,Ammo,Meadows,Feathers; Flint; Wood; Workbench,Meadows,Feathers; Flint; Wood; Workbench,,,,,Workbench,2,Wood x8; Flint x2; Feathers x2,0,$item_arrow_flint
+Hammer,item,Tool,Meadows,Stone; Wood,Meadows,Stone; Wood,,,,,(hand / no station),,Wood x3 (+1/upgrade level); Stone x2 (+1/upgrade level),0,$item_hammer
+Hoe,item,Tool,Meadows,Stone; Wood; Workbench,Meadows,Stone; Wood; Workbench,,,,,Workbench,1,Wood x5 (+1/upgrade level); Stone x2 (+1/upgrade level),0,$item_hoe
+Leather Helmet,item,Helmet,Meadows,Bone Fragments; Deer Hide; Workbench,Meadows,Bone Fragments; Deer Hide; Workbench,,,,,Workbench,2,Deer Hide x6 (+6/upgrade level); Bone Fragments x0 (+5/upgrade level),0,$item_helmet_leather
+Leather Trousers,item,Legs,Meadows,Bone Fragments; Deer Hide; Workbench,Meadows,Bone Fragments; Deer Hide; Workbench,,,,,Workbench,2,Deer Hide x6 (+6/upgrade level); Bone Fragments x0 (+5/upgrade level),0,$item_legs_leather
+Leather Tunic,item,Chest,Meadows,Bone Fragments; Deer Hide; Workbench,Meadows,Bone Fragments; Deer Hide; Workbench,,,,,Workbench,2,Deer Hide x6 (+6/upgrade level); Bone Fragments x0 (+5/upgrade level),0,$item_chest_leather
+Mead Horn of Oden,item,OneHandedWeapon,Meadows,Deer Trophy; Finewood; Resin; Workbench,Meadows,Deer Trophy; Finewood; Resin; Workbench,,,,,Workbench,1,Finewood x4; Deer Trophy x1; Resin x2,0,$item_tankard_odin
+Rag Trousers,item,Legs,Meadows,Leather Scraps; Workbench,Meadows,Leather Scraps; Workbench,,,,,Workbench,1,Leather Scraps x5 (+5/upgrade level),0,$item_legs_rags
+Rag Tunic,item,Chest,Meadows,Leather Scraps; Workbench,Meadows,Leather Scraps; Workbench,,,,,Workbench,1,Leather Scraps x5 (+5/upgrade level),0,$item_chest_rags
+Stone Axe,item,OneHandedWeapon,Meadows,Stone; Wood,Meadows,Stone; Wood,,,,,(hand / no station),,Wood x5; Stone x4 (+2/upgrade level),0,$item_axe_stone
+Tankard,item,OneHandedWeapon,Meadows,Finewood; Resin; Workbench,Meadows,Finewood; Resin; Workbench,,,,,Workbench,1,Finewood x5; Resin x2,0,$item_tankard
+Torch,item,Torch,Meadows,Resin; Wood,Meadows,Resin; Wood,,,,,(hand / no station),,Wood x1; Resin x1,0,$item_torch
+Wood Arrow,item,Ammo,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,1,Wood x8,0,$item_arrow_wood
+Wood Shield,item,Shield,Meadows,Leather Scraps; Resin; Wood; Workbench,Meadows,Leather Scraps; Resin; Wood; Workbench,,,,,Workbench,1,Wood x10 (+5/upgrade level); Resin x4 (+2/upgrade level); Leather Scraps x4 (+2/upgrade level),0,$item_shield_wood
+Wood Tower Shield,item,Shield,Meadows,Leather Scraps; Wood; Workbench,Meadows,Leather Scraps; Wood; Workbench,,,,,Workbench,1,Wood x10 (+5/upgrade level); Leather Scraps x6 (+3/upgrade level),0,$item_shield_woodtower
+Archery Target,piece,Misc,Meadows,Finewood; Leather Scraps; Workbench,Meadows,Finewood; Leather Scraps; Workbench,,,,,Workbench,,Finewood x4; Leather Scraps x10,0,$piece_archerytarget
+Bed,piece,Furniture,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x8,0,$piece_bed
+Beech sapling,piece,Misc,Meadows,Beech Seeds,Meadows,Beech Seeds,,,,,(none),,Beech Seeds x1,0,$prop_beech_sapling
+Beehive,piece,Crafting,Meadows,Queen Bee; Wood; Workbench,Meadows,Queen Bee; Wood; Workbench,,,,,Workbench,,Wood x10; Queen Bee x1,0,$piece_beehive
+Birch Sapling,piece,Misc,Meadows,Birch Seeds,Meadows,Birch Seeds,,,,,(none),,Birch Seeds x1,0,$prop_birch_sapling
+Bone Stack,piece,Misc,Meadows,Bone Fragments,Meadows,Bone Fragments,,,,,(none),,Bone Fragments x50,0,$piece_bonestack
+Campfire,piece,Misc,Meadows,Stone; Wood,Meadows,Stone; Wood,,,,,(none),,Stone x5; Wood x2,0,$piece_firepit
+Chest,piece,Furniture,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x10,0,$piece_chestwood
+Chopping Block,piece,Crafting,Meadows,Flint; Wood; Workbench,Meadows,Flint; Wood; Workbench,,,,,Workbench,,Wood x10; Flint x10,0,$piece_workbench_ext1
+Coin Pile,piece,Misc,Meadows,Coins,Black Forest,Coins,,,,,(none),,Coins x999,0,$piece_treasure_pile
+Coin Stack,piece,Misc,Meadows,Coins,Black Forest,Coins,,,,,(none),,Coins x99,0,$piece_treasure_stack
+Cooked Boar Meat,piece,Feasts,Meadows,Cooked Boar Meat,Meadows,Cooked Boar Meat,,,,,(none),,Cooked Boar Meat x1,0,$item_boar_meat_cooked
+Cooked Deer Meat,piece,Feasts,Meadows,Cooked Deer Meat,Meadows,Cooked Deer Meat,,,,,(none),,Cooked Deer Meat x1,0,$item_deer_meat_cooked
+Cooking Station,piece,Crafting,Meadows,Wood,Meadows,Wood,,,,,(none),,Wood x2,0,$piece_cookingstation
+Cultivate,piece,Misc,Meadows,,Meadows,,,,,,(none),,,0,$piece_cultivate
+Decorative Boulder,piece,Misc,Meadows,Stone,Meadows,Stone,,,,,(none),,Stone x10,0,$piece_rock_02
+Deer Rug,piece,Furniture,Meadows,Deer Hide; Workbench,Meadows,Deer Hide; Workbench,,,,,Workbench,,Deer Hide x4,0,$piece_rug_deer
+Finewood Stack,piece,Misc,Meadows,Finewood,Meadows,Finewood,,,,,(none),,Finewood x50,0,$piece_woodfinestack
+Flint Pile,piece,Misc,Meadows,Flint,Meadows,Flint,,,,,(none),,Flint x50,0,$piece_flintpile
+Flower Garland,piece,Furniture,Meadows,Dandelion; Finewood; Workbench,Meadows,Dandelion; Finewood; Workbench,,,,,Workbench,,Finewood x2; Dandelion x1,0,$piece_celebrationgarland
+Grass,piece,Misc,Meadows,,Meadows,,,,,,(none),,,0,$piece_replant
+Grilled Neck Tail,piece,Feasts,Meadows,Grilled Neck Tail,Meadows,Grilled Neck Tail,,,,,(none),,Grilled Neck Tail x1,0,$item_necktailgrilled
+Honey,piece,Feasts,Meadows,Honey,Meadows,Honey,,,,,(none),,Honey x1,0,$item_honey
+Iron Fire Pit,piece,Misc,Meadows,Iron Pit; Wood,Meadows,Iron Pit; Wood,,,,,(none),,Iron Pit x1; Wood x1,0,$piece_firepit_iron
+Level Ground,piece,Misc,Meadows,,Meadows,,,,,,(none),,,0,$piece_levelground
+Mushroom,piece,Feasts,Meadows,Mushroom,Meadows,Mushroom,,,,,(none),,Mushroom x1,0,$item_mushroomcommon
+Oak Sapling,piece,Misc,Meadows,Acorns,Meadows,Acorns,,,,,(none),,Acorns x1,0,$prop_oak_sapling
+Ornamental Boulder,piece,Misc,Meadows,Stone,Meadows,Stone,,,,,(none),,Stone x25,0,$piece_rock_01
+Pathen,piece,Misc,Meadows,,Meadows,,,,,,(none),,,0,$piece_path
+Raft,piece,Misc,Meadows,Leather Scraps; Resin; Wood; Workbench,Meadows,Leather Scraps; Resin; Wood; Workbench,,,,,Workbench,,Wood x20; Leather Scraps x6; Resin x6,0,$ship_raft
+Raise Ground,piece,Misc,Meadows,Stone; Workbench,Meadows,Stone; Workbench,,,,,Workbench,,Stone x2,0,$piece_raise
+Raspberries,piece,Feasts,Meadows,Raspberries,Meadows,Raspberries,,,,,(none),,Raspberries x1,0,$item_raspberries
+Remove,piece,100,Meadows,,Meadows,,,,,,(none),,,0,$hud_remove
+Repair,piece,100,Meadows,,Meadows,,,,,,(none),,,0,$piece_repair
+Roundpole Fence,piece,Misc,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodfence
+Roundpole Gate,piece,Misc,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x4,0,$piece_woodfencegate
+Stakewall,piece,Misc,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x4,0,$piece_stakewall
+Standing Wood Torch,piece,Furniture,Meadows,Resin; Wood; Workbench,Meadows,Resin; Wood; Workbench,,,,,Workbench,,Wood x2; Resin x2,0,$piece_groundtorchwood
+Stone,piece,Misc,Meadows,Stone,Meadows,Stone,,,,,(none),,Stone x1,0,$item_stone
+Stone Fence,piece,Misc,Meadows,Stone; Workbench,Meadows,Stone; Workbench,,,,,Workbench,,Stone x4,0,$piece_stonefence
+Stone Pile,piece,Misc,Meadows,Stone,Meadows,Stone,,,,,(none),,Stone x50,0,$piece_stonepile
+Stool,piece,Furniture,Meadows,Finewood; Workbench,Meadows,Finewood; Workbench,,,,,Workbench,,Finewood x4,0,$piece_stool
+Table,piece,Furniture,Meadows,Finewood; Workbench,Meadows,Finewood; Workbench,,,,,Workbench,,Finewood x6,0,$piece_table
+Tanning Rack,piece,Crafting,Meadows,Deer Hide; Flint; Leather Scraps; Wood; Workbench,Meadows,Deer Hide; Flint; Leather Scraps; Wood; Workbench,,,,,Workbench,,Wood x10; Flint x15; Leather Scraps x20; Deer Hide x5,0,$piece_workbench_ext2
+Thatch Roof 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroof26
+Thatch Roof 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroof45
+Thatch Roof 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroof67
+Thatch Roof Inner Corner 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooficorner
+Thatch Roof Inner Corner 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooficorner45
+Thatch Roof Inner Corner 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooficorner67
+Thatch Roof Outer Corner 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroofocorner
+Thatch Roof Outer Corner 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroofocorner45
+Thatch Roof Outer Corner 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodroofocorner67
+Thatch Roof Ridge 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooftop
+Thatch Roof Ridge 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooftop45
+Thatch Roof Ridge 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodrooftop67
+White and Red Striped Banner,piece,Furniture,Meadows,Finewood; Leather Scraps; Raspberries; Workbench,Meadows,Finewood; Leather Scraps; Raspberries; Workbench,,,,,Workbench,,Leather Scraps x6; Finewood x2; Raspberries x4,0,$piece_banner03
+Wood Beam 1 m,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodbeam1
+Wood Beam 2 m,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodbeam2
+Wood Beam 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodbeam26
+Wood Beam 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodbeam45
+Wood Beam 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodbeam67
+Wood Bench,piece,Furniture,Meadows,Finewood; Workbench,Meadows,Finewood; Workbench,,,,,Workbench,,Finewood x6,0,$piece_bench01
+Wood Chair,piece,Furniture,Meadows,Finewood; Workbench,Meadows,Finewood; Workbench,,,,,Workbench,,Finewood x4,0,$piece_chair
+Wood Door,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x4,0,$piece_wooddoor
+Wood Dragon Adornment,piece,Misc,Meadows,Finewood; Workbench,Meadows,Finewood; Workbench,,,,,Workbench,,Finewood x10,0,$piece_wooddragon
+Wood Floor 1x1,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodfloor1x1
+Wood Floor 2x2,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodfloor2x2
+Wood Gate,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x12,0,$piece_woodgate
+Wood Ladder,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodstepladder
+Wood Pole 1 m,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodpole
+Wood Pole 2 m,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodpole2
+Wood Roof Cross 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallrooftop
+Wood Roof Cross 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallrooftop45
+Wood Roof Cross 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallrooftop67
+Wood Stack,piece,Misc,Meadows,Wood,Meadows,Wood,,,,,(none),,Wood x50,0,$piece_woodstack
+Wood Stairs,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodstair
+Wood Wall,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwall
+Wood Wall 1x1,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodwallquarter
+Wood Wall 26°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof
+Wood Wall 26° (Inverted),piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof_upsidedown
+Wood Wall 45°,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof45
+Wood Wall 45° (Inverted),piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof45_upsidedown
+Wood Wall 67°,piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof67
+Wood Wall 67° (Inverted),piece,Deep North,Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x2,0,$piece_woodwallroof67upsidedown
+Wood Wall Half,piece,Building (workbench),Meadows,Wood; Workbench,Meadows,Wood; Workbench,,,,,Workbench,,Wood x1,0,$piece_woodwallhalf
+Workbench,piece,Crafting,Meadows,Wood,Meadows,Wood,,,,,(none),,Wood x10,0,$piece_workbench
+Yuleklapp,piece,Furniture,Meadows,Bone Fragments; Finewood; Workbench,Meadows,Bone Fragments; Finewood; Workbench,,,,,Workbench,,Finewood x2; Bone Fragments x1,0,$piece_yuleklapp
+Cooked Bear Meat,cooking,Consumable,Black Forest,Bear Meat,Black Forest,Bear Meat,,,,,Cooking Station,,Bear Meat x1,1,$item_bjorn_meat_cooked
+Carrot,farming,Crop,Black Forest,Carrot Seeds,Black Forest,Carrot Seeds,,,,,Cultivator + planting Carrot,,Carrot Seeds x1,0,$item_carrot
+Carrot Seeds,farming,Crop,Black Forest,Carrot,Black Forest,Carrot,,,,,Cultivator + planting Seed-carrot,,Carrot x1,0,$item_carrotseeds
+Minor Healing Mead,fermenting,Consumable,Black Forest,Fermenter; Mead Base: Minor Healing,Black Forest,Fermenter; Mead Base: Minor Healing,,,,,Fermenter,,Mead Base: Minor Healing x1,0,$item_mead_hp_minor
+Minor Stamina Mead,fermenting,Consumable,Black Forest,Fermenter; Mead Base: Minor Stamina,Black Forest,Fermenter; Mead Base: Minor Stamina,,,,,Fermenter,,Mead Base: Minor Stamina x1,0,$item_mead_stamina_minor
+Poison Resistance Mead,fermenting,Consumable,Black Forest,Fermenter; Mead Base: Poison Resistance,Black Forest,Fermenter; Mead Base: Poison Resistance,,,,,Fermenter,,Mead Base: Poison Resistance x1,0,$item_mead_poisonres
+Tasty Mead,fermenting,Consumable,Black Forest,Fermenter; Mead Base: Tasty,Black Forest,Fermenter; Mead Base: Tasty,,,,,Fermenter,,Mead Base: Tasty x1,0,$item_mead_tasty
+Boar Jerky,item,Consumable,Black Forest,Cauldron,Black Forest,Cauldron,,,,,Cauldron,1,Boar Meat x1; Honey x1,0,$item_boarjerky
+Bronze,item,Material,Black Forest,Copper; Forge; Tin,Black Forest,Copper; Forge; Tin,,,,,Forge,1,Copper x2; Tin x1,2,$item_bronze
+Bronze Atgeir,item,TwoHandedWeapon,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x10; Bronze x8 (+4/upgrade level); Leather Scraps x2,0,$item_atgeir_bronze
+Bronze Axe,item,OneHandedWeapon,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x4; Bronze x8 (+4/upgrade level); Leather Scraps x2 (+1/upgrade level),0,$item_axe_bronze
+Bronze Buckler,item,Shield,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Bronze x10 (+5/upgrade level); Wood x4 (+1/upgrade level),0,$item_shield_bronzebuckler
+Bronze Helmet,item,Helmet,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Bronze x5 (+3/upgrade level); Deer Hide x2,0,$item_helmet_bronze
+Bronze Mace,item,OneHandedWeapon,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x4; Bronze x8 (+4/upgrade level); Leather Scraps x3,0,$item_mace_bronze
+Bronze Nails,item,Material,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Bronze x1,0,$item_bronzenails
+Bronze Pendant,item,Trinket,Black Forest,Bear Trophy; Bronze; Forge,,,,,,,Forge,1,Bronze x5; Bear Trophy x1; Ruby x3,0,$item_trinketbronzestamina
+Bronze Pickaxe,item,TwoHandedWeapon,Black Forest,Bronze; Corewood; Forge,Black Forest,Bronze; Corewood; Forge,,,,,Forge,1,Corewood x3 (+1/upgrade level); Bronze x10 (+5/upgrade level),0,$item_pickaxe_bronze
+Bronze Plate Leggings,item,Legs,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Bronze x5 (+3/upgrade level); Deer Hide x2,0,$item_legs_bronze
+Bronze Plate Tunic,item,Chest,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Bronze x5 (+3/upgrade level); Deer Hide x2,0,$item_chest_bronze
+Bronze Spear,item,OneHandedWeapon,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x5 (+3/upgrade level); Bronze x6 (+4/upgrade level); Deer Hide x2 (+1/upgrade level),0,$item_spear_bronze
+Bronze Sword,item,OneHandedWeapon,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x2 (+1/upgrade level); Bronze x8 (+4/upgrade level); Leather Scraps x2 (+1/upgrade level),0,$item_sword_bronze
+Bronzehead Arrow,item,Ammo,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,1,Wood x8; Bronze x1; Feathers x2,0,$item_arrow_bronze
+Butcher Knife,item,OneHandedWeapon,Black Forest,Forge; Tin,Black Forest,Forge; Tin,,,,,Forge,1,Wood x2; Tin x4,0,$item_knife_butcher
+Cape of Oden,item,Shoulder,Black Forest,Coal,Black Forest,Coal,,,,,Workbench,1,Leather Scraps x10 (+5/upgrade level); Coal x4 (+2/upgrade level),0,$item_cape_odin
+Carrot Soup,item,Consumable,Black Forest,Carrot; Cauldron,Black Forest,Carrot; Cauldron,,,,,Cauldron,1,Mushroom x1; Carrot x3,0,$item_carrotsoup
+Celebratory Cap,item,Helmet,Black Forest,Bear Hide; Bronze,,,,,,,Workbench,2,Deer Hide x2 (+1/upgrade level); Bronze x1 (+1/upgrade level); Bear Hide x1; Amber Pearl x1,0,$item_helmet_celebration
+Copper Knife,item,OneHandedWeapon,Black Forest,Copper; Forge,Black Forest,Copper; Forge,,,,,Forge,1,Wood x2; Copper x8 (+4/upgrade level); Greydwarf Eye x0 (+8/upgrade level),0,$item_knife_copper
+Cultivator,item,Tool,Black Forest,Bronze; Corewood; Forge,Black Forest,Bronze; Corewood; Forge,,,,,Forge,1,Corewood x5 (+1/upgrade level); Bronze x5 (+1/upgrade level),0,$item_cultivator
+Deer Stew,item,Consumable,Black Forest,Blueberries; Carrot; Cauldron,Black Forest,Blueberries; Carrot; Cauldron,,,,,Cauldron,1,Cooked Deer Meat x1; Blueberries x1; Carrot x1,0,$item_deerstew
+Finewood Bow,item,Bow,Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,1,Finewood x10 (+5/upgrade level); Corewood x10 (+5/upgrade level); Deer Hide x2 (+2/upgrade level),0,$item_bow_finewood
+Headdress of the Bear,item,Helmet,Black Forest,Bear Hide; Bear Trophy,Black Forest,Bear Hide; Bear Trophy,,,,,Workbench,2,Bear Hide x5 (+2/upgrade level); Bear Trophy x1,0,$item_helmet_berserker
+Heart of the Forest,item,Trinket,Black Forest,Ancient Seed; Bronze; Forge; Greydwarf Shaman Trophy,Black Forest,Ancient Seed; Bronze; Forge; Greydwarf Shaman Trophy,,,,,Forge,1,Bronze x5; Ancient Seed x5; Greydwarf Shaman Trophy x1,0,$item_trinketbronzehealth
+Hood of Oden,item,Helmet,Black Forest,Coal,Black Forest,Coal,,,,,Workbench,1,Leather Scraps x10 (+5/upgrade level); Coal x4 (+2/upgrade level),0,$item_helmet_odin
+Loincloth of the Bear,item,Legs,Black Forest,Bear Hide; Blueberries,Black Forest,Bear Hide; Blueberries,,,,,Workbench,2,Bear Hide x5 (+2/upgrade level); Blueberries x4 (+1/upgrade level),0,$item_legs_berserker
+Mead Base: Minor Healing,item,Material,Black Forest,Blueberries; Mead Ketill,Black Forest,Blueberries; Mead Ketill,,,,,Mead Ketill,1,Honey x10; Blueberries x5; Raspberries x10; Dandelion x1,0,$item_meadbasehealth
+Mead Base: Minor Stamina,item,Material,Black Forest,Mead Ketill; Yellow Mushroom,Black Forest,Mead Ketill; Yellow Mushroom,,,,,Mead Ketill,1,Honey x10; Raspberries x10; Yellow Mushroom x10,0,$item_meadbasestamina
+Mead Base: Poison Resistance,item,Material,Black Forest,Coal; Mead Ketill; Thistle,Black Forest,Coal; Mead Ketill; Thistle,,,,,Mead Ketill,1,Honey x10; Thistle x5; Neck Tail x1; Coal x10,0,$item_meadbasepoisonresist
+Mead Base: Tasty,item,Material,Black Forest,Blueberries; Mead Ketill,Black Forest,Blueberries; Mead Ketill,,,,,Mead Ketill,1,Honey x10; Raspberries x10; Blueberries x5,0,$item_meadbasetasty
+Minced Meat Sauce,item,Consumable,Black Forest,Carrot; Cauldron,Black Forest,Carrot; Cauldron,,,,,Cauldron,1,Boar Meat x1; Neck Tail x1; Carrot x1,0,$item_mincemeatsauce
+Patterns of the Bear,item,Chest,Black Forest,Bear Hide; Bear Paw; Blueberries,Black Forest,Bear Hide; Bear Paw; Blueberries,,,,,Workbench,2,Bear Hide x5 (+2/upgrade level); Bear Paw x2; Blueberries x4 (+1/upgrade level),0,$item_chest_berserker
+Paws of the Bear,item,TwoHandedWeapon,Black Forest,Bear Hide; Bear Paw,Black Forest,Bear Hide; Bear Paw,,,,,Workbench,2,Bear Hide x2 (+2/upgrade level); Bear Paw x2; Leather Scraps x4 (+2/upgrade level),0,$item_fistweapon_bjorn
+Pulled Bear,item,Consumable,Black Forest,Blueberries; Carrot; Cauldron; Cooked Bear Meat,Black Forest,Blueberries; Carrot; Cauldron; Cooked Bear Meat,,,,,Cauldron,1,Cooked Bear Meat x1; Carrot x2; Blueberries x1,0,$item_pulledbear
+Queen's Jam,item,Consumable,Black Forest,Blueberries; Cauldron,Black Forest,Blueberries; Cauldron,,,,,Cauldron,1,Raspberries x8; Blueberries x6,0,$item_queensjam
+Stagbreaker,item,TwoHandedWeapon,Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,2,Corewood x20 (+5/upgrade level); Deer Trophy x5 (+2/upgrade level); Leather Scraps x2 (+1/upgrade level); Bone Fragments x0 (+10/upgrade level),0,$item_stagbreaker
+Troll Hide Cape,item,Shoulder,Black Forest,Troll Hide,Black Forest,Troll Hide,,,,,Workbench,2,Troll Hide x10 (+5/upgrade level); Bone Fragments x10 (+5/upgrade level),0,$item_cape_trollhide
+Troll Leather Hood,item,Helmet,Black Forest,Troll Hide,Black Forest,Troll Hide,,,,,Workbench,2,Troll Hide x5 (+2/upgrade level); Bone Fragments x3 (+1/upgrade level),0,$item_helmet_trollleather
+Troll Leather Trousers,item,Legs,Black Forest,Troll Hide,Black Forest,Troll Hide,,,,,Workbench,2,Troll Hide x5 (+2/upgrade level),0,$item_legs_trollleather
+Troll Leather Tunic,item,Chest,Black Forest,Troll Hide,Black Forest,Troll Hide,,,,,Workbench,2,Troll Hide x5 (+2/upgrade level),0,$item_chest_trollleather
+Wooden Sword,item,OneHandedWeapon,Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,1,Wood x5 (+1/upgrade level); Finewood x3 (+10/upgrade level); Corewood x2 (+2/upgrade level),0,$item_sword_wood
+Adze,piece,Crafting,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,,Finewood x10; Bronze x3,0,$piece_workbench_ext3
+Anvils,piece,Crafting,Black Forest,Bronze,Black Forest,Bronze,,,,,Workbench,,Wood x5; Bronze x2,0,$piece_forge_ext2
+Barber Station,piece,Furniture,Black Forest,Bronze Nails; Troll Hide,Black Forest,Bronze Nails; Troll Hide,,,,,Workbench,,Finewood x10; Barber Kit x1; Bronze Nails x5; Troll Hide x5,0,$piece_barber
+Barrel,piece,Furniture,Black Forest,Barrel Hoops,Black Forest,Barrel Hoops,,,,,Workbench,,Wood x10; Barrel Hoops x1,0,$piece_chestbarrel
+Bearskin Rug,piece,Furniture,Black Forest,Bear Hide; Bear Paw; Bear Trophy,Black Forest,Bear Hide; Bear Paw; Bear Trophy,,,,,Workbench,,Bear Hide x1; Bear Paw x2; Bear Trophy x1,0,$piece_rug_bjorn
+Black Banner,piece,Furniture,Black Forest,Coal,Black Forest,Coal,,,,,Workbench,,Leather Scraps x6; Finewood x2; Coal x4,0,$piece_banner01
+Blue Banner,piece,Furniture,Black Forest,Blueberries,Black Forest,Blueberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Blueberries x4,0,$piece_banner02
+Blueberries,piece,Feasts,Black Forest,Blueberries,Black Forest,Blueberries,,,,,(none),,Blueberries x1,0,$item_blueberries
+Boar Jerky,piece,Feasts,Black Forest,Boar Jerky,Black Forest,Boar Jerky,,,,,(none),,Boar Jerky x1,0,$item_boarjerky
+Bronze Stack,piece,Misc,Black Forest,Bronze,Black Forest,Bronze,,,,,(none),,Bronze x30,0,$piece_bronzebarstack
+Bukeperries,piece,Feasts,Black Forest,Bukeperries,Black Forest,Bukeperries,,,,,(none),,Bukeperries x1,0,$item_pukeberries
+Carrot,piece,Misc,Black Forest,Carrot Seeds,Black Forest,Carrot Seeds,,,,,(none),,Carrot Seeds x1,0,$piece_sapling_carrot
+Carrot,piece,Feasts,Black Forest,Carrot,Black Forest,Carrot,,,,,(none),,Carrot x1,0,$item_carrot
+Carrot Soup,piece,Feasts,Black Forest,Carrot Soup,Black Forest,Carrot Soup,,,,,(none),,Carrot Soup x1,0,$item_carrotsoup
+Cart,piece,Misc,Black Forest,Bronze Nails,Black Forest,Bronze Nails,,,,,Workbench,,Wood x20; Bronze Nails x10,0,$tool_cart
+Cartography Table,piece,Misc,Black Forest,Bronze,Black Forest,Bronze,,,,,Workbench,,Finewood x10; Bone Fragments x10; Bronze x2; Leather Scraps x5; Raspberries x4,0,$piece_cartographytable
+Cauldron,piece,Crafting,Black Forest,Forge; Tin,Black Forest,Forge; Tin,,,,,Forge,,Tin x10,0,$piece_cauldron
+Charcoal Kiln,piece,Crafting,Black Forest,Surtling Core,Black Forest,Surtling Core,,,,,Workbench,,Stone x20; Surtling Core x5,0,$piece_charcoalkiln
+Coal Pile,piece,Misc,Black Forest,Coal,Black Forest,Coal,,,,,(none),,Coal x50,0,$piece_coalpile
+Cooked Bear Meat,piece,Feasts,Black Forest,Cooked Bear Meat,Black Forest,Cooked Bear Meat,,,,,(none),,Cooked Bear Meat x1,0,$item_bjorn_meat_cooked
+Copper Stack,piece,Misc,Black Forest,Copper,Black Forest,Copper,,,,,(none),,Copper x30,0,$piece_copperbarstack
+Corewood Stack,piece,Misc,Black Forest,Corewood,Black Forest,Corewood,,,,,(none),,Corewood x50,0,$piece_woodcorestack
+Deer Stew,piece,Feasts,Black Forest,Deer Stew,Black Forest,Deer Stew,,,,,(none),,Deer Stew x1,0,$item_deerstew
+Fermenter,piece,Crafting,Black Forest,Bronze; Forge,Black Forest,Bronze; Forge,,,,,Forge,,Finewood x30; Bronze x5; Resin x10,0,$piece_fermenter
+Fey Lights,piece,Furniture,Black Forest,Thistle,Black Forest,Thistle,,,,,Workbench,,Finewood x2; Thistle x1,0,$piece_fairylightgarland
+Fir Sapling,piece,Misc,Black Forest,Fir Cone,Black Forest,Fir Cone,,,,,(none),,Fir Cone x1,0,$prop_fir_sapling
+Forge,piece,Crafting,Black Forest,Coal; Copper,Black Forest,Coal; Copper,,,,,Workbench,,Stone x4; Coal x4; Wood x10; Copper x6,0,$piece_forge
+Forge Cooler,piece,Crafting,Black Forest,Copper,Black Forest,Copper,,,,,Workbench,,Finewood x25; Copper x10,0,$piece_forge_ext5
+Item Stand,piece,Furniture,Black Forest,Bronze Nails,Black Forest,Bronze Nails,,,,,Workbench,,Finewood x4; Bronze Nails x1,0,$piece_itemstand
+Karve,piece,Misc,Black Forest,Bronze Nails,Black Forest,Bronze Nails,,,,,Workbench,,Finewood x30; Deer Hide x10; Resin x20; Bronze Nails x80,0,$ship_karve
+Log Beam 2 m,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x1,0,$piece_logbeam2
+Log Beam 26°,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x2,0,$piece_woodlog26
+Log Beam 4 m,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x2,0,$piece_logbeam4
+Log Beam 45°,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x2,0,$piece_woodlog45
+Log Beam 67°,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x2,0,$piece_woodlog67
+Log Pole 2 m,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x1,0,$piece_logpole2
+Log Pole 4 m,piece,Building (workbench),Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Corewood x2,0,$piece_logpole4
+Maypole,piece,Furniture,Black Forest,Thistle,Black Forest,Thistle,,,,,Workbench,,Wood x10; Dandelion x4; Thistle x4,0,$piece_maypole
+Mead Ketill,piece,Crafting,Black Forest,Copper; Forge; Tin,Black Forest,Copper; Forge; Tin,,,,,Forge,,Tin x4; Copper x6; Leather Scraps x2,0,$piece_meadcauldron
+Minced Meat Sauce,piece,Feasts,Black Forest,Minced Meat Sauce,Black Forest,Minced Meat Sauce,,,,,(none),,Minced Meat Sauce x1,0,$item_mincemeatsauce
+Minor Healing Mead,piece,Food,Black Forest,Minor Healing Mead,Black Forest,Minor Healing Mead,,,,,(none),,Minor Healing Mead x1,0,$item_mead_hp_minor
+Minor Stamina Mead,piece,Food,Black Forest,Minor Stamina Mead,Black Forest,Minor Stamina Mead,,,,,(none),,Minor Stamina Mead x1,0,$item_mead_stamina_minor
+Mysterious Rock,piece,Misc,Black Forest,Coal,Black Forest,Coal,,,,,(none),,Rock x1; Coal x1,0,$item_hardrock
+Pine Sapling,piece,Misc,Black Forest,Pine Cone,Black Forest,Pine Cone,,,,,(none),,Pine Cone x1,0,$prop_pine_sapling
+Poison Resistance Mead,piece,Food,Black Forest,Poison Resistance Mead,Black Forest,Poison Resistance Mead,,,,,(none),,Poison Resistance Mead x1,0,$item_mead_poisonres
+Portal,piece,Misc,Black Forest,Surtling Core,Black Forest,Surtling Core,,,,,Workbench,,Greydwarf Eye x10; Finewood x20; Surtling Core x2,0,$piece_portal
+Pulled Bear,piece,Feasts,Black Forest,Pulled Bear,Black Forest,Pulled Bear,,,,,(none),,Pulled Bear x1,0,$item_pulledbear
+Purple Banner,piece,Furniture,Black Forest,Blueberries,Black Forest,Blueberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Blueberries x2; Raspberries x3,0,$piece_banner09
+Queen's Jam,piece,Feasts,Black Forest,Queen's Jam,Black Forest,Queen's Jam,,,,,(none),,Queen's Jam x1,0,$item_queensjam
+Sconce,piece,Furniture,Black Forest,Copper; Forge,Black Forest,Copper; Forge,,,,,Forge,,Wood x2; Copper x2; Resin x2,0,$piece_sconce
+Seed-carrot,piece,Misc,Black Forest,Carrot,Black Forest,Carrot,,,,,(none),,Carrot x1,0,$piece_sapling_seedcarrot
+Sharp Stakes,piece,Misc,Black Forest,Corewood,Black Forest,Corewood,,,,,Workbench,,Wood x6; Corewood x4,0,$piece_sharpstakes
+Sign,piece,Furniture,Black Forest,Coal,Black Forest,Coal,,,,,(none),,Wood x2; Coal x1,0,$piece_sign
+Sitting Log,piece,Furniture,Black Forest,Corewood,Black Forest,Corewood,,,,,(none),,Corewood x2,0,$piece_benchlog
+Smelter,piece,Crafting,Black Forest,Surtling Core,Black Forest,Surtling Core,,,,,Workbench,,Stone x20; Surtling Core x5,0,$piece_smelter
+T.W.I.G.,piece,Misc,Black Forest,Bronze Nails; Ectoplasm,Black Forest,Bronze Nails; Ectoplasm,,,,,Workbench,,Finewood x5; Bronze Nails x10; Ectoplasm x5,0,$piece_trainingdummy
+Tasty Mead,piece,Food,Black Forest,Tasty Mead,Black Forest,Tasty Mead,,,,,(none),,Tasty Mead x1,0,$item_mead_tasty
+Tin Stack,piece,Misc,Black Forest,Tin,Black Forest,Tin,,,,,(none),,Tin x30,0,$piece_tinbarstack
+Ward,piece,Misc,Black Forest,Surtling Core,Black Forest,Surtling Core,,,,,(none),,Finewood x5; Greydwarf Eye x5; Surtling Core x1,0,$piece_guardstone
+Wood Shutter,piece,Building (workbench),Black Forest,Bronze Nails,Black Forest,Bronze Nails,,,,,Workbench,,Wood x4; Bronze Nails x2,0,$piece_woodwindowshutter
+Yellow Banner,piece,Furniture,Black Forest,Coal,Black Forest,Coal,,,,,Workbench,,Leather Scraps x6; Finewood x2; Dandelion x4; Coal x2,0,$piece_banner08
+Yellow Mushroom,piece,Feasts,Black Forest,Yellow Mushroom,Black Forest,Yellow Mushroom,,,,,(none),,Yellow Mushroom x1,0,$item_mushroomyellow
+Yule Garland,piece,Furniture,Black Forest,Pine Cone,Black Forest,Pine Cone,,,,,Workbench,,Finewood x2; Pine Cone x1,0,$piece_yulegarland
+Yule Tree,piece,Furniture,Black Forest,Fir Cone,Black Forest,Fir Cone,,,,,Workbench,,Wood x10; Fir Cone x1,0,$piece_yuletree
+Coal,smelting,Material,Black Forest,Charcoal Kiln,Black Forest,Charcoal Kiln,,,,,Charcoal Kiln,,Wood x1,2,$item_coal
+Copper,smelting,Material,Black Forest,Copper Ore; Smelter,Black Forest,Copper Ore; Smelter,,,,,Smelter,,Copper Ore x1,1,$item_copper
+Tin,smelting,Material,Black Forest,Smelter; Tin Ore,Black Forest,Smelter; Tin Ore,,,,,Smelter,,Tin Ore x1,0,$item_tin
+Abyssal Harpoon,item,OneHandedWeapon,Ocean,Chitin,Ocean,Chitin,,,,,Workbench,2,Finewood x8; Chitin x30; Leather Scraps x3,0,$item_spear_chitin
+Abyssal Razor,item,OneHandedWeapon,Ocean,Chitin,Ocean,Chitin,,,,,Workbench,2,Finewood x4; Chitin x20 (+10/upgrade level); Leather Scraps x2,0,$item_knife_chitin
+Fins of Destiny,item,Trinket,Ocean,Chitin; Serpent Scale; Serpent Trophy,Ocean,Chitin; Serpent Scale; Serpent Trophy,,,,,Forge,1,Chitin x5; Serpent Scale x5; Serpent Trophy x1,0,$item_trinketchitinswim
+Cooked Fish,cooking,Consumable,Swamp,Raw Fish,Swamp,Raw Fish,,,,,Cooking Station,,Raw Fish x1,1,$item_fish_cooked
+Cooked Serpent Meat,cooking,Consumable,Swamp,Iron Cooking Station,Swamp,Iron Cooking Station,,,,,Iron Cooking Station,,Serpent Meat x1,0,$item_serpentmeatcooked
+Ivy Seeds,farming,Crop,Swamp,Ivy Seeds,Swamp,Ivy Seeds,,,,,Cultivator + planting Ivy,,Ivy Seeds x1,0,$item_vinegreenseeds
+Turnip,farming,Crop,Swamp,Turnip Seeds,Swamp,Turnip Seeds,,,,,Cultivator + planting Turnip,,Turnip Seeds x1,0,$item_turnip
+Turnip Seeds,farming,Crop,Swamp,Turnip,Swamp,Turnip,,,,,Cultivator + planting Seed-turnip,,Turnip x1,0,$item_turnipseeds
+Vineberry Cluster,farming,Crop,Swamp,Ivy Seeds,Swamp,Ivy Seeds,,,,,Cultivator + planting Ivy,,Ivy Seeds x1,1,$item_vineberry
+Draught of Vananidir,fermenting,Consumable,Swamp,Mead Base: Vananidir,Swamp,Mead Base: Vananidir,,,,,Fermenter,,Mead Base: Vananidir x1,0,$item_mead_swimmer
+Frost Resistance Mead,fermenting,Consumable,Swamp,Mead Base: Frost Resistance,Swamp,Mead Base: Frost Resistance,,,,,Fermenter,,Mead Base: Frost Resistance x1,0,$item_mead_frostres
+Mead of Troll Endurance,fermenting,Consumable,Swamp,Mead Base: Troll Endurance,Swamp,Mead Base: Troll Endurance,,,,,Fermenter,,Mead Base: Troll Endurance x1,0,$item_mead_strength
+Medium Healing Mead,fermenting,Consumable,Swamp,Mead Base: Medium Healing,Swamp,Mead Base: Medium Healing,,,,,Fermenter,,Mead Base: Medium Healing x1,0,$item_mead_hp_medium
+Tonic of Ratatosk,fermenting,Consumable,Swamp,Mead base: Ratatosk,Swamp,Mead base: Ratatosk,,,,,Fermenter,,Mead base: Ratatosk x1,0,$item_mead_hasty
+Ancient Bark Spear,item,OneHandedWeapon,Swamp,Ancient Bark; Iron,Swamp,Ancient Bark; Iron,,,,,Forge,3,Troll Hide x4 (+1/upgrade level); Iron x10 (+5/upgrade level); Ancient Bark x10 (+5/upgrade level),0,$item_spear_ancientbark
+Banded Shield,item,Shield,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Finewood x10 (+10/upgrade level); Iron x8 (+4/upgrade level),0,$item_shield_banded
+Battleaxe,item,TwoHandedWeapon,Swamp,Ancient Bark; Iron,Swamp,Ancient Bark; Iron,,,,,Forge,2,Ancient Bark x30 (+5/upgrade level); Iron x35 (+15/upgrade level); Leather Scraps x4,0,$item_battleaxe
+Black Forest Buffet Platter,item,Material,Swamp,Food Preparation Table; Woodland Herb Blend,Swamp,Food Preparation Table; Woodland Herb Blend,,,,,Food Preparation Table,1,Deer Stew x3; Thistle x5; Queen's Jam x4; Woodland Herb Blend x1,0,$item_feastblackforest
+Black Soup,item,Consumable,Swamp,Bloodbag; Turnip,Swamp,Bloodbag; Turnip,,,,,Cauldron,2,Bloodbag x1; Honey x1; Turnip x1,0,$item_blacksoup
+Blob Bomb: Elite Poison,item,OneHandedWeapon,Swamp,Blob Trophy; Corked Vial,Swamp,Blob Trophy; Corked Vial,,,,,Workbench,1,Corked Vial x1; Blob Trophy x3; Resin x3,0,$item_bombblob_poisonelite
+Blob Bomb: Poison,item,OneHandedWeapon,Swamp,Blob Trophy; Corked Vial,Swamp,Blob Trophy; Corked Vial,,,,,Workbench,1,Corked Vial x1; Blob Trophy x1; Resin x3,0,$item_bombblob_poison
+Heavy Fishing Bait,item,Ammo,Swamp,Food Preparation Table,Swamp,Food Preparation Table,,,,,Food Preparation Table,1,Fishing Bait x20; Serpent Trophy x1,0,$item_fishingbait_ocean
+Horn of Celebration,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Workbench,1,Bronze x2; Troll Hide x2; Iron x2,0,$item_tankard_anniversary
+Huntsman Bow,item,Bow,Swamp,Iron,Swamp,Iron,,,,,Forge,1,Finewood x10 (+5/upgrade level); Iron x20 (+10/upgrade level); Feathers x10 (+5/upgrade level); Deer Hide x2 (+2/upgrade level),0,$item_bow_huntsman
+Iron Atgeir,item,TwoHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x10; Iron x30 (+15/upgrade level); Leather Scraps x2 (+1/upgrade level),0,$item_atgeir_iron
+Iron Axe,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x4; Iron x20 (+10/upgrade level); Leather Scraps x2 (+1/upgrade level),0,$item_axe_iron
+Iron Brooch,item,Trinket,Swamp,Ancient Bark; Iron; Leech Trophy,Swamp,Ancient Bark; Iron; Leech Trophy,,,,,Forge,1,Iron x5; Ancient Bark x5; Leech Trophy x1,0,$item_trinketironhealth
+Iron Buckler,item,Shield,Swamp,Ancient Bark; Iron,Swamp,Ancient Bark; Iron,,,,,Forge,2,Iron x10 (+5/upgrade level); Ancient Bark x4 (+1/upgrade level),0,$item_shield_ironbuckler
+Iron Greaves,item,Legs,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Iron x20 (+5/upgrade level); Deer Hide x2,0,$item_legs_iron
+Iron Helmet,item,Helmet,Swamp,Iron,Swamp,Iron,,,,,Forge,1,Iron x20 (+5/upgrade level); Deer Hide x2,0,$item_helmet_iron
+Iron Mace,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x4; Iron x20 (+10/upgrade level); Leather Scraps x3,0,$item_mace_iron
+Iron Nails,item,Material,Swamp,Iron,Swamp,Iron,,,,,Forge,1,Iron x1,0,$item_ironnails
+Iron Pickaxe,item,TwoHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Corewood x3 (+1/upgrade level); Iron x20 (+10/upgrade level),0,$item_pickaxe_iron
+Iron Scale Mail,item,Chest,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Iron x20 (+5/upgrade level); Deer Hide x2,0,$item_chest_iron
+Iron Sledge,item,TwoHandedWeapon,Swamp,Ancient Bark; Iron,Swamp,Ancient Bark; Iron,,,,,Forge,2,Ancient Bark x10 (+2/upgrade level); Iron x30 (+15/upgrade level); Ymir Flesh x4 (+2/upgrade level); Draugr Elite Trophy x1,0,$item_sledge_iron
+Iron Sword,item,OneHandedWeapon,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x2 (+1/upgrade level); Iron x20 (+10/upgrade level); Leather Scraps x3 (+2/upgrade level),0,$item_sword_iron
+Iron Tower Shield,item,Shield,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Finewood x15 (+10/upgrade level); Iron x10 (+5/upgrade level),0,$item_shield_iron_tower
+Ironhead Arrow,item,Ammo,Swamp,Iron,Swamp,Iron,,,,,Forge,2,Wood x8; Iron x1; Feathers x2,0,$item_arrow_iron
+Mead Base: Frost Resistance,item,Material,Swamp,Bloodbag,Swamp,Bloodbag,,,,,Mead Ketill,1,Honey x10; Thistle x5; Bloodbag x2; Greydwarf Eye x1,0,$item_meadbasefrostresist
+Mead Base: Medium Healing,item,Material,Swamp,Bloodbag,Swamp,Bloodbag,,,,,Mead Ketill,1,Honey x10; Bloodbag x4; Raspberries x10; Dandelion x1,0,$item_meadbasehealth_medium
+Mead Base: Troll Endurance,item,Material,Swamp,Powdered Dragon Eggshells,Swamp,Powdered Dragon Eggshells,,,,,Mead Ketill,1,Trollfish x2; Honey x10; Powdered Dragon Eggshells x1,0,$item_meadbasestrength
+Mead Base: Vananidir,item,Material,Swamp,Fresh Seaweed,Swamp,Fresh Seaweed,,,,,Mead Ketill,1,Dandelion x10; Perch x2; Fresh Seaweed x1,0,$item_meadbaseswimmer
+Mead base: Ratatosk,item,Material,Swamp,Cured Squirrel Hamstring,Swamp,Cured Squirrel Hamstring,,,,,Mead Ketill,1,Honey x10; Blueberries x10; Cured Squirrel Hamstring x1,0,$item_meadbasehasty
+Mossy Fishing Bait,item,Ammo,Swamp,Food Preparation Table,Swamp,Food Preparation Table,,,,,Food Preparation Table,1,Fishing Bait x20; Troll Trophy x1,0,$item_fishingbait_forest
+Muckshake,item,Consumable,Swamp,Ooze,Swamp,Ooze,,,,,Cauldron,2,Ooze x1; Raspberries x2; Blueberries x2,0,$item_shocklatesmoothie
+Nimble Anklet,item,Trinket,Swamp,Iron; Surtling Trophy; Withered Bone,Swamp,Iron; Surtling Trophy; Withered Bone,,,,,Forge,1,Iron x5; Withered Bone x5; Surtling Trophy x1,0,$item_trinketironstamina
+Ooze Bomb,item,OneHandedWeapon,Swamp,Ooze,Swamp,Ooze,,,,,Workbench,1,Leather Scraps x5; Ooze x5; Resin x3,0,$item_oozebomb
+Raw Fish,item,Material,Swamp,Northern Salmon,Swamp,Northern Salmon,,,,,Food Preparation Table,1,Perch x1; Pike x1; Tuna x1; Tetra x1; Trollfish x1; Giant Herring x1; Grouper x1; Coral Cod x1; Anglerfish x1; Northern Salmon x1; Magmafish x1; Pufferfish x1,0,$item_fish_raw
+Root Harnesk,item,Chest,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Workbench,2,Root x10 (+2/upgrade level); Ancient Bark x10 (+5/upgrade level); Deer Hide x2,0,$item_chest_root
+Root Leggings,item,Legs,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Workbench,2,Root x10 (+2/upgrade level); Ancient Bark x10 (+5/upgrade level); Deer Hide x2,0,$item_legs_root
+Root Mask,item,Helmet,Swamp,Ancient Bark; Root,Swamp,Ancient Bark; Root,,,,,Workbench,2,Root x10 (+2/upgrade level); Ancient Bark x10 (+5/upgrade level); Leather Scraps x4,0,$item_helmet_root
+Sailor's Bounty,item,Material,Swamp,Cooked Fish; Cooked Serpent Meat; Food Preparation Table; Seafarer's Herbs,Swamp,Cooked Fish; Cooked Serpent Meat; Food Preparation Table; Seafarer's Herbs,,,,,Food Preparation Table,1,Cooked Fish x5; Thistle x4; Cooked Serpent Meat x2; Seafarer's Herbs x1,0,$item_feastoceans
+Sausages,item,Consumable,Swamp,Cauldron; Thistle,Swamp,Cauldron; Thistle,,,,,Cauldron,2,Entrails x4; Boar Meat x1; Thistle x1,0,$item_sausages
+Serpent Scale Shield,item,Shield,Swamp,Iron,Swamp,Iron,,,,,Forge,3,Finewood x10 (+10/upgrade level); Iron x4 (+2/upgrade level); Serpent Scale x8 (+4/upgrade level),0,$item_shield_serpentscale
+Serpent Stew,item,Consumable,Swamp,Cooked Serpent Meat,Swamp,Cooked Serpent Meat,,,,,Cauldron,2,Mushroom x1; Cooked Serpent Meat x1; Honey x2,0,$item_serpentstew
+Sharpening Stone,item,Material,Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,1,Stone x5,0,$item_sharpeningstone
+Shield of Roots,item,Shield,Swamp,Writhan Roots,Swamp,Writhan Roots,,,,,Workbench,2,Finewood x10 (+5/upgrade level); Writhan Roots x1 (+2/upgrade level),0,$item_shield_roots
+Sticky Fishing Bait,item,Ammo,Swamp,Abomination Trophy; Food Preparation Table,Swamp,Abomination Trophy; Food Preparation Table,,,,,Food Preparation Table,1,Fishing Bait x20; Abomination Trophy x1,0,$item_fishingbait_swamp
+Swamp Dweller's Delight,item,Material,Swamp,Bloodbag; Food Preparation Table; Sausages; Turnip Stew; Woodland Herb Blend,Swamp,Bloodbag; Food Preparation Table; Sausages; Turnip Stew; Woodland Herb Blend,,,,,Food Preparation Table,1,Sausages x8; Bloodbag x4; Turnip Stew x2; Woodland Herb Blend x1,0,$item_feastswamps
+Turnip Stew,item,Consumable,Swamp,Turnip,Swamp,Turnip,,,,,Cauldron,2,Boar Meat x1; Turnip x3,0,$item_turnipstew
+Whole Roasted Meadow Boar,item,Material,Swamp,Food Preparation Table; Woodland Herb Blend,Swamp,Food Preparation Table; Woodland Herb Blend,,,,,Food Preparation Table,1,Cooked Deer Meat x2; Cooked Boar Meat x5; Dandelion x4; Woodland Herb Blend x1,0,$item_feastmeadows
+Armour Stand,piece,Furniture,Swamp,Iron Nails,Swamp,Iron Nails,,,,,Workbench,,Finewood x8; Iron Nails x4; Leather Scraps x2,0,$piece_armorstand
+Birds' Nest,piece,Crafting,Swamp,Writhan Roots,Swamp,Writhan Roots,,,,,Workbench,,Writhan Roots x2; Acorns x3; Thistle x5,0,$piece_birdnest
+Black Forest Buffet Platter,piece,Deep North,Swamp,Black Forest Buffet Platter,Swamp,Black Forest Buffet Platter,,,,,(none),,Black Forest Buffet Platter x1,0,$item_feastblackforest
+Black Soup,piece,Feasts,Swamp,Black Soup,Swamp,Black Soup,,,,,(none),,Black Soup x1,0,$item_blacksoup
+Bonfire,piece,Misc,Swamp,Ancient Bark,Swamp,Ancient Bark,,,,,(none),,Surtling Core x1; Ancient Bark x5; Finewood x5; Corewood x5,0,$piece_bonfire
+Cage Floor 1x1,piece,Building (stonecutter),Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x1,0,$piece_ironfloorSmall
+Cage Floor 2x2,piece,Building (stonecutter),Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x2,0,$piece_ironfloor
+Cage Wall 1x1,piece,Building (stonecutter),Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x1,0,$piece_ironwallSmall
+Cage Wall 2x2,piece,Building (stonecutter),Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x2,0,$piece_ironwall
+Cooked Fish,piece,Feasts,Swamp,Cooked Fish,Swamp,Cooked Fish,,,,,(none),,Cooked Fish x1,0,$item_fish_cooked
+Cooked Serpent Meat,piece,Feasts,Swamp,Cooked Serpent Meat,Swamp,Cooked Serpent Meat,,,,,(none),,Cooked Serpent Meat x1,0,$item_serpentmeatcooked
+Draught of Vananidir,piece,Food,Swamp,Draught of Vananidir,Swamp,Draught of Vananidir,,,,,(none),,Draught of Vananidir x1,0,$item_mead_swimmer
+Food Preparation Table,piece,Crafting,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Iron x5; Finewood x20; Leather Scraps x15,0,$piece_preptable
+Forge Bellows,piece,Crafting,Swamp,Chain,Swamp,Chain,,,,,Workbench,,Wood x5; Deer Hide x5; Chain x4,0,$piece_forge_ext1
+Forge Tool Rack,piece,Crafting,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Iron x15; Wood x10,0,$piece_forge_ext6
+Frost Resistance Mead,piece,Food,Swamp,Frost Resistance Mead,Swamp,Frost Resistance Mead,,,,,(none),,Frost Resistance Mead x1,0,$item_mead_frostres
+Green Banner,piece,Furniture,Swamp,Guck,Swamp,Guck,,,,,Workbench,,Leather Scraps x6; Finewood x2; Guck x1,0,$piece_banner05
+Grinding Wheel,piece,Crafting,Swamp,Sharpening Stone,Swamp,Sharpening Stone,,,,,Workbench,,Wood x25; Sharpening Stone x1,0,$piece_forge_ext3
+Hanging Brazier,piece,Furniture,Swamp,Chain,Swamp,Chain,,,,,Forge,,Bronze x5; Coal x2; Chain x1,0,$piece_brazierceiling01
+Hearth,piece,Misc,Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x15,0,$piece_hearth
+Iron Cooking Station,piece,Crafting,Swamp,Chain; Iron,Swamp,Chain; Iron,,,,,Forge,,Iron x3; Chain x3,0,$piece_cookingstation_iron
+Iron Gate,piece,Building (stonecutter),Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x4,0,$piece_irongate
+Iron Stack,piece,Misc,Swamp,Iron,Swamp,Iron,,,,,(none),,Iron x30,0,$piece_ironbarstack
+Ivy,piece,Misc,Swamp,Ivy Seeds,Swamp,Ivy Seeds,,,,,(none),,Ivy Seeds x1,0,$piece_sapling_vinegreen
+Jack-o-turnip,piece,Furniture,Swamp,Turnip,Swamp,Turnip,,,,,Workbench,,Turnip x4; Resin x2,0,$piece_jackoturnip
+Longship,piece,Misc,Swamp,Ancient Bark; Iron Nails,Swamp,Ancient Bark; Iron Nails,,,,,Workbench,,Iron Nails x100; Deer Hide x10; Finewood x40; Ancient Bark x40,0,$ship_longship
+Love Potion,piece,Food,Swamp,Love Potion,Swamp,Love Potion,,,,,(none),,Love Potion x1,0,$item_mead_trollpheromones
+Mead of Troll Endurance,piece,Food,Swamp,Mead of Troll Endurance,Swamp,Mead of Troll Endurance,,,,,(none),,Mead of Troll Endurance x1,0,$item_mead_strength
+Medium Healing Mead,piece,Food,Swamp,Medium Healing Mead,Swamp,Medium Healing Mead,,,,,(none),,Medium Healing Mead x1,0,$item_mead_hp_medium
+Muckshake,piece,Feasts,Swamp,Muckshake,Swamp,Muckshake,,,,,(none),,Muckshake x1,0,$item_shocklatesmoothie
+Obliterator,piece,Crafting,Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x8; Copper x4; Thunder Stone x1,0,$piece_incinerator
+Paved Road,piece,Misc,Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x1,0,$piece_pavedroad
+Personal Chest,piece,Furniture,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Finewood x10; Iron x8,0,$piece_chestprivate
+Raven Throne,piece,Furniture,Swamp,Iron Nails,Swamp,Iron Nails,,,,,Workbench,,Finewood x20; Iron Nails x10,0,$piece_throne01
+Red Banner,piece,Furniture,Swamp,Bloodbag,Swamp,Bloodbag,,,,,Workbench,,Leather Scraps x6; Finewood x2; Bloodbag x1,0,$piece_banner04
+Reinforced Chest,piece,Furniture,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Finewood x10; Iron x2,0,$piece_chest
+Resin Candle,piece,Furniture,Swamp,Candle Wick,Swamp,Candle Wick,,,,,Workbench,,Resin x1; Candle Wick x1,0,$piece_candle
+Sailor's Bounty,piece,Deep North,Swamp,Sailor's Bounty,Swamp,Sailor's Bounty,,,,,(none),,Sailor's Bounty x1,0,$item_feastoceans
+Sausages,piece,Feasts,Swamp,Sausages,Swamp,Sausages,,,,,(none),,Sausages x1,0,$item_sausages
+Seed-turnip,piece,Misc,Swamp,Turnip,Swamp,Turnip,,,,,(none),,Turnip x1,0,$piece_sapling_seedturnip
+Serpent Stew,piece,Feasts,Swamp,Serpent Stew,Swamp,Serpent Stew,,,,,(none),,Serpent Stew x1,0,$item_serpentstew
+Smith's Anvil,piece,Crafting,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Iron x20; Wood x5,0,$piece_forge_ext4
+Spice Rack,piece,Crafting,Swamp,Turnip,Swamp,Turnip,,,,,Workbench,,Dandelion x3; Carrot x2; Mushroom x5; Thistle x3; Turnip x3,0,$piece_cauldron_ext1_spice
+Standing Blue-burning Iron Torch,piece,Furniture,Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x2; Greydwarf Eye x2,0,$piece_groundtorchblue
+Standing Green-burning Iron Torch,piece,Furniture,Swamp,Guck; Iron,Swamp,Guck; Iron,,,,,Forge,,Iron x2; Guck x2,0,$piece_groundtorchgreen
+Standing Iron Torch,piece,Furniture,Swamp,Iron,Swamp,Iron,,,,,Forge,,Iron x2; Resin x2,0,$piece_groundtorch
+Stone Arch,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x4,0,$piece_stonearch
+Stone Floor 2x2,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x6,0,$piece_stonefloor2x2
+Stone Pillar,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x5,0,$piece_stonepillar
+Stone Stair,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x8,0,$piece_stonestair
+Stone Wall 1x1,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x3,0,$piece_stonewall1x1
+Stone Wall 2x1,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x4,0,$piece_stonewall2x1
+Stone Wall 4x2,piece,Building (stonecutter),Swamp,Stonecutter,Swamp,Stonecutter,,,,,Stonecutter,,Stone x6,0,$piece_stonewall4x2
+Stonecutter,piece,Crafting,Swamp,Iron,Swamp,Iron,,,,,Workbench,,Wood x10; Iron x2; Stone x4,0,$piece_stonecutter
+Swamp Dweller's Delight,piece,Deep North,Swamp,Swamp Dweller's Delight,Swamp,Swamp Dweller's Delight,,,,,(none),,Swamp Dweller's Delight x1,0,$item_feastswamps
+Tonic of Ratatosk,piece,Food,Swamp,Tonic of Ratatosk,Swamp,Tonic of Ratatosk,,,,,(none),,Tonic of Ratatosk x1,0,$item_mead_hasty
+Turnip,piece,Misc,Swamp,Turnip Seeds,Swamp,Turnip Seeds,,,,,(none),,Turnip Seeds x1,0,$piece_sapling_turnip
+Turnip Stew,piece,Feasts,Swamp,Turnip Stew,Swamp,Turnip Stew,,,,,(none),,Turnip Stew x1,0,$item_turnipstew
+Vineberry Cluster,piece,Feasts,Swamp,Vineberry Cluster,Swamp,Vineberry Cluster,,,,,(none),,Vineberry Cluster x1,0,$item_vineberry
+Whole Roasted Meadow Boar,piece,Deep North,Swamp,Whole Roasted Meadow Boar,Swamp,Whole Roasted Meadow Boar,,,,,(none),,Whole Roasted Meadow Boar x1,0,$item_feastmeadows
+Wood Iron Beam,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironbeam
+Wood Iron Beam 26°,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironbeam_26
+Wood Iron Beam 45°,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironbeam_45
+Wood Iron Beam 67°,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_ironwoodbeam67
+Wood Iron Pole,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironpole
+Iron,smelting,Material,Swamp,Scrap Iron,Swamp,Scrap Iron,,,,,Smelter,,Scrap Iron x1,1,$item_iron
+Cooked Wolf Meat,cooking,Consumable,Mountain,Wolf Meat,Mountain,Wolf Meat,,,,,Cooking Station,,Wolf Meat x1,1,$item_wolf_meat_cooked
+Onion,farming,Crop,Mountain,Onion Seeds,,,,,,,Cultivator + planting Onion,,Onion Seeds x1,0,$item_onion
+Onion Seeds,farming,Crop,Mountain,Onion,,,,,,,Cultivator + planting Seed-onion,,Onion x1,0,$item_onionseeds
+Berserkir Mead,fermenting,Consumable,Mountain,Mead base: Berserkir,Mountain,Mead base: Berserkir,,,,,Fermenter,,Mead base: Berserkir x1,0,$item_mead_bzerker
+Brew of Animal Whispers,fermenting,Consumable,Mountain,Mead Base: Animal Whispers,,,,,,,Fermenter,,Mead Base: Animal Whispers x1,0,$item_mead_tamer
+Blob Bomb: Frost,item,OneHandedWeapon,Mountain,Drake Trophy,Mountain,Drake Trophy,,,,,Workbench,1,Corked Vial x1; Drake Trophy x1; Resin x3,0,$item_bombblob_frost
+Cold Fishing Bait,item,Ammo,Mountain,Fenring Trophy,Mountain,Fenring Trophy,,,,,Food Preparation Table,1,Fishing Bait x20; Fenring Trophy x1,0,$item_fishingbait_cave
+Crystal Battleaxe,item,TwoHandedWeapon,Mountain,Crystal; Silver,Mountain,Crystal; Silver,,,,,Forge,3,Ancient Bark x40 (+5/upgrade level); Silver x30 (+15/upgrade level); Crystal x10,0,$item_battleaxe_crystal
+Crystal Heart,item,Trinket,Mountain,Crystal; Silver; Stone Golem Trophy,Mountain,Crystal; Silver; Stone Golem Trophy,,,,,Forge,1,Silver x5; Crystal x5; Stone Golem Trophy x1,0,$item_trinketsilverresist
+Drake Helmet,item,Helmet,Mountain,Drake Trophy; Silver; Wolf Pelt,Mountain,Drake Trophy; Silver; Wolf Pelt,,,,,Forge,1,Silver x20 (+5/upgrade level); Wolf Pelt x2; Drake Trophy x2,0,$item_helmet_drake
+Draugr Fang,item,Bow,Mountain,Silver,Mountain,Silver,,,,,Forge,2,Ancient Bark x10 (+5/upgrade level); Silver x20 (+10/upgrade level); Deer Hide x2 (+2/upgrade level); Guck x10 (+2/upgrade level),0,$item_bow_draugrfang
+Eyescream,item,Consumable,Mountain,Freeze Gland,Mountain,Freeze Gland,,,,,Cauldron,3,Greydwarf Eye x3; Freeze Gland x1,0,$item_eyescream
+Fang Spear,item,OneHandedWeapon,Mountain,Silver; Wolf Fang,Mountain,Silver; Wolf Fang,,,,,Forge,3,Ancient Bark x10 (+5/upgrade level); Wolf Fang x4 (+2/upgrade level); Leather Scraps x2 (+1/upgrade level); Silver x2 (+1/upgrade level),0,$item_spear_wolffang
+Fenris Coat,item,Chest,Mountain,Fenris Hair; Wolf Pelt,Mountain,Fenris Hair; Wolf Pelt,,,,,Workbench,2,Fenris Hair x20 (+5/upgrade level); Wolf Pelt x5 (+3/upgrade level); Leather Scraps x10 (+4/upgrade level),0,$item_chest_fenris
+Fenris Hood,item,Helmet,Mountain,Cultist Trophy; Fenris Hair; Wolf Pelt,Mountain,Cultist Trophy; Fenris Hair; Wolf Pelt,,,,,Workbench,2,Fenris Hair x20 (+5/upgrade level); Wolf Pelt x2 (+4/upgrade level); Cultist Trophy x1,0,$item_helmet_fenris
+Fenris Leggings,item,Legs,Mountain,Fenris Hair; Wolf Pelt,Mountain,Fenris Hair; Wolf Pelt,,,,,Workbench,2,Fenris Hair x20 (+5/upgrade level); Wolf Pelt x5 (+3/upgrade level); Leather Scraps x10 (+4/upgrade level),0,$item_legs_fenris
+Flesh Rippers,item,TwoHandedWeapon,Mountain,Fenris Claw; Fenris Hair; Silver,,,,,,,Forge,3,Fenris Hair x10 (+1/upgrade level); Fenris Claw x6 (+1/upgrade level); Silver x10 (+1/upgrade level),0,$item_fistweapon_fenris
+Frost Arrow,item,Ammo,Mountain,Freeze Gland; Obsidian,Mountain,Freeze Gland; Obsidian,,,,,Workbench,4,Wood x8; Obsidian x4; Feathers x2; Freeze Gland x1,0,$item_arrow_frost
+Frostner,item,OneHandedWeapon,Mountain,Freeze Gland; Silver,Mountain,Freeze Gland; Silver,,,,,Forge,3,Ancient Bark x10; Silver x30 (+15/upgrade level); Ymir Flesh x5; Freeze Gland x5,0,$item_mace_silver
+Frosty Fishing Bait,item,Ammo,Mountain,Drake Trophy,Mountain,Drake Trophy,,,,,Food Preparation Table,1,Fishing Bait x20; Drake Trophy x1,0,$item_fishingbait_deepnorth
+Hearty Mountain Logger's Stew,item,Material,Mountain,Mountain Peak Pepper Powder; Onion Soup; Wolf Skewer,,,,,,,Food Preparation Table,1,Wolf Skewer x2; Onion Soup x3; Carrot x4; Mountain Peak Pepper Powder x1,0,$item_feastmountains
+Mead Base: Animal Whispers,item,Material,Mountain,Onion,,,,,,,Mead Ketill,1,Onion x5; Carrot x10; Pungent Pebbles x1,0,$item_meadbasetamer
+Mead base: Berserkir,item,Material,Mountain,Toadstool,Mountain,Toadstool,,,,,Mead Ketill,1,Mushroom x10; Yellow Mushroom x10; Toadstool x1,0,$item_meadbasebzerker
+Obsidian Arrow,item,Ammo,Mountain,Obsidian,Mountain,Obsidian,,,,,Workbench,3,Wood x8; Obsidian x4; Feathers x2,0,$item_arrow_obsidian
+Onion Soup,item,Consumable,Mountain,Onion,,,,,,,Cauldron,2,Onion x3,0,$item_onionsoup
+Poison Arrow,item,Ammo,Mountain,Obsidian,Mountain,Obsidian,,,,,Workbench,3,Wood x8; Obsidian x4; Feathers x2; Ooze x2,0,$item_arrow_poison
+Scythe,item,TwoHandedWeapon,Mountain,Scythe Handle; Silver,Mountain,Scythe Handle; Silver,,,,,Forge,2,Scythe Handle x1; Silver x6 (+5/upgrade level),0,$item_scythe
+Silver Arrow,item,Ammo,Mountain,Silver,Mountain,Silver,,,,,Forge,3,Wood x8; Silver x1; Feathers x2,0,$item_arrow_silver
+Silver Knife,item,OneHandedWeapon,Mountain,Silver,Mountain,Silver,,,,,Forge,3,Wood x2 (+1/upgrade level); Silver x10 (+5/upgrade level); Leather Scraps x3 (+1/upgrade level); Iron x2 (+1/upgrade level),0,$item_knife_silver
+Silver Shield,item,Shield,Mountain,Silver,Mountain,Silver,,,,,Forge,3,Finewood x10 (+10/upgrade level); Silver x8 (+4/upgrade level),0,$item_shield_silver
+Silver Sword,item,OneHandedWeapon,Mountain,Silver,Mountain,Silver,,,,,Forge,3,Wood x2 (+1/upgrade level); Silver x40 (+20/upgrade level); Leather Scraps x3 (+1/upgrade level); Iron x5 (+3/upgrade level),0,$item_sword_silver
+Wolf Fur Cape,item,Shoulder,Mountain,Silver; Wolf Pelt; Wolf Trophy,Mountain,Silver; Wolf Pelt; Wolf Trophy,,,,,Workbench,2,Wolf Pelt x6 (+4/upgrade level); Silver x4 (+2/upgrade level); Wolf Trophy x1,0,$item_cape_wolf
+Wolf Hide Chestpiece,item,Chest,Mountain,Silver; Wolf Pelt,Mountain,Silver; Wolf Pelt,,,,,Forge,2,Silver x20 (+5/upgrade level); Wolf Pelt x5 (+2/upgrade level); Chain x1,0,$item_chest_wolf
+Wolf Hide Trousers,item,Legs,Mountain,Silver; Wolf Fang; Wolf Pelt,Mountain,Silver; Wolf Fang; Wolf Pelt,,,,,Forge,2,Silver x20 (+5/upgrade level); Wolf Pelt x5 (+2/upgrade level); Wolf Fang x4 (+1/upgrade level),0,$item_legs_wolf
+Wolf Jerky,item,Consumable,Mountain,Wolf Meat,Mountain,Wolf Meat,,,,,Cauldron,3,Wolf Meat x1; Honey x1,0,$item_wolfjerky
+Wolf Sight,item,Trinket,Mountain,Fenring Trophy; Silver; Wolf Fang,Mountain,Fenring Trophy; Silver; Wolf Fang,,,,,Forge,1,Silver x5; Wolf Fang x5; Fenring Trophy x1,0,$item_trinketsilverdamage
+Wolf Skewer,item,Consumable,Mountain,Onion; Wolf Meat,,,,,,,Cauldron,3,Wolf Meat x1; Mushroom x2; Onion x1,0,$item_wolf_skewer
+Wooden Missile,item,AmmoNonEquipable,Mountain,Artisan Table,,,,,,,Artisan Table,1,Corewood x5; Feathers x2,0,$item_turretboltwood
+Artisan Table,piece,Crafting,Mountain,Dragon Tear,,,,,,,(none),,Wood x10; Dragon Tear x2,0,$piece_artisanstation
+Berserkir Mead,piece,Food,Mountain,Berserkir Mead,Mountain,Berserkir Mead,,,,,(none),,Berserkir Mead x1,0,$item_mead_bzerker
+Blast Furnace,piece,Crafting,Mountain,Artisan Table,,,,,,,Artisan Table,,Stone x20; Surtling Core x5; Iron x10; Finewood x20,0,$piece_blastfurnace
+Blue Standing Brazier,piece,Furniture,Mountain,Fenris Claw,,,,,,,Forge,,Bronze x5; Greydwarf Eye x5; Fenris Claw x3,0,$piece_brazierfloor02
+Brew of Animal Whispers,piece,Food,Mountain,Brew of Animal Whispers,,,,,,,(none),,Brew of Animal Whispers x1,0,$item_mead_tamer
+Butcher's Table,piece,Crafting,Mountain,Silver,Mountain,Silver,,,,,Workbench,,Ancient Bark x2; Corewood x4; Finewood x4; Silver x2,0,$piece_cauldron_ext3_butchertable
+Cooked Wolf Meat,piece,Feasts,Mountain,Cooked Wolf Meat,Mountain,Cooked Wolf Meat,,,,,(none),,Cooked Wolf Meat x1,0,$item_wolf_meat_cooked
+Crystal Wall 1x1,piece,Building (stonecutter),Mountain,Crystal,Mountain,Crystal,,,,,Workbench,,Crystal x2,0,$piece_crystalwall1x1
+Dragon Bed,piece,Furniture,Mountain,Wolf Pelt,Mountain,Wolf Pelt,,,,,Workbench,,Finewood x40; Deer Hide x7; Wolf Pelt x4; Feathers x10; Iron Nails x15,0,$piece_bed02
+Eyescream,piece,Feasts,Mountain,Eyescream,Mountain,Eyescream,,,,,(none),,Eyescream x1,0,$item_eyescream
+Hearty Mountain Logger's Stew,piece,Deep North,Mountain,Hearty Mountain Logger's Stew,,,,,,,(none),,Hearty Mountain Logger's Stew x1,0,$item_feastmountains
+Mistletoe,piece,Furniture,Mountain,Red Jute,Mountain,Red Jute,,,,,Workbench,,Finewood x1; Red Jute x1,0,$piece_mistletoe
+Onion,piece,Misc,Mountain,Onion Seeds,,,,,,,(none),,Onion Seeds x1,0,$piece_sapling_onion
+Onion,piece,Feasts,Mountain,Onion,,,,,,,(none),,Onion x1,0,$item_onion
+Onion Soup,piece,Feasts,Mountain,Onion Soup,,,,,,,(none),,Onion Soup x1,0,$item_onionsoup
+Red Jute Carpet,piece,Furniture,Mountain,Red Jute,Mountain,Red Jute,,,,,Workbench,,Red Jute x4,0,$piece_jute_carpet
+Red Jute Curtain,piece,Furniture,Mountain,Red Jute,Mountain,Red Jute,,,,,Workbench,,Red Jute x4; Finewood x1,0,$piece_clothdoor
+Rustic Drawbridge,piece,Building (workbench),Mountain,Silver; Wolf Trophy,Mountain,Silver; Wolf Trophy,,,,,Workbench,,Silver x2; Wolf Trophy x2; Corewood x10,0,$piece_drawbridge_log
+Seed-onion,piece,Misc,Mountain,Onion,,,,,,,(none),,Onion x1,0,$piece_sapling_seedonion
+Silver Stack,piece,Misc,Mountain,Silver,Mountain,Silver,,,,,(none),,Silver x30,0,$piece_silverbarstack
+Spinning Wheel,piece,Crafting,Mountain,Artisan Table,,,,,,,Artisan Table,,Finewood x20; Iron Nails x10; Leather Scraps x5,0,$piece_spinningwheel
+Standing Brazier,piece,Furniture,Mountain,Fenris Claw,,,,,,,Forge,,Bronze x5; Coal x2; Fenris Claw x3,0,$piece_brazierfloor01
+Stone Oven,piece,Crafting,Mountain,Artisan Table,,,,,,,Artisan Table,,Iron x15; Stone x20; Surtling Core x4,0,$piece_oven
+Stone Throne,piece,Furniture,Mountain,Wolf Pelt,Mountain,Wolf Pelt,,,,,Stonecutter,,Stone x20; Deer Hide x2; Wolf Pelt x2,0,$piece_stonethrone
+Toadstool,piece,Feasts,Mountain,Toadstool,Mountain,Toadstool,,,,,(none),,Toadstool x1,0,$item_mushroom_bzerker
+Tool Shelf,piece,Crafting,Mountain,Obsidian,Mountain,Obsidian,,,,,Forge,,Iron x4; Finewood x10; Obsidian x4,0,$piece_workbench_ext4
+Treasure Chest,piece,Misc,Mountain,Silver,,,,,,,Workbench,,Coins x99; Ruby x5; Silver Necklace x2; Finewood x8; Silver x2,0,$piece_chesttreasure
+Windmill,piece,Crafting,Mountain,Artisan Table,,,,,,,Artisan Table,,Stone x20; Wood x30; Iron Nails x30,0,$piece_windmill
+Wolf Jerky,piece,Feasts,Mountain,Wolf Jerky,Mountain,Wolf Jerky,,,,,(none),,Wolf Jerky x1,0,$item_wolfjerky
+Wolf Rug,piece,Furniture,Mountain,Wolf Pelt,Mountain,Wolf Pelt,,,,,Workbench,,Wolf Pelt x4,0,$piece_rug_wolf
+Wolf Skewer,piece,Feasts,Mountain,Wolf Skewer,,,,,,,(none),,Wolf Skewer x1,0,$item_wolf_skewer
+Yule Wreath,piece,Furniture,Mountain,Red Jute,Mountain,Red Jute,,,,,Workbench,,Pine Cone x4; Red Jute x1; Finewood x1,0,$piece_yulecrown
+Silver,smelting,Material,Mountain,Silver Ore,Mountain,Silver Ore,,,,,Smelter,,Silver Ore x1,0,$item_silver
+Bread,cooking,Consumable,Plains,Bread Dough,,,,,,,Stone Oven,,Bread Dough x1,0,$item_bread
+Cooked Chicken Meat,cooking,Consumable,Plains,Chicken Meat,Plains,Chicken Meat,,,,,Cooking Station,,Chicken Meat x1,1,$item_chicken_meat_cooked
+Cooked Lox Meat,cooking,Consumable,Plains,Lox Meat,Plains,Lox Meat,,,,,Iron Cooking Station,,Lox Meat x1,0,$item_loxmeat_cooked
+Frosted Sweetbread,cooking,Consumable,Plains,Unbaked Sweetbread,,,,,,,Stone Oven,,Unbaked Sweetbread x1,0,$item_vikingcupcake
+Lox Meat Pie,cooking,Consumable,Plains,Unbaked Lox Pie,,,,,,,Stone Oven,,Unbaked Lox Pie x1,0,$item_loxpie
+Barley,farming,Crop,Plains,Barley,Plains,Barley,,,,,Cultivator + planting Barley,,Barley x1,0,$item_barley
+Flax,farming,Crop,Plains,Flax,Plains,Flax,,,,,Cultivator + planting Flax,,Flax x1,0,$item_flax
+Anti-Sting Concoction,fermenting,Consumable,Plains,Mead Base: Anti-Sting,Plains,Mead Base: Anti-Sting,,,,,Fermenter,,Mead Base: Anti-Sting x1,0,$item_mead_bugrepellent
+Fire Resistance Barley Wine,fermenting,Consumable,Plains,Barley Wine Base: Fire Resistance,Plains,Barley Wine Base: Fire Resistance,,,,,Fermenter,,Barley Wine Base: Fire Resistance x1,0,$item_barleywine
+Medium Stamina Mead,fermenting,Consumable,Plains,Mead Base: Medium Stamina,Plains,Mead Base: Medium Stamina,,,,,Fermenter,,Mead Base: Medium Stamina x1,0,$item_mead_stamina_medium
+Barley Wine Base: Fire Resistance,item,Material,Plains,Barley; Cloudberries,Plains,Barley; Cloudberries,,,,,Mead Ketill,1,Barley x10; Cloudberries x10,0,$item_barleywinebase
+Black Metal Atgeir,item,TwoHandedWeapon,Plains,Black Metal; Linen Thread,,,,,,,Forge,4,Finewood x10; Black Metal x30 (+15/upgrade level); Linen Thread x5 (+5/upgrade level),0,$item_atgeir_blackmetal
+Black Metal Axe,item,OneHandedWeapon,Plains,Black Metal; Linen Thread,,,,,,,Forge,4,Finewood x6; Black Metal x20 (+10/upgrade level); Linen Thread x5 (+5/upgrade level),0,$item_axe_blackmetal
+Black Metal Battleaxe,item,TwoHandedWeapon,Plains,Black Metal; Linen Thread,,,,,,,Forge,4,Finewood x10; Black Metal x30 (+15/upgrade level); Linen Thread x5 (+5/upgrade level),0,$item_battleaxe_blackmetal
+Black Metal Knife,item,OneHandedWeapon,Plains,Black Metal; Linen Thread,,,,,,,Forge,4,Finewood x4; Black Metal x10 (+4/upgrade level); Linen Thread x5 (+5/upgrade level),0,$item_knife_blackmetal
+Black Metal Missile,item,AmmoNonEquipable,Plains,Black Metal,,,,,,,Artisan Table,1,Wood x10; Black Metal x1,0,$item_turretbolt
+Black Metal Shield,item,Shield,Plains,Black Metal,,,,,,,Forge,3,Finewood x10 (+10/upgrade level); Black Metal x8 (+4/upgrade level); Chain x5 (+2/upgrade level),0,$item_shield_blackmetal
+Black Metal Sword,item,OneHandedWeapon,Plains,Black Metal; Linen Thread,,,,,,,Forge,4,Finewood x2; Black Metal x20 (+10/upgrade level); Linen Thread x5 (+5/upgrade level),0,$item_sword_blackmetal
+Black Metal Tower Shield,item,Shield,Plains,Black Metal,,,,,,,Forge,3,Finewood x15 (+10/upgrade level); Black Metal x10 (+4/upgrade level); Chain x7 (+2/upgrade level),0,$item_shield_blackmetal_tower
+Blob Bomb: Tar,item,OneHandedWeapon,Plains,Growth Trophy; Tar,Plains,Growth Trophy; Tar,,,,,Workbench,1,Corked Vial x1; Growth Trophy x1; Tar x3,0,$item_bombblob_tar
+Blood Pudding,item,Consumable,Plains,Barley Flour,,,,,,,Cauldron,4,Thistle x2; Bloodbag x2; Barley Flour x4,0,$item_bloodpudding
+Blue Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Blueberries x1,0,$item_fireworkrocket_blue
+Bracelets of the Brave,item,Trinket,Plains,Black Metal; Lox Pelt; Lox Trophy,,,,,,,Forge,1,Black Metal x5; Lox Pelt x5; Lox Trophy x1,0,$item_trinketblackdamagedealth
+Bread Dough,item,Material,Plains,Barley Flour,,,,,,,Food Preparation Table,1,Barley Flour x10,0,$item_breaddough
+Cooked Egg,item,Consumable,Plains,Egg,Plains,Egg,,,,,Cauldron,1,Egg x1,0,$item_egg_cooked
+Cyan Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Greydwarf Eye x1,0,$item_fireworkrocket_cyan
+Evasion Mantle,item,Trinket,Plains,Black Metal; Fuling Berserker Trophy; Linen Thread,,,,,,,Forge,1,Black Metal x5; Fuling Berserker Trophy x1; Linen Thread x10,0,$item_trinketblackdtamina
+Fish Wraps,item,Consumable,Plains,Barley Flour,,,,,,,Cauldron,4,Cooked Fish x2; Barley Flour x4,0,$item_fishwraps
+Green Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Guck x1,0,$item_fireworkrocket_green
+Linen Cape,item,Shoulder,Plains,Linen Thread,,,,,,,Workbench,2,Linen Thread x20 (+4/upgrade level); Silver x1,0,$item_cape_linen
+Lox Cape,item,Shoulder,Plains,Lox Pelt,Plains,Lox Pelt,,,,,Workbench,2,Lox Pelt x6 (+2/upgrade level); Silver x2,0,$item_cape_lox
+Lox Fur Hood,item,Helmet,Plains,Lox Pelt,Plains,Lox Pelt,,,,,Workbench,2,Lox Pelt x4 (+2/upgrade level); Bone Fragments x4 (+2/upgrade level); Writhan Roots x2 (+1/upgrade level),0,$item_helmet_lox
+Lox Fur Jacket,item,Chest,Plains,Lox Pelt,Plains,Lox Pelt,,,,,Workbench,2,Lox Pelt x5 (+6/upgrade level); Bone Fragments x8 (+4/upgrade level); Root x2 (+1/upgrade level),0,$item_chest_lox
+Lox Fur Trousers,item,Legs,Plains,Lox Pelt,Plains,Lox Pelt,,,,,Workbench,2,Lox Pelt x5 (+3/upgrade level); Bone Fragments x8 (+4/upgrade level); Root x2 (+1/upgrade level),0,$item_legs_lox
+Lox Saddle,item,Misc,Plains,Black Metal; Linen Thread,,,,,,,Workbench,1,Leather Scraps x10; Linen Thread x20; Black Metal x15,0,$item_saddlelox
+Mead Base: Anti-Sting,item,Material,Plains,Cloudberries; Grouper,Plains,Cloudberries; Grouper,,,,,Mead Ketill,1,Cloudberries x10; Grouper x3; Fragrant Bundle x1,0,$item_meadbasebugrepellent
+Mead Base: Medium Stamina,item,Material,Plains,Cloudberries,Plains,Cloudberries,,,,,Mead Ketill,1,Honey x10; Cloudberries x10; Yellow Mushroom x10,0,$item_meadbasestamina_medium
+Misty Fishing Bait,item,Ammo,Plains,Lox Trophy,Plains,Lox Trophy,,,,,Food Preparation Table,1,Fishing Bait x20; Lox Trophy x1,0,$item_fishingbait_mistlands
+Needle Arrow,item,Ammo,Plains,Needle,Plains,Needle,,,,,Workbench,4,Needle x4; Feathers x2,0,$item_arrow_needle
+Padded Cuirass,item,Chest,Plains,Linen Thread,,,,,,,Forge,2,Iron x10 (+3/upgrade level); Linen Thread x20 (+10/upgrade level),0,$item_chest_pcuirass
+Padded Greaves,item,Legs,Plains,Linen Thread,,,,,,,Forge,2,Iron x10 (+3/upgrade level); Linen Thread x20 (+10/upgrade level),0,$item_legs_pgreaves
+Padded Helmet,item,Helmet,Plains,Linen Thread,,,,,,,Forge,1,Iron x10 (+5/upgrade level); Linen Thread x15 (+10/upgrade level),0,$item_helmet_padded
+Plains Pie Picnic,item,Material,Plains,Bread; Cloudberries; Grasslands Herbalist Harvest; Lox Meat Pie,,,,,,,Food Preparation Table,1,Bread x3; Lox Meat Pie x2; Cloudberries x5; Grasslands Herbalist Harvest x1,0,$item_feastplains
+Porcupine,item,OneHandedWeapon,Plains,Linen Thread; Needle,,,,,,,Forge,4,Finewood x5; Iron x20 (+2/upgrade level); Needle x5 (+2/upgrade level); Linen Thread x10,0,$item_mace_needle
+Purple Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Turnip x1,0,$item_fireworkrocket_purple
+Red Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Raspberries x1,0,$item_fireworkrocket_red
+Stingy Fishing Bait,item,Ammo,Plains,Fuling Trophy,Plains,Fuling Trophy,,,,,Food Preparation Table,1,Fishing Bait x20; Fuling Trophy x1,0,$item_fishingbait_plains
+Unbaked Lox Pie,item,Material,Plains,Barley Flour; Cloudberries; Lox Meat,,,,,,,Food Preparation Table,1,Cloudberries x2; Lox Meat x2; Barley Flour x4,0,$item_loxpie_uncooked
+Unbaked Sweetbread,item,Material,Plains,Barley Flour; Cloudberries; Egg,,,,,,,Food Preparation Table,1,Cloudberries x2; Egg x1; Barley Flour x1; Honey x1,0,$item_vikingcupcake_uncooked
+Vilebone Cage,item,Chest,Plains,Linen Thread; Vile Ribcage,,,,,,,Forge,2,Bear Hide x4 (+2/upgrade level); Vile Ribcage x3 (+1/upgrade level); Linen Thread x4 (+1/upgrade level),0,$item_chest_berserker_undead
+Vilebone Drapes,item,Legs,Plains,Linen Thread; Vile Ribcage,,,,,,,Forge,2,Bear Hide x10 (+5/upgrade level); Vile Ribcage x1 (+1/upgrade level); Linen Thread x4 (+1/upgrade level),0,$item_legs_berserker_undead
+Vilebone Maulclaws,item,TwoHandedWeapon,Plains,Black Metal; Linen Thread; Vile Ribcage,,,,,,,Forge,4,Bear Hide x2 (+1/upgrade level); Vile Ribcage x2 (+1/upgrade level); Black Metal x2 (+1/upgrade level); Linen Thread x4 (+2/upgrade level),0,$item_fistweapon_bjorn_undead
+Vilebone Visage,item,Helmet,Plains,Vile Trophy,Plains,Vile Trophy,,,,,Forge,2,Bear Hide x5 (+2/upgrade level); Vile Trophy x1,0,$item_helmet_berserker_undead
+Wisplight,item,Utility,Plains,Wisp,,,,,,,Workbench,1,Silver x1; Wisp x1,0,$item_demister
+Yellow Fireworks,item,Material,Plains,Basic Fireworks,Plains,Basic Fireworks,,,,,Workbench,1,Basic Fireworks x1; Dandelion x1,0,$item_fireworkrocket_yellow
+Anti-Sting Concoction,piece,Food,Plains,Anti-Sting Concoction,Plains,Anti-Sting Concoction,,,,,(none),,Anti-Sting Concoction x1,0,$item_mead_bugrepellent
+Barley,piece,Misc,Plains,Barley,Plains,Barley,,,,,(none),,Barley x1,0,$piece_sapling_barley
+Black Metal Chest,piece,Furniture,Plains,Black Metal; Tar,,,,,,,Workbench,,Wood x10; Tar x2; Black Metal x6,0,$piece_chestblackmetal
+Black Metal Stack,piece,Misc,Plains,Black Metal,,,,,,,(none),,Black Metal x30,0,$piece_blackmetalbarstack
+Blood Pudding,piece,Feasts,Plains,Blood Pudding,,,,,,,(none),,Blood Pudding x1,0,$item_bloodpudding
+"Blue, Red and White Banner",piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Blueberries x2; Raspberries x2; Cloudberries x1,0,$piece_banner06
+Bread,piece,Feasts,Plains,Bread,,,,,,,(none),,Bread x1,0,$item_bread
+Carved Darkwood Divider,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x2; Tar x1,0,$piece_darkwooddecowall
+Cloudberries,piece,Feasts,Plains,Cloudberries,Plains,Cloudberries,,,,,(none),,Cloudberries x1,0,$item_cloudberries
+Cooked Chicken Meat,piece,Feasts,Plains,Cooked Chicken Meat,Plains,Cooked Chicken Meat,,,,,(none),,Cooked Chicken Meat x1,0,$item_chicken_meat_cooked
+Cooked Egg,piece,Feasts,Plains,Cooked Egg,Plains,Cooked Egg,,,,,(none),,Cooked Egg x1,0,$item_egg_cooked
+Cooked Lox Meat,piece,Feasts,Plains,Cooked Lox Meat,Plains,Cooked Lox Meat,,,,,(none),,Cooked Lox Meat x1,0,$item_loxmeat_cooked
+Darkwood Arch,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodarch
+Darkwood Beam 2 m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam
+Darkwood Beam 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam_26
+Darkwood Beam 4 m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x4; Tar x1,0,$piece_darkwoodbeam4
+Darkwood Beam 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam_45
+Darkwood Chair,piece,Furniture,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x4; Tar x1; Iron Nails x5; Deer Hide x1,0,$piece_darkwoodchair
+Darkwood Gate,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Forge,,Wood x16; Iron x4; Tar x2,0,$piece_darkwoodgate
+Darkwood Pole 2m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodpole
+Darkwood Pole 4m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x4; Tar x1,0,$piece_darkwoodpole4
+Fire Resistance Barley Wine,piece,Food,Plains,Fire Resistance Barley Wine,Plains,Fire Resistance Barley Wine,,,,,(none),,Fire Resistance Barley Wine x1,0,$item_barleywine
+Fish Wraps,piece,Feasts,Plains,Fish Wraps,,,,,,,(none),,Fish Wraps x1,0,$item_fishwraps
+Flax,piece,Misc,Plains,Flax,Plains,Flax,,,,,(none),,Flax x1,0,$piece_sapling_flax
+Frosted Sweetbread,piece,Feasts,Plains,Frosted Sweetbread,,,,,,,(none),,Frosted Sweetbread x1,0,$item_vikingcupcake
+Hot Tub,piece,Furniture,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x20; Tar x6; Iron x10; Stone x8,0,$piece_bathtub
+Long Heavy Table,piece,Furniture,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x20; Tar x2; Iron Nails x20,0,$piece_table_oak
+Lox Meat Pie,piece,Feasts,Plains,Lox Meat Pie,,,,,,,(none),,Lox Meat Pie x1,0,$item_loxpie
+Lox Rug,piece,Furniture,Plains,Lox Pelt,Plains,Lox Pelt,,,,,Workbench,,Lox Pelt x4,0,$piece_rug_lox
+Medium Stamina Mead,piece,Food,Plains,Medium Stamina Mead,Plains,Medium Stamina Mead,,,,,(none),,Medium Stamina Mead x1,0,$item_mead_stamina_medium
+Orange Banner,piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Carrot x2; Cloudberries x3,0,$piece_banner10
+Plains Pie Picnic,piece,Deep North,Plains,Plains Pie Picnic,,,,,,,(none),,Plains Pie Picnic x1,0,$item_feastplains
+Pots and Pans,piece,Crafting,Plains,Black Metal,,,,,,,Workbench,,Iron x5; Copper x5; Black Metal x5; Finewood x10,0,$piece_cauldron_ext4_pans
+Raven Adornment,piece,Misc,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x10; Tar x1,0,$piece_darkwoodraven
+Rotten Meat,piece,Feasts,Plains,Rotten Meat,Plains,Rotten Meat,,,,,(none),,Rotten Meat x1,0,$item_meat_rotten
+Round Table,piece,Furniture,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x10; Tar x2; Iron Nails x20,0,$piece_table_round
+Shingle Roof 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroof26
+Shingle Roof 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroof45
+Shingle Roof 67°,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroof67
+Shingle Roof Inner Corner 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooficorner
+Shingle Roof Inner Corner 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooficorner45
+Shingle Roof Inner Corner 67°,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooficorner67
+Shingle Roof Outer Corner 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroofocorner
+Shingle Roof Outer Corner 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroofocorner45
+Shingle Roof Outer Corner 67°,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodroofocorner67
+Shingle Roof Ridge 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooftop
+Shingle Roof Ridge 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooftop45
+Shingle Roof Ridge 67°,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodrooftop67
+Straw,piece,Furniture,Plains,Barley; Flax,Plains,Barley; Flax,,,,,Workbench,,Barley x1; Flax x1,0,$piece_rug_straw
+White Banner,piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Coal x2; Cloudberries x4,0,$piece_banner11
+White and Blue Striped Banner,piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Blueberries x2; Cloudberries x3,0,$piece_banner07
+Wisp Fountain,piece,Crafting,Plains,Torn Spirit,,,,,,,Stonecutter,,Stone x10; Torn Spirit x1,0,$piece_wisplure
+Wolf Adornment,piece,Misc,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x10; Tar x1,0,$piece_darkwoodwolf
+piece_darkwoodbeam67,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam67
+Barley Flour,smelting,Misc,Plains,Barley,,,,,,,Windmill,,Barley x1,0,$item_barleyflour
+Black Metal,smelting,Material,Plains,Black Metal Scrap,,,,,,,Blast Furnace,,Black Metal Scrap x1,0,$item_blackmetal
+Linen Thread,smelting,Material,Plains,Flax,,,,,,,Spinning Wheel,,Flax x1,0,$item_linenthread
+Cooked Hare Meat,cooking,Consumable,Mistlands,Hare Meat,Mistlands,Hare Meat,,,,,Cooking Station,,Hare Meat x1,1,$item_hare_meat_cooked
+Cooked Seeker Meat,cooking,Consumable,Mistlands,Seeker Meat,Mistlands,Seeker Meat,,,,,Iron Cooking Station,,Seeker Meat x1,0,$item_bug_meat_cooked
+Fish 'n' Bread,cooking,Consumable,Mistlands,Uncooked Fish 'n' Bread,,,,,,,Stone Oven,,Uncooked Fish 'n' Bread x1,0,$item_fishandbread
+Honey Glazed Chicken,cooking,Consumable,Mistlands,Uncooked Honey Glazed Chicken,,,,,,,Stone Oven,,Uncooked Honey Glazed Chicken x1,0,$item_honeyglazedchicken
+Meat Platter,cooking,Consumable,Mistlands,Uncooked Meat Platter,,,,,,,Stone Oven,,Uncooked Meat Platter x1,0,$item_meatplatter
+Misthare Supreme,cooking,Consumable,Mistlands,Uncooked Misthare Supreme,,,,,,,Stone Oven,,Uncooked Misthare Supreme x1,0,$item_mistharesupreme
+Stuffed Mushroom,cooking,Consumable,Mistlands,Uncooked Stuffed Mushroom,,,,,,,Stone Oven,,Uncooked Stuffed Mushroom x1,0,$item_magicallystuffedmushroom
+Jotun Puffs,farming,Crop,Mistlands,Jotun Puffs,Mistlands,Jotun Puffs,,,,,Cultivator + planting Jotun Puffs,,Jotun Puffs x1,1,$item_jotunpuffs
+Magecap,farming,Crop,Mistlands,Magecap,Mistlands,Magecap,,,,,Cultivator + planting Magecap,,Magecap x1,1,$item_magecap
+Lightfoot Mead,fermenting,Consumable,Mistlands,Mead Base: Lightfoot,Mistlands,Mead Base: Lightfoot,,,,,Fermenter,,Mead Base: Lightfoot x1,0,$item_mead_lightfoot
+Lingering Eitr Mead,fermenting,Consumable,Mistlands,Mead Base: Lingering Eitr,,,,,,,Fermenter,,Mead Base: Lingering Eitr x1,0,$item_mead_eitr_lingering
+Lingering Stamina Mead,fermenting,Consumable,Mistlands,Mead Base: Lingering Stamina,,,,,,,Fermenter,,Mead Base: Lingering Stamina x1,0,$item_mead_stamina_lingering
+Major Healing Mead,fermenting,Consumable,Mistlands,Mead Base: Major Healing,Mistlands,Mead Base: Major Healing,,,,,Fermenter,,Mead Base: Major Healing x1,0,$item_mead_hp_major
+Minor Eitr Mead,fermenting,Consumable,Mistlands,Mead Base: Minor Eitr,,,,,,,Fermenter,,Mead Base: Minor Eitr x1,0,$item_mead_eitr_minor
+Arbalest,item,Bow,Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,1,Wood x10 (+5/upgrade level); Iron x8 (+4/upgrade level); Root x4 (+1/upgrade level),0,$item_crossbow_arbalest
+Bile Bomb,item,OneHandedWeapon,Mistlands,Bilebag; Sap,,,,,,,Workbench,1,Sap x1; Bilebag x1; Resin x3,0,$item_bilebomb
+Black Metal Bolt,item,Ammo,Mistlands,Black Forge,,,,,,,Black Forge,2,Black Metal x2; Wood x8; Feathers x2,0,$item_bolt_blackmetal
+Black Metal Pickaxe,item,TwoHandedWeapon,Mistlands,Yggdrasil Wood,,,,,,,Forge,2,Yggdrasil Wood x3 (+1/upgrade level); Black Metal x25 (+15/upgrade level),0,$item_pickaxe_blackmetal
+Bone Bolt,item,Ammo,Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,1,Bone Fragments x8; Feathers x2,0,$item_bolt_bone
+Carapace Arrow,item,Ammo,Mistlands,Black Forge; Carapace,Mistlands,Black Forge; Carapace,,,,,Black Forge,1,Carapace x4; Feathers x2; Wood x8,0,$item_arrow_carapace
+Carapace Bolt,item,Ammo,Mistlands,Black Forge; Carapace,Mistlands,Black Forge; Carapace,,,,,Black Forge,1,Carapace x2; Wood x8; Feathers x2,0,$item_bolt_carapace
+Carapace Breastplate,item,Chest,Mistlands,Black Forge; Carapace; Refined Eitr; Scale Hide,,,,,,,Black Forge,1,Carapace x20 (+10/upgrade level); Scale Hide x3 (+1/upgrade level); Iron x5; Refined Eitr x4 (+2/upgrade level),0,$item_chest_carapace
+Carapace Buckler,item,Shield,Mistlands,Black Forge; Carapace; Refined Eitr; Scale Hide,,,,,,,Black Forge,1,Carapace x16 (+8/upgrade level); Scale Hide x3 (+3/upgrade level); Refined Eitr x10 (+3/upgrade level),0,$item_shield_carapacebuckler
+Carapace Greaves,item,Legs,Mistlands,Black Forge; Carapace; Refined Eitr; Scale Hide,,,,,,,Black Forge,1,Carapace x20 (+10/upgrade level); Scale Hide x3 (+1/upgrade level); Iron x5; Refined Eitr x4 (+2/upgrade level),0,$item_legs_carapace
+Carapace Helmet,item,Helmet,Mistlands,Black Forge; Carapace; Mandible; Refined Eitr; Scale Hide,,,,,,,Black Forge,1,Carapace x16 (+8/upgrade level); Scale Hide x3 (+1/upgrade level); Mandible x2; Refined Eitr x4 (+2/upgrade level),0,$item_helmet_carapace
+Carapace Shield,item,Shield,Mistlands,Black Forge; Carapace; Refined Eitr; Scale Hide,,,,,,,Black Forge,1,Carapace x20 (+10/upgrade level); Scale Hide x3 (+3/upgrade level); Refined Eitr x10 (+3/upgrade level),0,$item_shield_carapace
+Carapace Spear,item,OneHandedWeapon,Mistlands,Black Forge; Carapace; Mandible; Yggdrasil Wood,Mistlands,Black Forge; Carapace; Mandible; Yggdrasil Wood,,,,,Black Forge,1,Yggdrasil Wood x10 (+5/upgrade level); Carapace x4 (+4/upgrade level); Mandible x2 (+1/upgrade level),0,$item_spear_carapace
+Ceramic Plate,item,Material,Mistlands,Black Marble,,,,,,,Artisan Table,2,Black Marble x5,0,$item_ceramicplate
+Dead Raiser,item,TwoHandedWeaponLeft,Mistlands,Galdr Table; Refined Eitr,,,,,,,Galdr Table,1,Bone Fragments x10 (+5/upgrade level); Refined Eitr x16 (+8/upgrade level); Skeleton Trophy x4 (+2/upgrade level),0,$item_staffskeleton
+Demolisher,item,TwoHandedWeapon,Mistlands,Black Forge; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Yggdrasil Wood x10 (+2/upgrade level); Iron x20 (+15/upgrade level); Refined Eitr x10 (+2/upgrade level),0,$item_sledge_demolisher
+Dvergr Lantern,item,Torch,Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,1,Bronze x2; Surtling Core x1; Crystal x1,0,$item_lantern
+Eitr-weave Hood,item,Helmet,Mistlands,Galdr Table; Refined Eitr,,,,,,,Galdr Table,1,Linen Thread x16 (+8/upgrade level); Refined Eitr x15 (+5/upgrade level); Iron x2,0,$item_helmet_mage
+Eitr-weave Robe,item,Chest,Mistlands,Galdr Table; Refined Eitr; Scale Hide,,,,,,,Galdr Table,1,Linen Thread x20 (+10/upgrade level); Refined Eitr x20 (+5/upgrade level); Feathers x10; Scale Hide x5,0,$item_chest_mage
+Eitr-weave Trousers,item,Legs,Mistlands,Galdr Table; Refined Eitr; Scale Hide,,,,,,,Galdr Table,1,Linen Thread x20 (+10/upgrade level); Refined Eitr x20 (+5/upgrade level); Scale Hide x10,0,$item_legs_mage
+Feather Cape,item,Shoulder,Mistlands,Galdr Table; Refined Eitr; Scale Hide,,,,,,,Galdr Table,1,Feathers x10 (+2/upgrade level); Scale Hide x5 (+5/upgrade level); Refined Eitr x20 (+3/upgrade level),0,$item_cape_feather
+Grappling Hook,item,Bow,Mistlands,Black Forge; Hook; Mandible; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Yggdrasil Wood x10; Refined Eitr x10; Mandible x4; Hook x1,0,$item_graplinghook
+Himminafl,item,TwoHandedWeapon,Mistlands,Black Forge; Mandible; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Yggdrasil Wood x10; Refined Eitr x15 (+15/upgrade level); Silver x5 (+5/upgrade level); Mandible x2 (+2/upgrade level),0,$item_atgeir_himminafl
+Iron Bolt,item,Ammo,Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,1,Wood x8; Iron x1; Feathers x2,0,$item_bolt_iron
+Jotun Bane,item,OneHandedWeapon,Mistlands,Bilebag; Black Forge; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Yggdrasil Wood x5; Iron x15 (+10/upgrade level); Bilebag x3 (+1/upgrade level); Refined Eitr x10 (+1/upgrade level),0,$item_axe_jotunbane
+Krom,item,TwoHandedWeapon,Mistlands,Black Forge; Scale Hide,Mistlands,Black Forge; Scale Hide,,,,,Black Forge,1,Iron x30 (+15/upgrade level); Bronze x20 (+10/upgrade level); Scale Hide x5 (+5/upgrade level),0,$item_sword_krom
+Mead Base: Lightfoot,item,Material,Mistlands,Magecap; Scale Hide,Mistlands,Magecap; Scale Hide,,,,,Mead Ketill,1,Scale Hide x2; Feathers x5; Magecap x5,0,$item_meadbaselightfoot
+Mead Base: Lingering Eitr,item,Material,Mistlands,Magecap; Sap,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Magecap x10,0,$item_meadbaseeitr_lingering
+Mead Base: Lingering Stamina,item,Material,Mistlands,Jotun Puffs; Sap,,,,,,,Mead Ketill,1,Sap x10; Cloudberries x10; Jotun Puffs x10,0,$item_meadbasestamina_lingering
+Mead Base: Major Healing,item,Material,Mistlands,Blood Clot; Royal Jelly,Mistlands,Blood Clot; Royal Jelly,,,,,Mead Ketill,1,Honey x10; Blood Clot x4; Royal Jelly x5,0,$item_meadbasehealth_major
+Mead Base: Minor Eitr,item,Material,Mistlands,Jotun Puffs; Magecap; Sap,,,,,,,Mead Ketill,1,Honey x10; Sap x5; Jotun Puffs x2; Magecap x5,0,$item_meadbaseeitr
+Mechanical Spring,item,Material,Mistlands,Refined Eitr,,,,,,,Artisan Table,1,Refined Eitr x1; Iron x3,0,$item_mechanicalspring
+Mistwalker,item,OneHandedWeapon,Mistlands,Black Forge; Refined Eitr,,,,,,,Black Forge,1,Finewood x3; Iron x15 (+10/upgrade level); Refined Eitr x10 (+5/upgrade level); Wisp x3 (+1/upgrade level),0,$item_sword_mistwalker
+Mushroom Omelette,item,Consumable,Mistlands,Jotun Puffs,,,,,,,Cauldron,5,Egg x3; Jotun Puffs x3,0,$item_mushroomomelette
+Mushrooms Galore á la Mistlands,item,Material,Mistlands,Cooked Seeker Meat; Herbs of the Hidden Hills; Misthare Supreme; Yggdrasil Porridge,,,,,,,Food Preparation Table,1,Misthare Supreme x1; Cooked Seeker Meat x3; Yggdrasil Porridge x1; Herbs of the Hidden Hills x1,0,$item_feastmistlands
+Pulsating Earrings,item,Trinket,Mistlands,Black Forge; Carapace; Gjall Trophy; Refined Eitr,,,,,,,Black Forge,1,Carapace x5; Refined Eitr x5; Gjall Trophy x1,0,$item_trinketcarapaceeitr
+Resounding Shackle,item,Trinket,Mistlands,Black Forge; Mandible; Refined Eitr; Scale Hide; Seeker Trophy,,,,,,,Black Forge,1,Refined Eitr x5; Scale Hide x5; Mandible x1; Seeker Trophy x1,0,$item_trinketscalestaminadamage
+Salad,item,Consumable,Mistlands,Jotun Puffs,,,,,,,Cauldron,5,Jotun Puffs x3; Onion x3; Cloudberries x3,0,$item_salad
+Sealbreaker,item,Misc,Mistlands,Galdr Table; Sealbreaker Fragment,,,,,,,Galdr Table,1,Sealbreaker Fragment x9,0,$item_dvergrkey
+Seeker Aspic,item,Consumable,Mistlands,Magecap; Royal Jelly; Seeker Meat,,,,,,,Cauldron,5,Seeker Meat x2; Magecap x2; Royal Jelly x2,0,$item_seekeraspic
+Shield Core,item,Material,Mistlands,Black Core; Ceramic Plate,,,,,,,Artisan Table,2,Black Core x1; Surtling Core x1; Ceramic Plate x5,0,$item_shieldcore
+Skoll and Hati,item,TwoHandedWeapon,Mistlands,Black Forge,,,,,,,Black Forge,1,Finewood x4; Iron x10 (+4/upgrade level); Black Metal x10 (+4/upgrade level),0,$item_knife_skollandhati
+Skull Splittur,item,TwoHandedWeapon,Mistlands,Black Forge; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Iron x30 (+15/upgrade level); Yggdrasil Wood x15 (+5/upgrade level); Refined Eitr x10,0,$item_battleaxe_skullsplittur
+Spinesnap,item,Bow,Mistlands,Black Forge; Refined Eitr,,,,,,,Black Forge,1,Finewood x10 (+5/upgrade level); Bone Fragments x40 (+20/upgrade level); Refined Eitr x10,0,$item_bow_snipesnap
+Staff of Embers,item,TwoHandedWeapon,Mistlands,Galdr Table; Refined Eitr; Yggdrasil Wood,,,,,,,Galdr Table,1,Yggdrasil Wood x20 (+10/upgrade level); Surtling Core x4 (+2/upgrade level); Refined Eitr x16 (+8/upgrade level),0,$item_stafffireball
+Staff of Frost,item,TwoHandedWeapon,Mistlands,Galdr Table; Refined Eitr; Yggdrasil Wood,,,,,,,Galdr Table,1,Yggdrasil Wood x20 (+10/upgrade level); Freeze Gland x4 (+2/upgrade level); Refined Eitr x16 (+8/upgrade level),0,$item_stafficeshards
+Staff of Protection,item,TwoHandedWeapon,Mistlands,Blood Clot; Galdr Table; Refined Eitr; Yggdrasil Wood,,,,,,,Galdr Table,1,Yggdrasil Wood x20 (+10/upgrade level); Blood Clot x4 (+2/upgrade level); Refined Eitr x16 (+8/upgrade level),0,$item_staffshield
+Uncooked Fish 'n' Bread,item,Material,Mistlands,Anglerfish,,,,,,,Food Preparation Table,1,Anglerfish x1; Bread Dough x2,0,$item_fishandbreaduncooked
+Uncooked Honey Glazed Chicken,item,Material,Mistlands,Jotun Puffs,Mistlands,Jotun Puffs,,,,,Food Preparation Table,1,Chicken Meat x1; Honey x3; Jotun Puffs x2,0,$item_honeyglazedchickenuncooked
+Uncooked Meat Platter,item,Material,Mistlands,Hare Meat; Seeker Meat,Mistlands,Hare Meat; Seeker Meat,,,,,Food Preparation Table,1,Seeker Meat x1; Lox Meat x1; Hare Meat x1,0,$item_meatplatteruncooked
+Uncooked Misthare Supreme,item,Material,Mistlands,Hare Meat; Jotun Puffs,Mistlands,Hare Meat; Jotun Puffs,,,,,Food Preparation Table,1,Hare Meat x1; Jotun Puffs x3; Carrot x2,0,$item_mistharesupremeuncooked
+Uncooked Stuffed Mushroom,item,Material,Mistlands,Blood Clot; Magecap,Mistlands,Blood Clot; Magecap,,,,,Food Preparation Table,1,Magecap x3; Blood Clot x1; Turnip x2,0,$item_magicallystuffedmushroomuncooked
+Yggdrasil Porridge,item,Consumable,Mistlands,Royal Jelly; Sap,,,,,,,Cauldron,5,Sap x4; Barley x3; Royal Jelly x2,0,$item_yggdrasilporridge
+Artisan Press,piece,Crafting,Mistlands,Black Marble; Majestic Carapace,,,,,,,Artisan Table,,Black Marble x5; Bronze x5; Majestic Carapace x1,0,$piece_artisan_ext1
+Ballista,piece,Misc,Mistlands,Mechanical Spring; Yggdrasil Wood,,,,,,,Workbench,,Black Metal x10; Yggdrasil Wood x10; Mechanical Spring x3,0,$piece_turret
+Black Forge,piece,Crafting,Mistlands,Black Core; Black Marble; Yggdrasil Wood,Mistlands,Black Core; Black Marble; Yggdrasil Wood,,,,,Workbench,,Black Marble x10; Yggdrasil Wood x10; Black Core x5,0,$piece_blackforge
+Black Forge Cooler,piece,Crafting,Mistlands,Black Forge; Black Marble,Mistlands,Black Forge; Black Marble,,,,,Black Forge,,Iron x5; Copper x5; Black Marble x4,0,$piece_blackforge_ext1
+Black Marble 1x1x1,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x2,0,$piece_blackmarble1x1
+Black Marble 2x1x1,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x4,0,$piece_blackmarble2x1x1
+Black Marble 2x2x2,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x8,0,$piece_blackmarble2x2x2
+Black Marble Arch,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x5,0,$piece_blackmarble_arch
+Black Marble Bench,piece,Furniture,Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x6; Copper x3,0,$piece_blackmarble_bench
+Black Marble Column Small,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x2,0,$piece_blackmarble_column_1
+Black Marble Column Wide,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x4,0,$piece_blackmarble_column_2
+Black Marble Cornice,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x5,0,$piece_blackmarble_out1
+Black Marble Cornice Corner,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x6,0,$piece_blackmarble_outcorner
+Black Marble Floor,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x4,0,$piece_blackmarble_floor
+Black Marble Floor Triangle,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x3,0,$piece_blackmarble_floor_triangle
+Black Marble Pile,piece,Misc,Mistlands,Black Marble,Mistlands,Black Marble,,,,,(none),,Black Marble x50,0,$piece_marblepile
+Black Marble Plinth,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x5,0,$piece_blackmarble_base1
+Black Marble Plinth Corner,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x6,0,$piece_blackmarble_basecorner
+Black Marble Quarter Spire,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x2,0,$piece_blackmarble_tip
+Black Marble Stair,piece,Building (stonecutter),Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x8,0,$piece_blackmarble_stair
+Black Marble Table,piece,Furniture,Mistlands,Black Marble,Mistlands,Black Marble,,,,,Stonecutter,,Black Marble x6; Copper x3,0,$piece_blackmarble_table
+Black Marble Throne,piece,Furniture,Mistlands,Black Marble; Scale Hide,Mistlands,Black Marble; Scale Hide,,,,,Stonecutter,,Black Marble x20; Scale Hide x4; Deer Hide x2; Copper x5,0,$piece_blackmarble_throne
+Blue Jute Carpet,piece,Furniture,Mistlands,Blue Jute,Mistlands,Blue Jute,,,,,Workbench,,Blue Jute x4,0,$piece_juteblue_carpet
+Blue Jute Curtain,piece,Furniture,Mistlands,Blue Jute,Mistlands,Blue Jute,,,,,Workbench,,Blue Jute x4; Finewood x1,0,$piece_hanging_cloth_blue2
+Blue Jute Drapes,piece,Furniture,Mistlands,Blue Jute,Mistlands,Blue Jute,,,,,Workbench,,Blue Jute x4; Finewood x1,0,$piece_hanging_cloth_blue1
+Cooked Hare Meat,piece,Feasts,Mistlands,Cooked Hare Meat,Mistlands,Cooked Hare Meat,,,,,(none),,Cooked Hare Meat x1,0,$item_hare_meat_cooked
+Cooked Seeker Meat,piece,Feasts,Mistlands,Cooked Seeker Meat,Mistlands,Cooked Seeker Meat,,,,,(none),,Cooked Seeker Meat x1,0,$item_bug_meat_cooked
+Drakkar,piece,Misc,Mistlands,Ceramic Plate; Yggdrasil Wood,,,,,,,Workbench,,Iron Nails x100; Ceramic Plate x30; Finewood x50; Yggdrasil Wood x25,0,$ship_longship_ashlands
+Dvergr Metal Wall,piece,Building (stonecutter),Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,,Copper x2,0,$piece_dvergr_metal_wall
+Dvergr Pole Lantern,piece,Furniture,Mistlands,Black Forge; Dvergr Lantern,Mistlands,Black Forge; Dvergr Lantern,,,,,Black Forge,,Copper x3; Dvergr Lantern x1; Chain x1,0,$piece_dvergr_lantern_pole
+Dvergr Sharp Stakes,piece,Misc,Mistlands,Black Forge; Yggdrasil Wood,Mistlands,Black Forge; Yggdrasil Wood,,,,,Black Forge,,Yggdrasil Wood x5; Iron x2,0,$piece_dvergr_sharpstakes
+Dvergr Spiral Staircase Left,piece,Building (workbench),Mistlands,Black Forge; Yggdrasil Wood,Mistlands,Black Forge; Yggdrasil Wood,,,,,Black Forge,,Yggdrasil Wood x5; Copper x2,0,$piece_dvergr_spiralstair
+Dvergr Spiral Staircase Right,piece,Building (workbench),Mistlands,Black Forge; Yggdrasil Wood,Mistlands,Black Forge; Yggdrasil Wood,,,,,Black Forge,,Yggdrasil Wood x5; Copper x2,0,$piece_dvergr_spiralstair_right
+Dvergr Stakewall,piece,Misc,Mistlands,Black Forge; Yggdrasil Wood,Mistlands,Black Forge; Yggdrasil Wood,,,,,Black Forge,,Yggdrasil Wood x8; Iron x8,0,$piece_dvergr_stake_wall
+Dvergr Wall Lantern,piece,Furniture,Mistlands,Black Forge; Dvergr Lantern,Mistlands,Black Forge; Dvergr Lantern,,,,,Black Forge,,Copper x2; Dvergr Lantern x1; Chain x1,0,$piece_dvergr_lantern
+Eitr Refinery,piece,Crafting,Mistlands,Black Core; Black Marble; Sap; Yggdrasil Wood,,,,,,,Workbench,,Black Marble x20; Black Metal x5; Yggdrasil Wood x10; Black Core x5; Sap x3,0,$piece_eitrrefinery
+Fish 'n' Bread,piece,Feasts,Mistlands,Fish 'n' Bread,,,,,,,(none),,Fish 'n' Bread x1,0,$item_fishandbread
+Galdr Table,piece,Crafting,Mistlands,Black Core; Refined Eitr; Yggdrasil Wood,,,,,,,Workbench,,Yggdrasil Wood x20; Black Metal x10; Black Core x5; Refined Eitr x5,0,$piece_magetable
+Hare Rug,piece,Furniture,Mistlands,Scale Hide,Mistlands,Scale Hide,,,,,Workbench,,Scale Hide x4,0,$piece_rug_hare
+Hexagonal Gate,piece,Building (workbench),Mistlands,Black Forge; Yggdrasil Wood,Mistlands,Black Forge; Yggdrasil Wood,,,,,Black Forge,,Yggdrasil Wood x8; Copper x8,0,$piece_hexagonalgate
+Honey Glazed Chicken,piece,Feasts,Mistlands,Honey Glazed Chicken,,,,,,,(none),,Honey Glazed Chicken x1,0,$item_honeyglazedchicken
+Jotun Puffs,piece,Misc,Mistlands,Jotun Puffs,Mistlands,Jotun Puffs,,,,,(none),,Jotun Puffs x1,1,$item_jotunpuffs
+Lightfoot Mead,piece,Food,Mistlands,Lightfoot Mead,Mistlands,Lightfoot Mead,,,,,(none),,Lightfoot Mead x1,0,$item_mead_lightfoot
+Lingering Eitr Mead,piece,Food,Mistlands,Lingering Eitr Mead,,,,,,,(none),,Lingering Eitr Mead x1,0,$item_mead_eitr_lingering
+Lingering Stamina Mead,piece,Food,Mistlands,Lingering Stamina Mead,,,,,,,(none),,Lingering Stamina Mead x1,0,$item_mead_stamina_lingering
+Magecap,piece,Misc,Mistlands,Magecap,Mistlands,Magecap,,,,,(none),,Magecap x1,1,$item_magecap
+Major Healing Mead,piece,Food,Mistlands,Major Healing Mead,Mistlands,Major Healing Mead,,,,,(none),,Major Healing Mead x1,0,$item_mead_hp_major
+Meat Platter,piece,Feasts,Mistlands,Meat Platter,,,,,,,(none),,Meat Platter x1,0,$item_meatplatter
+Minor Eitr Mead,piece,Food,Mistlands,Minor Eitr Mead,,,,,,,(none),,Minor Eitr Mead x1,0,$item_mead_eitr_minor
+Misthare Supreme,piece,Feasts,Mistlands,Misthare Supreme,,,,,,,(none),,Misthare Supreme x1,0,$item_mistharesupreme
+Mortar and Pestle,piece,Crafting,Mistlands,Black Marble,Mistlands,Black Marble,,,,,Workbench,,Black Marble x8; Finewood x6; Corewood x4,0,$piece_cauldron_ext5_mortarandpestle
+Mushroom Omelette,piece,Feasts,Mistlands,Mushroom Omelette,,,,,,,(none),,Mushroom Omelette x1,0,$item_mushroomomelette
+Mushrooms Galore á la Mistlands,piece,Deep North,Mistlands,Mushrooms Galore á la Mistlands,,,,,,,(none),,Mushrooms Galore á la Mistlands x1,0,$item_feastmistlands
+Royal Jelly,piece,Feasts,Mistlands,Royal Jelly,Mistlands,Royal Jelly,,,,,(none),,Royal Jelly x1,0,$item_royaljelly
+Rune Table,piece,Crafting,Mistlands,Black Marble; Galdr Table; Refined Eitr; Yggdrasil Wood,,,,,,,Galdr Table,,Black Marble x10; Yggdrasil Wood x5; Refined Eitr x10,0,$piece_magetable_ext
+Salad,piece,Feasts,Mistlands,Salad,,,,,,,(none),,Salad x1,0,$item_salad
+Sap Extractor,piece,Crafting,Mistlands,Dvergr Extractor; Yggdrasil Wood,,,,,,,Workbench,,Yggdrasil Wood x10; Black Metal x5; Dvergr Extractor x1,0,$piece_sapcollector
+Seeker Aspic,piece,Feasts,Mistlands,Seeker Aspic,,,,,,,(none),,Seeker Aspic x1,0,$item_seekeraspic
+Shield Generator,piece,Misc,Mistlands,Shield Core,,,,,,,Workbench,,Iron x5; Copper x5; Shield Core x1,0,$piece_shieldgenerator
+Stuffed Mushroom,piece,Feasts,Mistlands,Stuffed Mushroom,,,,,,,(none),,Stuffed Mushroom x1,0,$item_magicallystuffedmushroom
+Trap,piece,Misc,Mistlands,Mechanical Spring,,,,,,,Workbench,,Black Metal x5; Bronze Nails x10; Mechanical Spring x1,0,$piece_trap
+Unfading Candles,piece,Crafting,Mistlands,Black Marble; Galdr Table; Refined Eitr,,,,,,,Galdr Table,,Black Marble x10; Skeleton Trophy x3; Refined Eitr x10; Resin x15,0,$piece_magetable_ext2
+Vice,piece,Crafting,Mistlands,Black Forge; Mechanical Spring,,,,,,,Black Forge,,Iron x5; Copper x8; Mechanical Spring x2,0,$piece_blackforge_ext2
+Wisp Torch,piece,Furniture,Mistlands,Yggdrasil Wood,,,,,,,(none),,Yggdrasil Wood x1; Wisp x1,0,$piece_groundtorchdemister
+Yggdrasil Porridge,piece,Feasts,Mistlands,Yggdrasil Porridge,,,,,,,(none),,Yggdrasil Porridge x1,0,$item_yggdrasilporridge
+Yggdrasil Wood Stack,piece,Misc,Mistlands,Yggdrasil Wood,Mistlands,Yggdrasil Wood,,,,,(none),,Yggdrasil Wood x50,0,$piece_yggdrasilstack
+Refined Eitr,smelting,Material,Mistlands,Eitr Refinery; Soft Tissue,,,,,,,Eitr Refinery,,Soft Tissue x1,0,$item_eitr
+Cooked Asksvin Tail,cooking,Consumable,Ashlands,Asksvin Tail,Ashlands,Asksvin Tail,,,,,Iron Cooking Station,,Asksvin Tail x1,0,$item_asksvin_meat_cooked
+Cooked Bonemaw Meat,cooking,Consumable,Ashlands,Bonemaw Meat,Ashlands,Bonemaw Meat,,,,,Iron Cooking Station,,Bonemaw Meat x1,0,$item_bonemawmeat_cooked
+Cooked Volture Meat,cooking,Consumable,Ashlands,Volture Meat,Ashlands,Volture Meat,,,,,Iron Cooking Station,,Volture Meat x1,0,$item_volture_meat_cooked
+Piquant Pie,cooking,Consumable,Ashlands,Uncooked Piquant Pie,,,,,,,Stone Oven,,Uncooked Piquant Pie x1,0,$item_piquantpie
+Roasted Crust Pie,cooking,Consumable,Ashlands,Uncooked Roasted Crust Pie,,,,,,,Stone Oven,,Uncooked Roasted Crust Pie x1,0,$item_roastedcrustpie
+Vineberry Seeds,farming,Crop,Ashlands,Vineberry Seeds,Ashlands,Vineberry Seeds,,,,,Cultivator + planting Ashvine,,Vineberry Seeds x1,0,$item_vineberryseeds
+Lingering Healing Mead,fermenting,Consumable,Ashlands,Mead Base: Lingering Health,,,,,,,Fermenter,,Mead Base: Lingering Health x1,0,$item_mead_hp_lingering
+Ash Fang,item,Bow,Ashlands,Ashwood; Bonemaw Tooth; Charred Bone; Flametal,,,,,,,Black Forge,3,Ashwood x10 (+5/upgrade level); Charred Bone x16 (+10/upgrade level); Flametal x5 (+5/upgrade level); Bonemaw Tooth x5 (+5/upgrade level),0,$item_bow_ashlands
+Ashen Cape,item,Shoulder,Ashlands,Asksvin Hide; Flametal; Morgen Sinew,,,,,,,Black Forge,3,Asksvin Hide x6 (+2/upgrade level); Morgen Sinew x2; Flametal x5,0,$item_cape_ash
+Ashlands Gourmet Bowl,item,Material,Ashlands,Cooked Asksvin Tail; Fiery Spice Powder; Scorching Medley,,,,,,,Food Preparation Table,1,Cooked Asksvin Tail x3; Vineberry Cluster x5; Scorching Medley x2; Fiery Spice Powder x1,0,$item_feastashlands
+Asksvin Cloak,item,Shoulder,Ashlands,Asksvin Hide; Morgen Sinew,,,,,,,Galdr Table,2,Asksvin Hide x6 (+2/upgrade level); Morgen Sinew x2,0,$item_cape_asksvin
+Asksvin Saddle,item,Misc,Ashlands,Flametal; Morgen Sinew,,,,,,,Black Forge,2,Flametal x6; Linen Thread x20; Morgen Sinew x4,0,$item_saddleasksvin
+Basalt Bomb,item,OneHandedWeapon,Ashlands,Asksvin Bladder; Asksvin Hide; Proustite Powder,Ashlands,Asksvin Bladder; Asksvin Hide; Proustite Powder,,,,,Workbench,1,Asksvin Hide x1; Asksvin Bladder x1; Proustite Powder x3,0,$item_lavabomb
+Bell,item,Misc,Ashlands,Bell Fragment,Ashlands,Bell Fragment,,,,,Black Forge,1,Bell Fragment x3,0,$item_bell
+Berserkir Axes,item,TwoHandedWeapon,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Charred Bone x15; Flametal x24 (+15/upgrade level); Asksvin Hide x3 (+1/upgrade level),0,$item_axe_berzerkr
+Bleeding Berserkir Axes,item,TwoHandedWeapon,Ashlands,Berserkir Axes; Bloodstone; Flametal,,,,,,,Black Forge,4,Berserkir Axes x1; Flametal x5 (+5/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_axe_berzerkr_blood
+Blob Bomb: Lava,item,OneHandedWeapon,Ashlands,Proustite Powder; Sulfur,Ashlands,Proustite Powder; Sulfur,,,,,Workbench,1,Corked Vial x1; Sulfur x10; Proustite Powder x10,0,$item_bombblob_lava
+Blood Fang,item,Bow,Ashlands,Ash Fang; Bloodstone; Flametal,,,,,,,Black Forge,4,Ash Fang x1; Flametal x5 (+5/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_bow_ashlandsblood
+Bloodgeon,item,OneHandedWeapon,Ashlands,Bloodstone; Flametal; Flametal Mace,,,,,,,Black Forge,4,Flametal Mace x1; Flametal x8 (+8/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_mace_eldner_blood
+Breastplate of Ask,item,Chest,Ashlands,Asksvin Hide,,,,,,,Black Forge,3,Linen Thread x15 (+10/upgrade level); Lox Pelt x4 (+2/upgrade level); Asksvin Hide x10 (+5/upgrade level),0,$item_chest_medium_ashlands
+Brimstone,item,Trinket,Ashlands,Flametal; Molten Core; Morgen Trophy; Sulfur,,,,,,,Black Forge,1,Flametal x5; Sulfur x5; Molten Core x1; Morgen Trophy x1,0,$item_trinketflametalstaminahealth
+Brutal Slayer,item,TwoHandedWeapon,Ashlands,Bloodstone; Flametal; Slayer,,,,,,,Black Forge,4,Slayer x1; Flametal x15 (+15/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_sword_slayer_blood
+Charred Arrow,item,Ammo,Ashlands,Ashwood; Charred Bone,Ashlands,Ashwood; Charred Bone,,,,,Black Forge,1,Charred Bone x4; Feathers x2; Ashwood x8,0,$item_arrow_charred
+Charred Bolt,item,Ammo,Ashlands,Ashwood; Charred Bone,Ashlands,Ashwood; Charred Bone,,,,,Black Forge,1,Charred Bone x2; Ashwood x8; Feathers x2,0,$item_bolt_charred
+Dundr,item,TwoHandedWeapon,Ashlands,Ashwood; Bloodstone; Celestial Feather; Flametal,,,,,,,Galdr Table,2,Ashwood x10 (+5/upgrade level); Flametal x4 (+2/upgrade level); Celestial Feather x3 (+3/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_staff_lightning
+Dyrnwyn,item,OneHandedWeapon,Ashlands,Bloodstone; Dyrnwyn Blade Fragment; Dyrnwyn Hilt Fragment; Dyrnwyn Tip Fragment; Flametal,,,,,,,Black Forge,4,Dyrnwyn Hilt Fragment x1; Dyrnwyn Blade Fragment x1; Dyrnwyn Tip Fragment x1; Flametal x20 (+10/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_sword_dyrnwyn
+Explosive Payload,item,Material,Ashlands,Asksvin Hide; Proustite Powder; Sulfur,Ashlands,Asksvin Hide; Proustite Powder; Sulfur,,,,,Workbench,1,Asksvin Hide x2; Sulfur x2; Proustite Powder x3,0,$item_catapult_ammo
+Fiery Svinstew,item,Consumable,Ashlands,Asksvin Tail; Smoke Puff,,,,,,,Cauldron,5,Asksvin Tail x1; Vineberry Cluster x2; Smoke Puff x1,0,$item_fierysvinstew
+Flametal Breastplate,item,Chest,Ashlands,Asksvin Hide; Charred Bone; Flametal; Morgen Heart,,,,,,,Black Forge,3,Flametal x20 (+10/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x5; Morgen Heart x1,0,$item_chest_flametal
+Flametal Greaves,item,Legs,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Flametal x20 (+10/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x5,0,$item_legs_flametal
+Flametal Helmet,item,Helmet,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Flametal x16 (+8/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x2; Refined Eitr x4 (+2/upgrade level),0,$item_helmet_flametal
+Flametal Mace,item,OneHandedWeapon,Ashlands,Asksvin Hide; Charred Bone; Flametal; Sulfur,,,,,,,Black Forge,3,Charred Bone x10 (+5/upgrade level); Flametal x15 (+8/upgrade level); Sulfur x5 (+3/upgrade level); Asksvin Hide x3 (+2/upgrade level),0,$item_mace_eldner
+Flametal Missile,item,AmmoNonEquipable,Ashlands,Ashwood; Flametal,,,,,,,Artisan Table,1,Ashwood x10; Flametal x1,0,$item_turretbolt_flametal
+Flametal Shield,item,Shield,Ashlands,Ashwood; Asksvin Hide; Flametal,,,,,,,Black Forge,3,Ashwood x10 (+10/upgrade level); Flametal x8 (+4/upgrade level); Asksvin Hide x2 (+2/upgrade level),0,$item_shield_flametal
+Flametal Tower Shield,item,Shield,Ashlands,Ashwood; Asksvin Hide; Flametal,,,,,,,Black Forge,3,Ashwood x15 (+10/upgrade level); Flametal x10 (+4/upgrade level); Asksvin Hide x5 (+2/upgrade level),0,$item_shield_flametal_tower
+Grausten Payload,item,Material,Ashlands,Grausten,Ashlands,Grausten,,,,,Workbench,1,Grausten x10,0,$item_catapult_training_ammo
+Hood of Ask,item,Helmet,Ashlands,Asksvin Hide,,,,,,,Black Forge,3,Linen Thread x15 (+10/upgrade level); Lox Pelt x4 (+2/upgrade level); Asksvin Hide x10 (+5/upgrade level),0,$item_helmet_medium_ashlands
+Hood of Embla,item,Helmet,Ashlands,Asksvin Hide,,,,,,,Galdr Table,2,Linen Thread x16 (+8/upgrade level); Refined Eitr x15 (+5/upgrade level); Asksvin Hide x2,0,$item_helmet_mage_ashlands
+Hot Fishing Bait,item,Ammo,Ashlands,Warrior Trophy,Ashlands,Warrior Trophy,,,,,Food Preparation Table,1,Fishing Bait x20; Warrior Trophy x1,0,$item_fishingbait_ashlands
+Jörmundling,item,Trinket,Ashlands,Bloodstone; Fallen Valkyrie Trophy; Flametal,,,,,,,Black Forge,1,Flametal x5; Refined Eitr x5; Bloodstone x1; Fallen Valkyrie Trophy x1,0,$item_trinketflametaleitr
+Klossen,item,OneHandedWeapon,Ashlands,Flametal; Flametal Mace; Jade,,,,,,,Black Forge,4,Flametal Mace x1; Flametal x8 (+8/upgrade level); Jade x1 (+1/upgrade level),0,$item_mace_eldner_nature
+Marinated Greens,item,Consumable,Ashlands,Fiddlehead; Smoke Puff,,,,,,,Cauldron,6,Sap x3; Magecap x2; Fiddlehead x2; Smoke Puff x2,0,$item_marinatedgreens
+Mashed Meat,item,Consumable,Ashlands,Asksvin Tail; Fiddlehead; Volture Meat,,,,,,,Cauldron,6,Asksvin Tail x1; Volture Meat x1; Fiddlehead x1,0,$item_mashedmeat
+Mead Base: Lingering Health,item,Material,Ashlands,Smoke Puff,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Smoke Puff x10,0,$item_meadbasehealth_lingering
+Nidhögg,item,OneHandedWeapon,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Charred Bone x3; Flametal x12 (+10/upgrade level); Asksvin Hide x2 (+2/upgrade level),0,$item_sword_niedhogg
+Nidhögg the Bleeding,item,OneHandedWeapon,Ashlands,Bloodstone; Flametal; Nidhögg,,,,,,,Black Forge,4,Nidhögg x1; Flametal x6 (+6/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_sword_niedhogg_blood
+Nidhögg the Primal,item,OneHandedWeapon,Ashlands,Flametal; Jade; Nidhögg,,,,,,,Black Forge,4,Nidhögg x1; Flametal x6 (+6/upgrade level); Jade x1 (+1/upgrade level),0,$item_sword_niedhogg_nature
+Nidhögg the Thundering,item,OneHandedWeapon,Ashlands,Flametal; Iolite; Nidhögg,,,,,,,Black Forge,4,Nidhögg x1; Flametal x6 (+6/upgrade level); Iolite x1 (+1/upgrade level),0,$item_sword_niedhogg_lightning
+Primal Berserkir Axes,item,TwoHandedWeapon,Ashlands,Berserkir Axes; Flametal; Jade,,,,,,,Black Forge,4,Berserkir Axes x1; Flametal x5 (+5/upgrade level); Jade x1 (+1/upgrade level),0,$item_axe_berzerkr_nature
+Primal Slayer,item,TwoHandedWeapon,Ashlands,Flametal; Jade; Slayer,,,,,,,Black Forge,4,Slayer x1; Flametal x15 (+15/upgrade level); Jade x1 (+1/upgrade level),0,$item_sword_slayer_nature
+Ripper,item,Bow,Ashlands,Ashwood; Bonemaw Tooth; Flametal; Morgen Sinew,,,,,,,Black Forge,3,Ashwood x10 (+5/upgrade level); Flametal x8 (+4/upgrade level); Morgen Sinew x2 (+1/upgrade level); Bonemaw Tooth x4 (+4/upgrade level),0,$item_crossbow_ripper
+Robes of Embla,item,Chest,Ashlands,Asksvin Hide; Flametal,,,,,,,Galdr Table,2,Linen Thread x20 (+10/upgrade level); Refined Eitr x20 (+5/upgrade level); Asksvin Hide x10; Flametal x5 (+2/upgrade level),0,$item_chest_mage_ashlands
+Root Fang,item,Bow,Ashlands,Ash Fang; Flametal; Jade,,,,,,,Black Forge,4,Ash Fang x1; Flametal x5 (+5/upgrade level); Jade x1 (+1/upgrade level),0,$item_bow_ashlandsroot
+Root Ripper,item,Bow,Ashlands,Flametal; Jade; Ripper,,,,,,,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level); Jade x1 (+1/upgrade level),0,$item_crossbow_ripper_nature
+Scorching Medley,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,6,Jotun Puffs x3; Onion x3; Fiddlehead x3,0,$item_scorchingmedley
+Scourging Slayer,item,TwoHandedWeapon,Ashlands,Flametal; Iolite; Slayer,,,,,,,Black Forge,4,Slayer x1; Flametal x15 (+15/upgrade level); Iolite x1 (+1/upgrade level),0,$item_sword_slayer_lightning
+Sizzling Berry Broth,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,5,Sap x3; Fiddlehead x2; Vineberry Cluster x2,0,$item_sizzlingberrybroth
+Slayer,item,TwoHandedWeapon,Ashlands,Asksvin Hide; Flametal; Morgen Sinew,,,,,,,Black Forge,3,Flametal x30 (+15/upgrade level); Asksvin Hide x5 (+5/upgrade level); Morgen Sinew x3 (+3/upgrade level),0,$item_sword_slayer
+Smoke Bomb,item,OneHandedWeapon,Ashlands,Asksvin Bladder; Smoke Puff,Ashlands,Asksvin Bladder; Smoke Puff,,,,,Workbench,1,Smoke Puff x1; Asksvin Bladder x1,0,$item_smokebomb
+Snow Shovel,item,TwoHandedWeapon,Ashlands,Embers; Flametal,,,,,,,Black Forge,3,Finewood x5 (+1/upgrade level); Flametal x4 (+10/upgrade level); Embers x2,0,$item_snowshovel
+Sparkling Shroomshake,item,Consumable,Ashlands,Smoke Puff,,,,,,,Cauldron,6,Sap x4; Vineberry Cluster x2; Smoke Puff x2; Magecap x2,0,$item_sparklingshroomshake
+Spicy Marmalade,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,5,Vineberry Cluster x3; Honey x1; Fiddlehead x1,0,$item_spicymarmalade
+Splitnir,item,OneHandedWeapon,Ashlands,Ashwood; Asksvin Hide; Bonemaw Tooth; Flametal,,,,,,,Black Forge,3,Ashwood x10 (+5/upgrade level); Flametal x6 (+6/upgrade level); Asksvin Hide x2 (+1/upgrade level); Bonemaw Tooth x3 (+3/upgrade level),0,$item_spear_splitner
+Splitnir the Bleeding,item,OneHandedWeapon,Ashlands,Bloodstone; Flametal; Splitnir,,,,,,,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_spear_splitner_blood
+Splitnir the Primal,item,OneHandedWeapon,Ashlands,Flametal; Jade; Splitnir,,,,,,,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Jade x1 (+1/upgrade level),0,$item_spear_splitner_nature
+Splitnir the Storming,item,OneHandedWeapon,Ashlands,Flametal; Iolite; Splitnir,,,,,,,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Iolite x1 (+1/upgrade level),0,$item_spear_splitner_lightning
+Staff of Fracturing,item,TwoHandedWeapon,Ashlands,Ashwood; Charred Bone; Proustite Powder,,,,,,,Galdr Table,2,Charred Bone x15 (+5/upgrade level); Ashwood x5 (+3/upgrade level); Proustite Powder x8 (+1/upgrade level),0,$item_staffclusterbomb
+Staff of the Wild,item,TwoHandedWeapon,Ashlands,Ashwood; Celestial Feather; Fiddlehead; Jade,,,,,,,Galdr Table,2,Ashwood x15 (+5/upgrade level); Fiddlehead x10 (+2/upgrade level); Celestial Feather x3 (+3/upgrade level); Jade x1 (+1/upgrade level),0,$item_staffgreenroots
+Storm Fang,item,Bow,Ashlands,Ash Fang; Flametal; Iolite,,,,,,,Black Forge,4,Ash Fang x1; Flametal x5 (+5/upgrade level); Iolite x1 (+1/upgrade level),0,$item_bow_ashlandsstorm
+Storm Ripper,item,Bow,Ashlands,Flametal; Iolite; Ripper,,,,,,,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level); Iolite x1 (+1/upgrade level),0,$item_crossbow_ripper_lightning
+Storm Star,item,OneHandedWeapon,Ashlands,Flametal; Flametal Mace; Iolite,,,,,,,Black Forge,4,Flametal Mace x1; Flametal x8 (+8/upgrade level); Iolite x1 (+1/upgrade level),0,$item_mace_eldner_lightning
+Thundering Berserkir Axes,item,TwoHandedWeapon,Ashlands,Berserkir Axes; Flametal; Iolite,,,,,,,Black Forge,4,Berserkir Axes x1; Flametal x5 (+5/upgrade level); Iolite x1 (+1/upgrade level),0,$item_axe_berzerkr_lightning
+Trollstav,item,TwoHandedWeapon,Ashlands,Bloodstone; Charred Bone; Flametal,,,,,,,Galdr Table,2,Charred Bone x15 (+5/upgrade level); Troll Trophy x1 (+1/upgrade level); Flametal x3 (+3/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_staffredtroll
+Trousers of Ask,item,Legs,Ashlands,Asksvin Hide,,,,,,,Black Forge,3,Linen Thread x15 (+10/upgrade level); Lox Pelt x4 (+2/upgrade level); Asksvin Hide x10 (+5/upgrade level),0,$item_legs_medium_ashlands
+Trousers of Embla,item,Legs,Ashlands,Asksvin Hide,,,,,,,Galdr Table,2,Linen Thread x20 (+10/upgrade level); Refined Eitr x20 (+5/upgrade level); Asksvin Hide x10,0,$item_legs_mage_ashlands
+Uncooked Piquant Pie,item,Material,Ashlands,Asksvin Tail,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Asksvin Tail x2; Barley Flour x4,0,$item_piquantpie_uncooked
+Uncooked Roasted Crust Pie,item,Material,Ashlands,Volture Egg,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Volture Egg x1; Barley Flour x4,0,$item_roastedcrustpie_uncooked
+Wound Ripper,item,Bow,Ashlands,Bloodstone; Flametal; Ripper,,,,,,,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_crossbow_ripper_blood
+Ashlands Gourmet Bowl,piece,Deep North,Ashlands,Ashlands Gourmet Bowl,,,,,,,(none),,Ashlands Gourmet Bowl x1,0,$item_feastashlands
+Ashvine,piece,Misc,Ashlands,Vineberry Seeds,Ashlands,Vineberry Seeds,,,,,(none),,Vineberry Seeds x1,0,$piece_sapling_vineash
+Ashwood Arch,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodarch_big
+Ashwood Arched Wall,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_archedwall
+Ashwood Beam 1 m,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x1,0,$piece_ashwood_beam_1m
+Ashwood Beam 2 m,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_beam_2m
+Ashwood Beam 26°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodbeam26
+Ashwood Beam 45°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodbeam45
+Ashwood Beam 67°,piece,Deep North,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodbeam67
+Ashwood Bed,piece,Furniture,Ashlands,Ashwood; Asksvin Hide,Ashlands,Ashwood; Asksvin Hide,,,,,Workbench,,Ashwood x8; Lox Pelt x2; Asksvin Hide x2,0,$piece_ashwood_bed
+Ashwood Bench,piece,Furniture,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x6,0,$piece_blackwoodbench01
+Ashwood Decorative Floor,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x4,0,$piece_ashwood_floor_deco
+Ashwood Decorative Wall,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x4,0,$piece_ashwood_decowall
+Ashwood Decorative Window,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_decowall_tree
+Ashwood Divider,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_decowall_divider
+Ashwood Door,piece,Building (workbench),Ashlands,Ashwood; Flametal,,,,,,,Workbench,,Flametal x1; Ashwood x5,0,$piece_ashwood_door
+Ashwood Floor 1x1,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x1,0,$piece_ashwood_floor_1x1
+Ashwood Floor 2x2,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_floor_2x2
+Ashwood Half Wall,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x1,0,$piece_ashwood_halfwall
+Ashwood Pole 1 m,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x1,0,$piece_ashwood_pole_1m
+Ashwood Pole 2 m,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_pole_2m
+Ashwood Quarter Wall,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x1,0,$piece_ashwood_quarterwall
+Ashwood Roof Cross 26°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodcross26
+Ashwood Roof Cross 45°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodcross45
+Ashwood Roof Cross 67°,piece,Deep North,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallrooftop67
+Ashwood Stack,piece,Misc,Ashlands,Ashwood,Ashlands,Ashwood,,,,,(none),,Ashwood x50,0,$piece_blackwoodstack
+Ashwood Stair,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodstair
+Ashwood Stakewall,piece,Misc,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x6,0,$piece_BlackwoodStakewall
+Ashwood Wall,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwood_wall
+Ashwood Wall 26°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof_26
+Ashwood Wall 26° (Inverted),piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof_26_upsidedown
+Ashwood Wall 45°,piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof_45
+Ashwood Wall 45° (Inverted),piece,Building (workbench),Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof_45_upsidedown
+Ashwood Wall 67°,piece,Deep North,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof67
+Ashwood Wall 67° (Inverted),piece,Deep North,Ashlands,Ashwood,Ashlands,Ashwood,,,,,Workbench,,Ashwood x2,0,$piece_ashwoodwallroof67upsidedown
+Asksvin Rug,piece,Furniture,Ashlands,Asksvin Hide,Ashlands,Asksvin Hide,,,,,Workbench,,Asksvin Hide x4,0,$piece_rug_asksvin
+Asksvin Skeleton,piece,Furniture,Ashlands,Asksvin Neck; Asksvin Pelvis; Asksvin Ribcage; Asksvin Skull,Ashlands,Asksvin Neck; Asksvin Pelvis; Asksvin Ribcage; Asksvin Skull,,,,,Workbench,,Bone Fragments x50; Asksvin Neck x1; Asksvin Pelvis x1; Asksvin Ribcage x1; Asksvin Skull x1,0,$piece_asksvinskeleton
+Battering Ram,piece,Misc,Ashlands,Ashwood; Flametal,,,,,,,Workbench,,Ashwood x20; Flametal x10; Surtling Core x2,0,$tool_batteringram
+Bone Throne,piece,Furniture,Ashlands,Charred Bone; Charred Skull; Flametal; Grausten,,,,,,,Stonecutter,,Charred Bone x15; Flametal x4; Grausten x20; Charred Skull x3,0,$piece_bone_throne
+Catapult,piece,Misc,Ashlands,Ashwood; Charred Cogwheel; Flametal,,,,,,,Workbench,,Ashwood x20; Flametal x10; Charred Cogwheel x1,0,$tool_catapult
+Cooked Asksvin Tail,piece,Feasts,Ashlands,Cooked Asksvin Tail,Ashlands,Cooked Asksvin Tail,,,,,(none),,Cooked Asksvin Tail x1,0,$item_asksvin_meat_cooked
+Cooked Bonemaw Meat,piece,Feasts,Ashlands,Cooked Bonemaw Meat,Ashlands,Cooked Bonemaw Meat,,,,,(none),,Cooked Bonemaw Meat x1,0,$item_bonemawmeat_cooked
+Cooked Volture Meat,piece,Feasts,Ashlands,Cooked Volture Meat,Ashlands,Cooked Volture Meat,,,,,(none),,Cooked Volture Meat x1,0,$item_volture_meat_cooked
+Eternal Pyre,piece,Crafting,Ashlands,Kindled Ribs,,,,,,,Stonecutter,,Stone x10; Kindled Ribs x1,0,$piece_faderember
+Feathery Wreath,piece,Crafting,Ashlands,Ashwood; Asksvin Trophy; Celestial Feather,,,,,,,Galdr Table,,Celestial Feather x8; Asksvin Trophy x1; Refined Eitr x10; Ashwood x3,0,$piece_magetable_ext3
+Fiddlehead,piece,Feasts,Ashlands,Fiddlehead,Ashlands,Fiddlehead,,,,,(none),,Fiddlehead x1,0,$item_fiddleheadfern
+Fiery Svinstew,piece,Feasts,Ashlands,Fiery Svinstew,,,,,,,(none),,Fiery Svinstew x1,0,$item_fierysvinstew
+Flametal Beam,piece,Building (stonecutter),Ashlands,Flametal,,,,,,,Black Forge,,Flametal x2,0,$piece_flametal_beam
+Flametal Gate,piece,Building (stonecutter),Ashlands,Flametal,,,,,,,Black Forge,,Flametal x16,0,$piece_flametalgate
+Flametal Pillar,piece,Building (stonecutter),Ashlands,Flametal,,,,,,,Black Forge,,Flametal x2,0,$piece_flametal_pillar
+Flametal Stack,piece,Misc,Ashlands,Flametal,,,,,,,(none),,Flametal x30,0,$piece_flametalbarstack
+Gem Cutter,piece,Crafting,Ashlands,Ashwood; Bloodstone; Flametal; Morgen Sinew,,,,,,,Black Forge,,Flametal x5; Ashwood x8; Morgen Sinew x2; Bloodstone x1,0,$piece_blackforge_ext4
+Grausten Arched Roof,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_arch
+Grausten Arched Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_archcorner
+Grausten Arched Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_archcorner2
+Grausten Chest,piece,Deep North,Ashlands,Flametal; Grausten; Warrior Trophy,,,,,,,Workbench,,Grausten x10; Warrior Trophy x5; Flametal x2,0,$piece_chestgrausten
+Grausten Floor 1x1,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x2,0,$piece_grausten_floor1x1
+Grausten Floor 2x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x4,0,$piece_grausten_floor2x2
+Grausten Floor 4x4,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x8,0,$piece_grausten_floor4x4
+Grausten Medium Arch,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x4,0,$piece_grausten_archmedium
+Grausten Medium Beam,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x3,0,$piece_grausten_beammedium
+Grausten Medium Pillar,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x3,0,$piece_grausten_pillarmedium
+Grausten Pile,piece,Misc,Ashlands,Grausten,Ashlands,Grausten,,,,,(none),,Grausten x50,0,$piece_graustenpile
+Grausten Roof,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45
+Grausten Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_corner
+Grausten Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_corner2
+Grausten Small Arch,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x2,0,$piece_grausten_archsmall
+Grausten Small Beam,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x1,0,$piece_grausten_beamsmall
+Grausten Small Pillar,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x1,0,$piece_grausten_pillarsmall
+Grausten Stairs,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x8,0,$piece_grausten_stair
+Grausten Steep Stairs,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_stoneladder
+Grausten Tapered Pillar,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_pillartapered
+Grausten Tapered Pillar (Inverted),piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_pillartaperedinverted
+Grausten Wall 1x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x4,0,$piece_grausten_wall1x2
+Grausten Wall 2x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x6,0,$piece_grausten_wall2x2
+Grausten Wall 4x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x12,0,$piece_grausten_wall4x2
+Grausten Wall Arch,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x2,0,$piece_grausten_wallarch
+Grausten Wall Arch (Inverted),piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x2,0,$piece_grausten_wallarchinv
+Grausten Window 2x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x4,0,$piece_grausten_window2x2
+Grausten Window 4x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x10,0,$piece_grausten_window4x2
+Large Green Pot,piece,Furniture,Ashlands,Charcoal Resin; Pot Shard,Ashlands,Charcoal Resin; Pot Shard,,,,,(none),,Pot Shard x5; Charcoal Resin x1,0,$piece_pot_large_green
+Lava Lantern,piece,Furniture,Ashlands,Flametal; Proustite Powder; Sulfur,,,,,,,Workbench,,Flametal x1; Proustite Powder x1; Sulfur x1,0,$piece_lavalantern
+Lingering Healing Mead,piece,Food,Ashlands,Lingering Healing Mead,,,,,,,(none),,Lingering Healing Mead x1,0,$item_mead_hp_lingering
+Marinated Greens,piece,Feasts,Ashlands,Marinated Greens,,,,,,,(none),,Marinated Greens x1,0,$item_marinatedgreens
+Mashed Meat,piece,Feasts,Ashlands,Mashed Meat,,,,,,,(none),,Mashed Meat x1,0,$item_mashedmeat
+Medium Green Pot,piece,Furniture,Ashlands,Charcoal Resin; Pot Shard,Ashlands,Charcoal Resin; Pot Shard,,,,,(none),,Pot Shard x4; Charcoal Resin x1,0,$piece_pot_medium_green
+Metal Cutter,piece,Crafting,Ashlands,Ashwood; Charred Bone; Flametal,,,,,,,Black Forge,,Black Marble x5; Flametal x5; Ashwood x5; Charred Bone x4,0,$piece_blackforge_ext3
+Pile of Skulls,piece,Misc,Ashlands,Charred Skull,Ashlands,Charred Skull,,,,,(none),,Charred Skull x50,0,$piece_skullpile
+Piquant Pie,piece,Feasts,Ashlands,Piquant Pie,,,,,,,(none),,Piquant Pie x1,0,$item_piquantpie
+Portal – Stone,piece,Misc,Ashlands,Grausten; Molten Core,Ashlands,Grausten; Molten Core,,,,,Stonecutter,,Greydwarf Eye x10; Grausten x30; Molten Core x2,0,$piece_portal_stone
+Roasted Crust Pie,piece,Feasts,Ashlands,Roasted Crust Pie,,,,,,,(none),,Roasted Crust Pie x1,0,$item_roastedcrustpie
+Rolling Pins and Cutting Boards,piece,Crafting,Ashlands,Ashwood; Flametal,,,,,,,Workbench,,Ashwood x8; Finewood x6; Flametal x4,0,$piece_cauldron_ext6_rollingpins
+Scorching Medley,piece,Feasts,Ashlands,Scorching Medley,,,,,,,(none),,Scorching Medley x1,0,$item_scorchingmedley
+Sizzling Berry Broth,piece,Feasts,Ashlands,Sizzling Berry Broth,,,,,,,(none),,Sizzling Berry Broth x1,0,$item_sizzlingberrybroth
+Small Green Pot,piece,Furniture,Ashlands,Charcoal Resin; Pot Shard,Ashlands,Charcoal Resin; Pot Shard,,,,,(none),,Pot Shard x3; Charcoal Resin x1,0,$piece_pot_small_green
+Smoke Puff,piece,Feasts,Ashlands,Smoke Puff,Ashlands,Smoke Puff,,,,,(none),,Smoke Puff x1,0,$item_smokepuff
+Sparkling Shroomshake,piece,Feasts,Ashlands,Sparkling Shroomshake,,,,,,,(none),,Sparkling Shroomshake x1,0,$item_sparklingshroomshake
+Spicy Marmalade,piece,Feasts,Ashlands,Spicy Marmalade,,,,,,,(none),,Spicy Marmalade x1,0,$item_spicymarmalade
+Flametal,smelting,Material,Ashlands,Flametal Ore,,,,,,,Blast Furnace,,Flametal Ore x1,0,$item_flametal
+Baked Poteitr,cooking,Consumable,Deep North,Unbaked Poteitr,,,,,,,Stone Oven,,Unbaked Poteitr x1,0,$item_bakedpoteitr
+Cooked Moose Meat,cooking,Consumable,Deep North,Moose Meat,Deep North,Moose Meat,,,,,Iron Cooking Station,,Moose Meat x1,0,$item_moose_meat_cooked
+Cooked Seal Blubber,cooking,Consumable,Deep North,Seal Blubber,,,,,,,Stone Oven,,Seal Blubber x1,0,$item_blubber_cooked
+Intricate Key,cooking,Misc,Deep North,Cast: Intricate Key; Frost Foundry,,,,,,,Frost Foundry,,Cast: Intricate Key x1,0,$item_bloodgoldkey
+Kale Chips,cooking,Consumable,Deep North,Raw Kale Chips,,,,,,,Stone Oven,,Raw Kale Chips x1,0,$item_kalechips
+Oven Pancake,cooking,Consumable,Deep North,Oven Pancake Batter,,,,,,,Stone Oven,,Oven Pancake Batter x1,0,$item_ovenpancake
+Kale,farming,Crop,Deep North,Kale Seeds,Deep North,Kale Seeds,,,,,Cultivator + planting Kale,,Kale Seeds x1,0,$item_kale
+Kale Seeds,farming,Crop,Deep North,Kale Seeds,Deep North,Kale Seeds,,,,,Cultivator + planting Seed Kale,,Kale Seeds x1,0,$item_kaleseeds
+Oat Seeds,farming,Crop,Deep North,Oat Seeds,Deep North,Oat Seeds,,,,,Cultivator + planting Oat Straw,,Oat Seeds x1,0,$item_oatseeds
+Poteitr,farming,Crop,Deep North,Seed Poteitr,Deep North,Seed Poteitr,,,,,Cultivator + planting Poteitr,,Seed Poteitr x1,0,$item_poteitr
+Seed Poteitr,farming,Crop,Deep North,Seed Poteitr,Deep North,Seed Poteitr,,,,,Cultivator + planting Poteitr,,Seed Poteitr x1,0,$item_poteitrseeds
+Blob Bomb: Pulp,item,OneHandedWeapon,Deep North,Dead Pulp; Pulp Trophy,Deep North,Dead Pulp; Pulp Trophy,,,,,Workbench,1,Corked Vial x1; Pulp Trophy x1; Dead Pulp x3,0,$item_bombblob_morkhalla
+Bloodgold Arrow,item,Ammo,Deep North,Bloodgold; Timberwood,,,,,,,Black Forge,1,Bloodgold x1; Feathers x2; Timberwood x8,0,$item_arrow_bloodgold
+Bloodgold Bolt,item,Ammo,Deep North,Bloodgold; Timberwood,,,,,,,Black Forge,1,Bloodgold x1; Timberwood x8; Feathers x2,0,$item_bolt_bloodgold
+Bloodgold Missile,item,AmmoNonEquipable,Deep North,Bloodgold; Timberwood,,,,,,,Artisan Table,1,Timberwood x10; Bloodgold x1,0,$item_turretbolt_bloodgold
+Bloodgold Payload,item,Material,Deep North,Bloodgold; Ice,,,,,,,Black Forge,1,Ice x2; Bloodgold x2; Proustite Powder x3,0,$item_catapult_bloodgold_ammo
+Breastplate of the Protector,item,Chest,Deep North,Bloodgold; Leather Straps; Moose Hide; Mould: Breastplate of the Protector,,,,,,,Black Forge,4,Bloodgold x20 (+15/upgrade level); Mould: Breastplate of the Protector x1; Moose Hide x8 (+3/upgrade level); Leather Straps x4 (+3/upgrade level),1,$item_chest_heavy_deepnorth
+Cape of the Caller,item,Shoulder,Deep North,Bloodgold; Nornathread; Seal Pelt,,,,,,,Galdr Table,4,Seal Pelt x6 (+3/upgrade level); Nornathread x2 (+1/upgrade level); Bloodgold x5 (+2/upgrade level); Refined Eitr x15 (+5/upgrade level),0,$item_cape_deepnorth_mage
+Cast: Breastplate of the Protector,item,Material,Deep North,Bloodgold; Leather Straps; Moose Hide; Mould: Breastplate of the Protector,,,,,,,Black Forge,4,Bloodgold x20; Mould: Breastplate of the Protector x1; Moose Hide x8; Leather Straps x4,0,$item_chest_heavy_gold_uncooked
+Cast: Chestpiece of the Vanguard,item,Material,Deep North,Bloodgold; Elaking Hair Bundle; Leather Straps; Mould: Chestpiece of the Vanguard,,,,,,,Black Forge,4,Bloodgold x12; Mould: Chestpiece of the Vanguard x1; Elaking Hair Bundle x8; Leather Straps x4,0,$item_chest_medium_gold_uncooked
+Cast: Echo Spike,item,Material,Deep North,Bloodgold; Frostfire Essence; Mould: Echo Spike; Nornathread,,,,,,,Galdr Table,3,Bloodgold x10; Nornathread x4; Frostfire Essence x1; Mould: Echo Spike x1,0,$item_staff_orbofahri_uncooked
+Cast: Headdress of the Caller,item,Material,Deep North,Moose Sinew; Moose Trophy; Mould: Headdress of the Caller; Nornathread,,,,,,,Galdr Table,3,Moose Sinew x2; Mould: Headdress of the Caller x1; Moose Trophy x1; Nornathread x3,0,$item_helmet_mage_gold_uncooked
+Cast: Helmet of the Protector,item,Material,Deep North,Bloodgold; Moose Hide; Mould: Helmet of the Protector,,,,,,,Black Forge,4,Bloodgold x20; Mould: Helmet of the Protector x1; Moose Hide x4,0,$item_helmet_heavy_gold_uncooked
+Cast: Hood of the Vanguard,item,Material,Deep North,Moose Hide; Moose Sinew; Mould: Hood of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Seal Pelt x5; Mould: Hood of the Vanguard x1; Moose Hide x5; Moose Sinew x1,0,$item_helmet_medium_gold_uncooked
+Cast: Intricate Key,item,Material,Deep North,Bloodgold; Mould: Intricate Key,,,,,,,Black Forge,4,Bloodgold x5; Mould: Intricate Key x1,0,$item_keys_gold_uncooked
+Cast: Lightning Strike,item,Material,Deep North,Bloodgold; Mould: Lightning Strike; Nornathread; Thunderblood Essence,,,,,,,Galdr Table,3,Bloodgold x10; Nornathread x5; Thunderblood Essence x1; Mould: Lightning Strike x1,0,$item_staff_thunderblood_uncooked
+Cast: Nord Atgeir,item,Material,Deep North,Bloodgold; Mould: Nord Atgeir; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Atgeir x1; Timberwood x10,0,$item_atgeir_gold_uncooked
+Cast: Nord Axe,item,Material,Deep North,Bloodgold; Mould: Nord Axe; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Axe x1; Timberwood x10,0,$item_axe_gold_uncooked
+Cast: Nord Bow,item,Material,Deep North,Bloodgold; Mould: Nord Bow; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Bow x1; Timberwood x10,0,$item_bow_gold_uncooked
+Cast: Nord Buckler,item,Material,Deep North,Bloodgold; Mould: Nord Buckler; Timberwood,,,,,,,Black Forge,4,Bloodgold x10; Mould: Nord Buckler x1; Timberwood x10,0,$item_shield_buckler_gold_uncooked
+Cast: Nord Crossbow,item,Material,Deep North,Bloodgold; Mould: Nord Crossbow; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Crossbow x1; Timberwood x10,0,$item_crossbow_gold_uncooked
+Cast: Nord Dagger,item,Material,Deep North,Bloodgold; Mould: Nord Dagger; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Dagger x1; Timberwood x10,0,$item_knife_gold_uncooked
+Cast: Nord Greataxe,item,Material,Deep North,Bloodgold; Mould: Nord Greataxe; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Greataxe x1; Timberwood x10,0,$item_battleaxe_gold_uncooked
+Cast: Nord Greatshield,item,Material,Deep North,Bloodgold; Mould: Nord Greatshield; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Greatshield x1; Timberwood x20,0,$item_shield_tower_gold_uncooked
+Cast: Nord Greatsword,item,Material,Deep North,Bloodgold; Frozen Branch; Mould: Nord Greatsword,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Greatsword x1; Frozen Branch x2,0,$item_sword2h_gold_uncooked
+Cast: Nord Knucklechains,item,Material,Deep North,Bloodgold; Long Claws; Mould: Nord Knucklechains,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Knucklechains x1; Long Claws x2,0,$item_fistweapon_gold_uncooked
+Cast: Nord Mace,item,Material,Deep North,Bloodgold; Mould: Nord Mace; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Mace x1; Timberwood x10,0,$item_mace_gold_uncooked
+Cast: Nord Shield,item,Material,Deep North,Bloodgold; Mould: Nord Shield; Timberwood,,,,,,,Black Forge,4,Bloodgold x15; Mould: Nord Shield x1; Timberwood x10,0,$item_shield_round_gold_uncooked
+Cast: Nord Sledge,item,Material,Deep North,Bloodgold; Mould: Nord Sledge; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Sledge x1; Timberwood x10,0,$item_sledge_gold_uncooked
+Cast: Nord Spear,item,Material,Deep North,Bloodgold; Mould: Nord Spear; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Spear x1; Timberwood x10,0,$item_spear_gold_uncooked
+Cast: Nord Sword,item,Material,Deep North,Bloodgold; Mould: Nord Sword; Timberwood,,,,,,,Black Forge,4,Bloodgold x20; Mould: Nord Sword x1; Timberwood x10,0,$item_sword_gold_uncooked
+Cast: Northern Vengeance,item,Material,Deep North,Hexen Trophy; Ice; Mould: Northern Vengeance; Nornathread,,,,,,,Galdr Table,3,Ice x10; Nornathread x5; Hexen Trophy x1; Mould: Northern Vengeance x1,0,$item_frostorbs_uncooked
+Cast: Robes of the Caller,item,Material,Deep North,Bloodgold; Moose Hide; Mould: Robes of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6; Mould: Robes of the Caller x1; Moose Hide x6; Nornathread x5,0,$item_chest_mage_gold_uncooked
+Cast: Spirit Caller,item,Material,Deep North,Frozen Branch; Moose Trophy; Mould: Spirit Caller; Nornathread,,,,,,,Galdr Table,3,Frozen Branch x8; Nornathread x5; Moose Trophy x1; Mould: Spirit Caller x1,0,$item_staff_spiritcaller_uncooked
+Cast: Trousers of the Caller,item,Material,Deep North,Bloodgold; Moose Hide; Mould: Trousers of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6; Mould: Trousers of the Caller x1; Moose Hide x6; Nornathread x5,0,$item_legs_mage_gold_uncooked
+Cast: Trousers of the Protector,item,Material,Deep North,Bloodgold; Leather Straps; Moose Hide; Mould: Trousers of the Protector,,,,,,,Black Forge,4,Bloodgold x20; Mould: Trousers of the Protector x1; Moose Hide x8; Leather Straps x4,0,$item_legs_heavy_gold_uncooked
+Cast: Trousers of the Vanguard,item,Material,Deep North,Bloodgold; Elaking Hair Bundle; Mould: Trousers of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Bloodgold x12; Mould: Trousers of the Vanguard x1; Elaking Hair Bundle x8; Seal Pelt x4,0,$item_legs_medium_gold_uncooked
+Chestpiece of the Vanguard,item,Chest,Deep North,Bloodgold; Elaking Hair Bundle; Leather Straps; Mould: Chestpiece of the Vanguard,,,,,,,Black Forge,4,Bloodgold x12 (+6/upgrade level); Mould: Chestpiece of the Vanguard x1; Elaking Hair Bundle x8 (+4/upgrade level); Leather Straps x4 (+2/upgrade level),1,$item_chest_medium_deepnorth
+Crown of Valheim,item,Helmet,Deep North,Bloodgold; Crown Jewel,,,,,,,Black Forge,4,Bloodgold x5; Crown Jewel x1,0,$item_helmet_crown_of_valheim
+Echo Spike,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nornathread,,,,,,,Galdr Table,3,Bloodgold x10 (+5/upgrade level); Nornathread x4 (+2/upgrade level); Frostfire Essence x1 (+1/upgrade level),1,$item_staff_orbofahri
+Ember Charge,item,OneHandedWeapon,Deep North,Seal Pelt,,,,,,,Workbench,1,Seal Pelt x2; Embers x1,0,$item_bomb_dynamite
+Fish Soup,item,Consumable,Deep North,Ice; Kale,,,,,,,Cauldron,7,Raw Fish x3; Kale x2; Ice x2,0,$item_fishsoup
+Fishing Hat,item,Helmet,Deep North,Northern Salmon,Deep North,Northern Salmon,,,,,Workbench,1,Perch x1 (+1/upgrade level); Pike x1 (+1/upgrade level); Tuna x1 (+1/upgrade level); Tetra x1 (+1/upgrade level); Trollfish x1 (+1/upgrade level); Giant Herring x1 (+1/upgrade level); Grouper x1 (+1/upgrade level); Coral Cod x1 (+1/upgrade level); Anglerfish x1 (+1/upgrade level); Northern Salmon x1 (+1/upgrade level); Magmafish x1 (+1/upgrade level); Pufferfish x1 (+1/upgrade level),0,$item_helmet_fishinghat
+Frostfire Atgeir,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Atgeir,,,,,,,Black Forge,4,Nord Atgeir x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_atgeir_gold_frostfire
+Frostfire Axe,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Axe,,,,,,,Black Forge,4,Nord Axe x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_axe_gold_frostfire
+Frostfire Bow,item,Bow,Deep North,Bloodgold; Frostfire Essence; Nord Bow,,,,,,,Black Forge,4,Nord Bow x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_bow_gold_frostfire
+Frostfire Crossbow,item,Bow,Deep North,Bloodgold; Frostfire Essence; Nord Crossbow,,,,,,,Black Forge,4,Nord Crossbow x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_crossbow_frostfire_gold
+Frostfire Dagger,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Dagger,,,,,,,Black Forge,4,Nord Dagger x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_knife_gold_frostfire
+Frostfire Greataxe,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Greataxe,,,,,,,Black Forge,4,Nord Greataxe x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_axe2h_gold_frostfire
+Frostfire Greatsword,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Greatsword,,,,,,,Black Forge,4,Nord Greatsword x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_sword2h_gold_frostfire
+Frostfire Knucklechains,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Knucklechains,,,,,,,Black Forge,4,Nord Knucklechains x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_fistweapon_frostfire_gold
+Frostfire Mace,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Mace,,,,,,,Black Forge,4,Nord Mace x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_mace_gold_frostfire
+Frostfire Sledge,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Sledge,,,,,,,Black Forge,4,Nord Sledge x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_mace2h_gold_frostfire
+Frostfire Spear,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Spear,,,,,,,Black Forge,4,Nord Spear x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_spear_gold_frostfire
+Frostfire Sword,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Sword,,,,,,,Black Forge,4,Nord Sword x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_sword_gold_frostfire
+Headdress of the Caller,item,Helmet,Deep North,Moose Sinew; Moose Trophy; Mould: Headdress of the Caller; Nornathread,,,,,,,Galdr Table,3,Moose Sinew x2 (+1/upgrade level); Mould: Headdress of the Caller x1; Moose Trophy x1 (+1/upgrade level); Nornathread x3 (+2/upgrade level),1,$item_helmet_mage_deepnorth
+Helmet of the Protector,item,Helmet,Deep North,Bloodgold; Moose Hide; Mould: Helmet of the Protector,,,,,,,Black Forge,4,Bloodgold x20 (+15/upgrade level); Mould: Helmet of the Protector x1; Moose Hide x4 (+3/upgrade level),1,$item_helmet_heavy_deepnorth
+Hood of the Vanguard,item,Helmet,Deep North,Moose Hide; Moose Sinew; Mould: Hood of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Seal Pelt x5 (+3/upgrade level); Mould: Hood of the Vanguard x1; Moose Hide x5 (+3/upgrade level); Moose Sinew x1 (+1/upgrade level),1,$item_helmet_medium_deepnorth
+Lightning Strike,item,TwoHandedWeapon,Deep North,Bloodgold; Nornathread; Thunderblood Essence,,,,,,,Galdr Table,3,Bloodgold x10 (+5/upgrade level); Nornathread x5 (+2/upgrade level); Thunderblood Essence x1 (+1/upgrade level),1,$item_staff_thunderblood
+Lingonberry Juice,item,Consumable,Deep North,Ice; Lingonberries,,,,,,,Cauldron,6,Lingonberries x5; Ice x5,0,$item_lingondricka
+Meat In Bread,item,Consumable,Deep North,Kale; Lingonberries; Moose Meat; Oat Flour,,,,,,,Cauldron,7,Moose Meat x1; Kale x2; Oat Flour x1; Lingonberries x2,0,$item_moosekebab
+Meatballs and Poteitr,item,Consumable,Deep North,Lingonberries; Moose Meat; Poteitr,,,,,,,Cauldron,7,Moose Meat x1; Lingonberries x2; Poteitr x2,0,$item_meatballsmashedpoteitr
+Moose Hide Cape,item,Shoulder,Deep North,Bloodgold; Moose Hide; Moose Sinew,,,,,,,Black Forge,4,Moose Hide x6 (+3/upgrade level); Moose Sinew x2 (+1/upgrade level); Bloodgold x5 (+2/upgrade level),0,$item_cape_deepnorth
+Moose Saddle,item,Misc,Deep North,Bloodgold; Seal Pelt; Timberwood,,,,,,,Black Forge,2,Bloodgold x4; Seal Pelt x5; Timberwood x5; Linen Thread x15,0,$item_saddlemoose
+Neckstabber,item,Trinket,Deep North,Bloodgold; Long Claws; Moose Trophy,,,,,,,Black Forge,1,Bloodgold x5; Long Claws x5; Moose Trophy x1,0,$item_trinketbloodgoldhealth
+Nord Atgeir,item,TwoHandedWeapon,Deep North,Bloodgold; Mould: Nord Atgeir; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Atgeir x1; Timberwood x10 (+5/upgrade level),1,$item_atgeir_gold
+Nord Axe,item,OneHandedWeapon,Deep North,Bloodgold; Mould: Nord Axe; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Axe x1; Timberwood x10 (+5/upgrade level),1,$item_axe_gold
+Nord Bow,item,Bow,Deep North,Bloodgold; Mould: Nord Bow; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Bow x1; Timberwood x10 (+5/upgrade level),1,$item_bow_gold
+Nord Buckler,item,Shield,Deep North,Bloodgold; Mould: Nord Buckler; Timberwood,,,,,,,Black Forge,4,Bloodgold x10 (+5/upgrade level); Mould: Nord Buckler x1; Timberwood x10 (+5/upgrade level),1,$item_shield_goldbuckler
+Nord Crossbow,item,Bow,Deep North,Bloodgold; Mould: Nord Crossbow; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Crossbow x1; Timberwood x10 (+5/upgrade level),1,$item_crossbow_gold
+Nord Dagger,item,OneHandedWeapon,Deep North,Bloodgold; Mould: Nord Dagger; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Dagger x1; Timberwood x10 (+5/upgrade level),1,$item_knife_gold
+Nord Greataxe,item,TwoHandedWeapon,Deep North,Bloodgold; Mould: Nord Greataxe; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Greataxe x1; Timberwood x10 (+5/upgrade level),1,$item_axe2h_gold
+Nord Greatshield,item,Shield,Deep North,Bloodgold; Mould: Nord Greatshield; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Greatshield x1; Timberwood x20 (+10/upgrade level),1,$item_shield_gold_tower
+Nord Greatsword,item,TwoHandedWeapon,Deep North,Bloodgold; Frozen Branch; Mould: Nord Greatsword,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Greatsword x1; Frozen Branch x2 (+1/upgrade level),1,$item_sword2h_gold
+Nord Knucklechains,item,TwoHandedWeapon,Deep North,Bloodgold; Mould: Nord Knucklechains; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Knucklechains x1; Timberwood x10 (+5/upgrade level),1,$item_fistweapon_gold
+Nord Mace,item,OneHandedWeapon,Deep North,Bloodgold; Mould: Nord Mace; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Mace x1; Timberwood x10 (+5/upgrade level),1,$item_mace_gold
+Nord Shield,item,Shield,Deep North,Bloodgold; Mould: Nord Shield; Timberwood,,,,,,,Black Forge,4,Bloodgold x15 (+8/upgrade level); Mould: Nord Shield x1; Timberwood x10 (+5/upgrade level),1,$item_shield_gold
+Nord Sledge,item,TwoHandedWeapon,Deep North,Bloodgold; Mould: Nord Sledge; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Sledge x1; Timberwood x10 (+5/upgrade level),1,$item_sledge_gold
+Nord Spear,item,OneHandedWeapon,Deep North,Bloodgold; Mould: Nord Spear; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Spear x1; Timberwood x10 (+5/upgrade level),1,$item_spear_gold
+Nord Sword,item,OneHandedWeapon,Deep North,Bloodgold; Mould: Nord Sword; Timberwood,,,,,,,Black Forge,4,Bloodgold x20 (+10/upgrade level); Mould: Nord Sword x1; Timberwood x10 (+5/upgrade level),1,$item_sword_gold
+Northern Morning Fare,item,Material,Deep North,Cooked Moose Meat; Oat Flour; Poteitr; Seasoning of the Gourd,,,,,,,Food Preparation Table,1,Cooked Moose Meat x3; Poteitr x5; Oat Flour x2; Seasoning of the Gourd x1,0,$item_feastdeepnorth
+Northern Vengeance,item,TwoHandedWeaponLeft,Deep North,Hexen Trophy; Ice; Nornathread,,,,,,,Galdr Table,3,Ice x10 (+5/upgrade level); Nornathread x5 (+2/upgrade level); Hexen Trophy x1,1,$item_staff_frostorbs
+Oat Milk,item,Consumable,Deep North,Ice; Oats,,,,,,,Mead Ketill,1,Oats x5; Ice x5,0,$item_oatmilk
+Oatmeal,item,Consumable,Deep North,Lingonberries; Oat Milk; Oats,,,,,,,Cauldron,6,Oats x2; Lingonberries x2; Oat Milk x1,0,$item_oatmeallingonberryjam
+Oven Pancake Batter,item,Material,Deep North,Lingonberries; Moose Meat; Oat Flour; Poteitr,,,,,,,Cauldron,6,Moose Meat x1; Poteitr x2; Lingonberries x2; Oat Flour x2,0,$item_ovenpancake_uncooked
+Pancakes,item,Consumable,Deep North,Oat Flour; Oat Milk,,,,,,,Cauldron,6,Oat Milk x1; Oat Flour x2; Egg x2; Blueberries x2,0,$item_pancakes
+Raw Kale Chips,item,Material,Deep North,Kale,,,,,,,Cauldron,6,Kale x12,0,$item_kalechips_uncooked
+Robes of the Caller,item,Chest,Deep North,Bloodgold; Moose Hide; Mould: Robes of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6 (+3/upgrade level); Mould: Robes of the Caller x1; Moose Hide x6 (+3/upgrade level); Nornathread x5 (+3/upgrade level),1,$item_chest_mage_deepnorth
+Seal Meat Soup,item,Consumable,Deep North,Ice; Kale; Seal Blubber,,,,,,,Cauldron,7,Seal Blubber x2; Kale x2; Ice x2,0,$item_sealsoup
+Smoked Fish,item,Consumable,Deep North,Kale; Poteitr,,,,,,,Cauldron,7,Raw Fish x1; Kale x1; Poteitr x1,0,$item_smokedfish
+Smoked Moose Meat,item,Consumable,Deep North,Kale; Moose Meat,,,,,,,Cauldron,7,Moose Meat x1; Kale x2,0,$item_smokedmoosemeat
+Snowball,item,OneHandedWeapon,Deep North,Ice,Deep North,Ice,,,,,(hand / no station),,Ice x5,0,$item_snowball
+Spirit Caller,item,TwoHandedWeaponLeft,Deep North,Frozen Branch; Moose Trophy; Nornathread,,,,,,,Galdr Table,3,Frozen Branch x8 (+4/upgrade level); Nornathread x5 (+2/upgrade level); Moose Trophy x1,1,$item_staff_spiritcaller
+Thunderblood Atgeir,item,TwoHandedWeapon,Deep North,Bloodgold; Nord Atgeir; Thunderblood Essence,,,,,,,Black Forge,4,Nord Atgeir x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_atgeir_gold_bloodlightning
+Thunderblood Axe,item,OneHandedWeapon,Deep North,Bloodgold; Nord Axe; Thunderblood Essence,,,,,,,Black Forge,4,Nord Axe x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_axe_gold_bloodlightning
+Thunderblood Bow,item,Bow,Deep North,Bloodgold; Nord Bow; Thunderblood Essence,,,,,,,Black Forge,4,Nord Bow x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_bow_gold_bloodlightning
+Thunderblood Crossbow,item,Bow,Deep North,Bloodgold; Nord Crossbow; Thunderblood Essence,,,,,,,Black Forge,4,Nord Crossbow x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_crossbow_bloodlightning_gold
+Thunderblood Dagger,item,OneHandedWeapon,Deep North,Bloodgold; Nord Dagger; Thunderblood Essence,,,,,,,Black Forge,4,Nord Dagger x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_knife_gold_bloodlightning
+Thunderblood Greataxe,item,TwoHandedWeapon,Deep North,Bloodgold; Nord Greataxe; Thunderblood Essence,,,,,,,Black Forge,4,Nord Greataxe x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_axe2h_gold_bloodlightning
+Thunderblood Greatsword,item,TwoHandedWeapon,Deep North,Bloodgold; Nord Greatsword; Thunderblood Essence,,,,,,,Black Forge,4,Nord Greatsword x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_sword2h_gold_bloodlightning
+Thunderblood Knucklechains,item,TwoHandedWeapon,Deep North,Bloodgold; Nord Knucklechains; Thunderblood Essence,,,,,,,Black Forge,4,Nord Knucklechains x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_fistweapon_gold_bloodlightning
+Thunderblood Mace,item,OneHandedWeapon,Deep North,Bloodgold; Nord Mace; Thunderblood Essence,,,,,,,Black Forge,4,Nord Mace x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_mace_gold_bloodlightning
+Thunderblood Sledge,item,TwoHandedWeapon,Deep North,Bloodgold; Nord Sledge; Thunderblood Essence,,,,,,,Black Forge,4,Nord Sledge x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_mace2h_gold_bloodlightning
+Thunderblood Spear,item,OneHandedWeapon,Deep North,Bloodgold; Nord Spear; Thunderblood Essence,,,,,,,Black Forge,4,Nord Spear x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_spear_gold_bloodlightning
+Thunderblood Sword,item,OneHandedWeapon,Deep North,Bloodgold; Nord Sword; Thunderblood Essence,,,,,,,Black Forge,4,Nord Sword x1; Bloodgold x20 (+10/upgrade level); Thunderblood Essence x1 (+1/upgrade level),0,$item_sword_gold_bloodlightning
+Trousers of the Caller,item,Legs,Deep North,Bloodgold; Moose Hide; Mould: Trousers of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6 (+3/upgrade level); Mould: Trousers of the Caller x1; Moose Hide x6 (+3/upgrade level); Nornathread x5 (+3/upgrade level),1,$item_legs_mage_deepnorth
+Trousers of the Protector,item,Legs,Deep North,Bloodgold; Leather Straps; Moose Hide; Mould: Trousers of the Protector,,,,,,,Black Forge,4,Bloodgold x20 (+15/upgrade level); Mould: Trousers of the Protector x1; Moose Hide x8 (+3/upgrade level); Leather Straps x4 (+3/upgrade level),1,$item_legs_heavy_deepnorth
+Trousers of the Vanguard,item,Legs,Deep North,Bloodgold; Elaking Hair Bundle; Mould: Trousers of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Bloodgold x12 (+6/upgrade level); Mould: Trousers of the Vanguard x1; Elaking Hair Bundle x8 (+4/upgrade level); Seal Pelt x4 (+2/upgrade level),1,$item_legs_medium_deepnorth
+Unbaked Poteitr,item,Material,Deep North,Kale; Oat Flour; Poteitr; Seal Blubber,,,,,,,Cauldron,7,Seal Blubber x1; Kale x2; Poteitr x1; Oat Flour x2,0,$item_bakedpoteitr_uncooked
+Witch Crown,item,Trinket,Deep North,Bloodgold; Hexen Trophy; Nornathread,,,,,,,Black Forge,1,Bloodgold x5; Nornathread x5; Hexen Trophy x1,0,$item_trinketbloodgoldstamina
+Antler Throne,piece,Furniture,Deep North,Moose Hide; Moose Trophy; Timberwood,Deep North,Moose Hide; Moose Trophy; Timberwood,,,,,Workbench,,Timberwood x15; Moose Trophy x1; Moose Hide x5,0,$piece_moose_throne
+Baked Poteitr,piece,Feasts,Deep North,Baked Poteitr,,,,,,,(none),,Baked Poteitr x1,0,$item_bakedpoteitr
+Bloodgold Stack,piece,Misc,Deep North,Bloodgold,,,,,,,(none),,Bloodgold x30,0,$piece_bloodgoldbarstack
+Carved Bench,piece,Deep North,Deep North,Moose Hide; Timberwood,Deep North,Moose Hide; Timberwood,,,,,Workbench,,Timberwood x6; Moose Hide x1,0,$piece_bench_runed
+Carved Chair,piece,Deep North,Deep North,Moose Sinew; Timberwood,Deep North,Moose Sinew; Timberwood,,,,,Workbench,,Timberwood x4; Moose Sinew x1,0,$piece_chair_runed
+Cooked Moose Meat,piece,Feasts,Deep North,Cooked Moose Meat,Deep North,Cooked Moose Meat,,,,,(none),,Cooked Moose Meat x1,0,$item_moose_meat_cooked
+Cooked Seal Blubber,piece,Feasts,Deep North,Cooked Seal Blubber,,,,,,,(none),,Cooked Seal Blubber x1,0,$item_blubber_cooked
+Decorated Timber Beam 26°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavedecobeam26
+Decorated Timber Beam 2m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stave_deco_beam_2m
+Decorated Timber Beam 45°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavedecobeam45
+Decorated Timber Beam 67°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavedecobeam67
+Decorated Timber Pole 2m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stave_deco_pole_2m
+Fish Soup,piece,Feasts,Deep North,Fish Soup,,,,,,,(none),,Fish Soup x1,0,$item_fishsoup
+Frigid Kiln,piece,Crafting,Deep North,Frostcore; Ice,Deep North,Frostcore; Ice,,,,,Workbench,,Stone x20; Frostcore x10; Ice x5,0,$piece_frostkiln
+Frost Foundry,piece,Crafting,Deep North,Frostcore,Deep North,Frostcore,,,,,Workbench,,Iron x15; Stone x20; Frostcore x10,0,$piece_frostfoundry
+Hooded Lantern,piece,Misc,Deep North,Luminous Larva; Timberwood,Deep North,Luminous Larva; Timberwood,,,,,(none),,Timberwood x3; Luminous Larva x1,0,$piece_hoodedlantern
+Ice Block,piece,Building (stonecutter),Deep North,Ice,Deep North,Ice,,,,,Workbench,,Ice x2,0,$piece_icecube
+Kale,piece,Misc,Deep North,Kale Seeds,Deep North,Kale Seeds,,,,,(none),,Kale Seeds x1,0,$piece_sapling_kale
+Kale,piece,Feasts,Deep North,Kale,Deep North,Kale,,,,,(none),,Kale x1,0,$item_kale
+Kale Chips,piece,Feasts,Deep North,Kale Chips,,,,,,,(none),,Kale Chips x1,0,$item_kalechips
+Lathed Timber Wall,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x4,0,$piece_deco_stave_wall
+Lingonberries,piece,Feasts,Deep North,Lingonberries,Deep North,Lingonberries,,,,,(none),,Lingonberries x1,0,$item_lingonberries
+Lingonberry Juice,piece,Feasts,Deep North,Lingonberry Juice,,,,,,,(none),,Lingonberry Juice x1,0,$item_lingondricka
+Long Carved Table,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x20; Tar x2; Iron Nails x20,0,$piece_table_runed
+Meat In Bread,piece,Feasts,Deep North,Meat In Bread,,,,,,,(none),,Meat In Bread x1,0,$item_moosekebab
+Meatballs and Poteitr,piece,Feasts,Deep North,Meatballs and Poteitr,,,,,,,(none),,Meatballs and Poteitr x1,0,$item_meatballsmashedpoteitr
+Moose Hide Carpet,piece,Furniture,Deep North,Moose Hide,Deep North,Moose Hide,,,,,Workbench,,Moose Hide x4,0,$piece_rug_moose
+Northern Morning Fare,piece,Deep North,Deep North,Northern Morning Fare,,,,,,,(none),,Northern Morning Fare x1,0,$item_feastdeepnorth
+Oat Milk,piece,Feasts,Deep North,Oat Milk,,,,,,,(none),,Oat Milk x1,0,$item_oatmilk
+Oat Straw,piece,Misc,Deep North,Oat Seeds,Deep North,Oat Seeds,,,,,(none),,Oat Seeds x1,0,$piece_sapling_oat
+Oatmeal,piece,Feasts,Deep North,Oatmeal,,,,,,,(none),,Oatmeal x1,0,$item_oatmeallingonberryjam
+Oats,piece,Feasts,Deep North,Oats,,,,,,,(none),,Oats x1,0,$item_oat
+Oven Pancake,piece,Feasts,Deep North,Oven Pancake,,,,,,,(none),,Oven Pancake x1,0,$item_ovenpancake
+Pancakes,piece,Feasts,Deep North,Pancakes,,,,,,,(none),,Pancakes x1,0,$item_pancakes
+Poteitr,piece,Misc,Deep North,Seed Poteitr,Deep North,Seed Poteitr,,,,,(none),,Seed Poteitr x1,0,$piece_sapling_poteitr
+Poteitr,piece,Feasts,Deep North,Poteitr,Deep North,Poteitr,,,,,(none),,Poteitr x1,0,$item_poteitr
+Scalewood Half Wall,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x1,0,$piece_scale_halfwall
+Scalewood Quarter Wall,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x1,0,$piece_scale_quarterwall
+Scalewood Wall,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_wall
+Scalewood Wall 26° Left,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_26
+Scalewood Wall 26° Left (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_26_upsidedown_flipped
+Scalewood Wall 26° Right,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_26_flipped
+Scalewood Wall 26° Right (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_26_upsidedown
+Scalewood Wall 45° Left,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_45
+Scalewood Wall 45° Left (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_45_upsidedown_flipped
+Scalewood Wall 45° Right,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_45_flipped
+Scalewood Wall 45° Right (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_45_upsidedown
+Scalewood Wall 67° Left,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_67
+Scalewood Wall 67° Left (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_67_upsidedown_flipped
+Scalewood Wall 67° Right,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_67_flipped
+Scalewood Wall 67° Right (Inverted),piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_scale_67_upsidedown
+Seal Meat Soup,piece,Feasts,Deep North,Seal Meat Soup,,,,,,,(none),,Seal Meat Soup x1,0,$item_sealsoup
+Sealskin Rug,piece,Deep North,Deep North,Seal Pelt,Deep North,Seal Pelt,,,,,Workbench,,Seal Pelt x4,0,$piece_rug_seal
+Seed Kale,piece,Misc,Deep North,Kale Seeds,Deep North,Kale Seeds,,,,,(none),,Kale Seeds x1,0,$piece_sapling_seedkale
+Smith's Aprons,piece,Crafting,Deep North,Bloodgold; Moose Hide; Timberwood,,,,,,,Black Forge,,Bloodgold x5; Timberwood x8; Moose Hide x2,0,$piece_blackforge_ext5
+Smoked Fish,piece,Feasts,Deep North,Smoked Fish,,,,,,,(none),,Smoked Fish x1,0,$item_smokedfish
+Smoked Moose Meat,piece,Feasts,Deep North,Smoked Moose Meat,,,,,,,(none),,Smoked Moose Meat x1,0,$item_smokedmoosemeat
+Smoker,piece,Crafting,Deep North,Bloodgold; Timberwood,,,,,,,Workbench,,Bloodgold x5; Timberwood x6,0,$piece_cauldron_ext7_smoker
+Snow Lantern,piece,Deep North,Deep North,Snowball,Deep North,Snowball,,,,,Workbench,,Snowball x8,0,$piece_snowlantern
+Square Carved Table,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x6; Tar x1; Iron Nails x6,0,$piece_table_runed_small
+Standing Loom,piece,Crafting,Deep North,Nornathread; Timberwood,,,,,,,Galdr Table,,Timberwood x5; Nornathread x10,0,$piece_magetable_ext4
+Timber Beam 26°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavebeam26
+Timber Beam 2m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavebeam2
+Timber Beam 45°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavebeam45
+Timber Beam 4m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x4,0,$piece_stavebeam4
+Timber Beam 67°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavebeam67
+Timber Pole 2m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stave_pole_2m
+Timber Pole 4m,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x4,0,$piece_stave_pole_4m
+Timber Roof Cross 26°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavecross26
+Timber Roof Cross 45°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavecross45
+Timber Roof Cross 67°,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x2,0,$piece_stavewallrooftop67
+Timber Wall,piece,Deep North,Deep North,Timberwood,Deep North,Timberwood,,,,,Workbench,,Timberwood x4,0,$piece_stave_wall
+Timberwood Drawbridge,piece,Building (workbench),Deep North,Bloodgold; Timberwood,,,,,,,Workbench,,Flametal x2; Bloodgold x2; Timberwood x24,0,$piece_drawbridge_dn
+Timberwood Gate,piece,Building (workbench),Deep North,Bloodgold; Timberwood,,,,,,,Forge,,Timberwood x24; Bloodgold x4,0,$piece_stavegate
+Timberwood Sapling,piece,Misc,Deep North,Timberwood Cone,Deep North,Timberwood Cone,,,,,(none),,Timberwood Cone x1,0,$prop_fir_big_sapling
+Timberwood Stack,piece,Misc,Deep North,Timberwood,Deep North,Timberwood,,,,,(none),,Timberwood x50,0,$piece_woodfroststack
+Wardrobe,piece,Deep North,Deep North,Timberwood,,,,,,,Workbench,,Timberwood x10; Tar x2; Black Metal x6,0,$piece_chestwarderobe
+Bloodgold,smelting,Material,Deep North,Petrified Tissue,,,,,,,Blast Furnace,,Petrified Tissue x1,0,$item_gold
+Oat Flour,smelting,Misc,Deep North,Oats,,,,,,,Windmill,,Oats x1,0,$item_oatflour
+Oats,smelting,Consumable,Deep North,Oat Seeds,,,,,,,Windmill,,Oat Seeds x1,0,$item_oat
