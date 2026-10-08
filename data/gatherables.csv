@@ -1,0 +1,344 @@
+name,item_type,earliest_biome,earliest_biome_direct,all_biomes,found_via,earliest_by_source,example_sources,token
+Fire Arrow,Ammo,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01,$item_arrow_fire
+Flinthead Arrow,Ammo,Meadows,,Meadows; Black Forest; Swamp,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_arrow_flint
+Honey,Consumable,Meadows,Meadows,Meadows; Black Forest,destructible,destructible: Meadows,StoneTowerRuins03; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse13,$item_honey
+Mushroom,Consumable,Meadows,Meadows,Meadows; Black Forest; Swamp,pickable,pickable: Meadows,StartTemple; WoodFarm1; WoodHouse12; pickable_mushroom_meadows_blackforest_swamp,$item_mushroomcommon
+Raspberries,Consumable,Meadows,Meadows,Meadows,pickable,pickable: Meadows,StartTemple; WoodFarm1; raspberrybush_meadows,$item_raspberries
+Perch,Fish,Meadows,Meadows,Meadows; Black Forest; Plains,fishing,fishing: Meadows,Fish1,$animal_fish1
+Pike,Fish,Meadows,Meadows,Meadows; Black Forest; Plains,fishing,fishing: Meadows,Fish2,$animal_fish2
+Acorns,Material,Meadows,Meadows,Meadows,tree,tree: Meadows,oak1_meadows,$item_oakseeds
+Amber,Material,Meadows,,Meadows; Black Forest; Swamp; Mountain,fishing bonus; loot,fishing bonus: Meadows; loot: Meadows,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Crypt2; Crypt3; Crypt4,$item_amber
+Amber Pearl,Material,Meadows,,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Deep North,fishing bonus; loot,fishing bonus: Meadows; loot: Meadows,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Fish2; Grave1; Hildir_plainsfortress,$item_amberpearl
+Beech Seeds,Material,Meadows,Meadows,Meadows,tree,tree: Meadows,beech1_meadows,$item_beechseeds
+Birch Seeds,Material,Meadows,Meadows,Meadows; Plains,tree,tree: Meadows,birch1_aut_plains; birch1_meadows; birch2_aut_heath; birch2_meadows,$item_birchseeds
+Boar Meat,Material,Meadows,Meadows,Meadows,creature,creature: Meadows,Boar; Runestone_Boars; WoodFarm1,$item_boar_meat
+Bone Fragments,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Plains; Ashlands; Deep North,creature; destructible; loot; pickable,creature: Meadows; destructible: Mountain; loot: Black Forest; pickable: Meadows,AbandonedLogCabin03; AbandonedLogCabin04; CharredFortress; Crypt2; Crypt3; Crypt4,$item_bonefragments
+Coins,Material,Meadows,Black Forest,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; fishing bonus; loot; pickable,creature: Black Forest; fishing bonus: Mountain; loot: Meadows; pickable: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; CharredFortress; CharredTowerRuins1_dvergr; Crypt2,$item_coins
+Curious Axe Head,Material,Meadows,,Meadows,loot,loot: Meadows,WoodHouse6,$item_axehead1
+Dandelion,Material,Meadows,Meadows,Meadows; Black Forest; Plains,creature; pickable,creature: Black Forest; pickable: Meadows,GoblinCamp2; Ruin2; StoneTowerRuins03; WoodFarm1; WoodHouse8; greydwarf ELITE,$item_dandelion
+Deer Hide,Material,Meadows,Meadows,Meadows; Black Forest; Plains,creature; destructible; loot,creature: Meadows; destructible: Black Forest; loot: Black Forest,GoblinCamp2; Hildir_plainsfortress; Ruin2; StoneTower1; StoneTower3; TrollCave02,$item_deerhide
+Deer Meat,Material,Meadows,Meadows,Meadows; Black Forest,creature,creature: Meadows,deer,$item_deer_meat
+Feathers,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; loot; tree,creature: Ashlands; destructible: Meadows; loot: Meadows; tree: Meadows,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; Crypt2; Crypt3,$item_feathers
+Finewood,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,destructible; tree,destructible: Black Forest; tree: Meadows,CharredTowerRuins1_dvergr; Hildir_cave; Mistlands_DvergrBossEntrance1; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_finewood
+Flint,Material,Meadows,Meadows,Meadows; Black Forest,destructible; fishing bonus; loot; pickable,destructible: Black Forest; fishing bonus: Meadows; loot: Meadows; pickable: Meadows,Fish2; Ruin2; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11,$item_flint
+Greydwarf Eye,Material,Meadows,Meadows,Meadows; Black Forest; Deep North,creature; destructible,creature: Meadows; destructible: Black Forest,Frozen GD; Frozen GD shaman; Greydwarf Shaman; Ruin1; Ruin2; Runestone_Greydwarfs,$item_greydwarfeye
+Hard Antler,Material,Meadows,,Meadows,boss,boss: Meadows,Eikthyrnir,$item_hardantler
+Leather Scraps,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Deep North,creature; destructible; loot; mining,creature: Meadows; destructible: Black Forest; loot: Black Forest; mining: Swamp,Boar; Hildir_cave; MountainCave02; Ruin2; Runestone_Boars; SunkenCrypt4,$item_leatherscraps
+Mysterious Axe Head,Material,Meadows,,Meadows,loot,loot: Meadows,WoodHouse2,$item_axehead2
+Neck Tail,Material,Meadows,Meadows,Meadows,creature,creature: Meadows,Neck lakes,$item_necktail
+Queen Bee,Material,Meadows,Meadows,Meadows; Black Forest,destructible,destructible: Meadows,StoneTowerRuins03; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse13,$item_queenbee
+Resin,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Plains; Mistlands; Deep North,creature; destructible; tree,creature: Meadows; destructible: Meadows; tree: Meadows,BogWitch_Camp; Frozen GD; Frozen GD shaman; Greydwarf Shaman; Greydwarf_camp1; Greyling,$item_resin
+Rock,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain,pickable,pickable: Meadows,pickable_stonerock_meadows_blackforest_mountain_swamp,$item_stonerock
+Ruby,Material,Meadows,,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Deep North,fishing bonus; loot,fishing bonus: Ocean; loot: Meadows,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Crypt2; Crypt3; Crypt4,$item_ruby
+Silver Necklace,Material,Meadows,Mountain,Meadows; Black Forest; Mountain; Plains; Ashlands; Deep North,destructible; loot; pickable,destructible: Deep North; loot: Meadows; pickable: Mountain,Crypt2; Crypt3; Crypt4; DG_Hole; Hildir_cave; Hildir_crypt,$item_silvernecklace
+Stone,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; fishing bonus; loot; mining; pickable,creature: Meadows; destructible: Meadows; fishing bonus: Meadows; loot: Black Forest; mining: Meadows; pickable: Meadows,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; CharredFortress; Dolmen01; Dolmen02,$item_stone
+Wood,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; loot; pickable; tree,creature: Meadows; destructible: Meadows; loot: Black Forest; pickable: Meadows; tree: Meadows,BogWitch_Camp; CharredTowerRuins1_dvergr; CharredTowerRuins2; Crypt2; Crypt3; Crypt4,$item_wood
+item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name,Material,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12,$item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name,Material,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12,$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name
+Wooden Axe,OneHandedWeapon,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01,$item_axe_wood
+Wooden Knife,OneHandedWeapon,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01,$item_knife_wood
+Wooden Mace,OneHandedWeapon,Meadows,,Meadows,loot,loot: Meadows,WoodVillage1,$item_mace_wood
+Salvaged Lantern,Torch,Meadows,Meadows,Meadows,destructible,destructible: Meadows,Standing Lantern (very rare),$item_lanternDN
+Torch,Torch,Meadows,,Meadows,loot,loot: Meadows,WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12; WoodHouse13,$item_torch
+Boar Trophy,Trophy,Meadows,Meadows,Meadows,creature,creature: Meadows,Boar; Runestone_Boars; WoodFarm1,$item_trophy_boar
+Deer Trophy,Trophy,Meadows,Meadows,Meadows; Black Forest,creature,creature: Meadows,deer,$item_trophy_deer
+Eikthyr Trophy,Trophy,Meadows,,Meadows,boss,boss: Meadows,Eikthyrnir,$item_trophy_eikthyr
+Greydwarf Trophy,Trophy,Meadows,Meadows,Meadows; Black Forest; Deep North,creature,creature: Meadows,Frozen GD; Ruin1; Ruin2; Runestone_Greydwarfs; StoneHouse3; StoneHouse4,$item_trophy_greydwarf
+Neck Trophy,Trophy,Meadows,Meadows,Meadows,creature,creature: Meadows,Neck lakes,$item_trophy_neck
+Skeleton Trophy,Trophy,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Deep North,creature,creature: Meadows,AbandonedLogCabin03; AbandonedLogCabin04; Crypt2; Crypt3; Crypt4; Dolmen01,$item_trophy_skeleton
+Blueberries,Consumable,Black Forest,Black Forest,Black Forest,destructible; pickable,destructible: Black Forest; pickable: Black Forest,Ruin2; blueberrybush_blackforest,$item_blueberries
+Bukeperries,Consumable,Black Forest,Black Forest,Black Forest; Plains; Deep North,creature,creature: Black Forest,Frozen GD shaman; GoblinCamp2; Greydwarf Shaman; Hildir_plainsfortress; Ruin1,$item_pukeberries
+Yellow Mushroom,Consumable,Black Forest,Black Forest,Black Forest; Swamp,pickable,pickable: Black Forest,Crypt2; Crypt3; Crypt4; Hildir_crypt; SunkenCrypt4; TrollCave02,$item_mushroomyellow
+Trollfish,Fish,Black Forest,Black Forest,Black Forest,fishing,fishing: Black Forest,Fish5,$animal_fish5
+Bear Hide,Material,Black Forest,Black Forest,Black Forest; Plains,creature,creature: Black Forest,Bjorn DAY; Unbjorn,$item_bjornhide
+Bear Meat,Material,Black Forest,Black Forest,Black Forest; Plains; Deep North,creature; loot,creature: Black Forest; loot: Deep North,Bjorn DAY; TheHole01; Unbjorn,$item_bjorn_meat
+Bear Paw,Material,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Bjorn DAY,$item_bjornpaw
+Carrot Seeds,Material,Black Forest,Black Forest,Black Forest,fishing bonus; pickable,fishing bonus: Deep North; pickable: Black Forest,Fish10; pickable_seedcarrot_blackforest,$item_carrotseeds
+Coal,Material,Black Forest,Black Forest,Black Forest; Swamp; Mountain; Deep North,creature; destructible,creature: Swamp; destructible: Black Forest,FireHole; Hildir_cave; MountainCave02; Ruin2; TheHole01,$item_coal
+Copper Ore,Material,Black Forest,Black Forest,Black Forest,fishing bonus; mining,fishing bonus: Black Forest; mining: Black Forest,Fish5; rock4_copper_blackforest,$item_copperore
+Corewood,Material,Black Forest,Black Forest,Black Forest; Deep North,destructible; tree,destructible: Deep North; tree: Black Forest,Pinetree_01_blackforest; TheHole01,$item_roundlog
+Ectoplasm,Material,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Crypt2; Crypt3; Crypt4; Hildir_crypt,$item_ectoplasm
+Fir Cone,Material,Black Forest,Black Forest,Black Forest; Mountain; Deep North,destructible; tree,destructible: Black Forest; tree: Black Forest,firtree_blackforest; firtree_mountain; firtree_small_blackforest; firtree_small_mountain; snowfirtree; snowfirtree_sparse,$item_fircone
+Pine Cone,Material,Black Forest,Black Forest,Black Forest; Deep North,tree,tree: Black Forest,Pinetree_01_blackforest; pinetree_snow; pinetree_snow_dead,$item_pinecone
+Surtling Core,Material,Black Forest,Black Forest,Black Forest; Swamp; Mistlands,creature; destructible; fishing bonus; pickable,creature: Swamp; destructible: Mistlands; fishing bonus: Ashlands; pickable: Black Forest,Crypt2; Crypt3; Crypt4; FireHole; Fish11; Hildir_crypt,$item_surtlingcore
+Thistle,Material,Black Forest,Black Forest,Black Forest; Swamp,pickable,pickable: Black Forest,pickable_thistle_swamp_blackforest,$item_thistle
+Tin Ore,Material,Black Forest,Black Forest,Black Forest; Deep North,destructible; fishing bonus,destructible: Black Forest; fishing bonus: Ocean,Fish3; Ruin2; TheHole01; minerock_tin_blackforest,$item_tinore
+Troll Hide,Material,Black Forest,Black Forest,Black Forest,creature; fishing bonus,creature: Black Forest; fishing bonus: Black Forest,Fish5; Troll; TrollCave02,$item_trollhide
+item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name
+Ancient Seed,Misc,Black Forest,Black Forest,Black Forest,creature; destructible,creature: Black Forest; destructible: Black Forest,Greydwarf_camp1; Ruin2; StoneTowerRuins03; greydwarf ELITE,$item_ancientseed
+Hildir's Brass Chest,Misc,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Hildir_crypt,$item_chest_hildir1
+Swamp Key,Misc,Black Forest,,Black Forest,boss,boss: Black Forest,GDKing,$item_cryptkey
+Wooden Spear,OneHandedWeapon,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Ruin1; Ruin2; StoneHouse3; StoneTowerRuins03; StoneTowerRuins07; StoneTowerRuins08,$item_spear_wood
+Bear Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Bjorn DAY,$item_trophy_bjorn
+Brenna Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Hildir_crypt,$item_trophy_skeleton_hildir
+Ghost Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Crypt2; Crypt3; Crypt4; Hildir_crypt,$item_trophy_ghost
+Greydwarf Brute Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Ruin2; StoneTowerRuins03; greydwarf ELITE,$item_trophy_greydwarfbrute
+Greydwarf Shaman Trophy,Trophy,Black Forest,Black Forest,Black Forest; Deep North,creature,creature: Black Forest,Frozen GD shaman; Greydwarf Shaman; Ruin1,$item_trophy_greydwarfshaman
+Rancid Remains Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Crypt2; Crypt3; Crypt4,$item_trophy_skeletonpoison
+The Elder Trophy,Trophy,Black Forest,,Black Forest,boss,boss: Black Forest,GDKing,$item_trophy_elder
+Troll Trophy,Trophy,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Troll; TrollCave02,$item_trophy_troll
+Coral Cod,Fish,Ocean,Ocean,Ocean,fishing,fishing: Ocean,Fish8,$animal_fish8
+Pufferfish,Fish,Ocean,Ocean,Ocean; Mistlands,fishing,fishing: Ocean,Fish12,$animal_fish12
+Tuna,Fish,Ocean,Ocean,Ocean,fishing,fishing: Ocean,Fish3,$animal_fish3
+Chitin,Material,Ocean,Ocean,Ocean,fishing bonus; mining,fishing bonus: Ocean; mining: Ocean,Fish8; leviathan,$item_chitin
+Serpent Meat,Material,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_serpentmeat
+Serpent Scale,Material,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_serpentscale
+Serpent Trophy,Trophy,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_trophy_serpent
+Ironhead Arrow,Ammo,Swamp,,Swamp,loot,loot: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2,$item_arrow_iron
+Poison Arrow,Ammo,Swamp,,Swamp,loot,loot: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2,$item_arrow_poison
+Giant Herring,Fish,Swamp,Swamp,Swamp,fishing,fishing: Swamp,Fish6,$animal_fish6
+Ancient Bark,Material,Swamp,Swamp,Swamp,loot; tree,loot: Swamp; tree: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2; swamptree1,$item_elderbark
+Bloodbag,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Leech,$item_bloodbag
+Chain,Material,Swamp,Swamp,Swamp; Plains; Mistlands,creature; destructible; fishing bonus; loot,creature: Swamp; destructible: Mistlands; fishing bonus: Swamp; loot: Swamp,Fish6; Grave1; Hildir_plainsfortress; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_chain
+Entrails,Material,Swamp,Swamp,Swamp; Mountain; Ashlands; Deep North,creature; pickable,creature: Swamp; pickable: Mountain,Hildir_cave; MorgenHole1; MorgenHole2; MorgenHole3; MountainCave02; creature (override),$item_entrails
+Guck,Material,Swamp,Swamp,Swamp,creature; destructible,creature: Swamp; destructible: Swamp,Abomination; InfestedTree01,$item_guck
+Ooze,Material,Swamp,Swamp,Swamp,creature; fishing bonus,creature: Swamp; fishing bonus: Ocean,Blob; BlobElite; Fish12; SunkenCrypt4,$item_ooze
+Root,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Abomination,$item_root
+Scrap Iron,Material,Swamp,Swamp,Swamp; Plains; Mistlands; Deep North,creature; destructible; loot; mining,creature: Swamp; destructible: Plains; loot: Swamp; mining: Swamp,BlobElite; BlobMorkBig; DG_Hole; Hildir_plainsfortress; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2,$item_ironscrap
+Turnip Seeds,Material,Swamp,Swamp,Swamp,pickable,pickable: Swamp,pickable_seedturnip_swamp,$item_turnipseeds
+Withered Bone,Material,Swamp,Swamp,Swamp,loot; mining,loot: Swamp; mining: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2; mudpile_beacon,$item_witheredbone
+Writhan Roots,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Writhan,$item_writhanroots
+item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name,Material,Swamp,,Swamp; Mountain; Deep North,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; Hildir_cave; MountainCave02,$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name,Material,Swamp,,Swamp; Mountain; Deep North,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; Hildir_cave; MountainCave02,$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name
+Abomination Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Abomination,$item_trophy_abomination
+Blob Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Blob; BlobElite; SunkenCrypt4,$item_trophy_blob
+Bonemass Trophy,Trophy,Swamp,,Swamp,boss,boss: Swamp,Bonemass,$item_trophy_bonemass
+Draugr Elite Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,creature (override),$item_trophy_draugrelite
+Draugr Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,creature (override),$item_trophy_draugr
+Kvastur,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,BogWitch_Camp,$enemy_kvastur
+Leech Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Leech,$item_trophy_leech
+Surtling Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,FireHole,$item_trophy_surtling
+Wraith Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,SwampHut1; SwampHut2; SwampHut3; SwampHut5; Wraith,$item_trophy_wraith
+Writhan Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Writhan,$item_trophy_writhan
+Wooden Sledge,TwoHandedWeapon,Swamp,,Swamp,loot,loot: Swamp,Grave1; SwampRuin1; SwampRuin2,$item_sledge_wood
+Wishbone,Utility,Swamp,,Swamp,boss,boss: Swamp,Bonemass,$item_wishbone
+Fishing Bait,Ammo,Mountain,Mountain,Mountain; Deep North,pickable,pickable: Mountain,MountainCave02,$item_fishingbait
+Frost Arrow,Ammo,Mountain,,Mountain,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; MountainWell1; StoneTowerRuins04; StoneTowerRuins05,$item_arrow_frost
+Tetra,Fish,Mountain,Mountain,Mountain; Deep North,creature; fishing,creature: Mountain; fishing: Mountain,Hildir_cave; MountainCave02,$animal_fish4
+Bronze,Material,Mountain,Mountain,Mountain; Ashlands; Deep North,destructible,destructible: Mountain,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Hildir_cave,$item_bronze
+Crystal,Material,Mountain,Mountain,Mountain; Deep North,creature; destructible; pickable,creature: Mountain; destructible: Mountain; pickable: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; BlobFrost; Hildir_cave; MountainCave02,$item_crystal
+Fenris Claw,Material,Mountain,,Mountain,loot,loot: Mountain,dungeons (assumed),$item_wolfclaw
+Fenris Hair,Material,Mountain,Mountain,Mountain; Deep North,destructible; pickable,destructible: Mountain; pickable: Mountain,Hildir_cave; MountainCave02,$item_wolfhairbundle
+Freeze Gland,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,DrakeNest01; Hatchling,$item_freezegland
+Iron,Material,Mountain,Mountain,Mountain; Ashlands; Deep North,destructible,destructible: Mountain,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Hildir_cave,$item_iron
+Obsidian,Material,Mountain,Mountain,Mountain; Deep North,creature; destructible; fishing bonus; loot,creature: Mountain; destructible: Mountain; fishing bonus: Mountain; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Hildir_cave; MountainCave02; MountainWell1,$item_obsidian
+Onion Seeds,Material,Mountain,,Mountain,fishing bonus; loot,fishing bonus: Ocean; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Fish8; MountainWell1; StoneTowerRuins04,$item_onionseeds
+Red Jute,Material,Mountain,Mountain,Mountain; Deep North,creature; destructible,creature: Mountain; destructible: Mountain,Hildir_cave; MountainCave02,$item_jutered
+Silver Ore,Material,Mountain,Mountain,Mountain,mining,mining: Mountain,silvervein,$item_silverore
+Wolf Fang,Material,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Fenring; Hildir_cave; MountainCave02; Wolf,$item_wolffang
+Wolf Meat,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_wolf_meat
+Wolf Pelt,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_wolfpelt
+item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name,Material,Mountain,Plains,Mountain; Plains; Deep North,destructible; loot,destructible: Plains; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name,Material,Mountain,Plains,Mountain; Plains; Deep North,destructible; loot,destructible: Plains; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name
+Dragon Egg,Misc,Mountain,Mountain,Mountain,pickable,pickable: Mountain,DrakeNest01,$item_dragonegg
+Dragon Tear,Misc,Mountain,,Mountain,boss,boss: Mountain,Dragonqueen,$item_dragontear
+Hildir's Silver Chest,Misc,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Hildir_cave; MountainCave02,$item_chest_hildir2
+Cultist Trophy,Trophy,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,MountainCave02,$item_trophy_cultist
+Drake Trophy,Trophy,Mountain,Mountain,Mountain,creature,creature: Mountain,DrakeNest01; Hatchling,$item_trophy_hatchling
+Fenring Trophy,Trophy,Mountain,Mountain,Mountain,creature,creature: Mountain,Fenring,$item_trophy_fenring
+Geirrhafa Trophy,Trophy,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Hildir_cave; MountainCave02,$item_trophy_cultist_hildir
+Moder Trophy,Trophy,Mountain,,Mountain,boss,boss: Mountain,Dragonqueen,$item_trophy_dragonqueen
+Stone Golem Trophy,Trophy,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; MountainCave02; StoneGolem,$item_trophy_sgolem
+Ulv Trophy,Trophy,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Hildir_cave; MountainCave02,$item_trophy_ulv
+Wolf Trophy,Trophy,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_trophy_wolf
+Fishing Rod,TwoHandedWeapon,Mountain,Mountain,Mountain; Deep North,pickable,pickable: Mountain,MountainCave02,$item_fishingrod
+Wooden Battleaxe,TwoHandedWeapon,Mountain,,Mountain,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; MountainWell1; StoneTowerRuins04; StoneTowerRuins05,$item_battleaxe_wood
+Obsidian Arrow,Ammo,Plains,,Plains,loot,loot: Plains,StoneHenge1; StoneHenge2; StoneHenge3,$item_arrow_obsidian
+Cloudberries,Consumable,Plains,Plains,Plains,pickable,pickable: Plains,cloudberrybush_heath,$item_cloudberries
+Rotten Meat,Consumable,Plains,Plains,Plains; Ashlands,creature; destructible,creature: Plains; destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; Unbjorn,$item_meat_rotten
+Grouper,Fish,Plains,Plains,Plains,fishing,fishing: Plains,Fish7,$animal_fish7
+Barley,Material,Plains,Plains,Plains,destructible; fishing bonus; loot; pickable,destructible: Plains; fishing bonus: Plains; loot: Plains; pickable: Plains,Fish7; GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath,$item_barley
+Black Metal Scrap,Material,Plains,Plains,Plains,creature; fishing bonus; loot,creature: Plains; fishing bonus: Plains; loot: Plains,Fish7; Goblin; GoblinBrute; GoblinCamp2; Hildir_plainsfortress; Ruin3,$item_blackmetalscrap
+Flax,Material,Plains,Plains,Plains,destructible; pickable,destructible: Plains; pickable: Plains,GoblinCamp2,$item_flax
+Lox Meat,Material,Plains,Plains,Plains,creature,creature: Plains,Lox,$item_loxmeat
+Lox Pelt,Material,Plains,Plains,Plains,creature,creature: Plains,Lox,$item_loxpelt
+Needle,Material,Plains,Plains,Plains,creature; loot,creature: Plains; loot: Plains,Deathsquito; GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath,$item_needle
+Sharpening Stone,Material,Plains,,Plains,loot,loot: Plains,GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath; StoneTower1,$item_sharpeningstone
+Tar,Material,Plains,Plains,Plains; Deep North,creature; pickable,creature: Plains; pickable: Plains,TarPit1; TarPit2; TarPit3,$item_tar
+Vile Ribcage,Material,Plains,Plains,Plains,creature,creature: Plains,Unbjorn,$item_UndeadBjornRibcage
+item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Plains,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Plains,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name
+Egg,Misc,Plains,,Plains,loot,loot: Plains,Hildir_plainsfortress,$item_chicken_egg
+Fuling Totem,Misc,Plains,Plains,Plains,creature; loot; pickable,creature: Plains; loot: Plains; pickable: Plains,GoblinBrute; GoblinCamp2; StoneHenge1; StoneHenge2; StoneHenge3; StoneHenge4,$item_goblintotem
+Hildir's Bronze Chest,Misc,Plains,Plains,Plains,creature,creature: Plains,GoblinShaman_Hildir,$item_chest_hildir3
+Torn Spirit,Misc,Plains,,Plains,boss,boss: Plains,GoblinKing,$item_yagluththing
+Deathsquito Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Deathsquito,$item_trophy_deathsquito
+Fuling Berserker Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,GoblinBrute; GoblinCamp2; StoneHenge1; StoneHenge2; StoneHenge3; StoneHenge4,$item_trophy_goblinbrute
+Fuling Shaman Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,GoblinCamp2; Hildir_plainsfortress,$item_trophy_goblinshaman
+Fuling Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Goblin; GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHenge5; StoneHouse1_heath,$item_trophy_goblin
+Growth Trophy,Trophy,Plains,Plains,Plains; Deep North,creature,creature: Plains,TarPit1; TarPit2; TarPit3,$item_trophy_growth
+Lox Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Lox,$item_trophy_lox
+Thungr Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Hildir_plainsfortress,$item_trophy_brutebro
+Vile Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Unbjorn,$item_trophy_bjorn_undead
+Yagluth Trophy,Trophy,Plains,,Plains,boss,boss: Plains,GoblinKing,$item_trophy_goblinking
+Zil Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,GoblinShaman_Hildir,$item_trophy_shamanbro
+Wooden Atgeir,TwoHandedWeapon,Plains,,Plains,loot,loot: Plains,GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath; StoneTower1,$item_atgeir_wood
+Jotun Puffs,Consumable,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,mushroom_jotunpuffs,$item_jotunpuffs
+Magecap,Consumable,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,mushroom_magecap,$item_magecap
+Minor Healing Mead,Consumable,Mistlands,Ashlands,Mistlands; Ashlands,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Mistlands_DvergrTownEntrance1,$item_mead_hp_minor
+Minor Stamina Mead,Consumable,Mistlands,Ashlands,Mistlands; Ashlands,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Mistlands_DvergrTownEntrance1,$item_mead_stamina_minor
+Poison Resistance Mead,Consumable,Mistlands,,Mistlands,loot,loot: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2,$item_mead_poisonres
+Royal Jelly,Consumable,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2,$item_royaljelly
+Sausages,Consumable,Mistlands,,Mistlands,loot,loot: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2,$item_sausages
+Tasty Mead,Consumable,Mistlands,Mistlands,Mistlands; Ashlands; Deep North,destructible; loot,destructible: Mistlands; loot: Deep North,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; CharredTowerRuins1_dvergr,$item_mead_tasty
+Anglerfish,Fish,Mistlands,Mistlands,Mistlands,fishing,fishing: Mistlands,Fish9,$animal_fish9
+Bilebag,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Gjall,$item_bilebag
+Black Core,Material,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2,$item_blackcore
+Black Marble,Material,Mistlands,Mistlands,Mistlands; Ashlands,creature; destructible; mining,creature: Mistlands; destructible: Mistlands; mining: Mistlands,CharredTowerRuins1_dvergr; Dverger; Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_Excavation1; Mistlands_Excavation2,$item_blackmarble
+Blood Clot,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Giant1,$item_bloodclot
+Blue Jute,Material,Mistlands,Mistlands,Mistlands,destructible; fishing bonus,destructible: Mistlands; fishing bonus: Mistlands,Fish9; Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_new; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_juteblue
+Carapace,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Excavation3; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_carapace
+Copper Scrap,Material,Mistlands,Mistlands,Mistlands; Ashlands,destructible; mining,destructible: Mistlands; mining: Mistlands,CharredTowerRuins1_dvergr; Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Excavation1; Mistlands_Excavation2,$item_copperscrap
+Dvergr Extractor,Material,Mistlands,Mistlands,Mistlands,destructible,destructible: Mistlands,Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new; Mistlands_GuardTower3_new; Mistlands_Harbour1,$item_dvergrneedle
+Hare Meat,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Hare,$item_hare_meat
+Hook,Material,Mistlands,,Mistlands,loot,loot: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2; Mistlands_GuardTower3_ruined_new; Mistlands_RockSpire1,$item_hook
+Majestic Carapace,Material,Mistlands,Mistlands,Mistlands,boss; creature,boss: Mistlands; creature: Mistlands,Mistlands_DvergrBossEntrance1,$item_seekerqueen_drop
+Mandible,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Seeker Brute,$item_mandible
+Scale Hide,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Hare,$item_scalehide
+Sealbreaker Fragment,Material,Mistlands,,Mistlands,loot,loot: Mistlands,dungeons (assumed),$item_dvergrkeyfragment
+Seeker Meat,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Excavation3; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_bug_meat
+Soft Tissue,Material,Mistlands,Mistlands,Mistlands; Ashlands,creature; destructible; fishing bonus; mining,creature: Mistlands; destructible: Mistlands; fishing bonus: Mistlands; mining: Mistlands,CharredTowerRuins1_dvergr; Dverger; Fish9; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_softtissue
+Yggdrasil Wood,Material,Mistlands,Mistlands,Mistlands,destructible; tree,destructible: Mistlands; tree: Mistlands,Mistlands_GuardTower1_ruined_new2; Mistlands_GuardTower3_ruined_new; YggaShoot1; YggaShoot2; YggaShoot3; YggaShoot_small1,$item_yggdrasilwood
+item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name,Material,Mistlands,Ashlands,Mistlands; Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name,Material,Mistlands,Ashlands,Mistlands; Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name
+Dvergr Tankard,OneHandedWeapon,Mistlands,Mistlands,Mistlands,loot; pickable,loot: Mistlands; pickable: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new; Mistlands_Lighthouse1_new,$item_dvergrtankard
+Dvergr Lantern,Torch,Mistlands,Mistlands,Mistlands; Ashlands,pickable,pickable: Mistlands,CharredTowerRuins1_dvergr; Mistlands_DvergrBossEntrance1; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new,$item_lantern
+Dvergr Trophy,Trophy,Mistlands,Mistlands,Mistlands; Ashlands,creature,creature: Mistlands,CharredTowerRuins1_dvergr; Dverger; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new,$item_trophy_dvergr
+Gjall Trophy,Trophy,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Gjall,$item_trophy_gjall
+Hare Trophy,Trophy,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Hare,$item_trophy_hare
+Seeker Soldier Trophy,Trophy,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Seeker Brute,$item_trophy_seeker_brute
+Seeker Trophy,Trophy,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Excavation3; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_trophy_seeker
+The Queen Trophy,Trophy,Mistlands,Mistlands,Mistlands,boss; creature,boss: Mistlands; creature: Mistlands,Mistlands_DvergrBossEntrance1,$item_trophy_seekerqueen
+Tick Trophy,Trophy,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Giant1,$item_trophy_tick
+Wooden Greatsword,TwoHandedWeapon,Mistlands,,Mistlands,loot,loot: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2; Mistlands_GuardTower3_ruined_new; Mistlands_RockSpire1,$item_sword_wood_2h
+Carapace Arrow,Ammo,Ashlands,,Ashlands,loot,loot: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3,$item_arrow_carapace
+Fiddlehead,Consumable,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,AshlandRuins; CharredTowerRuins1; CharredTowerRuins1_dvergr; FortressRuins,$item_fiddleheadfern
+Smoke Puff,Consumable,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,AshlandRuins; CharredTowerRuins1; CharredTowerRuins1_dvergr; FortressRuins; mushroom_SmokePuff,$item_smokepuff
+Vineberry Cluster,Consumable,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4,$item_vineberry
+Magmafish,Fish,Ashlands,Ashlands,Ashlands,fishing,fishing: Ashlands,Fish11,$animal_fish11
+Ashwood,Material,Ashlands,Ashlands,Ashlands; Deep North,destructible; loot; tree,destructible: Ashlands; loot: Ashlands; tree: Ashlands,CharredFortress; CharredTowerRuins1_dvergr; CharredTowerRuins2; MorgenHole1; MorgenHole2; MorgenHole3,$item_blackwood
+Asksvin Bladder,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Asksvin [DAY],$item_askbladder
+Asksvin Hide,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Asksvin [DAY],$item_askhide
+Asksvin Neck,Material,Ashlands,Ashlands,Ashlands,destructible,destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; VoltureNest,$item_asksvincarrionneck
+Asksvin Pelvis,Material,Ashlands,Ashlands,Ashlands,destructible,destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; VoltureNest,$item_asksvincarrionpelvic
+Asksvin Ribcage,Material,Ashlands,Ashlands,Ashlands,destructible,destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; VoltureNest,$item_asksvincarrionribcage
+Asksvin Skull,Material,Ashlands,Ashlands,Ashlands,destructible,destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; VoltureNest,$item_asksvincarrionskull
+Asksvin Tail,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Asksvin [DAY],$item_asksvin_meat
+Bell Fragment,Material,Ashlands,Ashlands,Ashlands,destructible,destructible: Ashlands,CharredFortress,$item_bellfragment
+Bloodstone,Material,Ashlands,,Ashlands,loot,loot: Ashlands,CharredFortress; FortressRuins,$item_gemstone_red
+Bonemaw Meat,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Bonemaw Serpent,$item_bonemawmeat
+Bonemaw Tooth,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Bonemaw Serpent,$item_bonemawtooth
+Celestial Feather,Material,Ashlands,Ashlands,Ashlands,creature; loot,creature: Ashlands; loot: Ashlands,CharredFortress; Fallen Valkyrie; FortressRuins,$item_celestialfeather
+Charcoal Resin,Material,Ashlands,Ashlands,Ashlands,tree,tree: Ashlands,CharredTowerRuins2; tree_ashlands1; tree_ashlands3; tree_ashlands4,$item_charcoalresin
+Charred Bone,Material,Ashlands,Ashlands,Ashlands,creature; loot,creature: Ashlands; loot: Ashlands,Charred Archer; Charred Melee; Charred Twitcher [DAY]; CharredFortress; FortressRuins; MorgenHole1,$item_charredbone
+Charred Cogwheel,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,CharredFortress,$item_charredcogwheel
+Charred Skull,Material,Ashlands,Ashlands,Ashlands,destructible; loot; pickable,destructible: Ashlands; loot: Ashlands; pickable: Ashlands,CharredFortress; CharredStone_Spawner; CharredTowerRuins3; FortressRuins; PlaceofMystery1; PlaceofMystery2,$item_charredskull
+Dyrnwyn Blade Fragment,Material,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,PlaceofMystery2,$item_Dyrnwyn_blade
+Dyrnwyn Hilt Fragment,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,PlaceofMystery3,$item_Dyrnwyn_hilt
+Dyrnwyn Tip Fragment,Material,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,PlaceofMystery1,$item_Dyrnwyn_tip
+Flametal Ore,Material,Ashlands,Ashlands,Ashlands,destructible; fishing bonus; loot; mining,destructible: Ashlands; fishing bonus: Ashlands; loot: Ashlands; mining: Ashlands,CharredFortress; CharredTowerRuins1_dvergr; Fish11; FortressRuins; LeviathanLava,$item_flametalore
+Grausten,Material,Ashlands,Ashlands,Ashlands,destructible; fishing bonus; mining; pickable,destructible: Ashlands; fishing bonus: Ashlands; mining: Ashlands; pickable: Ashlands,AshlandRuins; CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4,$item_grausten
+Iolite,Material,Ashlands,,Ashlands,loot,loot: Ashlands,CharredFortress; FortressRuins,$item_gemstone_blue
+Jade,Material,Ashlands,,Ashlands,loot,loot: Ashlands,CharredFortress; FortressRuins,$item_gemstone_green
+Kindled Ribs,Material,Ashlands,,Ashlands,boss,boss: Ashlands,FaderLocation,$item_fader_drop
+Molten Core,Material,Ashlands,Ashlands,Ashlands,loot; pickable,loot: Ashlands; pickable: Ashlands,CharredFortress; FortressRuins; MorgenHole1; MorgenHole2; MorgenHole3; PlaceofMystery1,$item_moltencore
+Morgen Heart,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,AshlandRuins; FortressRuins; Morgen [Non-sleeper]; MorgenHole1; MorgenHole2; MorgenHole3,$item_morgenheart
+Morgen Sinew,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,AshlandRuins; FortressRuins; Morgen [Non-sleeper]; MorgenHole1; MorgenHole2; MorgenHole3,$item_morgensinew
+Pot Shard,Material,Ashlands,Ashlands,Ashlands,destructible; pickable,destructible: Ashlands; pickable: Ashlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; MorgenHole1,$item_pot_shard_green
+Proustite Powder,Material,Ashlands,Ashlands,Ashlands,creature; destructible,creature: Ashlands; destructible: Ashlands,Lava Blob; UnstableLavaRock,$item_proustitepowder
+Scrap Bronze,Material,Ashlands,Ashlands,Ashlands; Deep North,destructible,destructible: Ashlands,CharredFortress; TheHole01,$item_bronzescrap
+Silver,Material,Ashlands,Ashlands,Ashlands,destructible; fishing bonus,destructible: Ashlands; fishing bonus: Deep North,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Fish10,$item_silver
+Sulfur,Material,Ashlands,Ashlands,Ashlands,creature; destructible; pickable,creature: Ashlands; destructible: Ashlands; pickable: Ashlands,Lava Blob; SulfurArch,$item_sulfurstone
+Vineberry Seeds,Material,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4,$item_vineberryseeds
+Volture Meat,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Volture; VoltureNest,$item_volture_meat
+Volture Egg,Misc,Ashlands,Ashlands,Ashlands,creature; pickable,creature: Ashlands; pickable: Ashlands,Volture; VoltureNest,$item_voltureegg
+Asksvin Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Asksvin [DAY],$item_trophy_asksvin
+Bonemaw Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Bonemaw Serpent,$item_trophy_bonemaw
+Fader Trophy,Trophy,Ashlands,,Ashlands,boss,boss: Ashlands,FaderLocation,$item_trophy_fader
+Fallen Valkyrie Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Fallen Valkyrie,$item_trophy_fallenvalkyrie
+Lava Blob Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Lava Blob,$item_trophy_blob_lava
+Marksman Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Charred Archer; CharredFortress,$item_trophy_charredarcher
+Morgen Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,AshlandRuins; FortressRuins; Morgen [Non-sleeper]; MorgenHole1; MorgenHole2; MorgenHole3,$item_trophy_morgen
+Volture Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Volture; VoltureNest,$item_trophy_volture
+Warlock Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,CharredFortress,$item_trophy_charredmage
+Warrior Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Charred Melee,$item_trophy_charredmelee
+Bread,Consumable,Deep North,,Deep North,loot,loot: Deep North,TheHole01,$item_bread
+Lingonberries,Consumable,Deep North,Deep North,Deep North,destructible; pickable,destructible: Deep North; pickable: Deep North,BlobMorkBig; Lingonberries,$item_lingonberries
+Luminous Larva,Consumable,Deep North,Deep North,Deep North,pickable,pickable: Deep North,DG_Hole; TheHole01,$item_glowworm
+Onion,Consumable,Deep North,,Deep North,loot,loot: Deep North,TheHole01,$item_onion
+Northern Salmon,Fish,Deep North,Deep North,Deep North,fishing,fishing: Deep North,Fish10,$animal_fish10
+Ancient Coin,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons,$item_ancientcoin
+Crown Jewel,Material,Deep North,,Deep North,boss,boss: Deep North,Frozen King,$item_crownjewel
+Dead Pulp,Material,Deep North,Deep North,Deep North,creature; destructible,creature: Deep North; destructible: Deep North,BlobMork; BlobMorkBig; BlobMorkMini,$item_ooze_mork
+Draumyx,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons (assumed),$item_ancientgemstone_black
+Elaking Hair Bundle,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Elakingar Lantern NIGHT; Elakingar NIGHT,$item_elakinghairbundle
+Frostcore,Material,Deep North,Deep North,Deep North,pickable,pickable: Deep North,DG_Hole; TheHole01,$item_frostcore
+Frostfire Essence,Material,Deep North,,Deep North,offering,offering: Deep North,sacrificing Memorial Coal,$item_orbfrostfire
+Frozen Branch,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Barka,$item_barkabranch
+Grimvarn,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons (assumed),$item_ancientgemstone_green
+Ice,Material,Deep North,Deep North,Deep North,creature; destructible; mining,creature: Deep North; destructible: Deep North; mining: Deep North,Frozen GD; Frozen GD shaman; Frozen Skeleton; frozenSkeleton1; frozenSkeleton2; frozengd,$item_ice
+Kale Seeds,Material,Deep North,Deep North,Deep North,pickable,pickable: Deep North,Kale,$item_kaleseeds
+Leather Straps,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWarrior; JotunWarriorDualWield,$item_leatherstraps
+Long Claws,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,DG_Hole; TheHole01,$item_moleclaws
+Memorial Coal,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWarrior; JotunWarriorDualWield,$item_memorialcoal
+Moose Hide,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Älg,$item_moosehide
+Moose Meat,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Älg,$item_moose_meat
+Moose Sinew,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Älg,$item_moosesinew
+Mould: Breastplate of the Protector,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_gold_chest
+Mould: Chestpiece of the Vanguard,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_medium_chest
+Mould: Echo Spike,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_stafforbofahri
+Mould: Headdress of the Caller,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWitch,$item_mold_armor_mage_helmet
+Mould: Helmet of the Protector,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_gold_helmet
+Mould: Hood of the Vanguard,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_medium_helmet
+Mould: Intricate Key,Material,Deep North,Deep North,Deep North,creature; destructible; loot,creature: Deep North; destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; Elakingar NIGHT; TheHole01,$item_mold_keys
+Mould: Lightning Strike,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_staffthunderblood
+Mould: Nord Atgeir,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_atgeir
+Mould: Nord Axe,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_axe
+Mould: Nord Bow,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_bow
+Mould: Nord Buckler,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_shield_buckler
+Mould: Nord Crossbow,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_crossbow
+Mould: Nord Dagger,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_knife
+Mould: Nord Greataxe,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_axe2h
+Mould: Nord Greatshield,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_shield_tower
+Mould: Nord Greatsword,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_sword2h
+Mould: Nord Knucklechains,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_fistweapon
+Mould: Nord Mace,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_mace
+Mould: Nord Shield,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_shield_round
+Mould: Nord Sledge,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_mace2h
+Mould: Nord Spear,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_spear
+Mould: Nord Sword,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_sword
+Mould: Northern Vengeance,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_stafffrostorbs
+Mould: Robes of the Caller,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWitch,$item_mold_armor_mage_chest
+Mould: Spirit Caller,Material,Deep North,Deep North,Deep North,destructible; loot,destructible: Deep North; loot: Deep North,DG_Hole; Deep North dungeons and mobs; TheHole01,$item_mold_staffspiritcaller
+Mould: Trousers of the Caller,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWitch,$item_mold_armor_mage_legs
+Mould: Trousers of the Protector,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_gold_legs
+Mould: Trousers of the Vanguard,Material,Deep North,Deep North,Deep North,creature; loot,creature: Deep North; loot: Deep North,Deep North dungeons and mobs; JotunWarrior; JotunWarriorDualWield,$item_mold_armor_medium_legs
+Nornathread,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWitch,$item_nornthread
+Oat Seeds,Material,Deep North,Deep North,Deep North,pickable,pickable: Deep North,North village,$item_oatseeds
+Petrified Tissue,Material,Deep North,Deep North,Deep North,mining,mining: Deep North,Gammeltroll corpse,$item_goldore
+Sacrificial Blood,Material,Deep North,,Deep North,boss,boss: Deep North,Frozen King,$item_frozenking_drop
+Seal Blubber,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Seal; Seal pup,$item_blubber
+Seal Pelt,Material,Deep North,Deep North,Deep North,creature,creature: Deep North,Seal,$item_sealhide
+Seed Poteitr,Material,Deep North,Deep North,Deep North,pickable,pickable: Deep North,North village,$item_poteitrseeds
+Solryth,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons (assumed),$item_ancientgemstone_orange
+Thunderblood Essence,Material,Deep North,,Deep North,offering,offering: Deep North,sacrificing Memorial Coal,$item_orbthunderblood
+Timberwood,Material,Deep North,Deep North,Deep North,destructible; mining; pickable; tree,destructible: Deep North; mining: Deep North; pickable: Deep North; tree: Deep North,BlobMorkBig; DG_Hole; StumpHole_small; StumpHut; StumpLog; TheHole01,$item_frostwood
+Timberwood Cone,Material,Deep North,Deep North,Deep North,tree,tree: Deep North,snowfirtree; snowfirtree_sparse,$item_fircone_big
+Veydris,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons (assumed),$item_ancientgemstone_purple
+item_mold_smallparts,Material,Deep North,,Deep North,loot,loot: Deep North,Deep North dungeons and mobs,$item_mold_smallparts
+Intricate Key,Misc,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWitch,$item_bloodgoldkey
+Snowball,OneHandedWeapon,Deep North,Deep North,Deep North,creature; pickable,creature: Deep North; pickable: Deep North,Frozen GD; snowball,$item_snowball
+Barka Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Barka,$item_trophy_barka
+Elaking Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Elakingar Lantern NIGHT; Elakingar NIGHT,$item_trophy_elaking
+Eyeless One Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,DG_Hole; TheHole01,$item_trophy_mole
+Frost Blob Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,BlobFrost,$item_trophy_blob_frost
+Hexen Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWitch,$item_trophy_jotunwitch
+Krigen Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWarrior; JotunWarriorDualWield,$item_trophy_jotunwarrior
+Moose Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Älg,$item_trophy_moose
+Pulp Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,BlobMork,$item_trophy_blob_morkhalla
+Seal Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Seal,$item_trophy_seal
+Iron Ore,Material,,,,fishing bonus,fishing bonus: Swamp,Fish6,$item_ironore
+Sap,Material,,,,fishing bonus,fishing bonus: Ocean,Fish12,$item_sap

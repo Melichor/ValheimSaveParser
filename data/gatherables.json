@@ -1,0 +1,7702 @@
+{
+ "biome_order": [
+  "Meadows",
+  "Black Forest",
+  "Ocean",
+  "Swamp",
+  "Mountain",
+  "Plains",
+  "Mistlands",
+  "Ashlands",
+  "Deep North"
+ ],
+ "items": [
+  {
+   "item": "$item_arrow_fire",
+   "name": "Fire Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01"
+   ]
+  },
+  {
+   "item": "$item_arrow_flint",
+   "name": "Flinthead Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt",
+    "Ruin1",
+    "Ruin2"
+   ]
+  },
+  {
+   "item": "$item_honey",
+   "name": "Honey",
+   "item_type": "Consumable",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Meadows"
+   },
+   "examples": [
+    "StoneTowerRuins03",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse13"
+   ]
+  },
+  {
+   "item": "$item_mushroomcommon",
+   "name": "Mushroom",
+   "item_type": "Consumable",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows"
+   },
+   "examples": [
+    "StartTemple",
+    "WoodFarm1",
+    "WoodHouse12",
+    "pickable_mushroom_meadows_blackforest_swamp"
+   ]
+  },
+  {
+   "item": "$item_raspberries",
+   "name": "Raspberries",
+   "item_type": "Consumable",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows"
+   },
+   "examples": [
+    "StartTemple",
+    "WoodFarm1",
+    "raspberrybush_meadows"
+   ]
+  },
+  {
+   "item": "$animal_fish1",
+   "name": "Perch",
+   "item_type": "Fish",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Plains"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Meadows"
+   },
+   "examples": [
+    "Fish1"
+   ]
+  },
+  {
+   "item": "$animal_fish2",
+   "name": "Pike",
+   "item_type": "Fish",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Plains"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Meadows"
+   },
+   "examples": [
+    "Fish2"
+   ]
+  },
+  {
+   "item": "$item_oakseeds",
+   "name": "Acorns",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows"
+   },
+   "examples": [
+    "oak1_meadows"
+   ]
+  },
+  {
+   "item": "$item_amber",
+   "name": "Amber",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain"
+   ],
+   "sources": [
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows",
+    "fishing bonus": "Meadows"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Crypt2",
+    "Crypt3",
+    "Crypt4"
+   ]
+  },
+  {
+   "item": "$item_amberpearl",
+   "name": "Amber Pearl",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows",
+    "fishing bonus": "Meadows"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Fish2",
+    "Grave1",
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_beechseeds",
+   "name": "Beech Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows"
+   },
+   "examples": [
+    "beech1_meadows"
+   ]
+  },
+  {
+   "item": "$item_birchseeds",
+   "name": "Birch Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Plains"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows"
+   },
+   "examples": [
+    "birch1_aut_plains",
+    "birch1_meadows",
+    "birch2_aut_heath",
+    "birch2_meadows"
+   ]
+  },
+  {
+   "item": "$item_boar_meat",
+   "name": "Boar Meat",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "Boar",
+    "Runestone_Boars",
+    "WoodFarm1"
+   ]
+  },
+  {
+   "item": "$item_bonefragments",
+   "name": "Bone Fragments",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows",
+    "creature": "Meadows",
+    "loot": "Black Forest",
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "CharredFortress",
+    "Crypt2",
+    "Crypt3",
+    "Crypt4"
+   ]
+  },
+  {
+   "item": "$item_coins",
+   "name": "Coins",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "fishing bonus",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows",
+    "creature": "Black Forest",
+    "pickable": "Mountain",
+    "fishing bonus": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "CharredFortress",
+    "CharredTowerRuins1_dvergr",
+    "Crypt2"
+   ]
+  },
+  {
+   "item": "$item_axehead1",
+   "name": "Curious Axe Head",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "WoodHouse6"
+   ]
+  },
+  {
+   "item": "$item_dandelion",
+   "name": "Dandelion",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Plains"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows",
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "GoblinCamp2",
+    "Ruin2",
+    "StoneTowerRuins03",
+    "WoodFarm1",
+    "WoodHouse8",
+    "greydwarf ELITE"
+   ]
+  },
+  {
+   "item": "$item_deerhide",
+   "name": "Deer Hide",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Plains"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Black Forest",
+    "loot": "Black Forest",
+    "creature": "Meadows"
+   },
+   "examples": [
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin2",
+    "StoneTower1",
+    "StoneTower3",
+    "TrollCave02"
+   ]
+  },
+  {
+   "item": "$item_deer_meat",
+   "name": "Deer Meat",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "deer"
+   ]
+  },
+  {
+   "item": "$item_feathers",
+   "name": "Feathers",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows",
+    "destructible": "Meadows",
+    "loot": "Meadows",
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "Crypt2",
+    "Crypt3"
+   ]
+  },
+  {
+   "item": "$item_finewood",
+   "name": "Finewood",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows",
+    "destructible": "Black Forest"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Hildir_cave",
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_Excavation3"
+   ]
+  },
+  {
+   "item": "$item_flint",
+   "name": "Flint",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows",
+    "destructible": "Black Forest",
+    "loot": "Meadows",
+    "fishing bonus": "Meadows"
+   },
+   "examples": [
+    "Fish2",
+    "Ruin2",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11"
+   ]
+  },
+  {
+   "item": "$item_greydwarfeye",
+   "name": "Greydwarf Eye",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows",
+    "destructible": "Black Forest"
+   },
+   "examples": [
+    "Frozen GD",
+    "Frozen GD shaman",
+    "Greydwarf Shaman",
+    "Ruin1",
+    "Ruin2",
+    "Runestone_Greydwarfs"
+   ]
+  },
+  {
+   "item": "$item_hardantler",
+   "name": "Hard Antler",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Meadows"
+   },
+   "examples": [
+    "Eikthyrnir"
+   ]
+  },
+  {
+   "item": "$item_leatherscraps",
+   "name": "Leather Scraps",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "destructible": "Black Forest",
+    "creature": "Meadows",
+    "loot": "Black Forest",
+    "mining": "Swamp"
+   },
+   "examples": [
+    "Boar",
+    "Hildir_cave",
+    "MountainCave02",
+    "Ruin2",
+    "Runestone_Boars",
+    "SunkenCrypt4"
+   ]
+  },
+  {
+   "item": "$item_axehead2",
+   "name": "Mysterious Axe Head",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "WoodHouse2"
+   ]
+  },
+  {
+   "item": "$item_necktail",
+   "name": "Neck Tail",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "Neck lakes"
+   ]
+  },
+  {
+   "item": "$item_queenbee",
+   "name": "Queen Bee",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Meadows"
+   },
+   "examples": [
+    "StoneTowerRuins03",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse13"
+   ]
+  },
+  {
+   "item": "$item_resin",
+   "name": "Resin",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows",
+    "destructible": "Meadows",
+    "creature": "Meadows"
+   },
+   "examples": [
+    "BogWitch_Camp",
+    "Frozen GD",
+    "Frozen GD shaman",
+    "Greydwarf Shaman",
+    "Greydwarf_camp1",
+    "Greyling"
+   ]
+  },
+  {
+   "item": "$item_stonerock",
+   "name": "Rock",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Meadows"
+   },
+   "examples": [
+    "pickable_stonerock_meadows_blackforest_mountain_swamp"
+   ]
+  },
+  {
+   "item": "$item_ruby",
+   "name": "Ruby",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows",
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Crypt2",
+    "Crypt3",
+    "Crypt4"
+   ]
+  },
+  {
+   "item": "$item_silvernecklace",
+   "name": "Silver Necklace",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Mountain",
+    "Plains",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows",
+    "pickable": "Mountain",
+    "destructible": "Deep North"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "DG_Hole",
+    "Hildir_cave",
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_stone",
+   "name": "Stone",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Ocean",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "fishing bonus",
+    "loot",
+    "mining",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "mining": "Meadows",
+    "destructible": "Meadows",
+    "pickable": "Meadows",
+    "creature": "Meadows",
+    "loot": "Black Forest",
+    "fishing bonus": "Meadows"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "CharredFortress",
+    "Dolmen01",
+    "Dolmen02"
+   ]
+  },
+  {
+   "item": "$item_wood",
+   "name": "Wood",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Plains",
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot",
+    "pickable",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Meadows",
+    "destructible": "Meadows",
+    "pickable": "Meadows",
+    "creature": "Meadows",
+    "loot": "Black Forest"
+   },
+   "examples": [
+    "BogWitch_Camp",
+    "CharredTowerRuins1_dvergr",
+    "CharredTowerRuins2",
+    "Crypt2",
+    "Crypt3",
+    "Crypt4"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse12"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse12"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt",
+    "Ruin1",
+    "Ruin2"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt",
+    "Ruin1",
+    "Ruin2"
+   ]
+  },
+  {
+   "item": "$item_axe_wood",
+   "name": "Wooden Axe",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01"
+   ]
+  },
+  {
+   "item": "$item_knife_wood",
+   "name": "Wooden Knife",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01"
+   ]
+  },
+  {
+   "item": "$item_mace_wood",
+   "name": "Wooden Mace",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "WoodVillage1"
+   ]
+  },
+  {
+   "item": "$item_lanternDN",
+   "name": "Salvaged Lantern",
+   "item_type": "Torch",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Meadows"
+   },
+   "examples": [
+    "Standing Lantern (very rare)"
+   ]
+  },
+  {
+   "item": "$item_torch",
+   "name": "Torch",
+   "item_type": "Torch",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse12",
+    "WoodHouse13"
+   ]
+  },
+  {
+   "item": "$item_trophy_boar",
+   "name": "Boar Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "Boar",
+    "Runestone_Boars",
+    "WoodFarm1"
+   ]
+  },
+  {
+   "item": "$item_trophy_deer",
+   "name": "Deer Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "deer"
+   ]
+  },
+  {
+   "item": "$item_trophy_eikthyr",
+   "name": "Eikthyr Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Meadows"
+   },
+   "examples": [
+    "Eikthyrnir"
+   ]
+  },
+  {
+   "item": "$item_trophy_greydwarf",
+   "name": "Greydwarf Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "Frozen GD",
+    "Ruin1",
+    "Ruin2",
+    "Runestone_Greydwarfs",
+    "StoneHouse3",
+    "StoneHouse4"
+   ]
+  },
+  {
+   "item": "$item_trophy_neck",
+   "name": "Neck Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "Neck lakes"
+   ]
+  },
+  {
+   "item": "$item_trophy_skeleton",
+   "name": "Skeleton Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "biomes": [
+    "Meadows",
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Meadows"
+   },
+   "examples": [
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Dolmen01"
+   ]
+  },
+  {
+   "item": "$item_blueberries",
+   "name": "Blueberries",
+   "item_type": "Consumable",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Black Forest",
+    "destructible": "Black Forest"
+   },
+   "examples": [
+    "Ruin2",
+    "blueberrybush_blackforest"
+   ]
+  },
+  {
+   "item": "$item_pukeberries",
+   "name": "Bukeperries",
+   "item_type": "Consumable",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Frozen GD shaman",
+    "GoblinCamp2",
+    "Greydwarf Shaman",
+    "Hildir_plainsfortress",
+    "Ruin1"
+   ]
+  },
+  {
+   "item": "$item_mushroomyellow",
+   "name": "Yellow Mushroom",
+   "item_type": "Consumable",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt",
+    "SunkenCrypt4",
+    "TrollCave02"
+   ]
+  },
+  {
+   "item": "$animal_fish5",
+   "name": "Trollfish",
+   "item_type": "Fish",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Black Forest"
+   },
+   "examples": [
+    "Fish5"
+   ]
+  },
+  {
+   "item": "$item_bjornhide",
+   "name": "Bear Hide",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Bjorn DAY",
+    "Unbjorn"
+   ]
+  },
+  {
+   "item": "$item_bjorn_meat",
+   "name": "Bear Meat",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North",
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Bjorn DAY",
+    "TheHole01",
+    "Unbjorn"
+   ]
+  },
+  {
+   "item": "$item_bjornpaw",
+   "name": "Bear Paw",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Bjorn DAY"
+   ]
+  },
+  {
+   "item": "$item_carrotseeds",
+   "name": "Carrot Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "fishing bonus",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Black Forest",
+    "fishing bonus": "Deep North"
+   },
+   "examples": [
+    "Fish10",
+    "pickable_seedcarrot_blackforest"
+   ]
+  },
+  {
+   "item": "$item_coal",
+   "name": "Coal",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Swamp",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp",
+    "destructible": "Black Forest"
+   },
+   "examples": [
+    "FireHole",
+    "Hildir_cave",
+    "MountainCave02",
+    "Ruin2",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_copperore",
+   "name": "Copper Ore",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "fishing bonus",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Black Forest",
+    "fishing bonus": "Black Forest"
+   },
+   "examples": [
+    "Fish5",
+    "rock4_copper_blackforest"
+   ]
+  },
+  {
+   "item": "$item_roundlog",
+   "name": "Corewood",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Black Forest",
+    "destructible": "Deep North"
+   },
+   "examples": [
+    "Pinetree_01_blackforest",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_ectoplasm",
+   "name": "Ectoplasm",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_fircone",
+   "name": "Fir Cone",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Black Forest",
+    "destructible": "Black Forest"
+   },
+   "examples": [
+    "firtree_blackforest",
+    "firtree_mountain",
+    "firtree_small_blackforest",
+    "firtree_small_mountain",
+    "snowfirtree",
+    "snowfirtree_sparse"
+   ]
+  },
+  {
+   "item": "$item_pinecone",
+   "name": "Pine Cone",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Black Forest"
+   },
+   "examples": [
+    "Pinetree_01_blackforest",
+    "pinetree_snow",
+    "pinetree_snow_dead"
+   ]
+  },
+  {
+   "item": "$item_surtlingcore",
+   "name": "Surtling Core",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Swamp",
+    "Mistlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "fishing bonus",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp",
+    "pickable": "Black Forest",
+    "destructible": "Mistlands",
+    "fishing bonus": "Ashlands"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "FireHole",
+    "Fish11",
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_thistle",
+   "name": "Thistle",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Black Forest"
+   },
+   "examples": [
+    "pickable_thistle_swamp_blackforest"
+   ]
+  },
+  {
+   "item": "$item_tinore",
+   "name": "Tin Ore",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "destructible": "Black Forest",
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "Fish3",
+    "Ruin2",
+    "TheHole01",
+    "minerock_tin_blackforest"
+   ]
+  },
+  {
+   "item": "$item_trollhide",
+   "name": "Troll Hide",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature",
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest",
+    "fishing bonus": "Black Forest"
+   },
+   "examples": [
+    "Fish5",
+    "Troll",
+    "TrollCave02"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Grave1",
+    "Hildir_crypt",
+    "Ruin1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Grave1",
+    "Hildir_crypt",
+    "Ruin1"
+   ]
+  },
+  {
+   "item": "$item_ancientseed",
+   "name": "Ancient Seed",
+   "item_type": "Misc",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Black Forest",
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Greydwarf_camp1",
+    "Ruin2",
+    "StoneTowerRuins03",
+    "greydwarf ELITE"
+   ]
+  },
+  {
+   "item": "$item_chest_hildir1",
+   "name": "Hildir's Brass Chest",
+   "item_type": "Misc",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_cryptkey",
+   "name": "Swamp Key",
+   "item_type": "Misc",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Black Forest"
+   },
+   "examples": [
+    "GDKing"
+   ]
+  },
+  {
+   "item": "$item_spear_wood",
+   "name": "Wooden Spear",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Black Forest",
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Black Forest"
+   },
+   "examples": [
+    "Ruin1",
+    "Ruin2",
+    "StoneHouse3",
+    "StoneTowerRuins03",
+    "StoneTowerRuins07",
+    "StoneTowerRuins08"
+   ]
+  },
+  {
+   "item": "$item_trophy_bjorn",
+   "name": "Bear Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Bjorn DAY"
+   ]
+  },
+  {
+   "item": "$item_trophy_skeleton_hildir",
+   "name": "Brenna Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_trophy_ghost",
+   "name": "Ghost Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4",
+    "Hildir_crypt"
+   ]
+  },
+  {
+   "item": "$item_trophy_greydwarfbrute",
+   "name": "Greydwarf Brute Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Ruin2",
+    "StoneTowerRuins03",
+    "greydwarf ELITE"
+   ]
+  },
+  {
+   "item": "$item_trophy_greydwarfshaman",
+   "name": "Greydwarf Shaman Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Frozen GD shaman",
+    "Greydwarf Shaman",
+    "Ruin1"
+   ]
+  },
+  {
+   "item": "$item_trophy_skeletonpoison",
+   "name": "Rancid Remains Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Crypt2",
+    "Crypt3",
+    "Crypt4"
+   ]
+  },
+  {
+   "item": "$item_trophy_elder",
+   "name": "The Elder Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Black Forest"
+   },
+   "examples": [
+    "GDKing"
+   ]
+  },
+  {
+   "item": "$item_trophy_troll",
+   "name": "Troll Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "biomes": [
+    "Black Forest"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Black Forest"
+   },
+   "examples": [
+    "Troll",
+    "TrollCave02"
+   ]
+  },
+  {
+   "item": "$animal_fish8",
+   "name": "Coral Cod",
+   "item_type": "Fish",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Ocean"
+   },
+   "examples": [
+    "Fish8"
+   ]
+  },
+  {
+   "item": "$animal_fish12",
+   "name": "Pufferfish",
+   "item_type": "Fish",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean",
+    "Mistlands"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Ocean"
+   },
+   "examples": [
+    "Fish12"
+   ]
+  },
+  {
+   "item": "$animal_fish3",
+   "name": "Tuna",
+   "item_type": "Fish",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Ocean"
+   },
+   "examples": [
+    "Fish3"
+   ]
+  },
+  {
+   "item": "$item_chitin",
+   "name": "Chitin",
+   "item_type": "Material",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "fishing bonus",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Ocean",
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "Fish8",
+    "leviathan"
+   ]
+  },
+  {
+   "item": "$item_serpentmeat",
+   "name": "Serpent Meat",
+   "item_type": "Material",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ocean"
+   },
+   "examples": [
+    "Serpent"
+   ]
+  },
+  {
+   "item": "$item_serpentscale",
+   "name": "Serpent Scale",
+   "item_type": "Material",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ocean"
+   },
+   "examples": [
+    "Serpent"
+   ]
+  },
+  {
+   "item": "$item_trophy_serpent",
+   "name": "Serpent Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ocean",
+   "earliest_biome_direct": "Ocean",
+   "biomes": [
+    "Ocean"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ocean"
+   },
+   "examples": [
+    "Serpent"
+   ]
+  },
+  {
+   "item": "$item_arrow_iron",
+   "name": "Ironhead Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp"
+   },
+   "examples": [
+    "Grave1",
+    "SunkenCrypt4",
+    "SwampRuin1",
+    "SwampRuin2"
+   ]
+  },
+  {
+   "item": "$item_arrow_poison",
+   "name": "Poison Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp"
+   },
+   "examples": [
+    "Grave1",
+    "SunkenCrypt4",
+    "SwampRuin1",
+    "SwampRuin2"
+   ]
+  },
+  {
+   "item": "$animal_fish6",
+   "name": "Giant Herring",
+   "item_type": "Fish",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Swamp"
+   },
+   "examples": [
+    "Fish6"
+   ]
+  },
+  {
+   "item": "$item_elderbark",
+   "name": "Ancient Bark",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "loot",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Swamp",
+    "loot": "Swamp"
+   },
+   "examples": [
+    "Grave1",
+    "SunkenCrypt4",
+    "SwampRuin1",
+    "SwampRuin2",
+    "swamptree1"
+   ]
+  },
+  {
+   "item": "$item_bloodbag",
+   "name": "Bloodbag",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Leech"
+   ]
+  },
+  {
+   "item": "$item_chain",
+   "name": "Chain",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp",
+    "Plains",
+    "Mistlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp",
+    "creature": "Swamp",
+    "destructible": "Mistlands",
+    "fishing bonus": "Swamp"
+   },
+   "examples": [
+    "Fish6",
+    "Grave1",
+    "Hildir_plainsfortress",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_Excavation3"
+   ]
+  },
+  {
+   "item": "$item_entrails",
+   "name": "Entrails",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp",
+    "Mountain",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain",
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "MountainCave02",
+    "creature (override)"
+   ]
+  },
+  {
+   "item": "$item_guck",
+   "name": "Guck",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Swamp",
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Abomination",
+    "InfestedTree01"
+   ]
+  },
+  {
+   "item": "$item_ooze",
+   "name": "Ooze",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature",
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp",
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "Blob",
+    "BlobElite",
+    "Fish12",
+    "SunkenCrypt4"
+   ]
+  },
+  {
+   "item": "$item_root",
+   "name": "Root",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Abomination"
+   ]
+  },
+  {
+   "item": "$item_ironscrap",
+   "name": "Scrap Iron",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp",
+    "Plains",
+    "Mistlands",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Swamp",
+    "loot": "Swamp",
+    "creature": "Swamp",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "BlobElite",
+    "BlobMorkBig",
+    "DG_Hole",
+    "Hildir_plainsfortress",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2"
+   ]
+  },
+  {
+   "item": "$item_turnipseeds",
+   "name": "Turnip Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Swamp"
+   },
+   "examples": [
+    "pickable_seedturnip_swamp"
+   ]
+  },
+  {
+   "item": "$item_witheredbone",
+   "name": "Withered Bone",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "loot",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Swamp",
+    "loot": "Swamp"
+   },
+   "examples": [
+    "Grave1",
+    "SunkenCrypt4",
+    "SwampRuin1",
+    "SwampRuin2",
+    "mudpile_beacon"
+   ]
+  },
+  {
+   "item": "$item_writhanroots",
+   "name": "Writhan Roots",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Writhan"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Grave1",
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp",
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Grave1",
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_trophy_abomination",
+   "name": "Abomination Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Abomination"
+   ]
+  },
+  {
+   "item": "$item_trophy_blob",
+   "name": "Blob Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Blob",
+    "BlobElite",
+    "SunkenCrypt4"
+   ]
+  },
+  {
+   "item": "$item_trophy_bonemass",
+   "name": "Bonemass Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Swamp"
+   },
+   "examples": [
+    "Bonemass"
+   ]
+  },
+  {
+   "item": "$item_trophy_draugrelite",
+   "name": "Draugr Elite Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "creature (override)"
+   ]
+  },
+  {
+   "item": "$item_trophy_draugr",
+   "name": "Draugr Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "creature (override)"
+   ]
+  },
+  {
+   "item": "$enemy_kvastur",
+   "name": "Kvastur",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "BogWitch_Camp"
+   ]
+  },
+  {
+   "item": "$item_trophy_leech",
+   "name": "Leech Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Leech"
+   ]
+  },
+  {
+   "item": "$item_trophy_surtling",
+   "name": "Surtling Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "FireHole"
+   ]
+  },
+  {
+   "item": "$item_trophy_wraith",
+   "name": "Wraith Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "SwampHut1",
+    "SwampHut2",
+    "SwampHut3",
+    "SwampHut5",
+    "Wraith"
+   ]
+  },
+  {
+   "item": "$item_trophy_writhan",
+   "name": "Writhan Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Swamp"
+   },
+   "examples": [
+    "Writhan"
+   ]
+  },
+  {
+   "item": "$item_sledge_wood",
+   "name": "Wooden Sledge",
+   "item_type": "TwoHandedWeapon",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Swamp"
+   },
+   "examples": [
+    "Grave1",
+    "SwampRuin1",
+    "SwampRuin2"
+   ]
+  },
+  {
+   "item": "$item_wishbone",
+   "name": "Wishbone",
+   "item_type": "Utility",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Swamp"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Swamp"
+   },
+   "examples": [
+    "Bonemass"
+   ]
+  },
+  {
+   "item": "$item_fishingbait",
+   "name": "Fishing Bait",
+   "item_type": "Ammo",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain"
+   },
+   "examples": [
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_arrow_frost",
+   "name": "Frost Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "MountainWell1",
+    "StoneTowerRuins04",
+    "StoneTowerRuins05"
+   ]
+  },
+  {
+   "item": "$animal_fish4",
+   "name": "Tetra",
+   "item_type": "Fish",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain",
+    "fishing": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_bronze",
+   "name": "Bronze",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "Hildir_cave"
+   ]
+  },
+  {
+   "item": "$item_crystal",
+   "name": "Crystal",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain",
+    "pickable": "Mountain",
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "BlobFrost",
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_wolfclaw",
+   "name": "Fenris Claw",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain"
+   },
+   "examples": [
+    "dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_wolfhairbundle",
+   "name": "Fenris Hair",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain",
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_freezegland",
+   "name": "Freeze Gland",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "DrakeNest01",
+    "Hatchling"
+   ]
+  },
+  {
+   "item": "$item_iron",
+   "name": "Iron",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "Hildir_cave"
+   ]
+  },
+  {
+   "item": "$item_obsidian",
+   "name": "Obsidian",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mountain",
+    "loot": "Mountain",
+    "creature": "Mountain",
+    "fishing bonus": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Hildir_cave",
+    "MountainCave02",
+    "MountainWell1"
+   ]
+  },
+  {
+   "item": "$item_onionseeds",
+   "name": "Onion Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain",
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "Fish8",
+    "MountainWell1",
+    "StoneTowerRuins04"
+   ]
+  },
+  {
+   "item": "$item_jutered",
+   "name": "Red Jute",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain",
+    "destructible": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_silverore",
+   "name": "Silver Ore",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Mountain"
+   },
+   "examples": [
+    "silvervein"
+   ]
+  },
+  {
+   "item": "$item_wolffang",
+   "name": "Wolf Fang",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Fenring",
+    "Hildir_cave",
+    "MountainCave02",
+    "Wolf"
+   ]
+  },
+  {
+   "item": "$item_wolf_meat",
+   "name": "Wolf Meat",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Wolf"
+   ]
+  },
+  {
+   "item": "$item_wolfpelt",
+   "name": "Wolf Pelt",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Wolf"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Mountain",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "GoblinCamp2",
+    "Hildir_cave",
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Mountain",
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "GoblinCamp2",
+    "Hildir_cave",
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_dragonegg",
+   "name": "Dragon Egg",
+   "item_type": "Misc",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain"
+   },
+   "examples": [
+    "DrakeNest01"
+   ]
+  },
+  {
+   "item": "$item_dragontear",
+   "name": "Dragon Tear",
+   "item_type": "Misc",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Mountain"
+   },
+   "examples": [
+    "Dragonqueen"
+   ]
+  },
+  {
+   "item": "$item_chest_hildir2",
+   "name": "Hildir's Silver Chest",
+   "item_type": "Misc",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_trophy_cultist",
+   "name": "Cultist Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_trophy_hatchling",
+   "name": "Drake Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "DrakeNest01",
+    "Hatchling"
+   ]
+  },
+  {
+   "item": "$item_trophy_fenring",
+   "name": "Fenring Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Fenring"
+   ]
+  },
+  {
+   "item": "$item_trophy_cultist_hildir",
+   "name": "Geirrhafa Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_trophy_dragonqueen",
+   "name": "Moder Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Mountain"
+   },
+   "examples": [
+    "Dragonqueen"
+   ]
+  },
+  {
+   "item": "$item_trophy_sgolem",
+   "name": "Stone Golem Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "MountainCave02",
+    "StoneGolem"
+   ]
+  },
+  {
+   "item": "$item_trophy_ulv",
+   "name": "Ulv Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Hildir_cave",
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_trophy_wolf",
+   "name": "Wolf Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mountain"
+   },
+   "examples": [
+    "Wolf"
+   ]
+  },
+  {
+   "item": "$item_fishingrod",
+   "name": "Fishing Rod",
+   "item_type": "TwoHandedWeapon",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "biomes": [
+    "Mountain",
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mountain"
+   },
+   "examples": [
+    "MountainCave02"
+   ]
+  },
+  {
+   "item": "$item_battleaxe_wood",
+   "name": "Wooden Battleaxe",
+   "item_type": "TwoHandedWeapon",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mountain"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mountain"
+   },
+   "examples": [
+    "AbandonedLogCabin02",
+    "AbandonedLogCabin03",
+    "AbandonedLogCabin04",
+    "MountainWell1",
+    "StoneTowerRuins04",
+    "StoneTowerRuins05"
+   ]
+  },
+  {
+   "item": "$item_arrow_obsidian",
+   "name": "Obsidian Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains"
+   },
+   "examples": [
+    "StoneHenge1",
+    "StoneHenge2",
+    "StoneHenge3"
+   ]
+  },
+  {
+   "item": "$item_cloudberries",
+   "name": "Cloudberries",
+   "item_type": "Consumable",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Plains"
+   },
+   "examples": [
+    "cloudberrybush_heath"
+   ]
+  },
+  {
+   "item": "$item_meat_rotten",
+   "name": "Rotten Meat",
+   "item_type": "Consumable",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains",
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "creature": "Plains"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "Unbjorn"
+   ]
+  },
+  {
+   "item": "$animal_fish7",
+   "name": "Grouper",
+   "item_type": "Fish",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Plains"
+   },
+   "examples": [
+    "Fish7"
+   ]
+  },
+  {
+   "item": "$item_barley",
+   "name": "Barley",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains",
+    "pickable": "Plains",
+    "destructible": "Plains",
+    "fishing bonus": "Plains"
+   },
+   "examples": [
+    "Fish7",
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3",
+    "StoneHouse1_heath",
+    "StoneHouse5_heath"
+   ]
+  },
+  {
+   "item": "$item_blackmetalscrap",
+   "name": "Black Metal Scrap",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature",
+    "fishing bonus",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains",
+    "loot": "Plains",
+    "fishing bonus": "Plains"
+   },
+   "examples": [
+    "Fish7",
+    "Goblin",
+    "GoblinBrute",
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3"
+   ]
+  },
+  {
+   "item": "$item_flax",
+   "name": "Flax",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Plains",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "GoblinCamp2"
+   ]
+  },
+  {
+   "item": "$item_loxmeat",
+   "name": "Lox Meat",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Lox"
+   ]
+  },
+  {
+   "item": "$item_loxpelt",
+   "name": "Lox Pelt",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Lox"
+   ]
+  },
+  {
+   "item": "$item_needle",
+   "name": "Needle",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains",
+    "creature": "Plains"
+   },
+   "examples": [
+    "Deathsquito",
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3",
+    "StoneHouse1_heath",
+    "StoneHouse5_heath"
+   ]
+  },
+  {
+   "item": "$item_sharpeningstone",
+   "name": "Sharpening Stone",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains"
+   },
+   "examples": [
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3",
+    "StoneHouse1_heath",
+    "StoneHouse5_heath",
+    "StoneTower1"
+   ]
+  },
+  {
+   "item": "$item_tar",
+   "name": "Tar",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains",
+    "pickable": "Plains"
+   },
+   "examples": [
+    "TarPit1",
+    "TarPit2",
+    "TarPit3"
+   ]
+  },
+  {
+   "item": "$item_UndeadBjornRibcage",
+   "name": "Vile Ribcage",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Unbjorn"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains",
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains",
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains",
+    "destructible": "Plains"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
+   ]
+  },
+  {
+   "item": "$item_chicken_egg",
+   "name": "Egg",
+   "item_type": "Misc",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains"
+   },
+   "examples": [
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_goblintotem",
+   "name": "Fuling Totem",
+   "item_type": "Misc",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains",
+    "pickable": "Plains",
+    "loot": "Plains"
+   },
+   "examples": [
+    "GoblinBrute",
+    "GoblinCamp2",
+    "StoneHenge1",
+    "StoneHenge2",
+    "StoneHenge3",
+    "StoneHenge4"
+   ]
+  },
+  {
+   "item": "$item_chest_hildir3",
+   "name": "Hildir's Bronze Chest",
+   "item_type": "Misc",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "GoblinShaman_Hildir"
+   ]
+  },
+  {
+   "item": "$item_yagluththing",
+   "name": "Torn Spirit",
+   "item_type": "Misc",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Plains"
+   },
+   "examples": [
+    "GoblinKing"
+   ]
+  },
+  {
+   "item": "$item_trophy_deathsquito",
+   "name": "Deathsquito Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Deathsquito"
+   ]
+  },
+  {
+   "item": "$item_trophy_goblinbrute",
+   "name": "Fuling Berserker Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "GoblinBrute",
+    "GoblinCamp2",
+    "StoneHenge1",
+    "StoneHenge2",
+    "StoneHenge3",
+    "StoneHenge4"
+   ]
+  },
+  {
+   "item": "$item_trophy_goblinshaman",
+   "name": "Fuling Shaman Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "GoblinCamp2",
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_trophy_goblin",
+   "name": "Fuling Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Goblin",
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3",
+    "StoneHenge5",
+    "StoneHouse1_heath"
+   ]
+  },
+  {
+   "item": "$item_trophy_growth",
+   "name": "Growth Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains",
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "TarPit1",
+    "TarPit2",
+    "TarPit3"
+   ]
+  },
+  {
+   "item": "$item_trophy_lox",
+   "name": "Lox Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Lox"
+   ]
+  },
+  {
+   "item": "$item_trophy_brutebro",
+   "name": "Thungr Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Hildir_plainsfortress"
+   ]
+  },
+  {
+   "item": "$item_trophy_bjorn_undead",
+   "name": "Vile Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "Unbjorn"
+   ]
+  },
+  {
+   "item": "$item_trophy_goblinking",
+   "name": "Yagluth Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Plains"
+   },
+   "examples": [
+    "GoblinKing"
+   ]
+  },
+  {
+   "item": "$item_trophy_shamanbro",
+   "name": "Zil Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Plains"
+   },
+   "examples": [
+    "GoblinShaman_Hildir"
+   ]
+  },
+  {
+   "item": "$item_atgeir_wood",
+   "name": "Wooden Atgeir",
+   "item_type": "TwoHandedWeapon",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Plains"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Plains"
+   },
+   "examples": [
+    "GoblinCamp2",
+    "Hildir_plainsfortress",
+    "Ruin3",
+    "StoneHouse1_heath",
+    "StoneHouse5_heath",
+    "StoneTower1"
+   ]
+  },
+  {
+   "item": "$item_jotunpuffs",
+   "name": "Jotun Puffs",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands"
+   },
+   "examples": [
+    "mushroom_jotunpuffs"
+   ]
+  },
+  {
+   "item": "$item_magecap",
+   "name": "Magecap",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands"
+   },
+   "examples": [
+    "mushroom_magecap"
+   ]
+  },
+  {
+   "item": "$item_mead_hp_minor",
+   "name": "Minor Healing Mead",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "Mistlands_DvergrTownEntrance1"
+   ]
+  },
+  {
+   "item": "$item_mead_stamina_minor",
+   "name": "Minor Stamina Mead",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "Mistlands_DvergrTownEntrance1"
+   ]
+  },
+  {
+   "item": "$item_mead_poisonres",
+   "name": "Poison Resistance Mead",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2"
+   ]
+  },
+  {
+   "item": "$item_royaljelly",
+   "name": "Royal Jelly",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2"
+   ]
+  },
+  {
+   "item": "$item_sausages",
+   "name": "Sausages",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2"
+   ]
+  },
+  {
+   "item": "$item_mead_tasty",
+   "name": "Tasty Mead",
+   "item_type": "Consumable",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mistlands",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "CharredTowerRuins1_dvergr"
+   ]
+  },
+  {
+   "item": "$animal_fish9",
+   "name": "Anglerfish",
+   "item_type": "Fish",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Mistlands"
+   },
+   "examples": [
+    "Fish9"
+   ]
+  },
+  {
+   "item": "$item_bilebag",
+   "name": "Bilebag",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Gjall"
+   ]
+  },
+  {
+   "item": "$item_blackcore",
+   "name": "Black Core",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2"
+   ]
+  },
+  {
+   "item": "$item_blackmarble",
+   "name": "Black Marble",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands",
+    "mining": "Mistlands",
+    "destructible": "Mistlands"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Dverger",
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2"
+   ]
+  },
+  {
+   "item": "$item_bloodclot",
+   "name": "Blood Clot",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Giant1"
+   ]
+  },
+  {
+   "item": "$item_juteblue",
+   "name": "Blue Jute",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mistlands",
+    "fishing bonus": "Mistlands"
+   },
+   "examples": [
+    "Fish9",
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_GuardTower1_new",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2"
+   ]
+  },
+  {
+   "item": "$item_carapace",
+   "name": "Carapace",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Excavation3",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2"
+   ]
+  },
+  {
+   "item": "$item_copperscrap",
+   "name": "Copper Scrap",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mistlands",
+    "mining": "Mistlands"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2"
+   ]
+  },
+  {
+   "item": "$item_dvergrneedle",
+   "name": "Dvergr Extractor",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_GuardTower1_new",
+    "Mistlands_GuardTower2_new",
+    "Mistlands_GuardTower3_new",
+    "Mistlands_Harbour1"
+   ]
+  },
+  {
+   "item": "$item_hare_meat",
+   "name": "Hare Meat",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Hare"
+   ]
+  },
+  {
+   "item": "$item_hook",
+   "name": "Hook",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2",
+    "Mistlands_GuardTower3_ruined_new",
+    "Mistlands_RockSpire1"
+   ]
+  },
+  {
+   "item": "$item_seekerqueen_drop",
+   "name": "Majestic Carapace",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "boss",
+    "creature"
+   ],
+   "earliest_by_source": {
+    "boss": "Mistlands",
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1"
+   ]
+  },
+  {
+   "item": "$item_mandible",
+   "name": "Mandible",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Seeker Brute"
+   ]
+  },
+  {
+   "item": "$item_scalehide",
+   "name": "Scale Hide",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Hare"
+   ]
+  },
+  {
+   "item": "$item_dvergrkeyfragment",
+   "name": "Sealbreaker Fragment",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_bug_meat",
+   "name": "Seeker Meat",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Excavation3",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2"
+   ]
+  },
+  {
+   "item": "$item_softtissue",
+   "name": "Soft Tissue",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "fishing bonus",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands",
+    "destructible": "Mistlands",
+    "mining": "Mistlands",
+    "fishing bonus": "Mistlands"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Dverger",
+    "Fish9",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_Excavation3"
+   ]
+  },
+  {
+   "item": "$item_yggdrasilwood",
+   "name": "Yggdrasil Wood",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "destructible",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Mistlands",
+    "destructible": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_GuardTower1_ruined_new2",
+    "Mistlands_GuardTower3_ruined_new",
+    "YggaShoot1",
+    "YggaShoot2",
+    "YggaShoot3",
+    "YggaShoot_small1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
+   ]
+  },
+  {
+   "item": "$item_dvergrtankard",
+   "name": "Dvergr Tankard",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_GuardTower1_new",
+    "Mistlands_GuardTower2_new",
+    "Mistlands_Lighthouse1_new"
+   ]
+  },
+  {
+   "item": "$item_lantern",
+   "name": "Dvergr Lantern",
+   "item_type": "Torch",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Mistlands"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_GuardTower1_new",
+    "Mistlands_GuardTower2_new"
+   ]
+  },
+  {
+   "item": "$item_trophy_dvergr",
+   "name": "Dvergr Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "CharredTowerRuins1_dvergr",
+    "Dverger",
+    "Mistlands_Excavation1",
+    "Mistlands_Excavation2",
+    "Mistlands_GuardTower1_new",
+    "Mistlands_GuardTower2_new"
+   ]
+  },
+  {
+   "item": "$item_trophy_gjall",
+   "name": "Gjall Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Gjall"
+   ]
+  },
+  {
+   "item": "$item_trophy_hare",
+   "name": "Hare Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Hare"
+   ]
+  },
+  {
+   "item": "$item_trophy_seeker_brute",
+   "name": "Seeker Soldier Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Seeker Brute"
+   ]
+  },
+  {
+   "item": "$item_trophy_seeker",
+   "name": "Seeker Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1",
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Excavation3",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2"
+   ]
+  },
+  {
+   "item": "$item_trophy_seekerqueen",
+   "name": "The Queen Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "boss",
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands",
+    "boss": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrBossEntrance1"
+   ]
+  },
+  {
+   "item": "$item_trophy_tick",
+   "name": "Tick Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_Giant1"
+   ]
+  },
+  {
+   "item": "$item_sword_wood_2h",
+   "name": "Wooden Greatsword",
+   "item_type": "TwoHandedWeapon",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Mistlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "Mistlands_DvergrTownEntrance1",
+    "Mistlands_DvergrTownEntrance2",
+    "Mistlands_GuardTower1_ruined_new",
+    "Mistlands_GuardTower1_ruined_new2",
+    "Mistlands_GuardTower3_ruined_new",
+    "Mistlands_RockSpire1"
+   ]
+  },
+  {
+   "item": "$item_arrow_carapace",
+   "name": "Carapace Arrow",
+   "item_type": "Ammo",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3"
+   ]
+  },
+  {
+   "item": "$item_fiddleheadfern",
+   "name": "Fiddlehead",
+   "item_type": "Consumable",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "CharredTowerRuins1",
+    "CharredTowerRuins1_dvergr",
+    "FortressRuins"
+   ]
+  },
+  {
+   "item": "$item_smokepuff",
+   "name": "Smoke Puff",
+   "item_type": "Consumable",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "CharredTowerRuins1",
+    "CharredTowerRuins1_dvergr",
+    "FortressRuins",
+    "mushroom_SmokePuff"
+   ]
+  },
+  {
+   "item": "$item_vineberry",
+   "name": "Vineberry Cluster",
+   "item_type": "Consumable",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4"
+   ]
+  },
+  {
+   "item": "$animal_fish11",
+   "name": "Magmafish",
+   "item_type": "Fish",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Ashlands"
+   },
+   "examples": [
+    "Fish11"
+   ]
+  },
+  {
+   "item": "$item_blackwood",
+   "name": "Ashwood",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Ashlands",
+    "destructible": "Ashlands",
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredTowerRuins1_dvergr",
+    "CharredTowerRuins2",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3"
+   ]
+  },
+  {
+   "item": "$item_askbladder",
+   "name": "Asksvin Bladder",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Asksvin [DAY]"
+   ]
+  },
+  {
+   "item": "$item_askhide",
+   "name": "Asksvin Hide",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Asksvin [DAY]"
+   ]
+  },
+  {
+   "item": "$item_asksvincarrionneck",
+   "name": "Asksvin Neck",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_asksvincarrionpelvic",
+   "name": "Asksvin Pelvis",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_asksvincarrionribcage",
+   "name": "Asksvin Ribcage",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_asksvincarrionskull",
+   "name": "Asksvin Skull",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_asksvin_meat",
+   "name": "Asksvin Tail",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Asksvin [DAY]"
+   ]
+  },
+  {
+   "item": "$item_bellfragment",
+   "name": "Bell Fragment",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress"
+   ]
+  },
+  {
+   "item": "$item_gemstone_red",
+   "name": "Bloodstone",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "FortressRuins"
+   ]
+  },
+  {
+   "item": "$item_bonemawmeat",
+   "name": "Bonemaw Meat",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Bonemaw Serpent"
+   ]
+  },
+  {
+   "item": "$item_bonemawtooth",
+   "name": "Bonemaw Tooth",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Bonemaw Serpent"
+   ]
+  },
+  {
+   "item": "$item_celestialfeather",
+   "name": "Celestial Feather",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands",
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "Fallen Valkyrie",
+    "FortressRuins"
+   ]
+  },
+  {
+   "item": "$item_charcoalresin",
+   "name": "Charcoal Resin",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Ashlands"
+   },
+   "examples": [
+    "CharredTowerRuins2",
+    "tree_ashlands1",
+    "tree_ashlands3",
+    "tree_ashlands4"
+   ]
+  },
+  {
+   "item": "$item_charredbone",
+   "name": "Charred Bone",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands",
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "Charred Archer",
+    "Charred Melee",
+    "Charred Twitcher [DAY]",
+    "CharredFortress",
+    "FortressRuins",
+    "MorgenHole1"
+   ]
+  },
+  {
+   "item": "$item_charredcogwheel",
+   "name": "Charred Cogwheel",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress"
+   ]
+  },
+  {
+   "item": "$item_charredskull",
+   "name": "Charred Skull",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands",
+    "destructible": "Ashlands",
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredStone_Spawner",
+    "CharredTowerRuins3",
+    "FortressRuins",
+    "PlaceofMystery1",
+    "PlaceofMystery2"
+   ]
+  },
+  {
+   "item": "$item_Dyrnwyn_blade",
+   "name": "Dyrnwyn Blade Fragment",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "PlaceofMystery2"
+   ]
+  },
+  {
+   "item": "$item_Dyrnwyn_hilt",
+   "name": "Dyrnwyn Hilt Fragment",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "PlaceofMystery3"
+   ]
+  },
+  {
+   "item": "$item_Dyrnwyn_tip",
+   "name": "Dyrnwyn Tip Fragment",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "PlaceofMystery1"
+   ]
+  },
+  {
+   "item": "$item_flametalore",
+   "name": "Flametal Ore",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus",
+    "loot",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands",
+    "mining": "Ashlands",
+    "destructible": "Ashlands",
+    "fishing bonus": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredTowerRuins1_dvergr",
+    "Fish11",
+    "FortressRuins",
+    "LeviathanLava"
+   ]
+  },
+  {
+   "item": "$item_grausten",
+   "name": "Grausten",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus",
+    "mining",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "mining": "Ashlands",
+    "pickable": "Ashlands",
+    "destructible": "Ashlands",
+    "fishing bonus": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4"
+   ]
+  },
+  {
+   "item": "$item_gemstone_blue",
+   "name": "Iolite",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "FortressRuins"
+   ]
+  },
+  {
+   "item": "$item_gemstone_green",
+   "name": "Jade",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "FortressRuins"
+   ]
+  },
+  {
+   "item": "$item_fader_drop",
+   "name": "Kindled Ribs",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Ashlands"
+   },
+   "examples": [
+    "FaderLocation"
+   ]
+  },
+  {
+   "item": "$item_moltencore",
+   "name": "Molten Core",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "loot",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands",
+    "loot": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "FortressRuins",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3",
+    "PlaceofMystery1"
+   ]
+  },
+  {
+   "item": "$item_morgenheart",
+   "name": "Morgen Heart",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "FortressRuins",
+    "Morgen [Non-sleeper]",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3"
+   ]
+  },
+  {
+   "item": "$item_morgensinew",
+   "name": "Morgen Sinew",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "FortressRuins",
+    "Morgen [Non-sleeper]",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3"
+   ]
+  },
+  {
+   "item": "$item_pot_shard_green",
+   "name": "Pot Shard",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands",
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "MorgenHole1"
+   ]
+  },
+  {
+   "item": "$item_proustitepowder",
+   "name": "Proustite Powder",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Lava Blob",
+    "UnstableLavaRock"
+   ]
+  },
+  {
+   "item": "$item_bronzescrap",
+   "name": "Scrap Bronze",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_silver",
+   "name": "Silver",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "destructible",
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "fishing bonus": "Deep North"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1",
+    "Fish10"
+   ]
+  },
+  {
+   "item": "$item_sulfurstone",
+   "name": "Sulfur",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands",
+    "destructible": "Ashlands",
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Lava Blob",
+    "SulfurArch"
+   ]
+  },
+  {
+   "item": "$item_vineberryseeds",
+   "name": "Vineberry Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4"
+   ]
+  },
+  {
+   "item": "$item_volture_meat",
+   "name": "Volture Meat",
+   "item_type": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Volture",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_voltureegg",
+   "name": "Volture Egg",
+   "item_type": "Misc",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands",
+    "pickable": "Ashlands"
+   },
+   "examples": [
+    "Volture",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_trophy_asksvin",
+   "name": "Asksvin Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Asksvin [DAY]"
+   ]
+  },
+  {
+   "item": "$item_trophy_bonemaw",
+   "name": "Bonemaw Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Bonemaw Serpent"
+   ]
+  },
+  {
+   "item": "$item_trophy_fader",
+   "name": "Fader Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Ashlands"
+   },
+   "examples": [
+    "FaderLocation"
+   ]
+  },
+  {
+   "item": "$item_trophy_fallenvalkyrie",
+   "name": "Fallen Valkyrie Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Fallen Valkyrie"
+   ]
+  },
+  {
+   "item": "$item_trophy_blob_lava",
+   "name": "Lava Blob Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Lava Blob"
+   ]
+  },
+  {
+   "item": "$item_trophy_charredarcher",
+   "name": "Marksman Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Charred Archer",
+    "CharredFortress"
+   ]
+  },
+  {
+   "item": "$item_trophy_morgen",
+   "name": "Morgen Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "AshlandRuins",
+    "FortressRuins",
+    "Morgen [Non-sleeper]",
+    "MorgenHole1",
+    "MorgenHole2",
+    "MorgenHole3"
+   ]
+  },
+  {
+   "item": "$item_trophy_volture",
+   "name": "Volture Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Volture",
+    "VoltureNest"
+   ]
+  },
+  {
+   "item": "$item_trophy_charredmage",
+   "name": "Warlock Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "CharredFortress"
+   ]
+  },
+  {
+   "item": "$item_trophy_charredmelee",
+   "name": "Warrior Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Ashlands"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Ashlands"
+   },
+   "examples": [
+    "Charred Melee"
+   ]
+  },
+  {
+   "item": "$item_bread",
+   "name": "Bread",
+   "item_type": "Consumable",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_lingonberries",
+   "name": "Lingonberries",
+   "item_type": "Consumable",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North",
+    "destructible": "Deep North"
+   },
+   "examples": [
+    "BlobMorkBig",
+    "Lingonberries"
+   ]
+  },
+  {
+   "item": "$item_glowworm",
+   "name": "Luminous Larva",
+   "item_type": "Consumable",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_onion",
+   "name": "Onion",
+   "item_type": "Consumable",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$animal_fish10",
+   "name": "Northern Salmon",
+   "item_type": "Fish",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "fishing"
+   ],
+   "earliest_by_source": {
+    "fishing": "Deep North"
+   },
+   "examples": [
+    "Fish10"
+   ]
+  },
+  {
+   "item": "$item_ancientcoin",
+   "name": "Ancient Coin",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons"
+   ]
+  },
+  {
+   "item": "$item_crownjewel",
+   "name": "Crown Jewel",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Deep North"
+   },
+   "examples": [
+    "Frozen King"
+   ]
+  },
+  {
+   "item": "$item_ooze_mork",
+   "name": "Dead Pulp",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "destructible": "Deep North"
+   },
+   "examples": [
+    "BlobMork",
+    "BlobMorkBig",
+    "BlobMorkMini"
+   ]
+  },
+  {
+   "item": "$item_ancientgemstone_black",
+   "name": "Draumyx",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_elakinghairbundle",
+   "name": "Elaking Hair Bundle",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Elakingar Lantern NIGHT",
+    "Elakingar NIGHT"
+   ]
+  },
+  {
+   "item": "$item_frostcore",
+   "name": "Frostcore",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_orbfrostfire",
+   "name": "Frostfire Essence",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "offering"
+   ],
+   "earliest_by_source": {
+    "offering": "Deep North"
+   },
+   "examples": [
+    "sacrificing Memorial Coal"
+   ]
+  },
+  {
+   "item": "$item_barkabranch",
+   "name": "Frozen Branch",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Barka"
+   ]
+  },
+  {
+   "item": "$item_ancientgemstone_green",
+   "name": "Grimvarn",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_ice",
+   "name": "Ice",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "mining"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "mining": "Deep North",
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Frozen GD",
+    "Frozen GD shaman",
+    "Frozen Skeleton",
+    "frozenSkeleton1",
+    "frozenSkeleton2",
+    "frozengd"
+   ]
+  },
+  {
+   "item": "$item_kaleseeds",
+   "name": "Kale Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North"
+   },
+   "examples": [
+    "Kale"
+   ]
+  },
+  {
+   "item": "$item_leatherstraps",
+   "name": "Leather Straps",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_moleclaws",
+   "name": "Long Claws",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_memorialcoal",
+   "name": "Memorial Coal",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_moosehide",
+   "name": "Moose Hide",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Älg"
+   ]
+  },
+  {
+   "item": "$item_moose_meat",
+   "name": "Moose Meat",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Älg"
+   ]
+  },
+  {
+   "item": "$item_moosesinew",
+   "name": "Moose Sinew",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Älg"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_gold_chest",
+   "name": "Mould: Breastplate of the Protector",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_medium_chest",
+   "name": "Mould: Chestpiece of the Vanguard",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_mold_stafforbofahri",
+   "name": "Mould: Echo Spike",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_mage_helmet",
+   "name": "Mould: Headdress of the Caller",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_gold_helmet",
+   "name": "Mould: Helmet of the Protector",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_medium_helmet",
+   "name": "Mould: Hood of the Vanguard",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_mold_keys",
+   "name": "Mould: Intricate Key",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "Elakingar NIGHT",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_staffthunderblood",
+   "name": "Mould: Lightning Strike",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_atgeir",
+   "name": "Mould: Nord Atgeir",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_axe",
+   "name": "Mould: Nord Axe",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_bow",
+   "name": "Mould: Nord Bow",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_shield_buckler",
+   "name": "Mould: Nord Buckler",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_crossbow",
+   "name": "Mould: Nord Crossbow",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_knife",
+   "name": "Mould: Nord Dagger",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_axe2h",
+   "name": "Mould: Nord Greataxe",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_shield_tower",
+   "name": "Mould: Nord Greatshield",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_sword2h",
+   "name": "Mould: Nord Greatsword",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_fistweapon",
+   "name": "Mould: Nord Knucklechains",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_mace",
+   "name": "Mould: Nord Mace",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_shield_round",
+   "name": "Mould: Nord Shield",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_mace2h",
+   "name": "Mould: Nord Sledge",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_spear",
+   "name": "Mould: Nord Spear",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_sword",
+   "name": "Mould: Nord Sword",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_stafffrostorbs",
+   "name": "Mould: Northern Vengeance",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_mage_chest",
+   "name": "Mould: Robes of the Caller",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_mold_staffspiritcaller",
+   "name": "Mould: Spirit Caller",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "Deep North dungeons and mobs",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_mage_legs",
+   "name": "Mould: Trousers of the Caller",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_gold_legs",
+   "name": "Mould: Trousers of the Protector",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_mold_armor_medium_legs",
+   "name": "Mould: Trousers of the Vanguard",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North",
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs",
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_nornthread",
+   "name": "Nornathread",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_oatseeds",
+   "name": "Oat Seeds",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North"
+   },
+   "examples": [
+    "North village"
+   ]
+  },
+  {
+   "item": "$item_goldore",
+   "name": "Petrified Tissue",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "mining"
+   ],
+   "earliest_by_source": {
+    "mining": "Deep North"
+   },
+   "examples": [
+    "Gammeltroll corpse"
+   ]
+  },
+  {
+   "item": "$item_frozenking_drop",
+   "name": "Sacrificial Blood",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "boss"
+   ],
+   "earliest_by_source": {
+    "boss": "Deep North"
+   },
+   "examples": [
+    "Frozen King"
+   ]
+  },
+  {
+   "item": "$item_blubber",
+   "name": "Seal Blubber",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Seal",
+    "Seal pup"
+   ]
+  },
+  {
+   "item": "$item_sealhide",
+   "name": "Seal Pelt",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Seal"
+   ]
+  },
+  {
+   "item": "$item_poteitrseeds",
+   "name": "Seed Poteitr",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North"
+   },
+   "examples": [
+    "North village"
+   ]
+  },
+  {
+   "item": "$item_ancientgemstone_orange",
+   "name": "Solryth",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_orbthunderblood",
+   "name": "Thunderblood Essence",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "offering"
+   ],
+   "earliest_by_source": {
+    "offering": "Deep North"
+   },
+   "examples": [
+    "sacrificing Memorial Coal"
+   ]
+  },
+  {
+   "item": "$item_frostwood",
+   "name": "Timberwood",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "mining",
+    "pickable",
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Deep North",
+    "destructible": "Deep North",
+    "pickable": "Deep North",
+    "mining": "Deep North"
+   },
+   "examples": [
+    "BlobMorkBig",
+    "DG_Hole",
+    "StumpHole_small",
+    "StumpHut",
+    "StumpLog",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_fircone_big",
+   "name": "Timberwood Cone",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "tree"
+   ],
+   "earliest_by_source": {
+    "tree": "Deep North"
+   },
+   "examples": [
+    "snowfirtree",
+    "snowfirtree_sparse"
+   ]
+  },
+  {
+   "item": "$item_ancientgemstone_purple",
+   "name": "Veydris",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons (assumed)"
+   ]
+  },
+  {
+   "item": "$item_mold_smallparts",
+   "name": "item_mold_smallparts",
+   "item_type": "Material",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Deep North"
+   },
+   "examples": [
+    "Deep North dungeons and mobs"
+   ]
+  },
+  {
+   "item": "$item_bloodgoldkey",
+   "name": "Intricate Key",
+   "item_type": "Misc",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_snowball",
+   "name": "Snowball",
+   "item_type": "OneHandedWeapon",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature",
+    "pickable"
+   ],
+   "earliest_by_source": {
+    "pickable": "Deep North",
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Frozen GD",
+    "snowball"
+   ]
+  },
+  {
+   "item": "$item_trophy_barka",
+   "name": "Barka Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Barka"
+   ]
+  },
+  {
+   "item": "$item_trophy_elaking",
+   "name": "Elaking Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Elakingar Lantern NIGHT",
+    "Elakingar NIGHT"
+   ]
+  },
+  {
+   "item": "$item_trophy_mole",
+   "name": "Eyeless One Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "DG_Hole",
+    "TheHole01"
+   ]
+  },
+  {
+   "item": "$item_trophy_blob_frost",
+   "name": "Frost Blob Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "BlobFrost"
+   ]
+  },
+  {
+   "item": "$item_trophy_jotunwitch",
+   "name": "Hexen Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWitch"
+   ]
+  },
+  {
+   "item": "$item_trophy_jotunwarrior",
+   "name": "Krigen Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "JotunWarrior",
+    "JotunWarriorDualWield"
+   ]
+  },
+  {
+   "item": "$item_trophy_moose",
+   "name": "Moose Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Älg"
+   ]
+  },
+  {
+   "item": "$item_trophy_blob_morkhalla",
+   "name": "Pulp Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "BlobMork"
+   ]
+  },
+  {
+   "item": "$item_trophy_seal",
+   "name": "Seal Trophy",
+   "item_type": "Trophy",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "biomes": [
+    "Deep North"
+   ],
+   "sources": [
+    "creature"
+   ],
+   "earliest_by_source": {
+    "creature": "Deep North"
+   },
+   "examples": [
+    "Seal"
+   ]
+  },
+  {
+   "item": "$item_ironore",
+   "name": "Iron Ore",
+   "item_type": "Material",
+   "earliest_biome": "",
+   "earliest_biome_direct": "",
+   "biomes": [],
+   "sources": [
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "fishing bonus": "Swamp"
+   },
+   "examples": [
+    "Fish6"
+   ]
+  },
+  {
+   "item": "$item_sap",
+   "name": "Sap",
+   "item_type": "Material",
+   "earliest_biome": "",
+   "earliest_biome_direct": "",
+   "biomes": [],
+   "sources": [
+    "fishing bonus"
+   ],
+   "earliest_by_source": {
+    "fishing bonus": "Ocean"
+   },
+   "examples": [
+    "Fish12"
+   ]
+  }
+ ]
+}

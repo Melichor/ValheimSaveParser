@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Achievement Hunter</title>
-<meta name="description" content="Upload a Valheim character file (.fch) and see exactly what you are still missing for each achievement. The analysis runs in your browser.">
+<meta name="description" content="Drop in a Valheim character file (.fch) and see exactly what you are still missing for each achievement. The analysis runs in your browser.">
 <link rel="stylesheet" href="web/style.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <h1>Valheim Achievement Hunter</h1>
-    <p class="lead">Upload a character file and see what each achievement still needs from you.</p>
+    <p class="lead">Drop in a character file and see what each achievement still needs from you.</p>
   </div>
 </header>
 
@@ -34,6 +34,7 @@
         <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
         <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
         <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
+        <li><b>Tip:</b> once you are in the <code>userdata</code> folder, search it for your character's name or for <code>892970</code>. That finds the right folder and file straight away.</li>
       </ul>
       <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
     </details>
@@ -46,6 +47,9 @@
     <div class="bar">
       <div class="who"><strong id="fname"></strong><span id="worlds"></span></div>
       <div class="controls">
+        <label class="check biome">I'm currently in
+          <select id="biome" aria-label="Biome you are in right now"></select>
+        </label>
         <input id="search" type="search" placeholder="Search items…" aria-label="Search items">
         <label class="check"><input id="showDone" type="checkbox"> Show completed</label>
         <label class="check"><input id="hideDone" type="checkbox"> Hide finished lists</label>
