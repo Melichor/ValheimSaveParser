@@ -1,0 +1,885 @@
+{
+ "biome_order": [
+  "Meadows",
+  "Black Forest",
+  "Ocean",
+  "Swamp",
+  "Mountain",
+  "Plains",
+  "Mistlands",
+  "Ashlands",
+  "Deep North"
+ ],
+ "items": [
+  {
+   "item": "$item_boar_meat_cooked",
+   "name": "Cooked Boar Meat",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_deer_meat_cooked",
+   "name": "Cooked Deer Meat",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_necktailgrilled",
+   "name": "Grilled Neck Tail",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_honey",
+   "name": "Honey",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_mushroomcommon",
+   "name": "Mushroom",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_raspberries",
+   "name": "Raspberries",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "Meadows",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_blueberries",
+   "name": "Blueberries",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_boarjerky",
+   "name": "Boar Jerky",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_carrot",
+   "name": "Carrot",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_carrotsoup",
+   "name": "Carrot Soup",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_bjorn_meat_cooked",
+   "name": "Cooked Bear Meat",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_deerstew",
+   "name": "Deer Stew",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_mincemeatsauce",
+   "name": "Minced Meat Sauce",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_pulledbear",
+   "name": "Pulled Bear",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_queensjam",
+   "name": "Queen's Jam",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_mushroomyellow",
+   "name": "Yellow Mushroom",
+   "earliest_biome": "Black Forest",
+   "earliest_biome_direct": "Black Forest",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_feastblackforest",
+   "name": "Black Forest Buffet Platter",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_blacksoup",
+   "name": "Black Soup",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_fish_cooked",
+   "name": "Cooked Fish",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_serpentmeatcooked",
+   "name": "Cooked Serpent Meat",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_shocklatesmoothie",
+   "name": "Muckshake",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastoceans",
+   "name": "Sailor's Bounty",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_sausages",
+   "name": "Sausages",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_serpentstew",
+   "name": "Serpent Stew",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastswamps",
+   "name": "Swamp Dweller's Delight",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_turnipstew",
+   "name": "Turnip Stew",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastmeadows",
+   "name": "Whole Roasted Meadow Boar",
+   "earliest_biome": "Swamp",
+   "earliest_biome_direct": "Swamp",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_wolf_meat_cooked",
+   "name": "Cooked Wolf Meat",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_eyescream",
+   "name": "Eyescream",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastmountains",
+   "name": "Hearty Mountain Logger's Stew",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_onion",
+   "name": "Onion",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_onionsoup",
+   "name": "Onion Soup",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_wolfjerky",
+   "name": "Wolf Jerky",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "Mountain",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_wolf_skewer",
+   "name": "Wolf Skewer",
+   "earliest_biome": "Mountain",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_bloodpudding",
+   "name": "Blood Pudding",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_bread",
+   "name": "Bread",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_cloudberries",
+   "name": "Cloudberries",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_chicken_meat_cooked",
+   "name": "Cooked Chicken Meat",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_egg_cooked",
+   "name": "Cooked Egg",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_loxmeat_cooked",
+   "name": "Cooked Lox Meat",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_fishwraps",
+   "name": "Fish Wraps",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_vikingcupcake",
+   "name": "Frosted Sweetbread",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_loxpie",
+   "name": "Lox Meat Pie",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastplains",
+   "name": "Plains Pie Picnic",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_hare_meat_cooked",
+   "name": "Cooked Hare Meat",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_bug_meat_cooked",
+   "name": "Cooked Seeker Meat",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_fishandbread",
+   "name": "Fish 'n' Bread",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_honeyglazedchicken",
+   "name": "Honey Glazed Chicken",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_jotunpuffs",
+   "name": "Jotun Puffs",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_magecap",
+   "name": "Magecap",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_meatplatter",
+   "name": "Meat Platter",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_mistharesupreme",
+   "name": "Misthare Supreme",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_mushroomomelette",
+   "name": "Mushroom Omelette",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastmistlands",
+   "name": "Mushrooms Galore á la Mistlands",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_royaljelly",
+   "name": "Royal Jelly",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Mistlands",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_salad",
+   "name": "Salad",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_seekeraspic",
+   "name": "Seeker Aspic",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_magicallystuffedmushroom",
+   "name": "Stuffed Mushroom",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_yggdrasilporridge",
+   "name": "Yggdrasil Porridge",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastashlands",
+   "name": "Ashlands Gourmet Bowl",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_asksvin_meat_cooked",
+   "name": "Cooked Asksvin Tail",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_bonemawmeat_cooked",
+   "name": "Cooked Bonemaw Meat",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_volture_meat_cooked",
+   "name": "Cooked Volture Meat",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_fiddleheadfern",
+   "name": "Fiddlehead",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_fierysvinstew",
+   "name": "Fiery Svinstew",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_marinatedgreens",
+   "name": "Marinated Greens",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_mashedmeat",
+   "name": "Mashed Meat",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_piquantpie",
+   "name": "Piquant Pie",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_roastedcrustpie",
+   "name": "Roasted Crust Pie",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_scorchingmedley",
+   "name": "Scorching Medley",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_sizzlingberrybroth",
+   "name": "Sizzling Berry Broth",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_smokepuff",
+   "name": "Smoke Puff",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_sparklingshroomshake",
+   "name": "Sparkling Shroomshake",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_spicymarmalade",
+   "name": "Spicy Marmalade",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_vineberry",
+   "name": "Vineberry Cluster",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "routes": [
+    "crafted",
+    "found"
+   ]
+  },
+  {
+   "item": "$item_bakedpoteitr",
+   "name": "Baked Poteitr",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_moose_meat_cooked",
+   "name": "Cooked Moose Meat",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_blubber_cooked",
+   "name": "Cooked Seal Blubber",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_fishsoup",
+   "name": "Fish Soup",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_kale",
+   "name": "Kale",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_kalechips",
+   "name": "Kale Chips",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_lingonberries",
+   "name": "Lingonberries",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_lingondricka",
+   "name": "Lingonberry Juice",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_glowworm",
+   "name": "Luminous Larva",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "routes": [
+    "found"
+   ]
+  },
+  {
+   "item": "$item_moosekebab",
+   "name": "Meat In Bread",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_meatballsmashedpoteitr",
+   "name": "Meatballs and Poteitr",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_feastdeepnorth",
+   "name": "Northern Morning Fare",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_oatmilk",
+   "name": "Oat Milk",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_oatmeallingonberryjam",
+   "name": "Oatmeal",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_oat",
+   "name": "Oats",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_ovenpancake",
+   "name": "Oven Pancake",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_pancakes",
+   "name": "Pancakes",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_poteitr",
+   "name": "Poteitr",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "Deep North",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_sealsoup",
+   "name": "Seal Meat Soup",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_smokedfish",
+   "name": "Smoked Fish",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  },
+  {
+   "item": "$item_smokedmoosemeat",
+   "name": "Smoked Moose Meat",
+   "earliest_biome": "Deep North",
+   "earliest_biome_direct": "",
+   "routes": [
+    "crafted"
+   ]
+  }
+ ]
+}

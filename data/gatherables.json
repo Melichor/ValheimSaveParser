@@ -205,8 +205,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Meadows",
-    "fishing bonus": "Meadows"
+    "fishing bonus": "Meadows",
+    "loot": "Meadows"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -237,8 +237,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Meadows",
-    "fishing bonus": "Meadows"
+    "fishing bonus": "Meadows",
+    "loot": "Meadows"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -334,10 +334,10 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Meadows",
     "creature": "Meadows",
+    "destructible": "Mountain",
     "loot": "Black Forest",
-    "destructible": "Mountain"
+    "pickable": "Meadows"
    },
    "examples": [
     "AbandonedLogCabin03",
@@ -372,10 +372,10 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "loot": "Meadows",
     "creature": "Black Forest",
-    "pickable": "Mountain",
-    "fishing bonus": "Mountain"
+    "fishing bonus": "Mountain",
+    "loot": "Meadows",
+    "pickable": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -421,8 +421,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Meadows",
-    "creature": "Black Forest"
+    "creature": "Black Forest",
+    "pickable": "Meadows"
    },
    "examples": [
     "GoblinCamp2",
@@ -450,9 +450,9 @@
     "loot"
    ],
    "earliest_by_source": {
+    "creature": "Meadows",
     "destructible": "Black Forest",
-    "loot": "Black Forest",
-    "creature": "Meadows"
+    "loot": "Black Forest"
    },
    "examples": [
     "GoblinCamp2",
@@ -507,10 +507,10 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Meadows",
+    "creature": "Ashlands",
     "destructible": "Meadows",
     "loot": "Meadows",
-    "creature": "Ashlands"
+    "tree": "Meadows"
    },
    "examples": [
     "CharredRuins1",
@@ -543,8 +543,8 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Meadows",
-    "destructible": "Black Forest"
+    "destructible": "Black Forest",
+    "tree": "Meadows"
    },
    "examples": [
     "CharredTowerRuins1_dvergr",
@@ -572,10 +572,10 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Meadows",
     "destructible": "Black Forest",
+    "fishing bonus": "Meadows",
     "loot": "Meadows",
-    "fishing bonus": "Meadows"
+    "pickable": "Meadows"
    },
    "examples": [
     "Fish2",
@@ -653,8 +653,8 @@
     "mining"
    ],
    "earliest_by_source": {
-    "destructible": "Black Forest",
     "creature": "Meadows",
+    "destructible": "Black Forest",
     "loot": "Black Forest",
     "mining": "Swamp"
    },
@@ -751,9 +751,9 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Meadows",
+    "creature": "Meadows",
     "destructible": "Meadows",
-    "creature": "Meadows"
+    "tree": "Meadows"
    },
    "examples": [
     "BogWitch_Camp",
@@ -806,8 +806,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Meadows",
-    "fishing bonus": "Ocean"
+    "fishing bonus": "Ocean",
+    "loot": "Meadows"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -838,9 +838,9 @@
     "pickable"
    ],
    "earliest_by_source": {
+    "destructible": "Deep North",
     "loot": "Meadows",
-    "pickable": "Mountain",
-    "destructible": "Deep North"
+    "pickable": "Mountain"
    },
    "examples": [
     "Crypt2",
@@ -877,12 +877,12 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "mining": "Meadows",
-    "destructible": "Meadows",
-    "pickable": "Meadows",
     "creature": "Meadows",
+    "destructible": "Meadows",
+    "fishing bonus": "Meadows",
     "loot": "Black Forest",
-    "fishing bonus": "Meadows"
+    "mining": "Meadows",
+    "pickable": "Meadows"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -917,11 +917,11 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Meadows",
-    "destructible": "Meadows",
-    "pickable": "Meadows",
     "creature": "Meadows",
-    "loot": "Black Forest"
+    "destructible": "Meadows",
+    "loot": "Black Forest",
+    "pickable": "Meadows",
+    "tree": "Meadows"
    },
    "examples": [
     "BogWitch_Camp",
@@ -1285,8 +1285,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Black Forest",
-    "destructible": "Black Forest"
+    "destructible": "Black Forest",
+    "pickable": "Black Forest"
    },
    "examples": [
     "Ruin2",
@@ -1399,8 +1399,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Deep North",
-    "creature": "Black Forest"
+    "creature": "Black Forest",
+    "loot": "Deep North"
    },
    "examples": [
     "Bjorn DAY",
@@ -1441,8 +1441,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Black Forest",
-    "fishing bonus": "Deep North"
+    "fishing bonus": "Deep North",
+    "pickable": "Black Forest"
    },
    "examples": [
     "Fish10",
@@ -1491,8 +1491,8 @@
     "mining"
    ],
    "earliest_by_source": {
-    "mining": "Black Forest",
-    "fishing bonus": "Black Forest"
+    "fishing bonus": "Black Forest",
+    "mining": "Black Forest"
    },
    "examples": [
     "Fish5",
@@ -1514,8 +1514,8 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Black Forest",
-    "destructible": "Deep North"
+    "destructible": "Deep North",
+    "tree": "Black Forest"
    },
    "examples": [
     "Pinetree_01_blackforest",
@@ -1560,8 +1560,8 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Black Forest",
-    "destructible": "Black Forest"
+    "destructible": "Black Forest",
+    "tree": "Black Forest"
    },
    "examples": [
     "firtree_blackforest",
@@ -1613,9 +1613,9 @@
    ],
    "earliest_by_source": {
     "creature": "Swamp",
-    "pickable": "Black Forest",
     "destructible": "Mistlands",
-    "fishing bonus": "Ashlands"
+    "fishing bonus": "Ashlands",
+    "pickable": "Black Forest"
    },
    "examples": [
     "Crypt2",
@@ -1758,8 +1758,8 @@
     "destructible"
    ],
    "earliest_by_source": {
-    "destructible": "Black Forest",
-    "creature": "Black Forest"
+    "creature": "Black Forest",
+    "destructible": "Black Forest"
    },
    "examples": [
     "Greydwarf_camp1",
@@ -2066,8 +2066,8 @@
     "mining"
    ],
    "earliest_by_source": {
-    "mining": "Ocean",
-    "fishing bonus": "Ocean"
+    "fishing bonus": "Ocean",
+    "mining": "Ocean"
    },
    "examples": [
     "Fish8",
@@ -2208,8 +2208,8 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Swamp",
-    "loot": "Swamp"
+    "loot": "Swamp",
+    "tree": "Swamp"
    },
    "examples": [
     "Grave1",
@@ -2256,10 +2256,10 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Swamp",
     "creature": "Swamp",
     "destructible": "Mistlands",
-    "fishing bonus": "Swamp"
+    "fishing bonus": "Swamp",
+    "loot": "Swamp"
    },
    "examples": [
     "Fish6",
@@ -2287,8 +2287,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Mountain",
-    "creature": "Swamp"
+    "creature": "Swamp",
+    "pickable": "Mountain"
    },
    "examples": [
     "Hildir_cave",
@@ -2313,8 +2313,8 @@
     "destructible"
    ],
    "earliest_by_source": {
-    "destructible": "Swamp",
-    "creature": "Swamp"
+    "creature": "Swamp",
+    "destructible": "Swamp"
    },
    "examples": [
     "Abomination",
@@ -2383,10 +2383,10 @@
     "mining"
    ],
    "earliest_by_source": {
-    "mining": "Swamp",
-    "loot": "Swamp",
     "creature": "Swamp",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "loot": "Swamp",
+    "mining": "Swamp"
    },
    "examples": [
     "BlobElite",
@@ -2430,8 +2430,8 @@
     "mining"
    ],
    "earliest_by_source": {
-    "mining": "Swamp",
-    "loot": "Swamp"
+    "loot": "Swamp",
+    "mining": "Swamp"
    },
    "examples": [
     "Grave1",
@@ -2858,8 +2858,8 @@
    ],
    "earliest_by_source": {
     "creature": "Mountain",
-    "pickable": "Mountain",
-    "destructible": "Mountain"
+    "destructible": "Mountain",
+    "pickable": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -2904,8 +2904,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Mountain",
-    "destructible": "Mountain"
+    "destructible": "Mountain",
+    "pickable": "Mountain"
    },
    "examples": [
     "Hildir_cave",
@@ -2975,10 +2975,10 @@
     "loot"
    ],
    "earliest_by_source": {
-    "destructible": "Mountain",
-    "loot": "Mountain",
     "creature": "Mountain",
-    "fishing bonus": "Mountain"
+    "destructible": "Mountain",
+    "fishing bonus": "Mountain",
+    "loot": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -3003,8 +3003,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Mountain",
-    "fishing bonus": "Ocean"
+    "fishing bonus": "Ocean",
+    "loot": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -3134,8 +3134,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Mountain",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "loot": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -3162,8 +3162,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Mountain",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "loot": "Mountain"
    },
    "examples": [
     "AbandonedLogCabin02",
@@ -3495,8 +3495,8 @@
     "destructible"
    ],
    "earliest_by_source": {
-    "destructible": "Ashlands",
-    "creature": "Plains"
+    "creature": "Plains",
+    "destructible": "Ashlands"
    },
    "examples": [
     "MorgenHole1",
@@ -3540,10 +3540,10 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "loot": "Plains",
-    "pickable": "Plains",
     "destructible": "Plains",
-    "fishing bonus": "Plains"
+    "fishing bonus": "Plains",
+    "loot": "Plains",
+    "pickable": "Plains"
    },
    "examples": [
     "Fish7",
@@ -3570,8 +3570,8 @@
    ],
    "earliest_by_source": {
     "creature": "Plains",
-    "loot": "Plains",
-    "fishing bonus": "Plains"
+    "fishing bonus": "Plains",
+    "loot": "Plains"
    },
    "examples": [
     "Fish7",
@@ -3596,8 +3596,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Plains",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "pickable": "Plains"
    },
    "examples": [
     "GoblinCamp2"
@@ -3655,8 +3655,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Plains",
-    "creature": "Plains"
+    "creature": "Plains",
+    "loot": "Plains"
    },
    "examples": [
     "Deathsquito",
@@ -3750,8 +3750,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Plains",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "loot": "Plains"
    },
    "examples": [
     "CharredFortress",
@@ -3778,8 +3778,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Plains",
-    "destructible": "Plains"
+    "destructible": "Plains",
+    "loot": "Plains"
    },
    "examples": [
     "CharredFortress",
@@ -3825,8 +3825,8 @@
    ],
    "earliest_by_source": {
     "creature": "Plains",
-    "pickable": "Plains",
-    "loot": "Plains"
+    "loot": "Plains",
+    "pickable": "Plains"
    },
    "examples": [
     "GoblinBrute",
@@ -4358,8 +4358,8 @@
    ],
    "earliest_by_source": {
     "creature": "Mistlands",
-    "mining": "Mistlands",
-    "destructible": "Mistlands"
+    "destructible": "Mistlands",
+    "mining": "Mistlands"
    },
    "examples": [
     "CharredTowerRuins1_dvergr",
@@ -4658,8 +4658,8 @@
    "earliest_by_source": {
     "creature": "Mistlands",
     "destructible": "Mistlands",
-    "mining": "Mistlands",
-    "fishing bonus": "Mistlands"
+    "fishing bonus": "Mistlands",
+    "mining": "Mistlands"
    },
    "examples": [
     "CharredTowerRuins1_dvergr",
@@ -4684,8 +4684,8 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Mistlands",
-    "destructible": "Mistlands"
+    "destructible": "Mistlands",
+    "tree": "Mistlands"
    },
    "examples": [
     "Mistlands_GuardTower1_ruined_new2",
@@ -4766,8 +4766,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Mistlands",
-    "loot": "Mistlands"
+    "loot": "Mistlands",
+    "pickable": "Mistlands"
    },
    "examples": [
     "Mistlands_DvergrBossEntrance1",
@@ -4925,8 +4925,8 @@
     "creature"
    ],
    "earliest_by_source": {
-    "creature": "Mistlands",
-    "boss": "Mistlands"
+    "boss": "Mistlands",
+    "creature": "Mistlands"
    },
    "examples": [
     "Mistlands_DvergrBossEntrance1"
@@ -5100,9 +5100,9 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Ashlands",
     "destructible": "Ashlands",
-    "loot": "Ashlands"
+    "loot": "Ashlands",
+    "tree": "Ashlands"
    },
    "examples": [
     "CharredFortress",
@@ -5349,8 +5349,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "loot": "Ashlands",
-    "creature": "Ashlands"
+    "creature": "Ashlands",
+    "loot": "Ashlands"
    },
    "examples": [
     "CharredFortress",
@@ -5440,9 +5440,9 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Ashlands",
     "destructible": "Ashlands",
-    "loot": "Ashlands"
+    "loot": "Ashlands",
+    "pickable": "Ashlands"
    },
    "examples": [
     "CharredFortress",
@@ -5526,10 +5526,10 @@
     "mining"
    ],
    "earliest_by_source": {
-    "loot": "Ashlands",
-    "mining": "Ashlands",
     "destructible": "Ashlands",
-    "fishing bonus": "Ashlands"
+    "fishing bonus": "Ashlands",
+    "loot": "Ashlands",
+    "mining": "Ashlands"
    },
    "examples": [
     "CharredFortress",
@@ -5555,10 +5555,10 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "mining": "Ashlands",
-    "pickable": "Ashlands",
     "destructible": "Ashlands",
-    "fishing bonus": "Ashlands"
+    "fishing bonus": "Ashlands",
+    "mining": "Ashlands",
+    "pickable": "Ashlands"
    },
    "examples": [
     "AshlandRuins",
@@ -5642,8 +5642,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Ashlands",
-    "loot": "Ashlands"
+    "loot": "Ashlands",
+    "pickable": "Ashlands"
    },
    "examples": [
     "CharredFortress",
@@ -5716,8 +5716,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Ashlands",
-    "destructible": "Ashlands"
+    "destructible": "Ashlands",
+    "pickable": "Ashlands"
    },
    "examples": [
     "CharredRuins1",
@@ -5742,8 +5742,8 @@
     "destructible"
    ],
    "earliest_by_source": {
-    "destructible": "Ashlands",
-    "creature": "Ashlands"
+    "creature": "Ashlands",
+    "destructible": "Ashlands"
    },
    "examples": [
     "Lava Blob",
@@ -5812,9 +5812,9 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Ashlands",
+    "creature": "Ashlands",
     "destructible": "Ashlands",
-    "creature": "Ashlands"
+    "pickable": "Ashlands"
    },
    "examples": [
     "Lava Blob",
@@ -6115,8 +6115,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Deep North",
-    "destructible": "Deep North"
+    "destructible": "Deep North",
+    "pickable": "Deep North"
    },
    "examples": [
     "BlobMorkBig",
@@ -6373,9 +6373,9 @@
     "mining"
    ],
    "earliest_by_source": {
+    "creature": "Deep North",
     "destructible": "Deep North",
-    "mining": "Deep North",
-    "creature": "Deep North"
+    "mining": "Deep North"
    },
    "examples": [
     "Frozen GD",
@@ -6674,8 +6674,8 @@
     "loot"
    ],
    "earliest_by_source": {
-    "destructible": "Deep North",
     "creature": "Deep North",
+    "destructible": "Deep North",
     "loot": "Deep North"
    },
    "examples": [
@@ -7377,10 +7377,10 @@
     "tree"
    ],
    "earliest_by_source": {
-    "tree": "Deep North",
     "destructible": "Deep North",
+    "mining": "Deep North",
     "pickable": "Deep North",
-    "mining": "Deep North"
+    "tree": "Deep North"
    },
    "examples": [
     "BlobMorkBig",
@@ -7482,8 +7482,8 @@
     "pickable"
    ],
    "earliest_by_source": {
-    "pickable": "Deep North",
-    "creature": "Deep North"
+    "creature": "Deep North",
+    "pickable": "Deep North"
    },
    "examples": [
     "Frozen GD",

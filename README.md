@@ -72,6 +72,7 @@ By default every list is shown, and only the missing entries are printed (each l
 | `crafted` | Craft every item (recipes that need a crafting station) | Any difficulty |
 | `weapons` | Craft every weapon | Any difficulty |
 | `cooked` | Cook / craft every food | Any difficulty |
+| `food-eaten` | **The Gourmet**: eat every food once (raw and cooked versions are separate foods) | Any difficulty |
 | `built` | Build every piece in the Hammer menu | Any difficulty |
 | `deaths` | Die in every way (enemy, fall, drowning, burning, freezing, poison, smoke, edge of the world) | Any difficulty |
 | `tree-deaths` | Be killed by each of the 8 tree varieties | Any difficulty |

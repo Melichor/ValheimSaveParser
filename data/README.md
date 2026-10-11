@@ -8,7 +8,12 @@ Generated from the installed game (Valheim 1.0.16, Deep North included) by `tool
 | `gatherables.csv` / `.json` | Every item that can be found in the world, with the earliest biome and where it comes from. |
 | `craftable_biomes.csv` / `.json` | **For every craftable item and build piece: the earliest biome in which it can be made**, what holds it back, and why when it cannot be worked out. |
 | `biomes.json` | The earliest biome of every craftable item, build piece, gatherable item and creature; this is what `tools/update_script_biomes.py` copies into `achi_hunter.py`. |
+| `foods.csv` / `.json` | The foods behind **The Gourmet** achievement (eat every food once): 96 of them, each with the earliest biome in which it can be made or found and the routes (crafted, found, bought). |
 | `unsourced_items.csv` | Materials, food, trophies and fish that are neither craftable nor found by the rules below (mostly Deep North loot and moulds). |
+
+## foods
+
+The Gourmet is the game's "every food eaten" achievement. Its list is built by the game at start-up: every item in the item database that is a consumable with a food value, minus the items the game excludes by hand (Blue Mushroom is one). Raw and cooked versions of a dish are separate foods. `earliest_biome` is the earliest biome in which the food can be made or found, using the same rules as `craftable_biomes`; `routes` says whether it can be crafted, found in the world, or bought.
 
 ## craftable_biomes
 
@@ -39,6 +44,7 @@ These are stated assumptions, kept together at the top of `tools/derive.py` (`MA
 - Fenris Claw is a Mountain dungeon drop. Sealbreaker fragments are treated as available in Mistlands.
 - Every mould is a Deep North item (dungeons and mobs). Jotun Witches (Hexen), Jotun Warriors (Krigen) and Frost Blobs only spawn in Deep North, so their drops are Deep North. The Ancient Coin and the four ancient gemstones (Draumyx, Grimvarn, Solryth, Veydris) are Deep North dungeon loot; the gemstones are assumed to share the coin's chests.
 - Frostfire and Thunderblood Essence come from sacrificing Memorial Coal, so they are Deep North. Oat Seeds and Seed Poteitr grow in the North villages (Deep North). The Frozen King is Deep North's last boss, so his drops (Crown Jewel, Sacrificial Blood) are Deep North. Mork blobs live in Deep North dungeons. The Salvaged Lantern drops from destroying a Standing Lantern, a very rare structure that can appear in Meadows at the earliest, so it counts as Meadows.
+- Vineberry Clusters come from the Ashlands vine only. The game files give the Bog Witch's Ivy an identical berry Pickable, but a grown Ivy gives no berries in the game (confirmed by playing), so that route is ignored.
 - Draugr and Draugr Elite belong to the Swamp, even though the data also puts Draugr in the Meadows village ruins; what they drop (Draugr Trophy, Entrails) is Swamp too.
 - Chickens and hens only come from eggs, so they are Plains. The Spirit Caller animals are Deep North. Things a player makes follow what makes them: the training dummy T.W.I.G. (Black Forest, for the materials to build it), the Dead Raiser's skeleton (Mistlands) and the Trollstav's troll (Ashlands).
 - Petrified Tissue (the gold ore item, smelted into Bloodgold at the Blast Furnace) is mined from the corpse of a Gammeltroll in Deep North. The corpse's location is not placed in the data, so this is stated by hand.

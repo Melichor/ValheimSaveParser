@@ -83,6 +83,10 @@ CREATURE_BIOME_RULES = {
 # Creatures that live in a different biome than the spawn data suggests (token -> biome bit): Draugr also appear in the
 # Meadows village ruins, but they belong to the Swamp.
 CREATURE_BIOME_OVERRIDE = {"$enemy_draugr": 2, "$enemy_draugrelite": 2}
+# Farming routes in the game files that do not work in the game: (sapling piece, crop token). The Ivy plant (the Bog
+# Witch's Ivy Seeds) has a Pickable for Vineberry Clusters, identical to the Ashlands vine's, but in the game a grown
+# Ivy gives no berries (confirmed by playing). Vineberry Clusters come from the Ashlands vine only.
+FARMING_EXCLUDE = {("$piece_sapling_vinegreen", "$item_vineberry")}
 # A trader item that needs a defeated boss is only as early as that boss's biome (key -> Heightmap.Biome bit).
 KEY_BIOME = {"defeated_eikthyr": 1, "defeated_gdking": 8, "defeated_bonemass": 2, "defeated_dragon": 4,
              "defeated_goblinking": 16, "defeated_queen": 512, "defeated_fader": 32, "defeated_frozenking_p3": 64,
@@ -417,7 +421,9 @@ def derive(raw, out):
         grow_bits = {b for b, _ in BIOMES if (pl["biome"] or 0) & b}
         for row in piece_rows:
             if row["output"] == sap:
-                for crop in crops:
+                for crop in sorted(crops):
+                    if (sap, crop) in FARMING_EXCLUDE:
+                        continue
                     farm_rows.append({"kind": "farming", "output": crop, "output_name": name_of(crop),
                                       "item_type": "Crop", "output_amount": 1, "ingredients": row["ingredients"],
                                       "station": "", "station_name": "Cultivator + planting " + name_of(sap),
@@ -439,7 +445,7 @@ def derive(raw, out):
         egg = item_by_go.get(e["root"])
         if not egg or not e["grown"]:
             continue
-        for token, kind in yields(e["grown"]):
+        for token, kind in sorted(yields(e["grown"])):
             if kind == "creature":
                 farm_rows.append({"kind": "hatching", "output": token, "output_name": name_of(token), "item_type": "Material",
                                   "output_amount": 1, "ingredients": [{"token": egg["token"], "name": name_of(egg["token"]),
@@ -601,7 +607,7 @@ def derive(raw, out):
         item_by_token.setdefault(i["token"], i)
     for token, f in found.items():
         item = item_by_token.get(token)
-        by_kind = {kind: earliest(bits)[1] for kind, bits in f["biomes"].items()}
+        by_kind = {kind: earliest(bits)[1] for kind, bits in sorted(f["biomes"].items())}
         main = [b for k, b in f["biomes"].items() if k != "fishing bonus"]
         all_bits = set().union(*main)   # fish bonus items never decide the biome
         no_loot = [b for k, b in f["biomes"].items() if k not in ("loot", "fishing bonus", "boss", "offering")]
@@ -664,6 +670,31 @@ def derive(raw, out):
                         r["earliest_biome_inferred"], "; ".join(r["inferred_from"]), "; ".join(r["still_blocked_by"]),
                         r["station"], r["station_level"], ing_text(r), r["other_recipes"], r["item"]])
 
+    # The Gourmet (the game's AllFoodEaten): every consumable with a food value in the item database, minus the game's
+    # own exclusions. Raw and cooked versions are separate foods.
+    db_items = raw["objectdb"][0]["items"] if raw.get("objectdb") else []
+    excluded_food = set(raw["achievements"][0]["consumablesExcluded"]) if raw.get("achievements") else set()
+    food_names = {}
+    for go in db_items:
+        it = item_by_go.get(go)
+        if it and it["token"] and it["type"] == 2 and (it["food"] or 0) > 0 and go not in excluded_food:
+            food_names[it["token"]] = name_of(it["token"])
+    craftable_items = {r["item"] for r in craft_rows if r["kind"] != "piece"}
+    food_rows = []
+    for token, name in sorted(food_names.items(), key=lambda kv: kv[1].lower()):
+        routes = [x for x, ok in (("crafted", token in craftable_items), ("found", token in found),
+                                  ("bought", token in bought)) if ok]
+        food_rows.append({"item": token, "name": name, "earliest_biome": label(ranks.get(token)),
+                          "earliest_biome_direct": label(ranks_direct.get(token)), "routes": routes})
+    food_rows.sort(key=lambda r: (RANK.get(r["earliest_biome"], 99), r["name"].lower()))
+    (out / "foods.json").write_text(json.dumps({"biome_order": [n for _, n in BIOMES], "items": food_rows}, indent=1,
+                                               ensure_ascii=False), encoding="utf-8")
+    with open(out / "foods.csv", "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["name", "earliest_biome", "earliest_biome_direct", "routes", "token"])
+        for r in food_rows:
+            w.writerow([r["name"], r["earliest_biome"], r["earliest_biome_direct"], "; ".join(r["routes"]), r["item"]])
+
     # earliest biome per token, for achi_hunter.py (tools/update_script_biomes.py writes it into the script)
     def creature_biome(tok, depth=0):
         for t in (tok, tok.rsplit("_p", 1)[0] if "_p" in tok[-4:] else tok):   # boss phases share their boss's biome
@@ -687,7 +718,9 @@ def derive(raw, out):
         "craft": {r["item"]: r["earliest_biome"] for r in craft_rows if r["kind"] != "piece" and r["earliest_biome"]},
         "piece": {r["item"]: r["earliest_biome"] for r in craft_rows if r["kind"] == "piece" and r["earliest_biome"]},
         "found": {r["item"]: r["earliest_biome"] for r in gather_rows if r["earliest_biome"]},
-        "creature": {t: creature_biome(t) for t in {c["token"] for c in raw["characters"] if c.get("token")}
+        "food": {r["item"]: r["earliest_biome"] for r in food_rows if r["earliest_biome"]},
+        "food_names": food_names,
+        "creature": {t: creature_biome(t) for t in sorted({c["token"] for c in raw["characters"] if c.get("token")})
                      if creature_biome(t)},
     }
     (out / "biomes.json").write_text(json.dumps(biomes_out, indent=1, ensure_ascii=False), encoding="utf-8")

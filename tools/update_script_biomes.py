@@ -21,6 +21,7 @@ wanted = {
     "BIOME_FOUND": ("found", set(H.TROPHIES) | set(H.FISH)),
     "BIOME_CREATURE": ("creature", set(H.ENEMIES) | set(H.BOSSES) | set(H.MINIBOSSES)),
 }
+food_names = biomes["food_names"]   # the Gourmet's list of foods comes from the game data as well
 order = biomes["order"]
 lines = ["# BEGIN GENERATED BIOMES (tools/update_script_biomes.py rewrites everything up to END GENERATED BIOMES)",
          "# Earliest biome per token, in progression order below. Craft = where the item can be made, Piece = where a build",
@@ -33,6 +34,13 @@ for name, (key, tokens) in wanted.items():
     lines.append(f"{name} = {{")
     lines += [f"    {t!r}: {b!r}," for t, b in entries.items()]
     lines.append("}")
+lines.append("FOOD_EATEN = {   # The Gourmet: every food that has to be eaten once")
+lines += [f"    {t!r}: {n!r}," for t, n in sorted(food_names.items())]
+lines.append("}")
+lines.append("BIOME_FOOD = {")
+lines += [f"    {t!r}: {biomes['food'][t]!r}," for t in sorted(food_names) if biomes["food"].get(t)]
+lines.append("}")
+counts["FOOD_EATEN"] = len(food_names)
 lines.append("# END GENERATED BIOMES")
 path = ROOT / "achi_hunter.py"
 text = path.read_text(encoding="utf-8")

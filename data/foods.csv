@@ -1,0 +1,97 @@
+name,earliest_biome,earliest_biome_direct,routes,token
+Cooked Boar Meat,Meadows,Meadows,crafted,$item_boar_meat_cooked
+Cooked Deer Meat,Meadows,Meadows,crafted,$item_deer_meat_cooked
+Grilled Neck Tail,Meadows,Meadows,crafted,$item_necktailgrilled
+Honey,Meadows,Meadows,found,$item_honey
+Mushroom,Meadows,Meadows,found,$item_mushroomcommon
+Raspberries,Meadows,Meadows,found,$item_raspberries
+Blueberries,Black Forest,Black Forest,found,$item_blueberries
+Boar Jerky,Black Forest,Black Forest,crafted,$item_boarjerky
+Carrot,Black Forest,Black Forest,crafted,$item_carrot
+Carrot Soup,Black Forest,Black Forest,crafted,$item_carrotsoup
+Cooked Bear Meat,Black Forest,Black Forest,crafted,$item_bjorn_meat_cooked
+Deer Stew,Black Forest,Black Forest,crafted,$item_deerstew
+Minced Meat Sauce,Black Forest,Black Forest,crafted,$item_mincemeatsauce
+Pulled Bear,Black Forest,Black Forest,crafted,$item_pulledbear
+Queen's Jam,Black Forest,Black Forest,crafted,$item_queensjam
+Yellow Mushroom,Black Forest,Black Forest,found,$item_mushroomyellow
+Black Forest Buffet Platter,Swamp,Swamp,crafted,$item_feastblackforest
+Black Soup,Swamp,Swamp,crafted,$item_blacksoup
+Cooked Fish,Swamp,Swamp,crafted,$item_fish_cooked
+Cooked Serpent Meat,Swamp,Swamp,crafted,$item_serpentmeatcooked
+Muckshake,Swamp,Swamp,crafted,$item_shocklatesmoothie
+Sailor's Bounty,Swamp,Swamp,crafted,$item_feastoceans
+Sausages,Swamp,Swamp,crafted; found,$item_sausages
+Serpent Stew,Swamp,Swamp,crafted,$item_serpentstew
+Swamp Dweller's Delight,Swamp,Swamp,crafted,$item_feastswamps
+Turnip Stew,Swamp,Swamp,crafted,$item_turnipstew
+Whole Roasted Meadow Boar,Swamp,Swamp,crafted,$item_feastmeadows
+Cooked Wolf Meat,Mountain,Mountain,crafted,$item_wolf_meat_cooked
+Eyescream,Mountain,Mountain,crafted,$item_eyescream
+Hearty Mountain Logger's Stew,Mountain,,crafted,$item_feastmountains
+Onion,Mountain,,crafted; found,$item_onion
+Onion Soup,Mountain,,crafted,$item_onionsoup
+Wolf Jerky,Mountain,Mountain,crafted,$item_wolfjerky
+Wolf Skewer,Mountain,,crafted,$item_wolf_skewer
+Blood Pudding,Plains,,crafted,$item_bloodpudding
+Bread,Plains,,crafted; found,$item_bread
+Cloudberries,Plains,Plains,found,$item_cloudberries
+Cooked Chicken Meat,Plains,Plains,crafted,$item_chicken_meat_cooked
+Cooked Egg,Plains,Plains,crafted,$item_egg_cooked
+Cooked Lox Meat,Plains,Plains,crafted,$item_loxmeat_cooked
+Fish Wraps,Plains,,crafted,$item_fishwraps
+Frosted Sweetbread,Plains,,crafted,$item_vikingcupcake
+Lox Meat Pie,Plains,,crafted,$item_loxpie
+Plains Pie Picnic,Plains,,crafted,$item_feastplains
+Cooked Hare Meat,Mistlands,Mistlands,crafted,$item_hare_meat_cooked
+Cooked Seeker Meat,Mistlands,Mistlands,crafted,$item_bug_meat_cooked
+Fish 'n' Bread,Mistlands,,crafted,$item_fishandbread
+Honey Glazed Chicken,Mistlands,,crafted,$item_honeyglazedchicken
+Jotun Puffs,Mistlands,Mistlands,crafted; found,$item_jotunpuffs
+Magecap,Mistlands,Mistlands,crafted; found,$item_magecap
+Meat Platter,Mistlands,,crafted,$item_meatplatter
+Misthare Supreme,Mistlands,,crafted,$item_mistharesupreme
+Mushroom Omelette,Mistlands,,crafted,$item_mushroomomelette
+Mushrooms Galore á la Mistlands,Mistlands,,crafted,$item_feastmistlands
+Royal Jelly,Mistlands,Mistlands,found,$item_royaljelly
+Salad,Mistlands,,crafted,$item_salad
+Seeker Aspic,Mistlands,,crafted,$item_seekeraspic
+Stuffed Mushroom,Mistlands,,crafted,$item_magicallystuffedmushroom
+Yggdrasil Porridge,Mistlands,,crafted,$item_yggdrasilporridge
+Ashlands Gourmet Bowl,Ashlands,,crafted,$item_feastashlands
+Cooked Asksvin Tail,Ashlands,Ashlands,crafted,$item_asksvin_meat_cooked
+Cooked Bonemaw Meat,Ashlands,Ashlands,crafted,$item_bonemawmeat_cooked
+Cooked Volture Meat,Ashlands,Ashlands,crafted,$item_volture_meat_cooked
+Fiddlehead,Ashlands,Ashlands,found,$item_fiddleheadfern
+Fiery Svinstew,Ashlands,,crafted,$item_fierysvinstew
+Marinated Greens,Ashlands,,crafted,$item_marinatedgreens
+Mashed Meat,Ashlands,,crafted,$item_mashedmeat
+Piquant Pie,Ashlands,,crafted,$item_piquantpie
+Roasted Crust Pie,Ashlands,,crafted,$item_roastedcrustpie
+Scorching Medley,Ashlands,,crafted,$item_scorchingmedley
+Sizzling Berry Broth,Ashlands,,crafted,$item_sizzlingberrybroth
+Smoke Puff,Ashlands,Ashlands,found,$item_smokepuff
+Sparkling Shroomshake,Ashlands,,crafted,$item_sparklingshroomshake
+Spicy Marmalade,Ashlands,,crafted,$item_spicymarmalade
+Vineberry Cluster,Ashlands,Ashlands,crafted; found,$item_vineberry
+Baked Poteitr,Deep North,,crafted,$item_bakedpoteitr
+Cooked Moose Meat,Deep North,Deep North,crafted,$item_moose_meat_cooked
+Cooked Seal Blubber,Deep North,,crafted,$item_blubber_cooked
+Fish Soup,Deep North,,crafted,$item_fishsoup
+Kale,Deep North,Deep North,crafted,$item_kale
+Kale Chips,Deep North,,crafted,$item_kalechips
+Lingonberries,Deep North,Deep North,found,$item_lingonberries
+Lingonberry Juice,Deep North,,crafted,$item_lingondricka
+Luminous Larva,Deep North,Deep North,found,$item_glowworm
+Meat In Bread,Deep North,,crafted,$item_moosekebab
+Meatballs and Poteitr,Deep North,,crafted,$item_meatballsmashedpoteitr
+Northern Morning Fare,Deep North,,crafted,$item_feastdeepnorth
+Oat Milk,Deep North,,crafted,$item_oatmilk
+Oatmeal,Deep North,,crafted,$item_oatmeallingonberryjam
+Oats,Deep North,,crafted,$item_oat
+Oven Pancake,Deep North,,crafted,$item_ovenpancake
+Pancakes,Deep North,,crafted,$item_pancakes
+Poteitr,Deep North,Deep North,crafted,$item_poteitr
+Seal Meat Soup,Deep North,,crafted,$item_sealsoup
+Smoked Fish,Deep North,,crafted,$item_smokedfish
+Smoked Moose Meat,Deep North,,crafted,$item_smokedmoosemeat

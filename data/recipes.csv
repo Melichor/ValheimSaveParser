@@ -112,7 +112,7 @@ Storm Ripper,item,Bow,1,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level);
 Bronzehead Arrow,item,Ammo,20,Forge,1,Wood x8; Bronze x1; Feathers x2,False,1,Black Forest,Black Forest,,,True,Recipe_ArrowBronze,$item_arrow_bronze
 Leather Trousers,item,Legs,1,Workbench,2,Deer Hide x6 (+6/upgrade level); Bone Fragments x0 (+5/upgrade level),False,4,Meadows,Meadows,,,True,Recipe_ArmorLeatherLegs,$item_legs_leather
 Spicy Marmalade,item,Consumable,1,Cauldron,5,Vineberry Cluster x3; Honey x1; Fiddlehead x1,False,1,Ashlands,,,,True,Recipe_SpiceInducedMarmalade,$item_spicymarmalade
-Mead Base: Lingering Eitr,item,Material,1,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Magecap x10,False,1,Mistlands,,,,True,Recipe_MeadBaseEitrLingering,$item_meadbaseeitr_lingering
+Mead Base: Lingering Eitr,item,Material,1,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Magecap x10,False,1,Ashlands,,,,True,Recipe_MeadBaseEitrLingering,$item_meadbaseeitr_lingering
 Ashlands Gourmet Bowl,item,Material,1,Food Preparation Table,1,Cooked Asksvin Tail x3; Vineberry Cluster x5; Scorching Medley x2; Fiery Spice Powder x1,False,1,Ashlands,,,,True,Recipe_FeastAshlands,$item_feastashlands
 Lox Fur Jacket,item,Chest,1,Workbench,2,Lox Pelt x5 (+6/upgrade level); Bone Fragments x8 (+4/upgrade level); Root x2 (+1/upgrade level),False,4,Plains,Plains,,,True,Recipe_ArmorLoxChest,$item_chest_lox
 Iron Pickaxe,item,TwoHandedWeapon,1,Forge,2,Corewood x3 (+1/upgrade level); Iron x20 (+10/upgrade level),False,4,Swamp,Swamp,,,True,Recipe_PickaxeIron,$item_pickaxe_iron
@@ -489,7 +489,7 @@ Tasty Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Tasty x1,False,,Black F
 Major Healing Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Major Healing x1,False,,Mistlands,Mistlands,,,True,DevHouseStart,$item_mead_hp_major
 Lingering Stamina Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Lingering Stamina x1,False,,Mistlands,,,,True,DevHouseStart,$item_mead_stamina_lingering
 Minor Eitr Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Minor Eitr x1,False,,Mistlands,,,,True,DevHouseStart,$item_mead_eitr_minor
-Lingering Eitr Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Lingering Eitr x1,False,,Mistlands,,,,True,DevHouseStart,$item_mead_eitr_lingering
+Lingering Eitr Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Lingering Eitr x1,False,,Ashlands,,,,True,DevHouseStart,$item_mead_eitr_lingering
 Lingering Healing Mead,fermenting,Consumable,6,Fermenter,,Mead Base: Lingering Health x1,False,,Ashlands,,,,True,DevHouseStart,$item_mead_hp_lingering
 Berserkir Mead,fermenting,Consumable,3,Fermenter,,Mead base: Berserkir x1,False,,Mountain,Mountain,,,True,DevHouseStart,$item_mead_bzerker
 Mead of Troll Endurance,fermenting,Consumable,6,Fermenter,,Mead Base: Troll Endurance x1,False,,Swamp,Swamp,,,True,DevHouseStart,$item_mead_strength
@@ -1070,7 +1070,7 @@ Honey Glazed Chicken,piece,Feasts,1,(none),,Honey Glazed Chicken x1,,,Mistlands,
 Mushrooms Galore á la Mistlands,piece,Deep North,1,(none),,Mushrooms Galore á la Mistlands x1,,,Mistlands,,,,True,FeastMistlands,$item_feastmistlands
 Smoke Puff,piece,Feasts,1,(none),,Smoke Puff x1,,,Ashlands,Ashlands,,,True,MushroomSmokePuff,$item_smokepuff
 Fiddlehead,piece,Feasts,1,(none),,Fiddlehead x1,,,Ashlands,Ashlands,,,True,Fiddleheadfern,$item_fiddleheadfern
-Vineberry Cluster,piece,Feasts,1,(none),,Vineberry Cluster x1,,,Swamp,Swamp,,,True,Vineberry,$item_vineberry
+Vineberry Cluster,piece,Feasts,1,(none),,Vineberry Cluster x1,,,Ashlands,Ashlands,,,True,Vineberry,$item_vineberry
 Cooked Asksvin Tail,piece,Feasts,1,(none),,Cooked Asksvin Tail x1,,,Ashlands,Ashlands,,,True,CookedAsksvinMeat,$item_asksvin_meat_cooked
 Cooked Volture Meat,piece,Feasts,1,(none),,Cooked Volture Meat x1,,,Ashlands,Ashlands,,,True,CookedVoltureMeat,$item_volture_meat_cooked
 Cooked Bonemaw Meat,piece,Feasts,1,(none),,Cooked Bonemaw Meat x1,,,Ashlands,Ashlands,,,True,CookedBoneMawSerpentMeat,$item_bonemawmeat_cooked
@@ -1116,7 +1116,7 @@ Minor Stamina Mead,piece,Food,1,(none),,Minor Stamina Mead x1,,,Black Forest,Bla
 Medium Stamina Mead,piece,Food,1,(none),,Medium Stamina Mead x1,,,Plains,Plains,,,True,MeadStaminaMedium,$item_mead_stamina_medium
 Lingering Stamina Mead,piece,Food,1,(none),,Lingering Stamina Mead x1,,,Mistlands,,,,True,MeadStaminaLingering,$item_mead_stamina_lingering
 Minor Eitr Mead,piece,Food,1,(none),,Minor Eitr Mead x1,,,Mistlands,,,,True,MeadEitrMinor,$item_mead_eitr_minor
-Lingering Eitr Mead,piece,Food,1,(none),,Lingering Eitr Mead x1,,,Mistlands,,,,True,MeadEitrLingering,$item_mead_eitr_lingering
+Lingering Eitr Mead,piece,Food,1,(none),,Lingering Eitr Mead x1,,,Ashlands,,,,True,MeadEitrLingering,$item_mead_eitr_lingering
 Poison Resistance Mead,piece,Food,1,(none),,Poison Resistance Mead x1,,,Black Forest,Black Forest,,,True,MeadPoisonResist,$item_mead_poisonres
 Frost Resistance Mead,piece,Food,1,(none),,Frost Resistance Mead x1,,,Swamp,Swamp,,,True,MeadFrostResist,$item_mead_frostres
 Fire Resistance Barley Wine,piece,Food,1,(none),,Fire Resistance Barley Wine x1,,,Plains,Plains,,,True,BarleyWine,$item_barleywine
@@ -1132,15 +1132,14 @@ Carrot,farming,Crop,1,Cultivator + planting Carrot,,Carrot Seeds x1,False,,Black
 Carrot Seeds,farming,Crop,1,Cultivator + planting Seed-carrot,,Carrot x1,False,,Black Forest,Black Forest,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedcarrot,$item_carrotseeds
 Vineberry Cluster,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberry
 Vineberry Seeds,farming,Crop,1,Cultivator + planting Ashvine,,Vineberry Seeds x1,False,,Ashlands,Ashlands,,"grows in: Meadows, Black Forest, Ocean, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_vineash,$item_vineberryseeds
-Seed Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitrseeds
 Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitr
+Seed Poteitr,farming,Crop,1,Cultivator + planting Poteitr,,Seed Poteitr x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_poteitr,$item_poteitrseeds
 Flax,farming,Crop,1,Cultivator + planting Flax,,Flax x1,False,,Plains,Plains,,grows in: Plains,True,$piece_sapling_flax,$item_flax
 Barley,farming,Crop,1,Cultivator + planting Barley,,Barley x1,False,,Plains,Plains,,grows in: Plains,True,$piece_sapling_barley,$item_barley
 Kale Seeds,farming,Crop,1,Cultivator + planting Seed Kale,,Kale Seeds x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedkale,$item_kaleseeds
 Kale,farming,Crop,1,Cultivator + planting Kale,,Kale Seeds x1,False,,Deep North,Deep North,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_kale,$item_kale
 Turnip Seeds,farming,Crop,1,Cultivator + planting Seed-turnip,,Turnip x1,False,,Swamp,Swamp,,"grows in: Meadows, Black Forest, Swamp, Plains, Mistlands, Ashlands",True,$piece_sapling_seedturnip,$item_turnipseeds
 Ivy Seeds,farming,Crop,1,Cultivator + planting Ivy,,Ivy Seeds x1,False,,Swamp,Swamp,,"grows in: Meadows, Black Forest, Ocean, Swamp, Mountain, Plains, Mistlands, Deep North",True,$piece_sapling_vinegreen,$item_vinegreenseeds
-Vineberry Cluster,farming,Crop,1,Cultivator + planting Ivy,,Ivy Seeds x1,False,,Swamp,Swamp,,"grows in: Meadows, Black Forest, Ocean, Swamp, Mountain, Plains, Mistlands, Deep North",True,$piece_sapling_vinegreen,$item_vineberry
 Magecap,farming,Crop,1,Cultivator + planting Magecap,,Magecap x1,False,,Mistlands,Mistlands,,grows in: Mistlands,True,$item_magecap,$item_magecap
 Magecap,farming,Crop,1,Cultivator + planting Magecap,,Magecap x1,False,,Mistlands,Mistlands,,grows in: Mistlands,True,$item_magecap,$item_magecap
 Onion Seeds,farming,Crop,1,Cultivator + planting Seed-onion,,Onion x1,False,,Mountain,,,"grows in: Meadows, Black Forest, Plains, Ashlands",True,$piece_sapling_seedonion,$item_onionseeds
@@ -1152,8 +1151,8 @@ Onion,farming,Crop,1,Cultivator + planting Onion,,Onion Seeds x1,False,,Mountain
 Wisp,structure,Material,1,Built structure: Wisp Fountain,,,False,,Plains,,,,True,$piece_wisplure,$item_wisp
 Embers,structure,Material,1,Built structure: Eternal Pyre,,,False,,Ashlands,,,,True,$piece_faderember,$item_faderember
 Sap,structure,Material,1,Built structure: Sap Extractor,,,False,,Mistlands,,,,True,$piece_sapcollector,$item_sap
-Feathers,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_feathers
 Chicken Meat,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_chicken_meat
+Feathers,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,ChickenEgg,$item_feathers
+Asksvin Bladder,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askbladder
 Asksvin Hide,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askhide
 Asksvin Tail,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_asksvin_meat
-Asksvin Bladder,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askbladder

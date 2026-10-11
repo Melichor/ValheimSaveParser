@@ -9,6 +9,9 @@ Valheim install, and takes about five minutes.
 Outputs (in --out):
     recipes.csv / recipes.json        every crafting recipe and every build piece with its ingredients and station
     gatherables.csv / gatherables.json  every item that can be found in the world, with the earliest biome
+    craftable_biomes.csv / .json      the earliest biome in which every craftable item can be made
+    foods.csv / foods.json            the foods behind The Gourmet achievement, with their earliest biome
+    biomes.json                       earliest biome per token (tools/update_script_biomes.py copies it into achi_hunter.py)
 
 Phase 1 scans the asset bundles once and keeps the raw facts in raw.json (so phase 2 can be re-run in seconds with
 --raw raw.json). Phase 2 turns them into the tables.
@@ -199,6 +202,11 @@ def scan(game_dir, log=print):
                                                   "key": i.get("m_requiredGlobalKey")} for i in tt["m_items"]]})
             elif "m_grownPrefab" in tt and "m_growTime" in tt:
                 out["eggs"].append({**base, "grown": pp(tt["m_grownPrefab"]), "growTime": tt.get("m_growTime")})
+            elif "m_items" in tt and "m_recipes" in tt:
+                out["objectdb"].append({**base, "items": [pp(x) for x in tt["m_items"]]})
+            elif "m_consumablesExcluded" in tt:
+                out["achievements"].append({**base, "itemsExcluded": [pp(x) for x in tt.get("m_itemsExcluded", [])],
+                                            "consumablesExcluded": [pp(x) for x in tt["m_consumablesExcluded"]]})
             elif "m_maxStationDistance" in tt and "m_craftingStation" in tt:
                 out["extensions"].append({**base, "station": pp(tt["m_craftingStation"]), "stack": tt.get("m_stack")})
             elif "m_grownPrefabs" in tt:

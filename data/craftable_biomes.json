@@ -8313,35 +8313,6 @@
    "other_recipes": 0
   },
   {
-   "item": "$item_vineberry",
-   "name": "Vineberry Cluster",
-   "kind": "farming",
-   "type_or_category": "Crop",
-   "earliest_biome": "Swamp",
-   "earliest_biome_direct": "Swamp",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Ivy Seeds"
-   ],
-   "limited_by_direct": [
-    "Ivy Seeds"
-   ],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "Cultivator + planting Ivy",
-   "station_level": "",
-   "ingredients": [
-    {
-     "token": "$item_vinegreenseeds",
-     "name": "Ivy Seeds",
-     "amount": 1,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 1
-  },
-  {
    "item": "$item_mead_swimmer",
    "name": "Draught of Vananidir",
    "kind": "fermenting",
@@ -12391,35 +12362,6 @@
     {
      "token": "$item_turnipstew",
      "name": "Turnip Stew",
-     "amount": 1,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 0
-  },
-  {
-   "item": "$item_vineberry",
-   "name": "Vineberry Cluster",
-   "kind": "piece",
-   "type_or_category": "Feasts",
-   "earliest_biome": "Swamp",
-   "earliest_biome_direct": "Swamp",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Vineberry Cluster"
-   ],
-   "limited_by_direct": [
-    "Vineberry Cluster"
-   ],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "(none)",
-   "station_level": "",
-   "ingredients": [
-    {
-     "token": "$item_vineberry",
-     "name": "Vineberry Cluster",
      "amount": 1,
      "per_level": 0
     }
@@ -19549,33 +19491,6 @@
    "other_recipes": 0
   },
   {
-   "item": "$item_mead_eitr_lingering",
-   "name": "Lingering Eitr Mead",
-   "kind": "fermenting",
-   "type_or_category": "Consumable",
-   "earliest_biome": "Mistlands",
-   "earliest_biome_direct": "",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Mead Base: Lingering Eitr"
-   ],
-   "limited_by_direct": [],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "Fermenter",
-   "station_level": "",
-   "ingredients": [
-    {
-     "token": "$item_meadbaseeitr_lingering",
-     "name": "Mead Base: Lingering Eitr",
-     "amount": 1,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 0
-  },
-  {
    "item": "$item_mead_stamina_lingering",
    "name": "Lingering Stamina Mead",
    "kind": "fermenting",
@@ -20793,46 +20708,6 @@
      "token": "$item_magecap",
      "name": "Magecap",
      "amount": 5,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 0
-  },
-  {
-   "item": "$item_meadbaseeitr_lingering",
-   "name": "Mead Base: Lingering Eitr",
-   "kind": "item",
-   "type_or_category": "Material",
-   "earliest_biome": "Mistlands",
-   "earliest_biome_direct": "",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Magecap",
-    "Sap"
-   ],
-   "limited_by_direct": [],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "Mead Ketill",
-   "station_level": 1,
-   "ingredients": [
-    {
-     "token": "$item_sap",
-     "name": "Sap",
-     "amount": 10,
-     "per_level": 0
-    },
-    {
-     "token": "$item_vineberry",
-     "name": "Vineberry Cluster",
-     "amount": 10,
-     "per_level": 0
-    },
-    {
-     "token": "$item_magecap",
-     "name": "Magecap",
-     "amount": 10,
      "per_level": 0
     }
    ],
@@ -23322,33 +23197,6 @@
    "other_recipes": 0
   },
   {
-   "item": "$item_mead_eitr_lingering",
-   "name": "Lingering Eitr Mead",
-   "kind": "piece",
-   "type_or_category": "Food",
-   "earliest_biome": "Mistlands",
-   "earliest_biome_direct": "",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Lingering Eitr Mead"
-   ],
-   "limited_by_direct": [],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "(none)",
-   "station_level": "",
-   "ingredients": [
-    {
-     "token": "$item_mead_eitr_lingering",
-     "name": "Lingering Eitr Mead",
-     "amount": 1,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 0
-  },
-  {
    "item": "$item_mead_stamina_lingering",
    "name": "Lingering Stamina Mead",
    "kind": "piece",
@@ -24225,6 +24073,35 @@
    "other_recipes": 0
   },
   {
+   "item": "$item_vineberry",
+   "name": "Vineberry Cluster",
+   "kind": "farming",
+   "type_or_category": "Crop",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Vineberry Seeds"
+   ],
+   "limited_by_direct": [
+    "Vineberry Seeds"
+   ],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "Cultivator + planting Ashvine",
+   "station_level": "",
+   "ingredients": [
+    {
+     "token": "$item_vineberryseeds",
+     "name": "Vineberry Seeds",
+     "amount": 1,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
    "item": "$item_vineberryseeds",
    "name": "Vineberry Seeds",
    "kind": "farming",
@@ -24247,6 +24124,33 @@
     {
      "token": "$item_vineberryseeds",
      "name": "Vineberry Seeds",
+     "amount": 1,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
+   "item": "$item_mead_eitr_lingering",
+   "name": "Lingering Eitr Mead",
+   "kind": "fermenting",
+   "type_or_category": "Consumable",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Mead Base: Lingering Eitr"
+   ],
+   "limited_by_direct": [],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "Fermenter",
+   "station_level": "",
+   "ingredients": [
+    {
+     "token": "$item_meadbaseeitr_lingering",
+     "name": "Mead Base: Lingering Eitr",
      "amount": 1,
      "per_level": 0
     }
@@ -24381,7 +24285,8 @@
    "limited_by": [
     "Cooked Asksvin Tail",
     "Fiery Spice Powder",
-    "Scorching Medley"
+    "Scorching Medley",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -25144,7 +25049,8 @@
    "inferred_from": [],
    "limited_by": [
     "Asksvin Tail",
-    "Smoke Puff"
+    "Smoke Puff",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -25791,6 +25697,45 @@
    "other_recipes": 0
   },
   {
+   "item": "$item_meadbaseeitr_lingering",
+   "name": "Mead Base: Lingering Eitr",
+   "kind": "item",
+   "type_or_category": "Material",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Vineberry Cluster"
+   ],
+   "limited_by_direct": [],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "Mead Ketill",
+   "station_level": 1,
+   "ingredients": [
+    {
+     "token": "$item_sap",
+     "name": "Sap",
+     "amount": 10,
+     "per_level": 0
+    },
+    {
+     "token": "$item_vineberry",
+     "name": "Vineberry Cluster",
+     "amount": 10,
+     "per_level": 0
+    },
+    {
+     "token": "$item_magecap",
+     "name": "Magecap",
+     "amount": 10,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
    "item": "$item_meadbasehealth_lingering",
    "name": "Mead Base: Lingering Health",
    "kind": "item",
@@ -25800,7 +25745,8 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Smoke Puff"
+    "Smoke Puff",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -26341,7 +26287,8 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Fiddlehead"
+    "Fiddlehead",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -26498,7 +26445,8 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Smoke Puff"
+    "Smoke Puff",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -26543,7 +26491,8 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Fiddlehead"
+    "Fiddlehead",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -27131,7 +27080,8 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Asksvin Tail"
+    "Asksvin Tail",
+    "Vineberry Cluster"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -27170,6 +27120,7 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
+    "Vineberry Cluster",
     "Volture Egg"
    ],
    "limited_by_direct": [],
@@ -29771,6 +29722,33 @@
    "other_recipes": 0
   },
   {
+   "item": "$item_mead_eitr_lingering",
+   "name": "Lingering Eitr Mead",
+   "kind": "piece",
+   "type_or_category": "Food",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Lingering Eitr Mead"
+   ],
+   "limited_by_direct": [],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "(none)",
+   "station_level": "",
+   "ingredients": [
+    {
+     "token": "$item_mead_eitr_lingering",
+     "name": "Lingering Eitr Mead",
+     "amount": 1,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
    "item": "$item_mead_hp_lingering",
    "name": "Lingering Healing Mead",
    "kind": "piece",
@@ -30269,6 +30247,35 @@
     {
      "token": "$item_spicymarmalade",
      "name": "Spicy Marmalade",
+     "amount": 1,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
+   "item": "$item_vineberry",
+   "name": "Vineberry Cluster",
+   "kind": "piece",
+   "type_or_category": "Feasts",
+   "earliest_biome": "Ashlands",
+   "earliest_biome_direct": "Ashlands",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Vineberry Cluster"
+   ],
+   "limited_by_direct": [
+    "Vineberry Cluster"
+   ],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "(none)",
+   "station_level": "",
+   "ingredients": [
+    {
+     "token": "$item_vineberry",
+     "name": "Vineberry Cluster",
      "amount": 1,
      "per_level": 0
     }

@@ -239,7 +239,6 @@ Cooked Serpent Meat,cooking,Consumable,Swamp,Iron Cooking Station,Swamp,Iron Coo
 Ivy Seeds,farming,Crop,Swamp,Ivy Seeds,Swamp,Ivy Seeds,,,,,Cultivator + planting Ivy,,Ivy Seeds x1,0,$item_vinegreenseeds
 Turnip,farming,Crop,Swamp,Turnip Seeds,Swamp,Turnip Seeds,,,,,Cultivator + planting Turnip,,Turnip Seeds x1,0,$item_turnip
 Turnip Seeds,farming,Crop,Swamp,Turnip,Swamp,Turnip,,,,,Cultivator + planting Seed-turnip,,Turnip x1,0,$item_turnipseeds
-Vineberry Cluster,farming,Crop,Swamp,Ivy Seeds,Swamp,Ivy Seeds,,,,,Cultivator + planting Ivy,,Ivy Seeds x1,1,$item_vineberry
 Draught of Vananidir,fermenting,Consumable,Swamp,Mead Base: Vananidir,Swamp,Mead Base: Vananidir,,,,,Fermenter,,Mead Base: Vananidir x1,0,$item_mead_swimmer
 Frost Resistance Mead,fermenting,Consumable,Swamp,Mead Base: Frost Resistance,Swamp,Mead Base: Frost Resistance,,,,,Fermenter,,Mead Base: Frost Resistance x1,0,$item_mead_frostres
 Mead of Troll Endurance,fermenting,Consumable,Swamp,Mead Base: Troll Endurance,Swamp,Mead Base: Troll Endurance,,,,,Fermenter,,Mead Base: Troll Endurance x1,0,$item_mead_strength
@@ -350,7 +349,6 @@ Swamp Dweller's Delight,piece,Deep North,Swamp,Swamp Dweller's Delight,Swamp,Swa
 Tonic of Ratatosk,piece,Food,Swamp,Tonic of Ratatosk,Swamp,Tonic of Ratatosk,,,,,(none),,Tonic of Ratatosk x1,0,$item_mead_hasty
 Turnip,piece,Misc,Swamp,Turnip Seeds,Swamp,Turnip Seeds,,,,,(none),,Turnip Seeds x1,0,$piece_sapling_turnip
 Turnip Stew,piece,Feasts,Swamp,Turnip Stew,Swamp,Turnip Stew,,,,,(none),,Turnip Stew x1,0,$item_turnipstew
-Vineberry Cluster,piece,Feasts,Swamp,Vineberry Cluster,Swamp,Vineberry Cluster,,,,,(none),,Vineberry Cluster x1,0,$item_vineberry
 Whole Roasted Meadow Boar,piece,Deep North,Swamp,Whole Roasted Meadow Boar,Swamp,Whole Roasted Meadow Boar,,,,,(none),,Whole Roasted Meadow Boar x1,0,$item_feastmeadows
 Wood Iron Beam,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironbeam
 Wood Iron Beam 26°,piece,Building (workbench),Swamp,Iron,Swamp,Iron,,,,,Forge,,Wood x2; Iron x1,0,$piece_woodironbeam_26
@@ -551,7 +549,6 @@ Stuffed Mushroom,cooking,Consumable,Mistlands,Uncooked Stuffed Mushroom,,,,,,,St
 Jotun Puffs,farming,Crop,Mistlands,Jotun Puffs,Mistlands,Jotun Puffs,,,,,Cultivator + planting Jotun Puffs,,Jotun Puffs x1,1,$item_jotunpuffs
 Magecap,farming,Crop,Mistlands,Magecap,Mistlands,Magecap,,,,,Cultivator + planting Magecap,,Magecap x1,1,$item_magecap
 Lightfoot Mead,fermenting,Consumable,Mistlands,Mead Base: Lightfoot,Mistlands,Mead Base: Lightfoot,,,,,Fermenter,,Mead Base: Lightfoot x1,0,$item_mead_lightfoot
-Lingering Eitr Mead,fermenting,Consumable,Mistlands,Mead Base: Lingering Eitr,,,,,,,Fermenter,,Mead Base: Lingering Eitr x1,0,$item_mead_eitr_lingering
 Lingering Stamina Mead,fermenting,Consumable,Mistlands,Mead Base: Lingering Stamina,,,,,,,Fermenter,,Mead Base: Lingering Stamina x1,0,$item_mead_stamina_lingering
 Major Healing Mead,fermenting,Consumable,Mistlands,Mead Base: Major Healing,Mistlands,Mead Base: Major Healing,,,,,Fermenter,,Mead Base: Major Healing x1,0,$item_mead_hp_major
 Minor Eitr Mead,fermenting,Consumable,Mistlands,Mead Base: Minor Eitr,,,,,,,Fermenter,,Mead Base: Minor Eitr x1,0,$item_mead_eitr_minor
@@ -582,7 +579,6 @@ Iron Bolt,item,Ammo,Mistlands,Black Forge,Mistlands,Black Forge,,,,,Black Forge,
 Jotun Bane,item,OneHandedWeapon,Mistlands,Bilebag; Black Forge; Refined Eitr; Yggdrasil Wood,,,,,,,Black Forge,1,Yggdrasil Wood x5; Iron x15 (+10/upgrade level); Bilebag x3 (+1/upgrade level); Refined Eitr x10 (+1/upgrade level),0,$item_axe_jotunbane
 Krom,item,TwoHandedWeapon,Mistlands,Black Forge; Scale Hide,Mistlands,Black Forge; Scale Hide,,,,,Black Forge,1,Iron x30 (+15/upgrade level); Bronze x20 (+10/upgrade level); Scale Hide x5 (+5/upgrade level),0,$item_sword_krom
 Mead Base: Lightfoot,item,Material,Mistlands,Magecap; Scale Hide,Mistlands,Magecap; Scale Hide,,,,,Mead Ketill,1,Scale Hide x2; Feathers x5; Magecap x5,0,$item_meadbaselightfoot
-Mead Base: Lingering Eitr,item,Material,Mistlands,Magecap; Sap,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Magecap x10,0,$item_meadbaseeitr_lingering
 Mead Base: Lingering Stamina,item,Material,Mistlands,Jotun Puffs; Sap,,,,,,,Mead Ketill,1,Sap x10; Cloudberries x10; Jotun Puffs x10,0,$item_meadbasestamina_lingering
 Mead Base: Major Healing,item,Material,Mistlands,Blood Clot; Royal Jelly,Mistlands,Blood Clot; Royal Jelly,,,,,Mead Ketill,1,Honey x10; Blood Clot x4; Royal Jelly x5,0,$item_meadbasehealth_major
 Mead Base: Minor Eitr,item,Material,Mistlands,Jotun Puffs; Magecap; Sap,,,,,,,Mead Ketill,1,Honey x10; Sap x5; Jotun Puffs x2; Magecap x5,0,$item_meadbaseeitr
@@ -651,7 +647,6 @@ Hexagonal Gate,piece,Building (workbench),Mistlands,Black Forge; Yggdrasil Wood,
 Honey Glazed Chicken,piece,Feasts,Mistlands,Honey Glazed Chicken,,,,,,,(none),,Honey Glazed Chicken x1,0,$item_honeyglazedchicken
 Jotun Puffs,piece,Misc,Mistlands,Jotun Puffs,Mistlands,Jotun Puffs,,,,,(none),,Jotun Puffs x1,1,$item_jotunpuffs
 Lightfoot Mead,piece,Food,Mistlands,Lightfoot Mead,Mistlands,Lightfoot Mead,,,,,(none),,Lightfoot Mead x1,0,$item_mead_lightfoot
-Lingering Eitr Mead,piece,Food,Mistlands,Lingering Eitr Mead,,,,,,,(none),,Lingering Eitr Mead x1,0,$item_mead_eitr_lingering
 Lingering Stamina Mead,piece,Food,Mistlands,Lingering Stamina Mead,,,,,,,(none),,Lingering Stamina Mead x1,0,$item_mead_stamina_lingering
 Magecap,piece,Misc,Mistlands,Magecap,Mistlands,Magecap,,,,,(none),,Magecap x1,1,$item_magecap
 Major Healing Mead,piece,Food,Mistlands,Major Healing Mead,Mistlands,Major Healing Mead,,,,,(none),,Major Healing Mead x1,0,$item_mead_hp_major
@@ -680,11 +675,13 @@ Cooked Bonemaw Meat,cooking,Consumable,Ashlands,Bonemaw Meat,Ashlands,Bonemaw Me
 Cooked Volture Meat,cooking,Consumable,Ashlands,Volture Meat,Ashlands,Volture Meat,,,,,Iron Cooking Station,,Volture Meat x1,0,$item_volture_meat_cooked
 Piquant Pie,cooking,Consumable,Ashlands,Uncooked Piquant Pie,,,,,,,Stone Oven,,Uncooked Piquant Pie x1,0,$item_piquantpie
 Roasted Crust Pie,cooking,Consumable,Ashlands,Uncooked Roasted Crust Pie,,,,,,,Stone Oven,,Uncooked Roasted Crust Pie x1,0,$item_roastedcrustpie
+Vineberry Cluster,farming,Crop,Ashlands,Vineberry Seeds,Ashlands,Vineberry Seeds,,,,,Cultivator + planting Ashvine,,Vineberry Seeds x1,0,$item_vineberry
 Vineberry Seeds,farming,Crop,Ashlands,Vineberry Seeds,Ashlands,Vineberry Seeds,,,,,Cultivator + planting Ashvine,,Vineberry Seeds x1,0,$item_vineberryseeds
+Lingering Eitr Mead,fermenting,Consumable,Ashlands,Mead Base: Lingering Eitr,,,,,,,Fermenter,,Mead Base: Lingering Eitr x1,0,$item_mead_eitr_lingering
 Lingering Healing Mead,fermenting,Consumable,Ashlands,Mead Base: Lingering Health,,,,,,,Fermenter,,Mead Base: Lingering Health x1,0,$item_mead_hp_lingering
 Ash Fang,item,Bow,Ashlands,Ashwood; Bonemaw Tooth; Charred Bone; Flametal,,,,,,,Black Forge,3,Ashwood x10 (+5/upgrade level); Charred Bone x16 (+10/upgrade level); Flametal x5 (+5/upgrade level); Bonemaw Tooth x5 (+5/upgrade level),0,$item_bow_ashlands
 Ashen Cape,item,Shoulder,Ashlands,Asksvin Hide; Flametal; Morgen Sinew,,,,,,,Black Forge,3,Asksvin Hide x6 (+2/upgrade level); Morgen Sinew x2; Flametal x5,0,$item_cape_ash
-Ashlands Gourmet Bowl,item,Material,Ashlands,Cooked Asksvin Tail; Fiery Spice Powder; Scorching Medley,,,,,,,Food Preparation Table,1,Cooked Asksvin Tail x3; Vineberry Cluster x5; Scorching Medley x2; Fiery Spice Powder x1,0,$item_feastashlands
+Ashlands Gourmet Bowl,item,Material,Ashlands,Cooked Asksvin Tail; Fiery Spice Powder; Scorching Medley; Vineberry Cluster,,,,,,,Food Preparation Table,1,Cooked Asksvin Tail x3; Vineberry Cluster x5; Scorching Medley x2; Fiery Spice Powder x1,0,$item_feastashlands
 Asksvin Cloak,item,Shoulder,Ashlands,Asksvin Hide; Morgen Sinew,,,,,,,Galdr Table,2,Asksvin Hide x6 (+2/upgrade level); Morgen Sinew x2,0,$item_cape_asksvin
 Asksvin Saddle,item,Misc,Ashlands,Flametal; Morgen Sinew,,,,,,,Black Forge,2,Flametal x6; Linen Thread x20; Morgen Sinew x4,0,$item_saddleasksvin
 Basalt Bomb,item,OneHandedWeapon,Ashlands,Asksvin Bladder; Asksvin Hide; Proustite Powder,Ashlands,Asksvin Bladder; Asksvin Hide; Proustite Powder,,,,,Workbench,1,Asksvin Hide x1; Asksvin Bladder x1; Proustite Powder x3,0,$item_lavabomb
@@ -702,7 +699,7 @@ Charred Bolt,item,Ammo,Ashlands,Ashwood; Charred Bone,Ashlands,Ashwood; Charred 
 Dundr,item,TwoHandedWeapon,Ashlands,Ashwood; Bloodstone; Celestial Feather; Flametal,,,,,,,Galdr Table,2,Ashwood x10 (+5/upgrade level); Flametal x4 (+2/upgrade level); Celestial Feather x3 (+3/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_staff_lightning
 Dyrnwyn,item,OneHandedWeapon,Ashlands,Bloodstone; Dyrnwyn Blade Fragment; Dyrnwyn Hilt Fragment; Dyrnwyn Tip Fragment; Flametal,,,,,,,Black Forge,4,Dyrnwyn Hilt Fragment x1; Dyrnwyn Blade Fragment x1; Dyrnwyn Tip Fragment x1; Flametal x20 (+10/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_sword_dyrnwyn
 Explosive Payload,item,Material,Ashlands,Asksvin Hide; Proustite Powder; Sulfur,Ashlands,Asksvin Hide; Proustite Powder; Sulfur,,,,,Workbench,1,Asksvin Hide x2; Sulfur x2; Proustite Powder x3,0,$item_catapult_ammo
-Fiery Svinstew,item,Consumable,Ashlands,Asksvin Tail; Smoke Puff,,,,,,,Cauldron,5,Asksvin Tail x1; Vineberry Cluster x2; Smoke Puff x1,0,$item_fierysvinstew
+Fiery Svinstew,item,Consumable,Ashlands,Asksvin Tail; Smoke Puff; Vineberry Cluster,,,,,,,Cauldron,5,Asksvin Tail x1; Vineberry Cluster x2; Smoke Puff x1,0,$item_fierysvinstew
 Flametal Breastplate,item,Chest,Ashlands,Asksvin Hide; Charred Bone; Flametal; Morgen Heart,,,,,,,Black Forge,3,Flametal x20 (+10/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x5; Morgen Heart x1,0,$item_chest_flametal
 Flametal Greaves,item,Legs,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Flametal x20 (+10/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x5,0,$item_legs_flametal
 Flametal Helmet,item,Helmet,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Flametal x16 (+8/upgrade level); Asksvin Hide x3 (+1/upgrade level); Charred Bone x2; Refined Eitr x4 (+2/upgrade level),0,$item_helmet_flametal
@@ -718,7 +715,8 @@ Jörmundling,item,Trinket,Ashlands,Bloodstone; Fallen Valkyrie Trophy; Flametal,
 Klossen,item,OneHandedWeapon,Ashlands,Flametal; Flametal Mace; Jade,,,,,,,Black Forge,4,Flametal Mace x1; Flametal x8 (+8/upgrade level); Jade x1 (+1/upgrade level),0,$item_mace_eldner_nature
 Marinated Greens,item,Consumable,Ashlands,Fiddlehead; Smoke Puff,,,,,,,Cauldron,6,Sap x3; Magecap x2; Fiddlehead x2; Smoke Puff x2,0,$item_marinatedgreens
 Mashed Meat,item,Consumable,Ashlands,Asksvin Tail; Fiddlehead; Volture Meat,,,,,,,Cauldron,6,Asksvin Tail x1; Volture Meat x1; Fiddlehead x1,0,$item_mashedmeat
-Mead Base: Lingering Health,item,Material,Ashlands,Smoke Puff,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Smoke Puff x10,0,$item_meadbasehealth_lingering
+Mead Base: Lingering Eitr,item,Material,Ashlands,Vineberry Cluster,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Magecap x10,0,$item_meadbaseeitr_lingering
+Mead Base: Lingering Health,item,Material,Ashlands,Smoke Puff; Vineberry Cluster,,,,,,,Mead Ketill,1,Sap x10; Vineberry Cluster x10; Smoke Puff x10,0,$item_meadbasehealth_lingering
 Nidhögg,item,OneHandedWeapon,Ashlands,Asksvin Hide; Charred Bone; Flametal,,,,,,,Black Forge,3,Charred Bone x3; Flametal x12 (+10/upgrade level); Asksvin Hide x2 (+2/upgrade level),0,$item_sword_niedhogg
 Nidhögg the Bleeding,item,OneHandedWeapon,Ashlands,Bloodstone; Flametal; Nidhögg,,,,,,,Black Forge,4,Nidhögg x1; Flametal x6 (+6/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_sword_niedhogg_blood
 Nidhögg the Primal,item,OneHandedWeapon,Ashlands,Flametal; Jade; Nidhögg,,,,,,,Black Forge,4,Nidhögg x1; Flametal x6 (+6/upgrade level); Jade x1 (+1/upgrade level),0,$item_sword_niedhogg_nature
@@ -731,12 +729,12 @@ Root Fang,item,Bow,Ashlands,Ash Fang; Flametal; Jade,,,,,,,Black Forge,4,Ash Fan
 Root Ripper,item,Bow,Ashlands,Flametal; Jade; Ripper,,,,,,,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level); Jade x1 (+1/upgrade level),0,$item_crossbow_ripper_nature
 Scorching Medley,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,6,Jotun Puffs x3; Onion x3; Fiddlehead x3,0,$item_scorchingmedley
 Scourging Slayer,item,TwoHandedWeapon,Ashlands,Flametal; Iolite; Slayer,,,,,,,Black Forge,4,Slayer x1; Flametal x15 (+15/upgrade level); Iolite x1 (+1/upgrade level),0,$item_sword_slayer_lightning
-Sizzling Berry Broth,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,5,Sap x3; Fiddlehead x2; Vineberry Cluster x2,0,$item_sizzlingberrybroth
+Sizzling Berry Broth,item,Consumable,Ashlands,Fiddlehead; Vineberry Cluster,,,,,,,Cauldron,5,Sap x3; Fiddlehead x2; Vineberry Cluster x2,0,$item_sizzlingberrybroth
 Slayer,item,TwoHandedWeapon,Ashlands,Asksvin Hide; Flametal; Morgen Sinew,,,,,,,Black Forge,3,Flametal x30 (+15/upgrade level); Asksvin Hide x5 (+5/upgrade level); Morgen Sinew x3 (+3/upgrade level),0,$item_sword_slayer
 Smoke Bomb,item,OneHandedWeapon,Ashlands,Asksvin Bladder; Smoke Puff,Ashlands,Asksvin Bladder; Smoke Puff,,,,,Workbench,1,Smoke Puff x1; Asksvin Bladder x1,0,$item_smokebomb
 Snow Shovel,item,TwoHandedWeapon,Ashlands,Embers; Flametal,,,,,,,Black Forge,3,Finewood x5 (+1/upgrade level); Flametal x4 (+10/upgrade level); Embers x2,0,$item_snowshovel
-Sparkling Shroomshake,item,Consumable,Ashlands,Smoke Puff,,,,,,,Cauldron,6,Sap x4; Vineberry Cluster x2; Smoke Puff x2; Magecap x2,0,$item_sparklingshroomshake
-Spicy Marmalade,item,Consumable,Ashlands,Fiddlehead,,,,,,,Cauldron,5,Vineberry Cluster x3; Honey x1; Fiddlehead x1,0,$item_spicymarmalade
+Sparkling Shroomshake,item,Consumable,Ashlands,Smoke Puff; Vineberry Cluster,,,,,,,Cauldron,6,Sap x4; Vineberry Cluster x2; Smoke Puff x2; Magecap x2,0,$item_sparklingshroomshake
+Spicy Marmalade,item,Consumable,Ashlands,Fiddlehead; Vineberry Cluster,,,,,,,Cauldron,5,Vineberry Cluster x3; Honey x1; Fiddlehead x1,0,$item_spicymarmalade
 Splitnir,item,OneHandedWeapon,Ashlands,Ashwood; Asksvin Hide; Bonemaw Tooth; Flametal,,,,,,,Black Forge,3,Ashwood x10 (+5/upgrade level); Flametal x6 (+6/upgrade level); Asksvin Hide x2 (+1/upgrade level); Bonemaw Tooth x3 (+3/upgrade level),0,$item_spear_splitner
 Splitnir the Bleeding,item,OneHandedWeapon,Ashlands,Bloodstone; Flametal; Splitnir,,,,,,,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_spear_splitner_blood
 Splitnir the Primal,item,OneHandedWeapon,Ashlands,Flametal; Jade; Splitnir,,,,,,,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Jade x1 (+1/upgrade level),0,$item_spear_splitner_nature
@@ -750,8 +748,8 @@ Thundering Berserkir Axes,item,TwoHandedWeapon,Ashlands,Berserkir Axes; Flametal
 Trollstav,item,TwoHandedWeapon,Ashlands,Bloodstone; Charred Bone; Flametal,,,,,,,Galdr Table,2,Charred Bone x15 (+5/upgrade level); Troll Trophy x1 (+1/upgrade level); Flametal x3 (+3/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_staffredtroll
 Trousers of Ask,item,Legs,Ashlands,Asksvin Hide,,,,,,,Black Forge,3,Linen Thread x15 (+10/upgrade level); Lox Pelt x4 (+2/upgrade level); Asksvin Hide x10 (+5/upgrade level),0,$item_legs_medium_ashlands
 Trousers of Embla,item,Legs,Ashlands,Asksvin Hide,,,,,,,Galdr Table,2,Linen Thread x20 (+10/upgrade level); Refined Eitr x20 (+5/upgrade level); Asksvin Hide x10,0,$item_legs_mage_ashlands
-Uncooked Piquant Pie,item,Material,Ashlands,Asksvin Tail,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Asksvin Tail x2; Barley Flour x4,0,$item_piquantpie_uncooked
-Uncooked Roasted Crust Pie,item,Material,Ashlands,Volture Egg,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Volture Egg x1; Barley Flour x4,0,$item_roastedcrustpie_uncooked
+Uncooked Piquant Pie,item,Material,Ashlands,Asksvin Tail; Vineberry Cluster,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Asksvin Tail x2; Barley Flour x4,0,$item_piquantpie_uncooked
+Uncooked Roasted Crust Pie,item,Material,Ashlands,Vineberry Cluster; Volture Egg,,,,,,,Food Preparation Table,1,Vineberry Cluster x2; Volture Egg x1; Barley Flour x4,0,$item_roastedcrustpie_uncooked
 Wound Ripper,item,Bow,Ashlands,Bloodstone; Flametal; Ripper,,,,,,,Black Forge,4,Ripper x1; Flametal x8 (+8/upgrade level); Bloodstone x1 (+1/upgrade level),0,$item_crossbow_ripper_blood
 Ashlands Gourmet Bowl,piece,Deep North,Ashlands,Ashlands Gourmet Bowl,,,,,,,(none),,Ashlands Gourmet Bowl x1,0,$item_feastashlands
 Ashvine,piece,Misc,Ashlands,Vineberry Seeds,Ashlands,Vineberry Seeds,,,,,(none),,Vineberry Seeds x1,0,$piece_sapling_vineash
@@ -835,6 +833,7 @@ Grausten Window 2x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grau
 Grausten Window 4x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x10,0,$piece_grausten_window4x2
 Large Green Pot,piece,Furniture,Ashlands,Charcoal Resin; Pot Shard,Ashlands,Charcoal Resin; Pot Shard,,,,,(none),,Pot Shard x5; Charcoal Resin x1,0,$piece_pot_large_green
 Lava Lantern,piece,Furniture,Ashlands,Flametal; Proustite Powder; Sulfur,,,,,,,Workbench,,Flametal x1; Proustite Powder x1; Sulfur x1,0,$piece_lavalantern
+Lingering Eitr Mead,piece,Food,Ashlands,Lingering Eitr Mead,,,,,,,(none),,Lingering Eitr Mead x1,0,$item_mead_eitr_lingering
 Lingering Healing Mead,piece,Food,Ashlands,Lingering Healing Mead,,,,,,,(none),,Lingering Healing Mead x1,0,$item_mead_hp_lingering
 Marinated Greens,piece,Feasts,Ashlands,Marinated Greens,,,,,,,(none),,Marinated Greens x1,0,$item_marinatedgreens
 Mashed Meat,piece,Feasts,Ashlands,Mashed Meat,,,,,,,(none),,Mashed Meat x1,0,$item_mashedmeat
@@ -851,6 +850,7 @@ Small Green Pot,piece,Furniture,Ashlands,Charcoal Resin; Pot Shard,Ashlands,Char
 Smoke Puff,piece,Feasts,Ashlands,Smoke Puff,Ashlands,Smoke Puff,,,,,(none),,Smoke Puff x1,0,$item_smokepuff
 Sparkling Shroomshake,piece,Feasts,Ashlands,Sparkling Shroomshake,,,,,,,(none),,Sparkling Shroomshake x1,0,$item_sparklingshroomshake
 Spicy Marmalade,piece,Feasts,Ashlands,Spicy Marmalade,,,,,,,(none),,Spicy Marmalade x1,0,$item_spicymarmalade
+Vineberry Cluster,piece,Feasts,Ashlands,Vineberry Cluster,Ashlands,Vineberry Cluster,,,,,(none),,Vineberry Cluster x1,0,$item_vineberry
 Flametal,smelting,Material,Ashlands,Flametal Ore,,,,,,,Blast Furnace,,Flametal Ore x1,0,$item_flametal
 Baked Poteitr,cooking,Consumable,Deep North,Unbaked Poteitr,,,,,,,Stone Oven,,Unbaked Poteitr x1,0,$item_bakedpoteitr
 Cooked Moose Meat,cooking,Consumable,Deep North,Moose Meat,Deep North,Moose Meat,,,,,Iron Cooking Station,,Moose Meat x1,0,$item_moose_meat_cooked
