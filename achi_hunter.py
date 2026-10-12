@@ -2651,8 +2651,8 @@ SET_ANY, SET_NORMAL, SET_HARD = 1, 6, 7
 
 # which biome table belongs to which list
 SECTION_BIOMES = {"crafted": BIOME_CRAFT, "weapons": BIOME_CRAFT, "cooked": BIOME_CRAFT, "built": BIOME_PIECE,
-                  "enemies": BIOME_CREATURE, "enemies-hard": BIOME_CREATURE, "bosses": BIOME_CREATURE,
-                  "bosses-hard": BIOME_CREATURE, "minibosses": BIOME_CREATURE, "fishing": BIOME_FOUND,
+                  "enemies": BIOME_CREATURE, "enemies-hard": BIOME_CREATURE,
+                  "bosses-any": BIOME_CREATURE, "bosses-normal": BIOME_CREATURE, "bosses-hard": BIOME_CREATURE, "minibosses": BIOME_CREATURE, "fishing": BIOME_FOUND,
                   "trophies": BIOME_FOUND, "deaths": DEATH_BIOME, "tree-deaths": TREE_BIOME, "food-eaten": BIOME_FOOD}
 
 
@@ -2688,7 +2688,10 @@ def build_sections(s):
              universe=ENEMIES, done=anyd["kills"]),
         dict(id="enemies-hard", title="Enemies killed (Hard)", hint="Hard difficulty.",
              universe=ENEMIES, done=hard["kills"]),
-        dict(id="bosses", title="Bosses killed (Normal or higher)", hint="Normal difficulty or higher.",
+        # the three boss achievements: any difficulty, Normal or higher, and Hard
+        dict(id="bosses-any", title="Bosses killed (any difficulty)", hint="Any difficulty.",
+             universe=BOSSES, done=anyd["kills"]),
+        dict(id="bosses-normal", title="Bosses killed (Normal or higher)", hint="Normal difficulty or higher.",
              universe=BOSSES, done=normal["kills"]),
         dict(id="bosses-hard", title="Bosses killed (Hard)", hint="Hard difficulty.",
              universe=BOSSES, done=hard["kills"]),
@@ -2708,7 +2711,8 @@ def build_sections(s):
 
 
 SECTIONS = ["crafted", "weapons", "cooked", "food-eaten", "built", "deaths", "tree-deaths", "enemies", "enemies-hard",
-            "bosses", "bosses-hard", "minibosses", "fishing", "trophies"]
+            "bosses-any", "bosses-normal", "bosses-hard", "minibosses", "fishing", "trophies"]
+SECTION_ALIASES = {"bosses": "bosses-normal"}   # the old name of the Normal-or-higher list
 
 
 def analyze(source, only=None):
@@ -2775,7 +2779,7 @@ def main(argv=None):
 
     wanted = SECTIONS
     if args.only:
-        wanted = [x.strip() for part in args.only for x in part.split(",") if x.strip()]
+        wanted = [SECTION_ALIASES.get(x.strip(), x.strip()) for part in args.only for x in part.split(",") if x.strip()]
         bad = [x for x in wanted if x not in SECTIONS]
         if bad:
             ap.error(f"unknown list(s): {', '.join(bad)} (choose from {', '.join(SECTIONS)})")

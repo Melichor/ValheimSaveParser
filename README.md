@@ -78,7 +78,8 @@ By default every list is shown, and only the missing entries are printed (each l
 | `tree-deaths` | Be killed by each of the 8 tree varieties | Any difficulty |
 | `enemies` | Kill every creature | Any difficulty |
 | `enemies-hard` | Kill every creature on Hard | Hard |
-| `bosses` | Kill every boss | Normal or higher |
+| `bosses-any` | Kill every boss | Any difficulty |
+| `bosses-normal` | Kill every boss on Normal or harder (`bosses` still works as a short name) | Normal or higher |
 | `bosses-hard` | Kill every boss on Hard | Hard |
 | `minibosses` | Kill every mini-boss | Any difficulty |
 | `fishing` | Catch every fish species | Any difficulty |
