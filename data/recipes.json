@@ -36137,5 +36137,369 @@
   "biome_needed": "",
   "biome_needed_inferred": "",
   "biome_needed_direct": ""
+ },
+ {
+  "kind": "summon",
+  "output": "$item_ooze",
+  "output_name": "Ooze",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_poison",
+    "name": "Blob Bomb: Poison",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Poison",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "Blob",
+  "fuel": "",
+  "biome_needed": "Swamp",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Swamp"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_blob",
+  "output_name": "Blob Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_poison",
+    "name": "Blob Bomb: Poison",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Poison",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "Blob",
+  "fuel": "",
+  "biome_needed": "Swamp",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Swamp"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_ironscrap",
+  "output_name": "Scrap Iron",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_poisonelite",
+    "name": "Blob Bomb: Elite Poison",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Elite Poison",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobElite",
+  "fuel": "",
+  "biome_needed": "Swamp",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Swamp"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_ooze",
+  "output_name": "Ooze",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_poisonelite",
+    "name": "Blob Bomb: Elite Poison",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Elite Poison",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobElite",
+  "fuel": "",
+  "biome_needed": "Swamp",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Swamp"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_blob",
+  "output_name": "Blob Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_poisonelite",
+    "name": "Blob Bomb: Elite Poison",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Elite Poison",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobElite",
+  "fuel": "",
+  "biome_needed": "Swamp",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Swamp"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_tar",
+  "output_name": "Tar",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_tar",
+    "name": "Blob Bomb: Tar",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Tar",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobTar",
+  "fuel": "",
+  "biome_needed": "Plains",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Plains"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_growth",
+  "output_name": "Growth Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_tar",
+    "name": "Blob Bomb: Tar",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Tar",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobTar",
+  "fuel": "",
+  "biome_needed": "Plains",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Plains"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_proustitepowder",
+  "output_name": "Proustite Powder",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_lava",
+    "name": "Blob Bomb: Lava",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Lava",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobLava",
+  "fuel": "",
+  "biome_needed": "Ashlands",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Ashlands"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_sulfurstone",
+  "output_name": "Sulfur",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_lava",
+    "name": "Blob Bomb: Lava",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Lava",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobLava",
+  "fuel": "",
+  "biome_needed": "Ashlands",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Ashlands"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_blob_lava",
+  "output_name": "Lava Blob Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_lava",
+    "name": "Blob Bomb: Lava",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Lava",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobLava",
+  "fuel": "",
+  "biome_needed": "Ashlands",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Ashlands"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_ooze_mork",
+  "output_name": "Dead Pulp",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_morkhalla",
+    "name": "Blob Bomb: Pulp",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Pulp",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobMork",
+  "fuel": "",
+  "biome_needed": "Deep North",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Deep North"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_blob_morkhalla",
+  "output_name": "Pulp Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_morkhalla",
+    "name": "Blob Bomb: Pulp",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Pulp",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobMork",
+  "fuel": "",
+  "biome_needed": "Deep North",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Deep North"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_crystal",
+  "output_name": "Crystal",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_frost",
+    "name": "Blob Bomb: Frost",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Frost",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobFrost",
+  "fuel": "",
+  "biome_needed": "Mountain",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Mountain"
+ },
+ {
+  "kind": "summon",
+  "output": "$item_trophy_blob_frost",
+  "output_name": "Frost Blob Trophy",
+  "item_type": "Material",
+  "output_amount": 1,
+  "ingredients": [
+   {
+    "token": "$item_bombblob_frost",
+    "name": "Blob Bomb: Frost",
+    "amount": 1,
+    "per_level": 0
+   }
+  ],
+  "station": "",
+  "station_name": "Throw Blob Bomb: Frost",
+  "min_station_level": "",
+  "max_quality": "",
+  "any_one_ingredient": false,
+  "enabled": true,
+  "recipe_asset": "BlobFrost",
+  "fuel": "",
+  "biome_needed": "Mountain",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": "Mountain"
  }
 ]

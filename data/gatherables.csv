@@ -119,7 +119,7 @@ Fishing Bait,Ammo,Mountain,Mountain,Mountain; Deep North,pickable,pickable: Moun
 Frost Arrow,Ammo,Mountain,,Mountain,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; MountainWell1; StoneTowerRuins04; StoneTowerRuins05,$item_arrow_frost
 Tetra,Fish,Mountain,Mountain,Mountain; Deep North,creature; fishing,creature: Mountain; fishing: Mountain,Hildir_cave; MountainCave02,$animal_fish4
 Bronze,Material,Mountain,Mountain,Mountain; Ashlands; Deep North,destructible,destructible: Mountain,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Hildir_cave,$item_bronze
-Crystal,Material,Mountain,Mountain,Mountain; Deep North,creature; destructible; pickable,creature: Mountain; destructible: Mountain; pickable: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; BlobFrost; Hildir_cave; MountainCave02,$item_crystal
+Crystal,Material,Mountain,Mountain,Mountain; Deep North,creature; destructible; pickable,creature: Mountain; destructible: Mountain; pickable: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Hildir_cave; MountainCave02; StoneGolem,$item_crystal
 Fenris Claw,Material,Mountain,,Mountain,loot,loot: Mountain,dungeons (assumed),$item_wolfclaw
 Fenris Hair,Material,Mountain,Mountain,Mountain; Deep North,destructible; pickable,destructible: Mountain; pickable: Mountain,Hildir_cave; MountainCave02,$item_wolfhairbundle
 Freeze Gland,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,DrakeNest01; Hatchling,$item_freezegland
@@ -334,7 +334,6 @@ Snowball,OneHandedWeapon,Deep North,Deep North,Deep North,creature; pickable,cre
 Barka Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Barka,$item_trophy_barka
 Elaking Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Elakingar Lantern NIGHT; Elakingar NIGHT,$item_trophy_elaking
 Eyeless One Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,DG_Hole; TheHole01,$item_trophy_mole
-Frost Blob Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,BlobFrost,$item_trophy_blob_frost
 Hexen Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWitch,$item_trophy_jotunwitch
 Krigen Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,JotunWarrior; JotunWarriorDualWield,$item_trophy_jotunwarrior
 Moose Trophy,Trophy,Deep North,Deep North,Deep North,creature,creature: Deep North,Älg,$item_trophy_moose

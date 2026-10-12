@@ -25,10 +25,10 @@ BIOME_NAME = {bit: name for bit, name in BIOMES}
 #   the Bog Witch's camp is in the Swamp; the "Hole" caves (generators DG_Hole and TheHole01) are entered through the
 #   StumpHole prefabs that do appear in the Deep North vegetation list; Zil (Hildir's Plains fortress miniboss) is
 #   spawned by code together with Thungr, so no spawner in the data mentions her; DN_Bossroom is the Frozen King's
-#   arena, which is not in any location list; the Jotun Witch (Hexen), Jotun Warriors (Krigen) and Frost Blobs only
-#   spawn in Deep North but are placed by the Fimbulvinter event or by code.
+#   arena, which is not in any location list; the Jotun Witch (Hexen) and Jotun Warriors (Krigen) only spawn in Deep
+#   North but are placed by the Fimbulvinter event or by code.
 MANUAL_PLACEMENT = {"BogWitch_Camp": 2, "DG_Hole": 64, "TheHole01": 64, "GoblinShaman_Hildir": 16, "DN_Bossroom": 64,
-                    "JotunWitch": 64, "JotunWarrior": 64, "JotunWarriorDualWield": 64, "BlobFrost": 64,
+                    "JotunWitch": 64, "JotunWarrior": 64, "JotunWarriorDualWield": 64,
                     "BlobMork": 64, "BlobMorkBig": 64, "BlobMorkMini": 64}
 # Items that only appear when a player builds a structure, and which structure (item -> piece):
 #   Wisp comes from the Wisplight structure (Yagluth's Torn Spirit), Embers from the Fader ember structure, Sap from the
@@ -69,6 +69,7 @@ CREATURE_BIOME_RULES = {
     "$enemy_asksvin_hatchling": "$enemy_asksvin", "$enemy_boarpiggy": "$enemy_boar", "$enemy_loxcalf": "$enemy_lox",
     "$enemy_moosecalf": "$enemy_moose", "$enemy_wolfcub": "$enemy_wolf", "$enemy_babyseeker": "$enemy_seeker",
     "$enemy_charred_twitcher_summoned": "$enemy_charred_twitcher", "$enemy_charred_melee_Fader": "$enemy_charred_melee",
+    "$enemy_blobfrost": ("item", "$item_bombblob_frost"),    # spawned by Blob Bomb: Frost
     "$enemy_chicken": 16, "$enemy_hen": 16,               # only from eggs, which Haldor sells after Yagluth (Plains)
     "$enemy_kvastur": 2,                                   # the Bog Witch's familiar (Swamp)
     "$enemy_root": 8,                                      # the roots The Elder summons in his fight (Black Forest)
@@ -80,6 +81,11 @@ CREATURE_BIOME_RULES = {
     "$enemy_summonedtroll": ("item", "$item_staffredtroll"),
     "$spiritcaller_bjorn": 64, "$spiritcaller_boar": 64, "$spiritcaller_moose": 64, "$spiritcaller_wolf": 64,
 }
+# Blob bombs spawn a blob when they hit (the bomb's projectile has the blob as its spawn-on-hit prefab): creature prefab
+# -> the bomb item that makes it. What the blob drops (its trophy, ...) is then available as early as the bomb.
+SUMMON_FROM_ITEM = {"Blob": "$item_bombblob_poison", "BlobElite": "$item_bombblob_poisonelite",
+                    "BlobTar": "$item_bombblob_tar", "BlobLava": "$item_bombblob_lava",
+                    "BlobMork": "$item_bombblob_morkhalla", "BlobFrost": "$item_bombblob_frost"}
 # Creatures that live in a different biome than the spawn data suggests (token -> biome bit): Draugr also appear in the
 # Meadows village ruins, but they belong to the Swamp.
 CREATURE_BIOME_OVERRIDE = {"$enemy_draugr": 2, "$enemy_draugrelite": 2}
@@ -454,6 +460,20 @@ def derive(raw, out):
                                   "max_quality": "", "any_one_ingredient": False, "enabled": True,
                                   "recipe_asset": egg["rootName"], "fuel": ""})
 
+    # blob bombs: throwing one spawns a blob, whose drops then become available
+    for creature, bomb in SUMMON_FROM_ITEM.items():
+        croot = root_by_name.get(creature)
+        if not croot:
+            continue
+        for token, kind in sorted(yields(croot)):
+            if kind == "creature":
+                farm_rows.append({"kind": "summon", "output": token, "output_name": name_of(token), "item_type": "Material",
+                                  "output_amount": 1, "ingredients": [{"token": bomb, "name": name_of(bomb), "amount": 1,
+                                                                        "per_level": 0}],
+                                  "station": "", "station_name": "Throw " + name_of(bomb), "min_station_level": "",
+                                  "max_quality": "", "any_one_ingredient": False, "enabled": True,
+                                  "recipe_asset": creature, "fuel": ""})
+
     # station upgrades: a station of level L has L-1 extensions; an extension type counts once unless it stacks
     extension_token = {}
     for e in raw["extensions"]:
@@ -575,7 +595,7 @@ def derive(raw, out):
     by_output = defaultdict(list)
     for row in recipe_rows + piece_rows + farm_rows:
         # hatching and structure rows only exist to link items to their source; they are not things you craft
-        if (row["enabled"] or row["kind"] == "piece") and row["kind"] not in ("hatching", "structure"):
+        if (row["enabled"] or row["kind"] == "piece") and row["kind"] not in ("hatching", "structure", "summon"):
             by_output[(row["kind"] == "piece", row["output"])].append(row)   # a piece and an item can share a token
     for (is_piece, token), rows in by_output.items():
         def best(rank_fn):
@@ -723,6 +743,11 @@ def derive(raw, out):
         "creature": {t: creature_biome(t) for t in sorted({c["token"] for c in raw["characters"] if c.get("token")})
                      if creature_biome(t)},
     }
+    # trophies that are not found in the world but only come from a crafted route (Frost Blob Trophy: Blob Bomb: Frost)
+    for i in items:
+        if i["type"] == 13 and i["token"] and i["token"] not in biomes_out["found"] and label(ranks.get(i["token"])):
+            biomes_out["found"][i["token"]] = label(ranks[i["token"]])
+    biomes_out["found"] = dict(sorted(biomes_out["found"].items()))
     (out / "biomes.json").write_text(json.dumps(biomes_out, indent=1, ensure_ascii=False), encoding="utf-8")
 
     # the items whose Deep North source is assumed (see the note above `inferred`), and what depends on them

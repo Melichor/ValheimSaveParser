@@ -2865,9 +2865,9 @@
     "AbandonedLogCabin02",
     "AbandonedLogCabin03",
     "AbandonedLogCabin04",
-    "BlobFrost",
     "Hildir_cave",
-    "MountainCave02"
+    "MountainCave02",
+    "StoneGolem"
    ]
   },
   {
@@ -7547,25 +7547,6 @@
    "examples": [
     "DG_Hole",
     "TheHole01"
-   ]
-  },
-  {
-   "item": "$item_trophy_blob_frost",
-   "name": "Frost Blob Trophy",
-   "item_type": "Trophy",
-   "earliest_biome": "Deep North",
-   "earliest_biome_direct": "Deep North",
-   "biomes": [
-    "Deep North"
-   ],
-   "sources": [
-    "creature"
-   ],
-   "earliest_by_source": {
-    "creature": "Deep North"
-   },
-   "examples": [
-    "BlobFrost"
    ]
   },
   {

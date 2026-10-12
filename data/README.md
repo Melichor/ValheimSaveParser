@@ -31,6 +31,8 @@ Farming: planting a seed with the Cultivator turns it into its crop, which is av
 
 Traders: items sold by Haldor, Hildir and the Bog Witch count, in the biome of their camp. When a trader only sells an item after a boss is defeated (the game's "global key"), the item counts from that boss's biome instead (for example Haldor's Egg needs Yagluth, so chickens are a Plains thing).
 
+Blob bombs: throwing a Blob Bomb spawns a blob (read from the bomb's projectile), and what the blob drops is then available as early as the bomb. This is why the Frost Blob and its trophy are Mountain: Blob Bomb: Frost needs a Corked Vial, a Drake Trophy and Resin.
+
 Hatching and structures: an egg hatches into a creature, whose drops then become available (Chicken Meat). Wisp and Embers only exist once a structure is built (the Wisplight and the Fader ember structure), so they are as early as that structure.
 
 ### Rules that are not in the game files
@@ -42,7 +44,7 @@ These are stated assumptions, kept together at the top of `tools/derive.py` (`MA
 - Wisp comes from the Wisplight structure, Embers from the Fader ember structure, and Sap from the sap extractor, which has to stand on a Yggdrasil root (Mistlands).
 - Fish bonus items (the ore, seeds and so on some fish carry in the game files) are never counted toward a biome. Onion Seeds, for example, are Mountain chest loot, not Ocean.
 - Fenris Claw is a Mountain dungeon drop. Sealbreaker fragments are treated as available in Mistlands.
-- Every mould is a Deep North item (dungeons and mobs). Jotun Witches (Hexen), Jotun Warriors (Krigen) and Frost Blobs only spawn in Deep North, so their drops are Deep North. The Ancient Coin and the four ancient gemstones (Draumyx, Grimvarn, Solryth, Veydris) are Deep North dungeon loot; the gemstones are assumed to share the coin's chests.
+- Every mould is a Deep North item (dungeons and mobs). Jotun Witches (Hexen) and Jotun Warriors (Krigen) only spawn in Deep North, so their drops are Deep North. The Ancient Coin and the four ancient gemstones (Draumyx, Grimvarn, Solryth, Veydris) are Deep North dungeon loot; the gemstones are assumed to share the coin's chests.
 - Frostfire and Thunderblood Essence come from sacrificing Memorial Coal, so they are Deep North. Oat Seeds and Seed Poteitr grow in the North villages (Deep North). The Frozen King is Deep North's last boss, so his drops (Crown Jewel, Sacrificial Blood) are Deep North. Mork blobs live in Deep North dungeons. The Salvaged Lantern drops from destroying a Standing Lantern, a very rare structure that can appear in Meadows at the earliest, so it counts as Meadows.
 - Vineberry Clusters come from the Ashlands vine only. The game files give the Bog Witch's Ivy an identical berry Pickable, but a grown Ivy gives no berries in the game (confirmed by playing), so that route is ignored.
 - Draugr and Draugr Elite belong to the Swamp, even though the data also puts Draugr in the Meadows village ruins; what they drop (Draugr Trophy, Entrails) is Swamp too.

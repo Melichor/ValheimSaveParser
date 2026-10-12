@@ -1156,3 +1156,17 @@ Feathers,hatching,Material,1,Hatch Egg,,Egg x1,False,,Plains,Plains,,,True,Chick
 Asksvin Bladder,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askbladder
 Asksvin Hide,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_askhide
 Asksvin Tail,hatching,Material,1,Hatch Asksvin Egg,,Asksvin Egg x1,False,,,,,,True,AsksvinEgg,$item_asksvin_meat
+Ooze,summon,Material,1,Throw Blob Bomb: Poison,,Blob Bomb: Poison x1,False,,Swamp,Swamp,,,True,Blob,$item_ooze
+Blob Trophy,summon,Material,1,Throw Blob Bomb: Poison,,Blob Bomb: Poison x1,False,,Swamp,Swamp,,,True,Blob,$item_trophy_blob
+Scrap Iron,summon,Material,1,Throw Blob Bomb: Elite Poison,,Blob Bomb: Elite Poison x1,False,,Swamp,Swamp,,,True,BlobElite,$item_ironscrap
+Ooze,summon,Material,1,Throw Blob Bomb: Elite Poison,,Blob Bomb: Elite Poison x1,False,,Swamp,Swamp,,,True,BlobElite,$item_ooze
+Blob Trophy,summon,Material,1,Throw Blob Bomb: Elite Poison,,Blob Bomb: Elite Poison x1,False,,Swamp,Swamp,,,True,BlobElite,$item_trophy_blob
+Tar,summon,Material,1,Throw Blob Bomb: Tar,,Blob Bomb: Tar x1,False,,Plains,Plains,,,True,BlobTar,$item_tar
+Growth Trophy,summon,Material,1,Throw Blob Bomb: Tar,,Blob Bomb: Tar x1,False,,Plains,Plains,,,True,BlobTar,$item_trophy_growth
+Proustite Powder,summon,Material,1,Throw Blob Bomb: Lava,,Blob Bomb: Lava x1,False,,Ashlands,Ashlands,,,True,BlobLava,$item_proustitepowder
+Sulfur,summon,Material,1,Throw Blob Bomb: Lava,,Blob Bomb: Lava x1,False,,Ashlands,Ashlands,,,True,BlobLava,$item_sulfurstone
+Lava Blob Trophy,summon,Material,1,Throw Blob Bomb: Lava,,Blob Bomb: Lava x1,False,,Ashlands,Ashlands,,,True,BlobLava,$item_trophy_blob_lava
+Dead Pulp,summon,Material,1,Throw Blob Bomb: Pulp,,Blob Bomb: Pulp x1,False,,Deep North,Deep North,,,True,BlobMork,$item_ooze_mork
+Pulp Trophy,summon,Material,1,Throw Blob Bomb: Pulp,,Blob Bomb: Pulp x1,False,,Deep North,Deep North,,,True,BlobMork,$item_trophy_blob_morkhalla
+Crystal,summon,Material,1,Throw Blob Bomb: Frost,,Blob Bomb: Frost x1,False,,Mountain,Mountain,,,True,BlobFrost,$item_crystal
+Frost Blob Trophy,summon,Material,1,Throw Blob Bomb: Frost,,Blob Bomb: Frost x1,False,,Mountain,Mountain,,,True,BlobFrost,$item_trophy_blob_frost
