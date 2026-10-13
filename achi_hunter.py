@@ -2665,7 +2665,7 @@ def build_sections(s):
     anyd, normal, hard = sets[SET_ANY], sets[SET_NORMAL], sets[SET_HARD]
     stats = anyd["stats"]
     kind = lambda table: {k: stats[i] for k, i in table.items() if stats[i] > 0}
-    names = {"EdgeOfWorld": "Edge of the world"}
+    names = {"EdgeOfWorld": "Edge of the world", "SnowFir": "Snow fir (Timber Tree)", "SnowPine": "Snow pine (Timber Tree)"}
     nice = lambda table: {k: names.get(k) or re.sub(r"(?<=[a-z])([A-Z])", lambda m: " " + m[1].lower(), k) for k in table}
     sections = [
         dict(id="crafted", title="Items crafted (any difficulty)", hint="Recipes that need a crafting station.",
@@ -2682,7 +2682,9 @@ def build_sections(s):
              universe=BUILDABLE, done=anyd["pieces_built"]),
         dict(id="deaths", title="Ways to die", hint="Any difficulty.", cli_names=True,
              universe=nice(DEATH_KINDS), done=kind(DEATH_KINDS)),
-        dict(id="tree-deaths", title="Killed by each tree variety", hint="Any difficulty.", cli_names=True,
+        dict(id="tree-deaths", title="Killed by each tree variety",
+             hint="Any difficulty. Snow fir and snow pine are two different trees that are both called Timber Tree in game.",
+             cli_names=True,
              universe=nice(TREE_VARIETIES), done=kind(TREE_VARIETIES)),
         dict(id="enemies", title="Enemies killed (any difficulty)", hint="Bosses are listed separately.",
              universe=ENEMIES, done=anyd["kills"]),
