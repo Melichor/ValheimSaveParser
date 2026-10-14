@@ -74,8 +74,8 @@ By default every list is shown, and only the missing entries are printed (each l
 | `cooked` | Cook / craft every food | Any difficulty |
 | `food-eaten` | **The Gourmet**: eat every food once (raw and cooked versions are separate foods) | Any difficulty |
 | `built` | Build every piece in the Hammer menu | Any difficulty |
-| `deaths` | Die in every way (enemy, fall, drowning, burning, freezing, poison, smoke, edge of the world) | Any difficulty |
-| `tree-deaths` | Be killed by each of the 8 tree varieties | Any difficulty |
+| `deaths` | Die in every way (16 kinds: enemy, fall, drowning, burning, freezing, poison, smoke, edge of the world, tree, turret, stalactite, catapult, Ashlands ocean, obliterator, drawbridge, Ashlands lava) | Any difficulty |
+| `tree-deaths` | Be killed by each of the 10 tree varieties | Any difficulty |
 | `enemies` | Kill every creature | Any difficulty |
 | `enemies-hard` | Kill every creature on Hard | Hard |
 | `bosses-any` | Kill every boss | Any difficulty |

@@ -1309,12 +1309,14 @@ FISH = {
 }
 
 # Death achievements, from the game's Achievement assets (stat -> index into the 205 PlayerStatType values).
-# "DeathByAllTypes" needs all 8 of these kinds at least once.
-DEATH_KINDS = {"EnemyHit": 56, "Fall": 58, "Drowning": 59, "Burning": 60,
-               "Freezing": 61, "Poisoned": 62, "Smoke": 63, "EdgeOfWorld": 65}
-# "DeathByTree" needs DeathByTree (index 68). "DeathByTreeAll" needs a death by each of these 8 tree varieties.
+# "DeathByAllTypes" needs all 16 of these kinds at least once.
+DEATH_KINDS = {"EnemyHit": 56, "Fall": 58, "Drowning": 59, "Burning": 60, "Freezing": 61, "Poisoned": 62,
+               "Smoke": 63, "EdgeOfWorld": 65, "Tree": 68, "Turret": 71, "Stalagtite": 73, "Catapult": 105,
+               "AshlandsOcean": 107, "Incinerator": 108, "DrawBridge": 203, "AshlandsLava": 204}
+# "DeathByTree" needs DeathByTree (index 68). "DeathByTreeAll" needs a death by each of these 10 tree varieties
+# (the stats are named Tree* in the game, but they count deaths for this achievement).
 DEATH_BY_TREE = 68
-TREE_VARIETIES = {"Fir": 193, "Oak": 194, "Pine": 195, "Ashlands": 196,
+TREE_VARIETIES = {"Fir": 193, "Oak": 194, "Pine": 195, "Ashlands": 196, "YggdrasilShoot": 197, "Swamp": 198,
                   "Beech": 199, "Birch": 200, "SnowFir": 201, "SnowPine": 202}
 
 
@@ -1326,10 +1328,13 @@ GAME = "Valheim 1.0.16"
 # drowning, burning and smoke are possible from the start; poison needs a Greydwarf Shaman (Black Forest), freezing
 # needs the cold of the Mountain, and the edge of the world is reached by sailing.
 DEATH_BIOME = {"EnemyHit": "Meadows", "Fall": "Meadows", "Drowning": "Meadows", "Burning": "Meadows",
-               "Smoke": "Meadows", "Poisoned": "Black Forest", "Freezing": "Mountain", "EdgeOfWorld": "Ocean"}
+               "Smoke": "Meadows", "Poisoned": "Black Forest", "Freezing": "Mountain", "EdgeOfWorld": "Ocean",
+               "Tree": "Meadows", "Turret": "Mistlands", "Stalagtite": "Mountain", "Catapult": "Ashlands",
+               "AshlandsOcean": "Ashlands", "Incinerator": "Swamp", "DrawBridge": "Mountain", "AshlandsLava": "Ashlands"}
 # Where each tree can be cut down (Beech, Birch and Oak can be cut with the early axes).
 TREE_BIOME = {"Beech": "Meadows", "Birch": "Meadows", "Oak": "Meadows", "Pine": "Black Forest", "Fir": "Black Forest",
-              "Ashlands": "Ashlands", "SnowFir": "Deep North", "SnowPine": "Deep North"}
+              "Ashlands": "Ashlands", "SnowFir": "Deep North", "SnowPine": "Deep North", "Swamp": "Swamp",
+              "YggdrasilShoot": "Mistlands"}
 
 
 # BEGIN GENERATED BIOMES (tools/update_script_biomes.py rewrites everything up to END GENERATED BIOMES)
@@ -2665,7 +2670,7 @@ def build_sections(s):
     anyd, normal, hard = sets[SET_ANY], sets[SET_NORMAL], sets[SET_HARD]
     stats = anyd["stats"]
     kind = lambda table: {k: stats[i] for k, i in table.items() if stats[i] > 0}
-    names = {"EdgeOfWorld": "Edge of the world", "SnowFir": "Snow fir (Timber Tree)", "SnowPine": "Snow pine (Timber Tree)"}
+    names = {"EdgeOfWorld": "Edge of the world", "Incinerator": "Obliterator", "SnowFir": "Snow fir (Timber Tree)", "SnowPine": "Snow pine (Timber Tree)"}
     nice = lambda table: {k: names.get(k) or re.sub(r"(?<=[a-z])([A-Z])", lambda m: " " + m[1].lower(), k) for k in table}
     sections = [
         dict(id="crafted", title="Items crafted (any difficulty)", hint="Recipes that need a crafting station.",
