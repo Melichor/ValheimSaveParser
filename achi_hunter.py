@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""achi_hunter: Valheim achievement progress from a .fch save (profile version 46).
+"""achi_hunter: Valheim achievement progress from a .fch save (profile version 46 and up).
 
 Shows what is still missing for crafted items, weapons, cooked food, built pieces, causes of death (incl. tree deaths), enemy/boss/mini-boss kills (any difficulty, Normal+, Hard), fishing and trophies.
 
@@ -1320,7 +1320,12 @@ TREE_VARIETIES = {"Fir": 193, "Oak": 194, "Pine": 195, "Ashlands": 196, "Yggdras
                   "Beech": 199, "Birch": 200, "SnowFir": 201, "SnowPine": 202}
 
 
-PROFILE_VERSION = 46
+# Oldest profile version known to have this layout, newest one checked against it, and the stat/set counts the
+# stat indices above depend on. A different count means the game's stat list changed and the indices are wrong.
+MIN_PROFILE_VERSION = 46
+TESTED_PROFILE_VERSION = 47
+STAT_COUNT = 205
+SET_COUNT = 10
 GAME = "Valheim 1.0.16"
 
 
@@ -2618,12 +2623,15 @@ def parse(source):
     r = Reader(data)
     version = r.i32()
     if not 1 <= version <= 1000:
-        raise SaveError(f"this is not a supported Valheim .fch character file (profile version {PROFILE_VERSION})")
-    if version != PROFILE_VERSION:
-        raise SaveError(f"this save uses profile version {version}, but only version {PROFILE_VERSION} "
-                        f"({GAME}) is supported")
+        raise SaveError("this is not a supported Valheim .fch character file")
+    if version < MIN_PROFILE_VERSION:
+        raise SaveError(f"this save uses profile version {version}, which is older than the oldest supported "
+                        f"version {MIN_PROFILE_VERSION} ({GAME})")
     n_stats = r.i32()
     n_sets = r.i32()
+    if (n_stats, n_sets) != (STAT_COUNT, SET_COUNT):
+        raise SaveError(f"this save has {n_stats} stats in {n_sets} sets, but this script expects {STAT_COUNT} in "
+                        f"{SET_COUNT}: the game's save layout changed and the script needs updating")
     sets = []
     for _ in range(n_sets):
         st = {"stats": struct.unpack_from(f"<{n_stats}f", data, r.p)}
@@ -2731,7 +2739,7 @@ def analyze(source, only=None):
     except SaveError:
         raise
     except (struct.error, IndexError, UnicodeDecodeError, AssertionError, ValueError):
-        raise SaveError(f"this is not a supported Valheim .fch character file (profile version {PROFILE_VERSION})")
+        raise SaveError("this is not a supported Valheim .fch character file, or its layout changed and the script needs updating")
     out = []
     for sec in build_sections(s):
         if only and sec["id"] not in only:
@@ -2741,7 +2749,10 @@ def analyze(source, only=None):
         entries.sort(key=lambda e: e["name"].lower())
         out.append({"id": sec["id"], "title": sec["title"], "hint": sec["hint"], "total": len(entries),
                     "done": sum(1 for e in entries if e["count"] > 0), "entries": entries})
-    return {"game": GAME, "profileVersion": s["version"], "worlds": list(s["sets"][0]["worlds"]),
+    warning = (f"This save is profile version {s['version']}, newer than the newest tested ({TESTED_PROFILE_VERSION}). "
+               "It was read without problems, but check that the numbers look right."
+               if s["version"] > TESTED_PROFILE_VERSION else "")
+    return {"game": GAME, "profileVersion": s["version"], "warning": warning, "worlds": list(s["sets"][0]["worlds"]),
             "biomes": BIOME_ORDER, "sections": out}
 
 
@@ -2803,8 +2814,11 @@ def main(argv=None):
     except SaveError as e:
         ap.error(f"{args.save}: {e}")
     except (struct.error, IndexError, UnicodeDecodeError, AssertionError, ValueError):
-        ap.error(f"{args.save} is not a supported Valheim .fch character file (profile version {PROFILE_VERSION})")
+        ap.error(f"{args.save} is not a supported Valheim .fch character file, or its layout changed and the script needs updating")
 
+    if s["version"] > TESTED_PROFILE_VERSION:
+        print(f"warning: profile version {s['version']} is newer than the newest tested ({TESTED_PROFILE_VERSION}); "
+              "the save was read without problems, but check that the numbers look right.", file=sys.stderr)
     print(f"{args.save}: profile v{s['version']}, worlds: {', '.join(s['sets'][0]['worlds'])}")
     for sec in build_sections(s):
         if sec["id"] in wanted:

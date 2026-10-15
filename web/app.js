@@ -73,7 +73,7 @@ async function analyse(file) {
 
 function render(name) {
   els.fname.textContent = name;
-  els.worlds.textContent = "Worlds: " + (report.worlds.join(", ") || "none");
+  els.worlds.textContent = "Worlds: " + (report.worlds.join(", ") || "none") + (report.warning ? " — " + report.warning : "");
   els.biome.replaceChildren(...report.biomes.map((b) => new Option(b, b)));
   els.biome.value = report.biomes[report.biomes.length - 1];   // default: the last biome, so nothing is hidden
   els.cards.replaceChildren();

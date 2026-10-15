@@ -121,6 +121,6 @@ The save stores ten sets of statistics, one per difficulty (`RawStats`, `Any`, `
 
 ## Limitations
 
-- Written for **profile version 46** saves from **Valheim 1.0.16**. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python dictionaries (token to display name) and need regenerating after an update. Saves from other profile versions are rejected with an error message.
+- Written for **profile version 46** saves from **Valheim 1.0.16**; version 47 is tested too, and newer versions are read with a warning. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python dictionaries (token to display name) and need regenerating after an update. Older versions, or a save whose stat count differs from what the script expects (a sign that the game changed its stats list), are rejected with an error message.
 - The terminal output shows the game's internal names (for example `charred_melee_Dyrnwyn`, `trophy_boar`) without the `$item_` / `$enemy_` prefixes; the web page and `--json` also carry display names where the game has one.
 - The in-game achievement list can differ slightly if the game build you play has a different item set (for example a modded game).
