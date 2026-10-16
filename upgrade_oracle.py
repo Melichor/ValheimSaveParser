@@ -482,7 +482,15 @@ def load(source):
         blob_end = r.p + blob_len
         if blob_end != len(data):
             raise SaveError("the player data does not end where the file does")
-        if r.take("i") != PLAYER_DATA_VERSION:
+        player_version = r.take("i")
+        if player_version < PLAYER_DATA_VERSION:
+            # version 34 added the per-character upgrade seeds, which made the Forge of Potential's rolls predictable
+            raise SaveError(f"this character was saved by an older Valheim version (player data version {player_version}). "
+                            "The Forge of Potential existed before, but its upgrade rolls changed in the latest update, and "
+                            "only since then are they decided by the character and stored in its file. Load the character "
+                            "in the current Valheim (1.0.20 or newer) and save it there first. Until then there is nothing "
+                            "to predict")
+        if player_version != PLAYER_DATA_VERSION:
             raise SaveError("the player data format changed and the script needs updating")
         r.skip(16)                              # max health, health, max stamina, time since death
         r.string()                              # guardian power
