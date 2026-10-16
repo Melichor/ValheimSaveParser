@@ -130,3 +130,9 @@ button:disabled { opacity: .55; cursor: default; }
 .predRow { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; }
 .predRow .what { color: var(--muted); }
 #uDrop { margin: 8px 0; padding: 28px 16px; }
+
+.sub.or { margin-top: 14px; }
+#uName { min-width: min(100%, 220px); }
+#uItem { min-width: min(100%, 280px); }
+.caveats { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: .9rem; }
+.caveats li { margin: 4px 0; }

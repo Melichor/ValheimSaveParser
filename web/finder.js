@@ -18,6 +18,7 @@ const F = {
 const P = {
   drop: byId("uDrop"), file: byId("uFile"), status: byId("uStatus"), statusText: byId("uStatusText"), error: byId("uError"),
   result: byId("uResult"), summary: byId("uSummary"), items: byId("uItems"),
+  form: byId("uForm"), item: byId("uItem"), quality: byId("uQuality"), name: byId("uName"), go: byId("uGo"),
 };
 
 const STEP = 5;      // names added by each "Find more"
@@ -54,10 +55,12 @@ function handle(msg) {
     itemsLoaded = true;
     F.items.replaceChildren(...msg.items.map((name) => Object.assign(document.createElement("option"), { value: name })));
     busy("");
-  } else if (msg.type === "predicted") {
+    if (!predicting) P.status.hidden = true;
+  } else if (msg.type === "predicted" || msg.type === "predictedItem") {
     predicting = false;
     if (msg.error) return predictFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
-    showPrediction(msg);
+    if (msg.type === "predicted") showPrediction(msg);
+    else showPrediction({ character: msg.character, items: [msg.item], manual: true });
   } else if (msg.type === "error" || msg.error) {
     fail(msg.error || msg.message);
   } else if (msg.type === "result") {
@@ -175,6 +178,7 @@ function predictFail(message) {
   predicting = false;
   P.status.hidden = true;
   P.drop.classList.remove("busy");
+  P.go.disabled = false;
   P.error.textContent = message;
   P.error.hidden = false;
 }
@@ -195,12 +199,29 @@ async function predict(file) {
   P.file.value = "";
 }
 
+function predictItem() {
+  P.error.hidden = true;
+  const item = P.item.value.trim();
+  const name = P.name.value;                   // not trimmed: the name is used exactly as typed
+  if (!item) return predictFail("Enter the name of an item.");
+  if (!name) return predictFail("Enter a character name.");
+  P.result.hidden = true;
+  P.go.disabled = true;
+  P.status.hidden = false;
+  P.statusText.textContent = worker ? "Predicting…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…";
+  predicting = true;
+  (worker || startWorker()).postMessage({ type: "predictItem", item, quality: P.quality.value, name });
+}
+
 function showPrediction(r) {
   P.status.hidden = true;
   P.drop.classList.remove("busy");
+  P.go.disabled = false;
   P.result.hidden = false;
-  P.summary.textContent = `${r.character}: ${r.items.length} upgradable item${r.items.length === 1 ? "" : "s"} in the inventory` +
-    ` · ${r.savedSeeds} saved upgrade seed${r.savedSeeds === 1 ? "" : "s"}`;
+  P.summary.textContent = r.manual
+    ? `As a new character named “${r.character}” (no saved seeds)`
+    : `${r.character}: ${r.items.length} upgradable item${r.items.length === 1 ? "" : "s"} in the inventory` +
+      ` · ${r.savedSeeds} saved upgrade seed${r.savedSeeds === 1 ? "" : "s"}`;
   P.items.replaceChildren(...(r.items.length ? r.items.map((it) => {
     const li = el("li");
     const row = el("div", "predRow");
@@ -216,6 +237,14 @@ function showPrediction(r) {
   }) : [el("li", "", "No upgradable items in this character's inventory.")]));
 }
 
+P.form.addEventListener("submit", (e) => { e.preventDefault(); predictItem(); });
+// the item box shares the finder's item list; load it the first time either box is used
+P.item.addEventListener("focus", () => {
+  if (itemsLoaded || worker) return;
+  P.status.hidden = false;
+  P.statusText.textContent = "Loading the item list…";
+  startWorker().postMessage({ type: "items" });
+}, { once: true });
 P.file.addEventListener("change", () => P.file.files[0] && predict(P.file.files[0]));
 P.drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); P.file.click(); } });
 for (const ev of ["dragenter", "dragover"]) P.drop.addEventListener(ev, (e) => { e.preventDefault(); P.drop.classList.add("over"); });

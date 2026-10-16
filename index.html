@@ -120,6 +120,23 @@
       <strong>Drop your <code>.fch</code> file here</strong>
       <span>or click to choose one</span>
     </label>
+    <p class="sub or">Or predict a single item without a file, as a new character with the name you enter. A new character has no saved seeds, so every roll comes from the name.</p>
+    <form id="uForm" class="finderForm">
+      <label>Item
+        <input id="uItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <label>Current quality
+        <input id="uQuality" type="number" min="1" max="99" value="1" required>
+      </label>
+      <label>Character name
+        <input id="uName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false" required>
+      </label>
+      <button id="uGo" type="submit" class="primary">Predict</button>
+    </form>
+    <ul class="caveats">
+      <li>The item must not have been upgraded at the Forge of Potential before.</li>
+      <li>The character must not have upgraded this item type at the Forge of Potential before, with any copy of it. If it has, drop its character file above instead: that uses the rolls stored in the file.</li>
+    </ul>
     <div id="uStatus" class="status" role="status" hidden><span class="spin"></span><span id="uStatusText"></span></div>
     <div id="uError" class="error" role="alert" hidden></div>
     <div id="uResult" hidden>

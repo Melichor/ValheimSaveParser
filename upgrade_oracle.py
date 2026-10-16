@@ -880,6 +880,21 @@ def web_predict(data):
     return json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": items})
 
 
+def web_predict_item(item, quality, name):
+    """JSON for the predictor's manual form: one item at a quality, for a new character with that name (no saved seeds)."""
+    try:
+        quality = int(quality)
+        if not 1 <= quality <= WEB_MAX_QUALITY:
+            raise SaveError(f"the quality must be between 1 and {WEB_MAX_QUALITY}")
+        if not name:
+            raise SaveError("enter a character name")
+        prefab = find_item(item)
+    except (SaveError, ValueError) as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"character": name, "item": {**predict(prefab, quality, name, {}), "name": UPGRADABLE[prefab],
+                                                   "stack": 1}})
+
+
 def find_names_command(ap, args):
     """--findnameperupgr: needs no save, only the item and the level it starts at."""
     if args.save:
