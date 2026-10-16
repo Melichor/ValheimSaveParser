@@ -16,7 +16,7 @@ It has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome an
 
 ## Upgrade predictor
 
-`upgrade_oracle.py` (also a single file, standard library only) predicts how many times an item can be upgraded at the upgrade station before it breaks. A character's first attempt on each item and level is a fixed roll that depends only on the character's name, and the script replays it. It can also search for character names that give 8 upgrades in a row (the most a new character can get):
+`upgrade_oracle.py` (also a single file, standard library only) predicts how many times an item can be upgraded at the Forge of Potential before it breaks. A character's first attempt on each item and level is a fixed roll that depends only on the character's name, and the script replays it. It can also search for character names that give 8 upgrades in a row (the most a new character can get):
 
 ```bash
 python3 upgrade_oracle.py Character.fch                       # the upgradable items in the inventory

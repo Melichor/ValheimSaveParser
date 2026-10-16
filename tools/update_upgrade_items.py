@@ -6,7 +6,7 @@ Developer tool. It reads raw.json, which tools/extract_game_data.py writes, so i
     python3 tools/extract_game_data.py --game "<path to steamapps/common/Valheim>" --out data
     python3 tools/update_upgrade_items.py data/raw.json
 
-An item can be upgraded at the upgrade station when its recipe has an upgrader ingredient (the Upgrader0Armor,
+An item can be upgraded at the Forge of Potential when its recipe has an upgrader ingredient (the Upgrader0Armor,
 Upgrader3Weapon, ... items). Every upgrader item must have the same odds, because the script uses one pair of numbers.
 """
 import json
@@ -46,7 +46,7 @@ def main():
              "# Chance that one upgrade attempt succeeds, and the chance (checked next) that a failed attempt destroys the item.",
              f"UPGRADE_CHANCE = {upgrade!r}",
              f"BREAK_CHANCE = {brk!r}",
-             "# Prefab name -> display name of every item that can be upgraded at the upgrade station.",
+             "# Prefab name -> display name of every item that can be upgraded at the Forge of Potential.",
              "UPGRADABLE = {"]
     lines += [f"    {k!r}: {names[k]!r}," for k in sorted(names)]
     lines += ["}", END]

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""upgrade_oracle: predict how many times an item can be upgraded at the upgrade station before it breaks.
+"""upgrade_oracle: predict how many times an item can be upgraded at the Forge of Potential before it breaks.
 
 Reads a Valheim character file (.fch, profile version 46 and up, player data version 34). Python 3, standard library only.
 
@@ -42,7 +42,7 @@ MAX_ATTEMPTS = 200          # stop a run that somehow never breaks
 # Chance that one upgrade attempt succeeds, and the chance (checked next) that a failed attempt destroys the item.
 UPGRADE_CHANCE = 0.65
 BREAK_CHANCE = 1.0
-# Prefab name -> display name of every item that can be upgraded at the upgrade station.
+# Prefab name -> display name of every item that can be upgraded at the Forge of Potential.
 UPGRADABLE = {
     'ArmorAshlandsMediumChest': 'Breastplate of Ask',
     'ArmorAshlandsMediumlegs': 'Trousers of Ask',
@@ -788,7 +788,7 @@ def show(results, verbose):
 
 def show_check(rows):
     if not rows:
-        print("This character has no saved upgrade seeds yet: no upgrade has been attempted at an upgrade station.")
+        print("This character has no saved upgrade seeds yet: no upgrade has been attempted at the Forge of Potential.")
         return
     ok = sum(1 for r in rows if r["attempts"])
     for r in rows:
