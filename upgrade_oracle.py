@@ -576,17 +576,24 @@ CHARSETS = {
 }
 
 
-def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries):
+def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None):
     """Character names (shortest first) whose first rolls give exactly `target` upgrades, then a break.
 
     A fresh character has no saved seeds, so each roll starts from the hash of the name plus the key of the level.
+    `after` continues a search: it is the last name of the previous one, and the search resumes with the name after it.
     Returns (names, number of names tried, whether the search covered every name up to max_len)."""
-    from itertools import product
+    from itertools import islice, product
     base = stable_hash(prefab)
     keys = [s32(base + quality + 1 + i) for i in range(target + 1)]
     found, tried = [], 0
-    for length in range(min_len, max_len + 1):
-        for chars in product(charset, repeat=length):
+    for length in range(max(min_len, len(after or "")), max_len + 1):
+        names = product(charset, repeat=length)
+        if after and length == len(after):
+            skip = 0
+            for ch in after:
+                skip = skip * len(charset) + charset.index(ch)
+            names = islice(names, skip + 1, None)
+        for chars in names:
             tried += 1
             if tried > max_tries:
                 return found, tried - 1, False
@@ -697,6 +704,37 @@ def show_check(rows):
         else:
             print(f"{r['item']} to level {r['level']}: seed does NOT match the generator")
     print(f"{ok} of {len(rows)} saved seeds reproduced")
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Entry points for the web page (web/finder-worker.js runs this file in the browser with Pyodide)
+# ---------------------------------------------------------------------------------------------------------------
+
+WEB_MAX_QUALITY = 99
+
+
+def web_items():
+    """JSON list of the display names of every upgradable item."""
+    return json.dumps(sorted(UPGRADABLE.values(), key=str.lower))
+
+
+def web_find(item, quality, limit, after=""):
+    """JSON for the name finder: character names that give MAX_FIRST_RUN upgrades on `item` starting at `quality`.
+
+    `after` is the last name of an earlier answer; the search continues from there."""
+    try:
+        quality, limit = int(quality), int(limit)
+        if not 1 <= quality <= WEB_MAX_QUALITY:
+            raise SaveError(f"the starting quality must be between 1 and {WEB_MAX_QUALITY}")
+        prefab = find_item(item)
+        if any(c not in CHARSETS["letters"] for c in after or ""):
+            raise SaveError("cannot continue from that name")
+        names, tried, complete = find_names(prefab, quality, MAX_FIRST_RUN, CHARSETS["letters"], 3, 15,
+                                            max(1, min(limit, 100)), 8_000_000, after or None)
+    except (SaveError, ValueError) as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": MAX_FIRST_RUN, "names": names,
+                       "tried": tried, "complete": complete})
 
 
 def find_names_command(ap, args):

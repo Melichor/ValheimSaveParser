@@ -81,3 +81,25 @@ select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; b
 .body li .b { color: var(--muted); font-size: .8rem; white-space: nowrap; margin-left: auto; padding-left: 10px; align-self: center; }
 .body li .b + .n { margin-left: 10px; }
 .head .later { color: var(--muted); }
+
+.finder { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+.finder h2 { margin: 0 0 4px; font-size: 1.3rem; }
+.finder .sub { color: var(--muted); margin: 4px 0 14px; }
+.finder a { color: var(--accent); }
+.finderForm { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end; }
+.finderForm label { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; color: var(--muted); }
+.finderForm input { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); font: inherit; }
+#fItem { min-width: min(100%, 280px); }
+#fQuality { width: 110px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button:disabled { opacity: .55; cursor: default; }
+.summary { margin: 16px 0 6px; font-weight: 600; }
+.names { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 8px; }
+.names li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.names code { font-size: 1.05rem; background: none; padding: 0; }
+.names button { padding: 3px 9px; font-size: .84rem; }
+.muted { color: var(--muted); font-size: .9rem; }
+.notes { margin-top: 18px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.notes h3 { margin: 0 0 6px; font-size: 1rem; }
+.notes ul { margin: 0; padding-left: 20px; }
+.notes li { margin: 6px 0; }

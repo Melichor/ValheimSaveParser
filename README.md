@@ -14,6 +14,18 @@ You can visit the web version here: [https://melichor.github.io/ValheimSaveParse
 
 It has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome and every list only shows the items you are missing that can be done up to that biome; each item shows its earliest biome.
 
+## Upgrade predictor
+
+`upgrade_oracle.py` (also a single file, standard library only) predicts how many times an item can be upgraded at the upgrade station before it breaks. A character's first attempt on each item and level is a fixed roll that depends only on the character's name, and the script replays it. It can also search for character names that give 8 upgrades in a row (the most a new character can get):
+
+```bash
+python3 upgrade_oracle.py Character.fch                       # the upgradable items in the inventory
+python3 upgrade_oracle.py Character.fch --charname Ragnar     # the same items for a new character with another name
+python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameperupgr 8   # names, no save needed
+```
+
+The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. The game keeps the case of the name you type, so type the names exactly as listed.
+
 ## Game data tables
 
 `data/` holds tables extracted from the game files: every recipe (`recipes.csv`) and every item that can be found in the world with the earliest biome it appears in (`gatherables.csv`), plus the earliest biome in which each craftable item can be made (`craftable_biomes.csv`). See [`data/README.md`](data/README.md) for the columns and the rules, and `tools/extract_game_data.py` to regenerate them.

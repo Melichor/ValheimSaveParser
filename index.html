@@ -59,6 +59,39 @@
     </div>
     <div id="cards" class="cards"></div>
   </section>
+
+  <section id="finder" class="finder">
+    <h2>Upgrade name finder</h2>
+    <p class="sub">Upgrading at the upgrade station is a dice roll that, for a new character, is decided by the character's name. Enter an item and the quality it starts at, and this finds names of new characters that give <b>8 upgrades in a row</b>. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and needs no save file.</p>
+    <form id="finderForm" class="finderForm">
+      <label>Item
+        <input id="fItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <datalist id="fItems"></datalist>
+      <label>Starting quality
+        <input id="fQuality" type="number" min="1" max="99" value="1" required>
+      </label>
+      <button id="fGo" type="submit" class="primary">Find names</button>
+      <button id="fCancel" type="button" hidden>Cancel</button>
+    </form>
+    <div id="fStatus" class="status" role="status" hidden><span class="spin"></span><span id="fStatusText"></span></div>
+    <div id="fError" class="error" role="alert" hidden></div>
+    <div id="fResult" hidden>
+      <p id="fSummary" class="summary"></p>
+      <ol id="fNames" class="names"></ol>
+      <p><button id="fMore" type="button">Find more</button> <span id="fNote" class="muted"></span></p>
+    </div>
+    <div class="notes">
+      <h3>Before you create the character</h3>
+      <ul>
+        <li><b>The case of the name is saved.</b> The game keeps the name exactly as you type it, with its upper and lower case letters, even when the name box or the game shows it in capitals. <code>FazI</code> and <code>fazi</code> are different names with different rolls, so type it exactly as listed. (Only the file name is lowercase.)</li>
+        <li><b>The first upgrade is the one that matters.</b> The roll for every level starts from the character's name, and it only does so while that character has not upgraded this item at those levels yet. So make the item's upgrades with that character, starting with the very first one. Other items are not affected.</li>
+        <li><b>Stop after the 8th upgrade.</b> The list is for exactly 8 upgrades; a 9th attempt breaks the item.</li>
+        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade. If you want a custom text there, keep the last upgrade for a character with that name, as that is the one that gets saved on the item. That last roll then comes from that character's own name, so it is not covered by this list and can fail.</li>
+        <li>Start the search from the quality the item really has when you put it on the upgrade station. A different starting quality needs different names.</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
 <footer class="wrap foot">
@@ -68,5 +101,6 @@
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
 <script src="web/app.js"></script>
+<script src="web/finder.js"></script>
 </body>
 </html>
