@@ -866,6 +866,20 @@ def web_find_advanced(item, quality, upgrades, copies, limit, after=""):
                        "tried": tried, "complete": complete})
 
 
+def web_predict(data):
+    """JSON for the web page's save predictor: what happens to every upgradable item in the character's inventory.
+
+    `data` is the file's bytes (a Uint8Array from the page, or bytes)."""
+    try:
+        raw = bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data)
+        save = load(raw)
+        items = run(save)
+    except SaveError as e:
+        return json.dumps({"error": str(e)})
+    items.sort(key=lambda p: (-p["upgrades"], p["name"].lower()))
+    return json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": items})
+
+
 def find_names_command(ap, args):
     """--findnameperupgr: needs no save, only the item and the level it starts at."""
     if args.save:

@@ -112,6 +112,29 @@
       </ul>
     </div>
   </section>
+  <section id="predictor" class="finder">
+    <h2>Upgrade predictor</h2>
+    <p class="sub">Drop a character file to see, for every upgradable item in its inventory, how many upgrades it can take at the upgrade station before it breaks. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and the file is never uploaded.</p>
+    <label id="uDrop" class="drop" tabindex="0">
+      <input id="uFile" type="file" accept=".fch,.old,.new" hidden>
+      <strong>Drop your <code>.fch</code> file here</strong>
+      <span>or click to choose one</span>
+    </label>
+    <div id="uStatus" class="status" role="status" hidden><span class="spin"></span><span id="uStatusText"></span></div>
+    <div id="uError" class="error" role="alert" hidden></div>
+    <div id="uResult" hidden>
+      <p id="uSummary" class="summary"></p>
+      <ul id="uItems" class="predList"></ul>
+    </div>
+    <div class="notes">
+      <h3>How to read it</h3>
+      <ul>
+        <li>The roll for an upgrade comes from the character's name the first time it upgrades that item to that level, and from a stored seed in the file after that. The prediction uses whichever the file says applies, so it is exact for the next attempts of this character.</li>
+        <li>Each item is predicted as if it were the first of its kind you upgrade. With two copies of the same item, the second one continues from the seeds the first leaves behind, so its path differs.</li>
+        <li>An attempt that is not a success breaks the item, so each path ends with a break. You can stop before it: the path shows how far you would get.</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
 <footer class="wrap foot">

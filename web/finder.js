@@ -2,7 +2,10 @@
 
 /* Upgrade name finder. Asks web/finder-worker.js (upgrade_oracle.py in Pyodide) for character names that give upgrades on
    an item. The default mode asks for 8 upgrades on one copy; advanced mode takes the wanted upgrades and the number of
-   copies, and shows an upgrade path for every name. Nothing is uploaded and no save file is needed. */
+   copies, and shows an upgrade path for every name. Nothing is uploaded and no save file is needed.
+
+   The predictor at the bottom of the page takes a dropped character file instead and asks the same worker what happens
+   to every upgradable item in its inventory. */
 
 const byId = (id) => document.getElementById(id);
 const F = {
@@ -12,12 +15,18 @@ const F = {
   result: byId("fResult"), summary: byId("fSummary"), names: byId("fNames"), more: byId("fMore"), note: byId("fNote"),
 };
 
+const P = {
+  drop: byId("uDrop"), file: byId("uFile"), status: byId("uStatus"), statusText: byId("uStatusText"), error: byId("uError"),
+  result: byId("uResult"), summary: byId("uSummary"), items: byId("uItems"),
+};
+
 const STEP = 5;      // names added by each "Find more"
 let worker = null;
 let itemsLoaded = false;
 let found = [];      // the names listed so far: { name, path? }
 let asked = 0;       // how many names the last request asked for
 let request = null;  // the settings of the current search, reused by "Find more"
+let predicting = false; // a dropped file is being read, so worker errors belong to the predictor
 
 function startWorker() {
   worker = new Worker("web/finder-worker.js");
@@ -34,6 +43,7 @@ function busy(text) {
 }
 
 function fail(message) {
+  if (predicting) return predictFail(message);
   busy("");
   F.error.textContent = message;
   F.error.hidden = false;
@@ -44,6 +54,10 @@ function handle(msg) {
     itemsLoaded = true;
     F.items.replaceChildren(...msg.items.map((name) => Object.assign(document.createElement("option"), { value: name })));
     busy("");
+  } else if (msg.type === "predicted") {
+    predicting = false;
+    if (msg.error) return predictFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
+    showPrediction(msg);
   } else if (msg.type === "error" || msg.error) {
     fail(msg.error || msg.message);
   } else if (msg.type === "result") {
@@ -65,7 +79,9 @@ function el(tag, cls, text) {
 function renderPath(path) {
   const box = el("div", "pathBox");
   for (const copy of path) {
-    const head = path.length === 1
+    const head = copy.role === "predict"
+      ? `If you keep upgrading: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then it breaks`
+      : path.length === 1
       ? `Upgrade path: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then stop`
       : copy.role === "keep"
         ? `Copy ${copy.copy}, the one you keep: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then stop`
@@ -75,7 +91,8 @@ function renderPath(path) {
     for (const s of copy.steps) {
       const ok = s.outcome === "success";
       const step = el("span", "st " + (ok ? "ok" : "bad"), `→ ${s.to} ${ok ? "✓" : "✗"}`);
-      step.title = `roll ${s.roll.toFixed(3)}: ${ok ? "upgrade works" : "the item breaks"}`;
+      step.title = `roll ${s.roll.toFixed(3)}: ${ok ? "upgrade works" : "the item breaks"}` +
+        (copy.role === "predict" ? (s.savedSeed ? " (seed saved in the file)" : " (seed from the character name)") : "");
       line.append(step);
     }
     const end = copy.role === "keep"
@@ -151,3 +168,56 @@ F.item.addEventListener("focus", () => {
   busy("Loading the item list…");
   startWorker().postMessage({ type: "items" });
 }, { once: true });
+
+// ---------- the predictor: a dropped character file ----------
+
+function predictFail(message) {
+  predicting = false;
+  P.status.hidden = true;
+  P.drop.classList.remove("busy");
+  P.error.textContent = message;
+  P.error.hidden = false;
+}
+
+async function predict(file) {
+  P.error.hidden = true;
+  P.result.hidden = true;
+  P.drop.classList.add("busy");
+  P.status.hidden = false;
+  P.statusText.textContent = worker ? "Reading the file…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…";
+  try {
+    const bytes = await file.arrayBuffer();
+    predicting = true;
+    (worker || startWorker()).postMessage({ type: "predict", bytes }, [bytes]);
+  } catch (e) {
+    predictFail("Could not read that file.");
+  }
+  P.file.value = "";
+}
+
+function showPrediction(r) {
+  P.status.hidden = true;
+  P.drop.classList.remove("busy");
+  P.result.hidden = false;
+  P.summary.textContent = `${r.character}: ${r.items.length} upgradable item${r.items.length === 1 ? "" : "s"} in the inventory` +
+    ` · ${r.savedSeeds} saved upgrade seed${r.savedSeeds === 1 ? "" : "s"}`;
+  P.items.replaceChildren(...(r.items.length ? r.items.map((it) => {
+    const li = el("li");
+    const row = el("div", "predRow");
+    row.append(
+      el("strong", "", it.name + (it.stack > 1 ? ` ×${it.stack}` : "") + (it.equipped ? " (equipped)" : "")),
+      el("span", "what", it.broke
+        ? `quality ${it.from}: ${it.upgrades} upgrade${it.upgrades === 1 ? "" : "s"}, then it breaks going to ${it.breaksAt}`
+        : `quality ${it.from}: survives ${it.attempts} attempts`));
+    const d = el("details", "path");
+    d.append(el("summary", "", "Upgrade path"), renderPath([{ ...it, role: "predict", copy: 1 }]));
+    li.append(row, d);
+    return li;
+  }) : [el("li", "", "No upgradable items in this character's inventory.")]));
+}
+
+P.file.addEventListener("change", () => P.file.files[0] && predict(P.file.files[0]));
+P.drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); P.file.click(); } });
+for (const ev of ["dragenter", "dragover"]) P.drop.addEventListener(ev, (e) => { e.preventDefault(); P.drop.classList.add("over"); });
+for (const ev of ["dragleave", "drop"]) P.drop.addEventListener(ev, (e) => { e.preventDefault(); P.drop.classList.remove("over"); });
+P.drop.addEventListener("drop", (e) => { const f = e.dataTransfer.files[0]; if (f) predict(f); });

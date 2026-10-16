@@ -124,3 +124,9 @@ button:disabled { opacity: .55; cursor: default; }
 .st { padding: 1px 7px; border-radius: 6px; border: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .st.ok { color: var(--done); }
 .st.bad { color: var(--warn); border-color: var(--warn); }
+
+.predList { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.predList li { padding: 8px 12px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.predRow { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; }
+.predRow .what { color: var(--muted); }
+#uDrop { margin: 8px 0; padding: 28px 16px; }
