@@ -71,9 +71,26 @@
       <label>Starting quality
         <input id="fQuality" type="number" min="1" max="99" value="1" required>
       </label>
+      <label class="check advToggle"><input id="fAdvanced" type="checkbox"> Advanced mode</label>
       <button id="fGo" type="submit" class="primary">Find names</button>
       <button id="fCancel" type="button" hidden>Cancel</button>
     </form>
+    <div id="fAdv" class="advBox" hidden>
+      <div class="advFields">
+        <label>Upgrades wanted
+          <input id="fUpgrades" type="number" min="1" max="20" value="8" form="finderForm">
+        </label>
+        <label>Copies
+          <input id="fCopies" type="number" min="1" max="5" value="1" form="finderForm">
+        </label>
+      </div>
+      <ul class="advHelp">
+        <li><b>Upgrades wanted</b> is how many upgrades the item you keep should get, counted from the starting quality. A single copy can never get more than 8 in a row, two copies at most 13 and three at most 18, so asking for more needs more copies. Names for the highest values are extremely rare.</li>
+        <li><b>Copies</b> is how many items of this kind you are willing to use, all starting at the quality above. Every copy but the last is a sacrifice: upgrade it, step by step, until it breaks. Each attempt moves the character's stored rolls on, which sets up the rolls the last copy, the one you keep, goes through. Its upgrades are the number you asked for, and then you stop.</li>
+        <li>Each name comes with its <b>upgrade path</b>: for every copy, the steps to take in order and what each roll does. Do the copies in the order listed, all with the same new character.</li>
+        <li>The more upgrades and the fewer copies, the rarer the names: searching can take a few minutes and may find nothing. Using more copies makes high targets possible, but every extra copy is another item that breaks.</li>
+      </ul>
+    </div>
     <div id="fStatus" class="status" role="status" hidden><span class="spin"></span><span id="fStatusText"></span></div>
     <div id="fError" class="error" role="alert" hidden></div>
     <div id="fResult" hidden>
@@ -85,10 +102,11 @@
       <h3>Before you create the character</h3>
       <ul>
         <li><b>The case of the name is saved.</b> The game keeps the name exactly as you type it, with its upper and lower case letters, even when the name box or the game shows it in capitals. <code>FazI</code> and <code>fazi</code> are different names with different rolls, so type it exactly as listed. (Only the file name is lowercase.)</li>
-        <li><b>The first upgrade is what matters, and it must be made by a character with that exact name.</b> Create a new character with the name, then do all of the item's upgrades with it, in one go. The name decides every roll, and an upgrade made by any other character uses that character's roll instead.</li>
+        <li><b>Make every upgrade with a character that has exactly that name.</b> Create a new character with the name and do all of the listed upgrades with it, in the order listed. Each roll comes from the name of the character making that upgrade, so an upgrade made by any other character is a different roll and is not covered by this list. (The one exception you may want is the last upgrade, see "Crafted by" below.)</li>
         <li><b>The name only works for the first item of this kind that character upgrades.</b> Once it has made an upgrade, the game stores a random roll for that item and level, so a second copy of the same item won't follow this list. This is for Valheim 1.0.20.</li>
         <li><b>Use an item that has not been upgraded at the upgrade station yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this finder won't work for it. (This page is based on Valheim 1.0.20.)</li>
-        <li><b>Stop after the 8th upgrade.</b> The list is for exactly 8 upgrades; a 9th attempt breaks the item.</li>
+        <li><b>Unlock the item's recipe on the new character first.</b> A new character does not know the item's base recipe yet. You need to encounter the workbench (crafting station) the item is crafted at, and register every item that is required to craft it, before you can upgrade the item with that character.</li>
+        <li><b>Stop after the last upgrade listed.</b> In the default mode that is the 8th, and a 9th attempt would break the item. In advanced mode the copy you keep is simply left alone after its last listed upgrade.</li>
         <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade. If you want a custom text there, keep the last upgrade for a character with that name, as that is the one that gets saved on the item. That last roll then comes from that character's own name, so it is not covered by this list and can fail.</li>
         <li>The names are only valid for the starting quality you entered. A different starting quality needs different names.</li>
       </ul>

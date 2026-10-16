@@ -638,14 +638,40 @@ def matches(h, keys, target, copies):
     return True
 
 
-def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None, copies=1):
+def reaches(h, first_key, target, copies):
+    """The advanced search's rule: copies 1 to N-1 are upgraded one after another until each breaks, and the last copy
+    (the one that is kept) then gets `target` upgrades in a row. All copies start at the same level, and `first_key` is
+    the key of the first level they go to. Returns True when a character whose name hashes to h manages that."""
+    seeds = {}                                      # level index -> the seed its next attempt starts from
+    for copy in range(copies):
+        kept = copy == copies - 1
+        level = 0
+        while level < MAX_ATTEMPTS:
+            seed = seeds[level] if level in seeds else (h + first_key + level) & M32
+            value, seeds[level] = fast_roll(seed)
+            if value <= UPGRADE_CHANCE:
+                level += 1
+                if kept and level >= target:
+                    return True
+            elif BREAK_CHANCE >= f32(1.0 - value):
+                break                               # this copy broke
+            else:
+                return False                        # a failed attempt lowers the level; not modelled
+        if kept:
+            return False
+    return False
+
+
+def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None, copies=1, reach=False):
     """Character names (shortest first) whose rolls give exactly `target` upgrades, then a break (see matches() for copies).
 
     A fresh character has no saved seeds, so each roll starts from the hash of the name plus the key of the level.
     `after` continues a search: it is the last name of the previous one, and the search resumes with the name after it.
+    With reach=True the rule of reaches() is used instead.
     Returns (names, number of names tried, whether the search covered every name up to max_len)."""
     base = stable_hash(prefab)
     keys = [(base + quality + 1 + i) & M32 for i in range(target + 1)]
+    first_key = keys[0]
     found, tried = [], 0
     for length in range(max(min_len, len(after or "")), max_len + 1):
         names = hashed_names(charset, length)
@@ -658,11 +684,26 @@ def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tr
             tried += 1
             if tried > max_tries:
                 return found, tried - 1, False
-            if matches(h, keys, target, copies):
+            if reaches(h, first_key, target, copies) if reach else matches(h, keys, target, copies):
                 found.append(head + last)
                 if len(found) >= limit:
                     return found, tried, False
     return found, tried, True
+
+
+def upgrade_path(prefab, quality, name, copies, target):
+    """What to do with each copy, for a name found by the advanced search: every copy but the last is upgraded until it
+    breaks, the last one is upgraded `target` times and then left alone."""
+    shared = {}                                     # the seeds the copies leave behind for each other
+    path = []
+    for i in range(copies):
+        run = predict(prefab, quality, name, shared, update=True)
+        kept = i == copies - 1
+        steps = run["steps"][:target] if kept else run["steps"]
+        path.append({"copy": i + 1, "role": "keep" if kept else "sacrifice", "from": quality,
+                     "upgrades": sum(1 for st in steps if st["outcome"] == "success"),
+                     "steps": steps, "breaksAt": None if kept else run["breaksAt"]})
+    return path
 
 
 def find_item(text):
@@ -788,6 +829,40 @@ def web_find(item, quality, limit, after=""):
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
     return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": MAX_FIRST_RUN, "names": names,
+                       "tried": tried, "complete": complete})
+
+
+WEB_MAX_UPGRADES = 20
+WEB_MAX_COPIES = 5
+# The most upgrades the kept copy can get in a row (see reaches()), found by trying all 2^32 starting seeds. It is 8 for
+# one copy (MAX_FIRST_RUN), and rarer and rarer below that: 13 needs about 1 name in 8 million with two copies, 18 about
+# 1 in 2 billion with three. The limit for four and five copies was not worked out.
+MAX_REACH = {1: MAX_FIRST_RUN, 2: 13, 3: 18}
+
+
+def web_find_advanced(item, quality, upgrades, copies, limit, after=""):
+    """JSON for the advanced name finder: names where the kept copy gets `upgrades` upgrades, after `copies` - 1 others
+    were upgraded until they broke. Each name comes with its upgrade path."""
+    try:
+        quality, upgrades, copies, limit = int(quality), int(upgrades), int(copies), int(limit)
+        if not 1 <= quality <= WEB_MAX_QUALITY:
+            raise SaveError(f"the starting quality must be between 1 and {WEB_MAX_QUALITY}")
+        if not 1 <= upgrades <= WEB_MAX_UPGRADES:
+            raise SaveError(f"the wanted upgrades must be between 1 and {WEB_MAX_UPGRADES}")
+        if not 1 <= copies <= WEB_MAX_COPIES:
+            raise SaveError(f"the copies must be between 1 and {WEB_MAX_COPIES}")
+        if upgrades > MAX_REACH.get(copies, WEB_MAX_UPGRADES):
+            raise SaveError(f"{copies} cop{'y' if copies == 1 else 'ies'} cannot get more than {MAX_REACH[copies]} upgrades in a "
+                            "row" + ("; use more copies to go further" if copies < max(MAX_REACH) else ""))
+        prefab = find_item(item)
+        if any(c not in CHARSETS["letters"] for c in after or ""):
+            raise SaveError("cannot continue from that name")
+        names, tried, complete = find_names(prefab, quality, upgrades, CHARSETS["letters"], 3, 15,
+                                            max(1, min(limit, 100)), 8_000_000, after or None, copies, reach=True)
+    except (SaveError, ValueError) as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": upgrades, "copies": copies,
+                       "names": [{"name": n, "path": upgrade_path(prefab, quality, n, copies, upgrades)} for n in names],
                        "tried": tried, "complete": complete})
 
 

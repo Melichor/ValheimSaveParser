@@ -1,7 +1,8 @@
 "use strict";
 
 /* Web Worker for the upgrade name finder. It runs upgrade_oracle.py itself with Pyodide, in the background so the page
-   stays responsive while it searches. Messages in: {type: "items"} or {type: "find", item, quality, limit, after}.
+   stays responsive while it searches. Messages in: {type: "items"}, {type: "find", item, quality, limit, after} or
+   {type: "findAdvanced", item, quality, upgrades, copies, limit, after}.
    Messages out: {type: "items", items}, {type: "result", ...} or {type: "error", message}. */
 
 const PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.29.5/full/";
@@ -32,6 +33,9 @@ self.onmessage = async (e) => {
     const mod = await load();
     if (e.data.type === "items") {
       self.postMessage({ type: "items", items: JSON.parse(mod.web_items()) });
+    } else if (e.data.type === "findAdvanced") {
+      const d = e.data;
+      self.postMessage({ type: "result", ...JSON.parse(mod.web_find_advanced(d.item, d.quality, d.upgrades, d.copies, d.limit, d.after || "")) });
     } else {
       self.postMessage({ type: "result", ...JSON.parse(mod.web_find(e.data.item, e.data.quality, e.data.limit, e.data.after || "")) });
     }
