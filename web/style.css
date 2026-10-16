@@ -104,15 +104,6 @@ button:disabled { opacity: .55; cursor: default; }
 .notes ul { margin: 0; padding-left: 20px; }
 .notes li { margin: 6px 0; }
 
-.advToggle { align-self: end; padding-bottom: 9px; }
-.advBox { margin: 14px 0 4px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
-.advBox[hidden] { display: none; }
-.advFields { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 8px; }
-.advFields label { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; color: var(--muted); }
-.advFields input { width: 110px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
-.advHelp { margin: 0; padding-left: 20px; font-size: .92rem; }
-.advHelp li { margin: 6px 0; }
-.names.paths { grid-template-columns: 1fr; }
 .names li { flex-direction: column; align-items: stretch; }
 .nameRow { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .path { margin-top: 6px; font-size: .9rem; }
@@ -136,3 +127,11 @@ button:disabled { opacity: .55; cursor: default; }
 #uItem { min-width: min(100%, 280px); }
 .caveats { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: .9rem; }
 .caveats li { margin: 4px 0; }
+
+.relayPlan { margin: 0 0 8px; padding-left: 0; list-style: none; display: grid; gap: 8px; counter-reset: relay; }
+.relayPlan li { padding: 8px 12px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; counter-increment: relay; }
+.relayPlan .predRow strong::before { content: counter(relay) ". "; color: var(--muted); font-weight: 400; }
+#rItem { min-width: min(100%, 280px); }
+#rFrom, #rTo { width: 110px; }
+
+.subhead { margin: 30px 0 4px; font-size: 1.1rem; }

@@ -62,7 +62,7 @@
 
   <section id="finder" class="finder">
     <h2>Upgrade name finder</h2>
-    <p class="sub">Upgrading at the Forge of Potential is a dice roll that, for a new character, is decided by the character's name. Enter an item and the quality it starts at, and this finds names of new characters that give <b>8 upgrades in a row</b>. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and needs no save file.</p>
+    <p class="sub">Every upgrade at the Forge of Potential is a dice roll, and the roll comes from the character that makes it: for a new character, from its name. Enter an item and the quality it starts at, and this finds names of new characters that give <b>8 upgrades in a row</b>, the most one character can get. To go further, the relay planner below finds a chain of characters that pass the item along. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and needs no save file.</p>
     <form id="finderForm" class="finderForm">
       <label>Item
         <input id="fItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
@@ -71,26 +71,9 @@
       <label>Starting quality
         <input id="fQuality" type="number" min="1" max="99" value="1" required>
       </label>
-      <label class="check advToggle"><input id="fAdvanced" type="checkbox"> Advanced mode</label>
       <button id="fGo" type="submit" class="primary">Find names</button>
       <button id="fCancel" type="button" hidden>Cancel</button>
     </form>
-    <div id="fAdv" class="advBox" hidden>
-      <div class="advFields">
-        <label>Upgrades wanted
-          <input id="fUpgrades" type="number" min="1" max="20" value="8" form="finderForm">
-        </label>
-        <label>Copies
-          <input id="fCopies" type="number" min="1" max="5" value="1" form="finderForm">
-        </label>
-      </div>
-      <ul class="advHelp">
-        <li><b>Upgrades wanted</b> is how many upgrades the item you keep should get, counted from the starting quality. A single copy can never get more than 8 in a row, two copies at most 13 and three at most 18, so asking for more needs more copies. Names for the highest values are extremely rare.</li>
-        <li><b>Copies</b> is how many items of this kind you are willing to use, all starting at the quality above. Every copy but the last is a sacrifice: upgrade it, step by step, until it breaks. Each attempt moves the character's stored rolls on, which sets up the rolls the last copy, the one you keep, goes through. Its upgrades are the number you asked for, and then you stop.</li>
-        <li>Each name comes with its <b>upgrade path</b>: for every copy, the steps to take in order and what each roll does. Do the copies in the order listed, all with the same new character.</li>
-        <li>The more upgrades and the fewer copies, the rarer the names: searching can take a few minutes and may find nothing. Using more copies makes high targets possible, but every extra copy is another item that breaks.</li>
-      </ul>
-    </div>
     <div id="fStatus" class="status" role="status" hidden><span class="spin"></span><span id="fStatusText"></span></div>
     <div id="fError" class="error" role="alert" hidden></div>
     <div id="fResult" hidden>
@@ -98,20 +81,43 @@
       <ol id="fNames" class="names"></ol>
       <p><button id="fMore" type="button">Find more</button> <span id="fNote" class="muted"></span></p>
     </div>
+
+    <h3 id="relay" class="subhead">Relay planner: more than 8 upgrades</h3>
+    <p class="sub">A chain of new characters can take an item as far as you want without breaking it: each one makes only the upgrades its own rolls get right, then hands the item to the next. Enter the item, its current quality and the quality you want.</p>
+    <form id="rForm" class="finderForm">
+      <label>Item
+        <input id="rItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <label>Current quality
+        <input id="rFrom" type="number" min="1" max="99" value="1" required>
+      </label>
+      <label>Target quality
+        <input id="rTo" type="number" min="2" max="99" value="20" required>
+      </label>
+      <button id="rGo" type="submit" class="primary">Plan</button>
+    </form>
+    <div id="rStatus" class="status" role="status" hidden><span class="spin"></span><span id="rStatusText"></span></div>
+    <div id="rError" class="error" role="alert" hidden></div>
+    <div id="rResult" hidden>
+      <p id="rSummary" class="summary"></p>
+      <ol id="rPlan" class="relayPlan"></ol>
+    </div>
+
     <div class="notes">
-      <h3>Before you create the character</h3>
+      <h3>Before you create the characters</h3>
       <ul>
         <li><b>The case of the name is saved.</b> The game keeps the name exactly as you type it, with its upper and lower case letters, even when the name box or the game shows it in capitals. <code>FazI</code> and <code>fazi</code> are different names with different rolls, so type it exactly as listed. (Only the file name is lowercase.)</li>
-        <li><b>Make every upgrade with a character that has exactly that name.</b> Create a new character with the name and do all of the listed upgrades with it, in the order listed. Each roll comes from the name of the character making that upgrade, so an upgrade made by any other character is a different roll and is not covered by this list. (The one exception you may want is the last upgrade, see "Crafted by" below.)</li>
-        <li><b>The name only works for the first item of this kind that character upgrades.</b> Once it has made an upgrade, the game stores a random roll for that item and level, so a second copy of the same item won't follow this list. This is for Valheim 1.0.20.</li>
-        <li><b>Use an item that has not been upgraded at the Forge of Potential yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this finder won't work for it. (This page is based on Valheim 1.0.20.)</li>
-        <li><b>Unlock the item's recipe on the new character first.</b> A new character does not know the item's base recipe yet. You need to encounter the workbench (crafting station) the item is crafted at, and register every item that is required to craft it, before you can upgrade the item with that character.</li>
-        <li><b>Stop after the last upgrade listed.</b> In the default mode that is the 8th, and a 9th attempt would break the item. In advanced mode the copy you keep is simply left alone after its last listed upgrade.</li>
-        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so let a character with that name make the last one. That roll comes from that character's name, not from this list, so check it first: in the <a href="#predictor">Upgrade predictor</a> below, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop the main character a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
+        <li><b>Every upgrade must be made by the character listed for it.</b> Each roll comes from the character making that upgrade, so an upgrade made by anyone else is a different roll that the list does not cover. With a relay plan, go in order: each character makes only its own listed upgrades, puts the item in a chest, and the next character takes it out and continues.</li>
+        <li><b>Use new characters.</b> A name only works for the first item of this kind that character upgrades: once it has made an upgrade, the game stores a different roll for that item and level, so a second copy of the same item won't follow the list. The characters must never have upgraded this item type at the Forge of Potential before.</li>
+        <li><b>Unlock the item's recipe on each new character first.</b> A new character does not know the item's base recipe yet. It needs to encounter the workbench (crafting station) the item is crafted at and register every item that is required to craft it. Bring the materials for its upgrades too.</li>
+        <li><b>Use an item that has not been upgraded at the Forge of Potential yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this won't work for it. (This page is based on Valheim 1.0.20.)</li>
+        <li><b>Stop after the last upgrade listed.</b> With a name from the finder that is the 8th, and a 9th attempt would break the item. In a relay plan, each character stops after its own levels.</li>
+        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so in a relay plan that is the last character in the list. For a custom name, let a character with that name make the last upgrade. That roll comes from that character's name, not from the list, so check it first: in the <a href="#predictor">Upgrade predictor</a> below, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
         <li>The names are only valid for the starting quality you entered. A different starting quality needs different names.</li>
       </ul>
     </div>
   </section>
+
   <section id="predictor" class="finder">
     <h2>Upgrade predictor</h2>
     <p class="sub">Drop a character file to see, for every upgradable item in its inventory, how many upgrades it can take at the Forge of Potential before it breaks. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and the file is never uploaded.</p>

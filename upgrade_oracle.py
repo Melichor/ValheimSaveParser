@@ -647,8 +647,8 @@ def matches(h, keys, target, copies):
 
 
 def reaches(h, first_key, target, copies):
-    """The advanced search's rule: copies 1 to N-1 are upgraded one after another until each breaks, and the last copy
-    (the one that is kept) then gets `target` upgrades in a row. All copies start at the same level, and `first_key` is
+    """The relay planner's rule (with one copy): the character gets at least `target` upgrades in a row. With more copies,
+    copies 1 to N-1 are upgraded one after another until each breaks, and the last copy then gets `target` upgrades. All copies start at the same level, and `first_key` is
     the key of the first level they go to. Returns True when a character whose name hashes to h manages that."""
     seeds = {}                                      # level index -> the seed its next attempt starts from
     for copy in range(copies):
@@ -697,21 +697,6 @@ def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tr
                 if len(found) >= limit:
                     return found, tried, False
     return found, tried, True
-
-
-def upgrade_path(prefab, quality, name, copies, target):
-    """What to do with each copy, for a name found by the advanced search: every copy but the last is upgraded until it
-    breaks, the last one is upgraded `target` times and then left alone."""
-    shared = {}                                     # the seeds the copies leave behind for each other
-    path = []
-    for i in range(copies):
-        run = predict(prefab, quality, name, shared, update=True)
-        kept = i == copies - 1
-        steps = run["steps"][:target] if kept else run["steps"]
-        path.append({"copy": i + 1, "role": "keep" if kept else "sacrifice", "from": quality,
-                     "upgrades": sum(1 for st in steps if st["outcome"] == "success"),
-                     "steps": steps, "breaksAt": None if kept else run["breaksAt"]})
-    return path
 
 
 def find_item(text):
@@ -840,40 +825,6 @@ def web_find(item, quality, limit, after=""):
                        "tried": tried, "complete": complete})
 
 
-WEB_MAX_UPGRADES = 20
-WEB_MAX_COPIES = 5
-# The most upgrades the kept copy can get in a row (see reaches()), found by trying all 2^32 starting seeds. It is 8 for
-# one copy (MAX_FIRST_RUN), and rarer and rarer below that: 13 needs about 1 name in 8 million with two copies, 18 about
-# 1 in 2 billion with three. The limit for four and five copies was not worked out.
-MAX_REACH = {1: MAX_FIRST_RUN, 2: 13, 3: 18}
-
-
-def web_find_advanced(item, quality, upgrades, copies, limit, after=""):
-    """JSON for the advanced name finder: names where the kept copy gets `upgrades` upgrades, after `copies` - 1 others
-    were upgraded until they broke. Each name comes with its upgrade path."""
-    try:
-        quality, upgrades, copies, limit = int(quality), int(upgrades), int(copies), int(limit)
-        if not 1 <= quality <= WEB_MAX_QUALITY:
-            raise SaveError(f"the starting quality must be between 1 and {WEB_MAX_QUALITY}")
-        if not 1 <= upgrades <= WEB_MAX_UPGRADES:
-            raise SaveError(f"the wanted upgrades must be between 1 and {WEB_MAX_UPGRADES}")
-        if not 1 <= copies <= WEB_MAX_COPIES:
-            raise SaveError(f"the copies must be between 1 and {WEB_MAX_COPIES}")
-        if upgrades > MAX_REACH.get(copies, WEB_MAX_UPGRADES):
-            raise SaveError(f"{copies} cop{'y' if copies == 1 else 'ies'} cannot get more than {MAX_REACH[copies]} upgrades in a "
-                            "row" + ("; use more copies to go further" if copies < max(MAX_REACH) else ""))
-        prefab = find_item(item)
-        if any(c not in CHARSETS["letters"] for c in after or ""):
-            raise SaveError("cannot continue from that name")
-        names, tried, complete = find_names(prefab, quality, upgrades, CHARSETS["letters"], 3, 15,
-                                            max(1, min(limit, 100)), 8_000_000, after or None, copies, reach=True)
-    except (SaveError, ValueError) as e:
-        return json.dumps({"error": str(e)})
-    return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": upgrades, "copies": copies,
-                       "names": [{"name": n, "path": upgrade_path(prefab, quality, n, copies, upgrades)} for n in names],
-                       "tried": tried, "complete": complete})
-
-
 def web_predict(data):
     """JSON for the web page's save predictor: what happens to every upgradable item in the character's inventory.
 
@@ -901,6 +852,48 @@ def web_predict_item(item, quality, name):
         return json.dumps({"error": str(e)})
     return json.dumps({"character": name, "item": {**predict(prefab, quality, name, {}), "name": UPGRADABLE[prefab],
                                                    "stack": 1}})
+
+
+def relay_plan(prefab, start, target, charset=CHARSETS["letters"], max_tries=8_000_000):
+    """A chain of new characters that takes the item from `start` to `target` without breaking it.
+
+    Each character makes only upgrades its own rolls get right: the first character takes as many levels as one
+    character can (MAX_FIRST_RUN), hands the item over, and the next one continues from there. Every character is new,
+    so its rolls start from its name. Returns a list of {"name", "from", "to", "steps"}; raises SaveError when a part
+    of the chain cannot be found within max_tries names."""
+    plan, used, level = [], set(), start
+    while level < target:
+        need = min(MAX_FIRST_RUN, target - level)
+        after = None
+        while True:
+            names, tried, complete = find_names(prefab, level, need, charset, 3, 15, 1, max_tries, after,
+                                                copies=1, reach=True)
+            if not names:
+                raise SaveError(f"no character name found for the upgrades from quality {level} within {max_tries:,} names")
+            if names[0] not in used:
+                break
+            after = names[0]
+        name = names[0]
+        used.add(name)
+        steps = predict(prefab, level, name, {})["steps"][:need]
+        plan.append({"name": name, "from": level, "to": level + need, "steps": steps})
+        level += need
+    return plan
+
+
+def web_relay(item, start, target):
+    """JSON for the relay planner."""
+    try:
+        start, target = int(start), int(target)
+        if not 1 <= start <= WEB_MAX_QUALITY or not 1 <= target <= WEB_MAX_QUALITY:
+            raise SaveError(f"the qualities must be between 1 and {WEB_MAX_QUALITY}")
+        if target <= start:
+            raise SaveError("the target quality must be higher than the current quality")
+        prefab = find_item(item)
+        plan = relay_plan(prefab, start, target)
+    except (SaveError, ValueError) as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "plan": plan})
 
 
 def find_names_command(ap, args):

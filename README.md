@@ -27,7 +27,7 @@ python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameper
 
 `--copies N` upgrades N copies of the item one after another with the same character: the first N-1 get exactly the wanted upgrades and break, and the last one gets past the level where they broke. Names like that are rare (about 1 in 10 million for 8 upgrades and 2 copies), so the search takes minutes.
 
-The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. Its **Advanced mode** also takes the number of upgrades wanted (more than 8 needs extra copies) and the number of copies, and shows an upgrade path for every name. At the bottom of the page, the **Upgrade predictor** takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The game keeps the case of the name you type, so type the names exactly as listed.
+The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. Under it, the **Relay planner** finds a chain of new characters that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. At the bottom of the page, the **Upgrade predictor** takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The game keeps the case of the name you type, so type the names exactly as listed.
 
 ## Game data tables
 

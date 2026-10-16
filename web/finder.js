@@ -1,8 +1,8 @@
 "use strict";
 
-/* Upgrade name finder. Asks web/finder-worker.js (upgrade_oracle.py in Pyodide) for character names that give upgrades on
-   an item. The default mode asks for 8 upgrades on one copy; advanced mode takes the wanted upgrades and the number of
-   copies, and shows an upgrade path for every name. Nothing is uploaded and no save file is needed.
+/* Upgrade name finder. Asks web/finder-worker.js (upgrade_oracle.py in Pyodide) for character names that give 8 upgrades
+   in a row on an item, and the relay planner for a chain of characters that goes further. Nothing is uploaded and no
+   save file is needed.
 
    The predictor at the bottom of the page takes a dropped character file instead and asks the same worker what happens
    to every upgradable item in its inventory. */
@@ -10,7 +10,6 @@
 const byId = (id) => document.getElementById(id);
 const F = {
   form: byId("finderForm"), item: byId("fItem"), items: byId("fItems"), quality: byId("fQuality"), go: byId("fGo"), cancel: byId("fCancel"),
-  advanced: byId("fAdvanced"), adv: byId("fAdv"), upgrades: byId("fUpgrades"), copies: byId("fCopies"),
   status: byId("fStatus"), statusText: byId("fStatusText"), error: byId("fError"),
   result: byId("fResult"), summary: byId("fSummary"), names: byId("fNames"), more: byId("fMore"), note: byId("fNote"),
 };
@@ -21,12 +20,19 @@ const P = {
   form: byId("uForm"), item: byId("uItem"), quality: byId("uQuality"), name: byId("uName"), go: byId("uGo"),
 };
 
+const R = {
+  form: byId("rForm"), item: byId("rItem"), from: byId("rFrom"), to: byId("rTo"), go: byId("rGo"),
+  status: byId("rStatus"), statusText: byId("rStatusText"), error: byId("rError"),
+  result: byId("rResult"), summary: byId("rSummary"), plan: byId("rPlan"),
+};
+
 const STEP = 5;      // names added by each "Find more"
 let worker = null;
 let itemsLoaded = false;
-let found = [];      // the names listed so far: { name, path? }
+let found = [];      // the names listed so far: { name }
 let asked = 0;       // how many names the last request asked for
 let request = null;  // the settings of the current search, reused by "Find more"
+let relaying = false;   // a relay plan is being worked out, so worker errors belong to the planner
 let predicting = false; // a dropped file is being read, so worker errors belong to the predictor
 
 function startWorker() {
@@ -44,6 +50,7 @@ function busy(text) {
 }
 
 function fail(message) {
+  if (relaying) return relayFail(message);
   if (predicting) return predictFail(message);
   busy("");
   F.error.textContent = message;
@@ -56,6 +63,11 @@ function handle(msg) {
     F.items.replaceChildren(...msg.items.map((name) => Object.assign(document.createElement("option"), { value: name })));
     busy("");
     if (!predicting) P.status.hidden = true;
+    if (!relaying) R.status.hidden = true;
+  } else if (msg.type === "relayed") {
+    relaying = false;
+    if (msg.error) return relayFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
+    showRelay(msg);
   } else if (msg.type === "predicted" || msg.type === "predictedItem") {
     predicting = false;
     if (msg.error) return predictFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
@@ -84,11 +96,7 @@ function renderPath(path) {
   for (const copy of path) {
     const head = copy.role === "predict"
       ? `If you keep upgrading: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then it breaks`
-      : path.length === 1
-      ? `Upgrade path: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then stop`
-      : copy.role === "keep"
-        ? `Copy ${copy.copy}, the one you keep: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then stop`
-        : `Copy ${copy.copy}, a sacrifice: upgrade it until it breaks`;
+      : `Upgrade path: ${copy.upgrades} upgrade${copy.upgrades === 1 ? "" : "s"}, then stop`;
     const line = el("div", "pathLine");
     line.append(el("span", "st start", String(copy.from)));
     for (const s of copy.steps) {
@@ -110,13 +118,8 @@ function renderPath(path) {
 
 function showResult(r, over) {
   F.result.hidden = false;
-  F.summary.textContent = r.copies
-    ? `${r.item}, starting at quality ${r.from}: names that give ${r.upgrades} upgrade${r.upgrades === 1 ? "" : "s"} on the copy you keep` +
-      (r.copies > 1 ? `, after ${r.copies - 1} other cop${r.copies === 2 ? "y" : "ies"} upgraded until ${r.copies === 2 ? "it breaks" : "they break"}` : "")
-    : `${r.item}, starting at quality ${r.from}: names that give exactly ${r.upgrades} upgrades before it breaks`;
-  const withPaths = found.some((n) => n.path);
-  F.names.classList.toggle("paths", withPaths);
-  F.names.replaceChildren(...found.map(({ name, path }) => {
+  F.summary.textContent = `${r.item}, starting at quality ${r.from}: names that give exactly ${r.upgrades} upgrades before it breaks`;
+  F.names.replaceChildren(...found.map(({ name }) => {
     const li = el("li");
     const top = el("div", "nameRow");
     const code = el("code", "", name);
@@ -128,16 +131,11 @@ function showResult(r, over) {
     });
     top.append(code, copy);
     li.append(top);
-    if (path) {
-      const d = el("details", "path");
-      d.append(el("summary", "", "Upgrade path"), renderPath(path));
-      li.append(d);
-    }
     return li;
   }));
   F.more.hidden = over;                        // fewer than asked for: the search is over
   F.note.textContent = found.length === 0
-    ? "No name found in the search range. Try fewer upgrades or more copies."
+    ? "No name found in the search range."
     : over ? "That is every name the search could find." : `${r.tried.toLocaleString()} names tried this time.`;
 }
 
@@ -147,13 +145,10 @@ function search(more) {
     const item = F.item.value.trim();
     if (!item) return fail("Enter the name of an item.");
     found = [];
-    request = F.advanced.checked
-      ? { type: "findAdvanced", item, quality: F.quality.value, upgrades: F.upgrades.value, copies: F.copies.value }
-      : { type: "find", item, quality: F.quality.value };
+    request = { type: "find", item, quality: F.quality.value };
   }
   asked = STEP;
-  const slow = request.type === "findAdvanced" ? " Rare combinations can take a few minutes." : "";
-  busy((itemsLoaded ? "Searching names…" : "Starting the Python runtime (about 10 MB, cached after the first visit), then searching…") + slow);
+  busy(itemsLoaded ? "Searching names…" : "Starting the Python runtime (about 10 MB, cached after the first visit), then searching…");
   (worker || startWorker()).postMessage({ ...request, limit: STEP, after: more && found.length ? found[found.length - 1].name : "" });
 }
 
@@ -163,7 +158,6 @@ F.cancel.addEventListener("click", () => {
   if (worker) { worker.terminate(); worker = null; itemsLoaded = false; }
   busy("");
 });
-F.advanced.addEventListener("change", () => { F.adv.hidden = !F.advanced.checked; });
 
 // load the item list the first time the box is used, so the page does not fetch the runtime for visitors who only analyse a file
 F.item.addEventListener("focus", () => {
@@ -250,3 +244,62 @@ P.drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === "
 for (const ev of ["dragenter", "dragover"]) P.drop.addEventListener(ev, (e) => { e.preventDefault(); P.drop.classList.add("over"); });
 for (const ev of ["dragleave", "drop"]) P.drop.addEventListener(ev, (e) => { e.preventDefault(); P.drop.classList.remove("over"); });
 P.drop.addEventListener("drop", (e) => { const f = e.dataTransfer.files[0]; if (f) predict(f); });
+
+// ---------- the relay planner ----------
+
+function relayFail(message) {
+  relaying = false;
+  R.status.hidden = true;
+  R.go.disabled = false;
+  R.error.textContent = message;
+  R.error.hidden = false;
+}
+
+function plan() {
+  R.error.hidden = true;
+  const item = R.item.value.trim();
+  if (!item) return relayFail("Enter the name of an item.");
+  R.result.hidden = true;
+  R.go.disabled = true;
+  R.status.hidden = false;
+  R.statusText.textContent = (worker ? "Finding characters…" : "Starting the Python runtime (about 10 MB, cached after the first visit), then finding characters…") +
+    " Each hand-over takes a few seconds.";
+  relaying = true;
+  (worker || startWorker()).postMessage({ type: "relay", item, from: R.from.value, to: R.to.value });
+}
+
+function showRelay(r) {
+  R.status.hidden = true;
+  R.go.disabled = false;
+  R.result.hidden = false;
+  R.summary.textContent = `${r.item}, quality ${r.from} to ${r.to}: ${r.plan.length} character${r.plan.length === 1 ? "" : "s"}, in this order`;
+  R.plan.replaceChildren(...r.plan.map((seg, i) => {
+    const li = el("li");
+    const row = el("div", "predRow");
+    const name = el("strong");
+    name.append(el("code", "", seg.name));
+    const copy = el("button", "", "Copy");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(seg.name); copy.textContent = "Copied"; } catch { copy.textContent = "Select it by hand"; }
+      setTimeout(() => { copy.textContent = "Copy"; }, 1500);
+    });
+    const n = seg.to - seg.from;
+    const last = i === r.plan.length - 1;
+    row.append(name, el("span", "what", `quality ${seg.from} → ${seg.to} (${n} upgrade${n === 1 ? "" : "s"})` +
+      (last ? ", then stop" : ", then put the item in a chest for the next character")), copy);
+    const d = el("details", "path");
+    d.append(el("summary", "", "Upgrade path"),
+      renderPath([{ copy: i + 1, role: "keep", from: seg.from, upgrades: n, steps: seg.steps }]));
+    li.append(row, d);
+    return li;
+  }));
+}
+
+R.form.addEventListener("submit", (e) => { e.preventDefault(); plan(); });
+R.item.addEventListener("focus", () => {
+  if (itemsLoaded || worker) return;
+  R.status.hidden = false;
+  R.statusText.textContent = "Loading the item list…";
+  startWorker().postMessage({ type: "items" });
+}, { once: true });
