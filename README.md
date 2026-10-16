@@ -22,7 +22,10 @@ It has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome an
 python3 upgrade_oracle.py Character.fch                       # the upgradable items in the inventory
 python3 upgrade_oracle.py Character.fch --charname Ragnar     # the same items for a new character with another name
 python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameperupgr 8   # names, no save needed
+python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameperupgr 8 --copies 2   # slow: a second copy must get past the break
 ```
+
+`--copies N` upgrades N copies of the item one after another with the same character: the first N-1 get exactly the wanted upgrades and break, and the last one gets past the level where they broke. Names like that are rare (about 1 in 10 million for 8 upgrades and 2 copies), so the search takes minutes.
 
 The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. The game keeps the case of the name you type, so type the names exactly as listed.
 

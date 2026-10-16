@@ -19,11 +19,13 @@ replays. Unity's generator (a xorshift128 seeded as s[i] = s[i-1] * 1812433253 +
     python3 upgrade_oracle.py Character.fch --check          # compare the saved seeds with what the generator predicts
     python3 upgrade_oracle.py Character.fch --charname Ragnar # the same items for a fresh character with another name
     python3 upgrade_oracle.py --item SwordIron --quality 1 --findnameperupgr 6   # names that give exactly 6 upgrades (no save)
+    python3 upgrade_oracle.py --item SwordIron --quality 4 --findnameperupgr 8 --copies 2   # ...and a second copy that gets past the break
 """
 import argparse
 import json
 import struct
 import sys
+from itertools import islice, product
 
 PROFILE_MIN_VERSION = 46
 PLAYER_DATA_VERSION = 34
@@ -532,9 +534,13 @@ def load(source):
 # The prediction
 # ---------------------------------------------------------------------------------------------------------------
 
-def predict(prefab, quality, name, seeds):
-    """Replay upgrade attempts on an item until it breaks. Returns a dict describing the run."""
-    seeds = dict(seeds)                         # the replay updates the seeds as the game would
+def predict(prefab, quality, name, seeds, update=False):
+    """Replay upgrade attempts on an item until it breaks. Returns a dict describing the run.
+
+    The replay updates the seeds as the game would. They are copied first, unless `update` is true: then the dict that
+    was passed in is changed, so the next copy of the item continues from the seeds this one left behind."""
+    if not update:
+        seeds = dict(seeds)
     base = stable_hash(prefab)
     name_hash = stable_hash(name)
     level, steps = quality, []
@@ -559,6 +565,19 @@ def predict(prefab, quality, name, seeds):
             "breaksAt": steps[-1]["to"] if broke else None, "steps": steps}
 
 
+def fast_roll(seed):
+    """(Random.value after InitState(seed), the seed the game stores afterwards): roll() without the generator object."""
+    s0 = seed & M32
+    s1 = (s0 * 0x6C078965 + 1) & M32
+    s2 = (s1 * 0x6C078965 + 1) & M32
+    s3 = (s2 * 0x6C078965 + 1) & M32
+    t = (s0 ^ (s0 << 11)) & M32
+    first = (t ^ s3 ^ (t >> 8) ^ (s3 >> 19)) & M32
+    t = (s1 ^ (s1 << 11)) & M32
+    second = (t ^ first ^ (t >> 8) ^ (first >> 19)) & M32
+    return f32(f32(first & 0x7FFFFF) * VALUE_SCALE), second % 99999999
+
+
 def first_value(seed):
     """Random.value after InitState(seed), the one roll a first attempt needs (a faster path for the name search)."""
     s0 = seed & M32
@@ -576,38 +595,73 @@ CHARSETS = {
 }
 
 
-def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None):
-    """Character names (shortest first) whose first rolls give exactly `target` upgrades, then a break.
+def hashed_names(charset, length):
+    """Every name of that length in order, as (first part, last character, name hash mod 2^32).
+
+    The hash runs two lanes, one over the even and one over the odd positions, so everything but the last character is
+    hashed once per 52 names."""
+    last_even = (length - 1) % 2 == 0
+    for prefix in product(charset, repeat=length - 1):
+        a = b = 5381
+        for i, ch in enumerate(prefix):
+            if i % 2 == 0:
+                a = (((a << 5) + a) ^ ord(ch)) & M32
+            else:
+                b = (((b << 5) + b) ^ ord(ch)) & M32
+        head = "".join(prefix)
+        if last_even:
+            a = ((a << 5) + a) & M32
+            for ch in charset:
+                yield head, ch, ((a ^ ord(ch)) + b * 1566083941) & M32
+        else:
+            b = ((b << 5) + b) & M32
+            for ch in charset:
+                yield head, ch, (a + (b ^ ord(ch)) * 1566083941) & M32
+
+
+def matches(h, keys, target, copies):
+    """Does a new character whose name hashes to h get the wanted result?
+
+    One copy: exactly `target` upgrades, then a break. Several copies, upgraded one after another with the seeds the
+    previous ones left behind: every copy but the last gets exactly `target` upgrades and breaks, and the last one
+    succeeds at the level where the others broke."""
+    seeds = [(h + k) & M32 for k in keys]          # the seed each level's key starts from
+    for copy in range(copies):
+        for i in range(target + 1):
+            value, seeds[i] = fast_roll(seeds[i])
+            succeeds = value <= UPGRADE_CHANCE
+            if i < target or (copies > 1 and copy == copies - 1):
+                if not succeeds:
+                    return False
+            elif succeeds or BREAK_CHANCE < f32(1.0 - value):
+                return False
+    return True
+
+
+def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None, copies=1):
+    """Character names (shortest first) whose rolls give exactly `target` upgrades, then a break (see matches() for copies).
 
     A fresh character has no saved seeds, so each roll starts from the hash of the name plus the key of the level.
     `after` continues a search: it is the last name of the previous one, and the search resumes with the name after it.
     Returns (names, number of names tried, whether the search covered every name up to max_len)."""
-    from itertools import islice, product
     base = stable_hash(prefab)
-    keys = [s32(base + quality + 1 + i) for i in range(target + 1)]
+    keys = [(base + quality + 1 + i) & M32 for i in range(target + 1)]
     found, tried = [], 0
     for length in range(max(min_len, len(after or "")), max_len + 1):
-        names = product(charset, repeat=length)
+        names = hashed_names(charset, length)
         if after and length == len(after):
             skip = 0
             for ch in after:
                 skip = skip * len(charset) + charset.index(ch)
             names = islice(names, skip + 1, None)
-        for chars in names:
+        for head, last, h in names:
             tried += 1
             if tried > max_tries:
                 return found, tried - 1, False
-            name = "".join(chars)
-            h = stable_hash(name)
-            for i in range(target):
-                if UPGRADE_CHANCE < first_value(s32(h + keys[i])):
-                    break
-            else:
-                if UPGRADE_CHANCE < first_value(s32(h + keys[target])) and \
-                        BREAK_CHANCE >= f32(1.0 - first_value(s32(h + keys[target]))):
-                    found.append(name)
-                    if len(found) >= limit:
-                        return found, tried, False
+            if matches(h, keys, target, copies):
+                found.append(head + last)
+                if len(found) >= limit:
+                    return found, tried, False
     return found, tried, True
 
 
@@ -748,6 +802,8 @@ def find_names_command(ap, args):
         ap.error("--findnameperupgr needs the level the item starts at: add --quality N (use 1 for a fresh item)")
     if args.charname is not None or args.check or args.all:
         ap.error("--findnameperupgr cannot be combined with --charname, --check or --all")
+    if not 1 <= args.copies <= 5:
+        ap.error("--copies must be between 1 and 5")
     if args.quality < 1 or args.findnameperupgr < 0 or args.minlen < 3 or args.maxlen < args.minlen:
         ap.error("need --quality >= 1, N >= 0, --minlen >= 3 and --maxlen >= --minlen")
     if args.findnameperupgr > MAX_FIRST_RUN:
@@ -757,22 +813,41 @@ def find_names_command(ap, args):
         prefab = find_item(args.item)
     except SaveError as e:
         ap.error(str(e))
+    maxtries = args.maxtries or (5_000_000 if args.copies == 1 else 200_000_000)
     names, tried, complete = find_names(prefab, args.quality, args.findnameperupgr, CHARSETS[args.charset],
-                                        args.minlen, args.maxlen, args.limit, args.maxtries)
-    hits = [{**predict(prefab, args.quality, n, {}), "name": UPGRADABLE[prefab], "character": n} for n in names]
+                                        args.minlen, args.maxlen, args.limit, maxtries, copies=args.copies)
+    hits = []
+    for n in names:
+        shared = {}                                 # the seeds the copies leave behind for each other
+        runs = [predict(prefab, args.quality, n, shared, update=True) for _ in range(args.copies)]
+        hits.append({**runs[0], "name": UPGRADABLE[prefab], "character": n, "copies": runs})
     if args.json:
-        print(json.dumps({"item": prefab, "from": args.quality, "upgrades": args.findnameperupgr,
+        print(json.dumps({"item": prefab, "from": args.quality, "upgrades": args.findnameperupgr, "copies": args.copies,
                           "tried": tried, "complete": complete, "names": hits}, indent=1))
         return
-    print(f"{UPGRADABLE[prefab]} from level {args.quality}: names with exactly {args.findnameperupgr} "
-          f"upgrade{'s' if args.findnameperupgr != 1 else ''} before it breaks "
+    if args.copies == 1:
+        more = ""
+    elif args.copies == 2:
+        more = ", then a second copy reaching the level where the first one broke"
+    else:
+        more = f", the same for copies 2 to {args.copies - 1}, and copy {args.copies} getting past that level"
+    print(f"{UPGRADABLE[prefab]} from level {args.quality}: names where copy 1 gets exactly {args.findnameperupgr} "
+          f"upgrade{'s' if args.findnameperupgr != 1 else ''} and breaks{more} "
           f"(a new character, {args.charset}, {tried:,} names tried)")
     for h in hits:
-        assert h["upgrades"] == args.findnameperupgr and h["broke"]
-        print(f"  {h['character']}")
+        runs = h["copies"]
+        for i, run in enumerate(runs):
+            last = args.copies > 1 and i == args.copies - 1
+            assert run["upgrades"] >= args.findnameperupgr + (1 if last else 0) and (last or run["broke"]), "name check failed"
+        print(f"  {h['character']}" + ("" if args.copies == 1 else
+              "   (" + "; ".join(f"copy {i + 1}: {r['upgrades']} upgrades" + (f", breaks going to {r['breaksAt']}" if r["broke"] else "")
+                                  for i, r in enumerate(runs)) + ")"))
         if args.verbose:
-            for st in h["steps"]:
-                print(f"      to level {st['to']}: roll {st['roll']:.4f} -> {st['outcome']}")
+            for i, run in enumerate(runs):
+                if args.copies > 1:
+                    print(f"      copy {i + 1}:")
+                for st in run["steps"]:
+                    print(f"      to level {st['to']}: roll {st['roll']:.4f} -> {st['outcome']}")
     if not hits:
         print("  none found" + ("" if complete else " yet; raise --maxtries or --maxlen"))
     elif len(hits) < args.limit:
@@ -791,12 +866,17 @@ def main():
     ap.add_argument("--findnameperupgr", type=int, metavar="N",
                     help="search for character names whose --item, starting at --quality, gets exactly N upgrades before "
                     "it breaks (needs --item and --quality, takes no save file)")
+    ap.add_argument("--copies", type=int, default=1, metavar="N",
+                    help="with --findnameperupgr: upgrade N copies of the item one after another with the same character. "
+                    "The first N-1 get exactly the wanted upgrades and break; the last one gets past the level where they "
+                    "broke (default: 1)")
     ap.add_argument("--charset", choices=sorted(CHARSETS), default="letters",
                     help="characters the name search may use, ASCII only (default: letters)")
     ap.add_argument("--minlen", type=int, default=3, help="shortest name to try (the game needs at least 3; default: 3)")
     ap.add_argument("--maxlen", type=int, default=15, help="longest name to try (default: 15)")
     ap.add_argument("--limit", type=int, default=10, help="stop after this many names (default: 10)")
-    ap.add_argument("--maxtries", type=int, default=5_000_000, help="stop after trying this many names (default: 5000000)")
+    ap.add_argument("--maxtries", type=int,
+                    help="stop after trying this many names (default: 5000000, or 200000000 with --copies above 1)")
     ap.add_argument("--check", action="store_true", help="compare the saved seeds with the generator")
     ap.add_argument("--json", action="store_true", help="print the result as JSON")
     args = ap.parse_args()
