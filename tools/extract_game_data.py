@@ -121,7 +121,9 @@ def scan(game_dir, log=print):
                 sh = tt["m_itemData"].get("m_shared", {})
                 out["items"].append({**base, "token": sh.get("m_name"), "type": sh.get("m_itemType"),
                                      "food": sh.get("m_food"), "maxQuality": sh.get("m_maxQuality"),
-                                     "stack": sh.get("m_maxStackSize"), "bp": pp(sh.get("m_buildPieces"))})
+                                     "stack": sh.get("m_maxStackSize"), "bp": pp(sh.get("m_buildPieces")),
+                                     "upgradeChance": sh.get("m_upgradeChance"), "breakChance": sh.get("m_breakChance"),
+                                     "upgradeSteps": sh.get("m_successUpgradeSteps")})
             elif isinstance(tt.get("m_conversion"), list) and tt["m_conversion"] and isinstance(tt["m_conversion"][0], dict):
                 kind = ("cooking" if "m_cookTime" in tt["m_conversion"][0] else
                         "fermenting" if "m_producedItems" in tt["m_conversion"][0] else "smelting")
@@ -137,7 +139,8 @@ def scan(game_dir, log=print):
                                        "enabled": tt.get("m_enabled"), "station": pp(tt.get("m_craftingStation")),
                                        "minLevel": tt.get("m_minStationLevel"), "onlyOne": tt.get("m_requireOnlyOneIngredient"),
                                        "resources": [{"item": pp(r.get("m_resItem")), "amount": r.get("m_amount"),
-                                                      "perLevel": r.get("m_amountPerLevel"), "onlyOneExtra": r.get("m_extraAmountOnlyOneIngredient")}
+                                                      "perLevel": r.get("m_amountPerLevel"), "onlyOneExtra": r.get("m_extraAmountOnlyOneIngredient"),
+                                                      "upgrader": r.get("m_upgraderResource")}
                                                      for r in tt["m_resources"]]})
             elif "m_groundPiece" in tt and "m_name" in tt:
                 out["pieces"].append({**base, "token": tt["m_name"], "enabled": tt.get("m_enabled"), "category": tt.get("m_category"),
@@ -148,7 +151,7 @@ def scan(game_dir, log=print):
                 out["piecetables"].append({**base, "can": tt["m_canRemovePieces"], "name": tt.get("m_Name"),
                                            "pieces": [pp(p) for p in tt["m_pieces"]]})
             elif "m_craftRequireFire" in tt and "m_name" in tt:
-                out["stations"].append({**base, "token": tt["m_name"]})
+                out["stations"].append({**base, "token": tt["m_name"], "upgrader": tt.get("m_upgrader")})
             elif "m_extraDrops" in tt and "m_itemPrefab" in tt:
                 out["pickables"].append({**base, "item": pp(tt["m_itemPrefab"]), "amount": tt.get("m_amount"),
                                          "extra": drop_table(tt.get("m_extraDrops"))})
