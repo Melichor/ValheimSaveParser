@@ -798,7 +798,8 @@ def show_check(rows):
 # Entry points for the web page (web/finder-worker.js runs this file in the browser with Pyodide)
 # ---------------------------------------------------------------------------------------------------------------
 
-WEB_MAX_QUALITY = 99
+# The game saves an item's quality as an unsigned 16-bit number, so this is the highest quality an item can have.
+WEB_MAX_QUALITY = 65535
 
 
 def web_items():

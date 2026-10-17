@@ -69,7 +69,7 @@
       </label>
       <datalist id="fItems"></datalist>
       <label>Starting quality
-        <input id="fQuality" type="number" min="1" max="99" value="1" required>
+        <input id="fQuality" type="number" min="1" max="65535" value="1" required>
       </label>
       <button id="fGo" type="submit" class="primary">Find names</button>
       <button id="fCancel" type="button" hidden>Cancel</button>
@@ -89,10 +89,10 @@
         <input id="rItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
       </label>
       <label>Current quality
-        <input id="rFrom" type="number" min="1" max="99" value="1" required>
+        <input id="rFrom" type="number" min="1" max="65535" value="1" required>
       </label>
       <label>Target quality
-        <input id="rTo" type="number" min="2" max="99" value="20" required>
+        <input id="rTo" type="number" min="2" max="65535" value="20" required>
       </label>
       <button id="rGo" type="submit" class="primary">Plan</button>
     </form>
@@ -113,7 +113,7 @@
         <li><b>Use an item that has not been upgraded at the Forge of Potential yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this won't work for it. (This page is based on Valheim 1.0.20.)</li>
         <li><b>Stop after the last upgrade listed.</b> With a name from the finder that is the 8th, and a 9th attempt would break the item. In a relay plan, each character stops after its own levels.</li>
         <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so in a relay plan that is the last character in the list. For a custom name, let a character with that name make the last upgrade. That roll comes from that character's name, not from the list, so check it first: in the <a href="#predictor">Upgrade predictor</a> below, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
-        <li>The names are only valid for the starting quality you entered. A different starting quality needs different names.</li>
+        <li><b>Each roll belongs to a level, not to the starting quality.</b> A name found for, say, quality 3 to 11 also works for any part of that range, such as 6 to 11, because the rolls for levels 7 to 11 are the same ones. Starting below the quality you searched for is not covered: those lower levels were never checked.</li>
       </ul>
     </div>
   </section>
@@ -132,7 +132,7 @@
         <input id="uItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
       </label>
       <label>Current quality
-        <input id="uQuality" type="number" min="1" max="99" value="1" required>
+        <input id="uQuality" type="number" min="1" max="65535" value="1" required>
       </label>
       <label>Character name
         <input id="uName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false" required>
