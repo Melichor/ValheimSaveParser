@@ -1,0 +1,31 @@
+# Publish every pull request to gh-pages/pr-preview/pr-<number>/ and comment the link on the PR.
+# The preview is updated on every push to the PR and removed when the PR is closed or merged.
+name: PR preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble the site
+        if: github.event.action != 'closed'
+        run: tools/build_site.sh _site
+      - name: Publish or remove the preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: _site
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto
