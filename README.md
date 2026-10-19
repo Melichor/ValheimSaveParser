@@ -29,6 +29,17 @@ python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameper
 
 The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. Under it, the **Relay planner** finds a chain of new characters that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. At the bottom of the page, the **Upgrade predictor** takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The game keeps the case of the name you type, so type the names exactly as listed.
 
+## Upgrade cost
+
+`upgrade_cost.py` works out what one character really pays to get an item to a quality at the Forge of Potential, without any name tricks: it crafts the item, upgrades it at its crafting station as far as that station goes (Deep North gear stops at 3 there), then tries the Forge; every failed attempt breaks the item, so it crafts a new copy and starts again. The rolls are the character's own, replayed from its name and the seeds stored in its file, so the totals are exact for that character: crafting and station materials, Idols (one per attempt, never refunded), and the part of the materials a break refunds.
+
+```bash
+python3 upgrade_cost.py --item "Iron Sword" --target 10 --name Ragnar -v
+python3 upgrade_cost.py --item "Iron Sword" --target 10 --save Ragnar.fch
+```
+
+It needs `upgrade_oracle.py` next to it. The web page has the same tool under **Upgrade cost**, at the bottom: enter the item, the target quality and a character name, or choose the character's file.
+
 ## Game data tables
 
 `data/` holds tables extracted from the game files: every recipe (`recipes.csv`) and every item that can be found in the world with the earliest biome it appears in (`gatherables.csv`), plus the earliest biome in which each craftable item can be made (`craftable_biomes.csv`). See [`data/README.md`](data/README.md) for the columns and the rules, and `tools/extract_game_data.py` to regenerate them.
