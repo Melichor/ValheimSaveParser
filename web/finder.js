@@ -46,7 +46,7 @@ let relaying = false;   // a relay plan is being worked out, so worker errors be
 let predicting = false; // a dropped file is being read, so worker errors belong to the predictor
 
 function startWorker() {
-  worker = new Worker("web/finder-worker.js");
+  worker = new Worker("web/finder-worker.js?v=__BUILD__");
   worker.onmessage = (e) => handle(e.data);
   worker.onerror = () => fail("Could not start the Python runtime.");
   return worker;

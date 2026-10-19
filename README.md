@@ -42,6 +42,23 @@ python3 upgrade_cost.py --item "Iron Sword" --target 10 --save Ragnar.fch
 
 It needs `upgrade_oracle.py` next to it. The web page has the same tool in the **Upgrade cost** tab: enter the item, the target quality and a character name, or choose the character's file.
 
+## Drop counters
+
+`drop_counters.py` (a single file, standard library only) shows how far a character is from each rare creature drop. Since Valheim 1.0.20 a drop whose chance is 30% or less (after stars, which double it per star) is not left to luck: it uses a counter that the character file keeps, and the kill that runs the counter out drops the item. The script reads those counters and tells you which kill brings the drop. A counter belongs to the item and its final chance, so each star level of a creature has its own, and creatures that drop the same item at the same chance share one.
+
+```bash
+python3 drop_counters.py Character.fch                                # every counter saved in the character
+python3 drop_counters.py Character.fch Greydwarf.TrophyGreydwarf      # one drop at every star level
+python3 drop_counters.py Character.fch Greydwarf.1.TrophyGreydwarf    # at 1 star only
+python3 drop_counters.py Character.fch trophy                         # every trophy
+python3 drop_counters.py Character.fch krigen.mold .coins             # parts of names, several filters
+python3 drop_counters.py 'Seeker.*'                                   # no save: the chances and gaps only
+```
+
+A filter is `creature.item`, `creature.N.item` (one star level), `creature.N` (every drop at that level) or a single word that matches the creature or the item. Part of a name is enough, anywhere in it, in prefab names (`Greydwarf`, `TrophyGreydwarf`) or display names (`Krigen`): `greyd.troph` is every Greydwarf trophy, `.coins` every Coins drop. A full name matches just that one, and an empty part or `*` matches anything. Each creature is listed only at the star levels its spawners can give it (bosses have none), and only the drops that use a counter: 30% or less after stars. Above that, every kill is its own roll. The drop table is built into the script; `tools/update_drop_data.py` rebuilds it from the game files after an update.
+
+The web page has the same tool under **Drop counters**: drop a character file to see every saved counter (sorted by drop, or soonest first), and type filters, separated by commas, to look up any drop, with or without a file.
+
 ## Game data tables
 
 `data/` holds tables extracted from the game files: every recipe (`recipes.csv`) and every item that can be found in the world with the earliest biome it appears in (`gatherables.csv`), plus the earliest biome in which each craftable item can be made (`craftable_biomes.csv`). See [`data/README.md`](data/README.md) for the columns and the rules, and `tools/extract_game_data.py` to regenerate them.
