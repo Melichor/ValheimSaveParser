@@ -139,7 +139,6 @@ button:disabled { opacity: .55; cursor: default; }
 #cItem { min-width: min(100%, 280px); }
 #cTarget { width: 110px; }
 #cName { min-width: min(100%, 200px); }
-#cFile { font: inherit; font-size: .88rem; color: var(--ink); max-width: 100%; }
 .tableWrap { overflow-x: auto; margin: 10px 0; }
 .costTable { border-collapse: collapse; min-width: min(100%, 520px); background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
 .costTable th, .costTable td { padding: 6px 12px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
@@ -150,3 +149,6 @@ button:disabled { opacity: .55; cursor: default; }
 .formula { margin: 8px 0; padding: 8px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-family: ui-monospace, "Cascadia Code", Menlo, monospace; font-size: .9rem; overflow-x: auto; }
 .formula span { display: block; margin-top: 4px; font-family: inherit; color: var(--muted); font-size: .84rem; }
 .formula sup { font-size: .75em; }
+.dropSmall { flex-basis: 100%; padding: 16px; flex-direction: column; color: var(--ink); font-size: .95rem; }
+.dropSmall.chosen { border-style: solid; border-color: var(--accent); }
+.formButtons { display: flex; flex-wrap: wrap; gap: 10px; flex-basis: 100%; }

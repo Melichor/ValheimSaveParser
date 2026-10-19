@@ -28,8 +28,10 @@ const R = {
 
 const C = {
   form: byId("cForm"), item: byId("cItem"), items: byId("cItems"), target: byId("cTarget"), name: byId("cName"),
-  file: byId("cFile"), go: byId("cGo"), status: byId("cStatus"), statusText: byId("cStatusText"), error: byId("cError"),
+  file: byId("cFile"), drop: byId("cDrop"), dropText: byId("cDropText"), dropHint: byId("cDropHint"),
+  clearFile: byId("cClearFile"), go: byId("cGo"), status: byId("cStatus"), statusText: byId("cStatusText"), error: byId("cError"),
   result: byId("cResult"), summary: byId("cSummary"), facts: byId("cFacts"), rows: byId("cRows"), list: byId("cList"),
+  copies: byId("cCopies"), hist: byId("cHist"), download: byId("cDownload"), listNote: byId("cListNote"),
 };
 
 const STEP = 5;      // names added by each "Find more"
@@ -334,7 +336,7 @@ function costFail(message) {
 async function calculate() {
   C.error.hidden = true;
   const item = C.item.value.trim();
-  const file = C.file.files[0];
+  const file = costFile;
   const name = C.name.value;                   // not trimmed: the name is used exactly as typed
   if (!item) return costFail("Enter the name of an item.");
   if (!file && !name) return costFail("Enter a character name or choose its character file.");
@@ -385,11 +387,49 @@ function showCost(r) {
     for (const v of [row.name, row.spent, row.refunded, row.net]) tr.append(el("td", "", typeof v === "number" ? v.toLocaleString() : v));
     return tr;
   }));
-  const start = Math.min(r.cap, r.target);
-  C.list.textContent = r.target <= r.cap ? "No Forge attempts." : r.list
-    ? r.list.map((steps, i) => `copy ${i + 1}: ${start} → ` + steps.map((ok, k) => `${start + k + 1}${ok ? "✓" : "✗"}`).join(" ")).join("\n")
-    : `Too many copies to list (${r.copies.toLocaleString()}). The command-line version with -v lists them all.`;
+  showCopies(r);
 }
+
+const LIST_SHOWN = 5000;   // lines shown on the page; the download always has every copy
+let copyText = "";         // the full list, for the download button
+let copyFile = "";
+
+function copyLine(steps, i, start) {
+  return `copy ${i + 1}: ${start} → ` + [...steps].map((ok, k) => `${start + k + 1}${ok === "1" ? "✓" : "✗"}`).join(" ");
+}
+
+function showCopies(r) {
+  const start = Math.min(r.cap, r.target);
+  C.copies.hidden = r.target <= r.cap;        // no Forge attempts, nothing to list
+  if (C.copies.hidden) return;
+  // how far the copies got: the quality each one reached before it broke (or the target, for the last one)
+  const reached = new Map();
+  for (const steps of r.list) {
+    const q = start + steps.split("").filter((c) => c === "1").length;
+    reached.set(q, (reached.get(q) || 0) + 1);
+  }
+  C.hist.replaceChildren(...[...reached.keys()].sort((a, b) => a - b).map((q) => {
+    const tr = el("tr");
+    tr.append(el("td", "", q === start ? `${q} (broke on its first attempt)` : q === r.target && r.reached ? `${q} (the one that made it)` : String(q)),
+      el("td", "", reached.get(q).toLocaleString()));
+    return tr;
+  }));
+  const lines = r.list.map((steps, i) => copyLine(steps, i, start));
+  copyText = `${r.item} to quality ${r.target}, upgraded by ${r.character}: ${r.copies} copies, ${r.attempts} Forge attempts\n` +
+    lines.join("\n") + "\n";
+  copyFile = `${r.item} to ${r.target} - ${r.character}.txt`.replace(/[\\/:*?"<>|]/g, "_");
+  C.list.textContent = lines.slice(0, LIST_SHOWN).join("\n");
+  C.listNote.textContent = lines.length > LIST_SHOWN
+    ? `Showing the first ${LIST_SHOWN.toLocaleString()} of ${lines.length.toLocaleString()} copies; the download has all of them.`
+    : `${lines.length.toLocaleString()} cop${lines.length === 1 ? "y" : "ies"}.`;
+}
+
+C.download.addEventListener("click", () => {
+  const url = URL.createObjectURL(new Blob([copyText], { type: "text/plain;charset=utf-8" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: copyFile || "copies.txt" });
+  a.click();
+  URL.revokeObjectURL(url);
+});
 
 C.form.addEventListener("submit", (e) => { e.preventDefault(); calculate(); });
 C.item.addEventListener("focus", () => {
@@ -398,3 +438,25 @@ C.item.addEventListener("focus", () => {
   C.statusText.textContent = "Loading the item list…";
   (worker || startWorker()).postMessage({ type: "costItems" });
 }, { once: true });
+
+// the cost tool's character file: dropped or chosen in the small drop area, used instead of the typed name
+let costFile = null;
+
+function chooseCostFile(file) {
+  costFile = file || null;
+  C.file.value = "";
+  C.drop.classList.toggle("chosen", !!costFile);
+  C.clearFile.hidden = !costFile;
+  C.name.disabled = !!costFile;
+  C.dropText.textContent = costFile ? `Using ${costFile.name}` : "";
+  if (!costFile) C.dropText.append("Or drop the character's ", el("code", "", ".fch"), " file here");
+  C.dropHint.textContent = costFile ? "its name and saved rolls are used; drop or click to choose another file"
+    : "or click to choose one; its name and saved rolls are used instead of the name above";
+}
+
+C.file.addEventListener("change", () => C.file.files[0] && chooseCostFile(C.file.files[0]));
+C.clearFile.addEventListener("click", () => chooseCostFile(null));
+C.drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); C.file.click(); } });
+for (const ev of ["dragenter", "dragover"]) C.drop.addEventListener(ev, (e) => { e.preventDefault(); C.drop.classList.add("over"); });
+for (const ev of ["dragleave", "drop"]) C.drop.addEventListener(ev, (e) => { e.preventDefault(); C.drop.classList.remove("over"); });
+C.drop.addEventListener("drop", (e) => { const f = e.dataTransfer.files[0]; if (f) chooseCostFile(f); });

@@ -172,10 +172,15 @@
       <label>Character name
         <input id="cName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false">
       </label>
-      <label>or its character file
-        <input id="cFile" type="file" accept=".fch,.old,.new">
+      <label id="cDrop" class="drop dropSmall" tabindex="0">
+        <input id="cFile" type="file" accept=".fch,.old,.new" hidden>
+        <strong id="cDropText">Or drop the character's <code>.fch</code> file here</strong>
+        <span id="cDropHint">or click to choose one; its name and saved rolls are used instead of the name above</span>
       </label>
-      <button id="cGo" type="submit" class="primary">Calculate</button>
+      <div class="formButtons">
+        <button id="cGo" type="submit" class="primary">Calculate</button>
+        <button id="cClearFile" type="button" hidden>Use the name instead</button>
+      </div>
     </form>
     <div id="cStatus" class="status" role="status" hidden><span class="spin"></span><span id="cStatusText"></span></div>
     <div id="cError" class="error" role="alert" hidden></div>
@@ -188,7 +193,11 @@
           <tbody id="cRows"></tbody>
         </table>
       </div>
-      <details class="path"><summary>Every copy</summary><pre id="cList" class="copyList"></pre></details>
+      <details class="path" id="cCopies"><summary>Every copy</summary>
+        <div class="tableWrap"><table class="costTable"><thead><tr><th>Got to quality</th><th>Copies</th></tr></thead><tbody id="cHist"></tbody></table></div>
+        <p><button id="cDownload" type="button">Download every copy (.txt)</button> <span id="cListNote" class="muted"></span></p>
+        <pre id="cList" class="copyList"></pre>
+      </details>
     </div>
     <div class="notes">
       <h3>How it counts</h3>

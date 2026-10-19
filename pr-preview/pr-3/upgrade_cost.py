@@ -399,7 +399,6 @@ def report(prefab, target, name, source, copies, spent, refunded, done, verbose)
 # ---------------------------------------------------------------------------------------------------------------
 
 WEB_MAX_COPIES = 200_000        # the browser is several times slower; stop sooner
-WEB_MAX_LISTED = 5_000          # list every copy only up to this many
 
 
 def web_cost_items():
@@ -428,7 +427,8 @@ def web_cost(item, target, name, data=None):
     idols = {r[0] for r in info["resources"] if r[3]}
     rows = [{"name": k, "spent": spent[k], "refunded": refunded[k], "net": spent[k] - refunded[k], "idol": k in idols}
             for k in sorted(spent, key=lambda k: (k not in idols, k))]
-    listed = [[int(ok) for _, _, ok, _ in c["steps"]] for c in copies] if len(copies) <= WEB_MAX_LISTED else None
+    # every copy's Forge attempts as a compact string, "1" a success and "0" the break: "110" went up twice, then broke
+    listed = ["".join("1" if ok else "0" for _, _, ok, _ in c["steps"]) for c in copies]
     return json.dumps({"item": info["name"], "target": target, "character": name, "source": source,
                        "savedSeeds": len(seeds), "station": info["station"], "cap": info["cap"],
                        "maxQuality": info["maxQuality"], "stationMaxLevel": info["stationMaxLevel"],
