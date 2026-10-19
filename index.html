@@ -158,6 +158,66 @@
       </ul>
     </div>
   </section>
+  <section id="cost" class="finder">
+    <h2>Upgrade cost</h2>
+    <p class="sub">What one character really pays to get an item to a quality at the Forge of Potential, without any name tricks. It crafts the item, upgrades it at its crafting station as far as that station goes, then tries the Forge. Every failed attempt breaks the item, so it crafts a new copy and starts again until one gets there. The rolls are that character's own, so the totals are exact for it, not an average.</p>
+    <form id="cForm" class="finderForm">
+      <label>Item
+        <input id="cItem" list="cItems" placeholder="e.g. Fenris Hood" autocomplete="off" spellcheck="false" required>
+      </label>
+      <datalist id="cItems"></datalist>
+      <label>Target quality
+        <input id="cTarget" type="number" min="2" max="65535" value="10" required>
+      </label>
+      <label>Character name
+        <input id="cName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false">
+      </label>
+      <label id="cDrop" class="drop dropSmall" tabindex="0">
+        <input id="cFile" type="file" accept=".fch,.old,.new" hidden>
+        <strong id="cDropText">Or drop the character's <code>.fch</code> file here</strong>
+        <span id="cDropHint">or click to choose one; its name and saved rolls are used instead of the name above</span>
+      </label>
+      <div class="formButtons">
+        <button id="cGo" type="submit" class="primary">Calculate</button>
+        <button id="cClearFile" type="button" hidden>Use the name instead</button>
+      </div>
+    </form>
+    <div id="cStatus" class="status" role="status" hidden><span class="spin"></span><span id="cStatusText"></span></div>
+    <div id="cError" class="error" role="alert" hidden></div>
+    <div id="cResult" hidden>
+      <p id="cSummary" class="summary"></p>
+      <ul id="cFacts" class="caveats"></ul>
+      <div class="tableWrap">
+        <table class="costTable">
+          <thead><tr><th>Ingredient</th><th>Spent</th><th>Refunded</th><th>Net</th></tr></thead>
+          <tbody id="cRows"></tbody>
+        </table>
+      </div>
+      <details class="path" id="cCopies"><summary>Every copy</summary>
+        <div class="tableWrap"><table class="costTable"><thead><tr><th>Got to quality</th><th>Copies</th></tr></thead><tbody id="cHist"></tbody></table></div>
+        <p><button id="cDownload" type="button">Download every copy (.txt)</button> <span id="cListNote" class="muted"></span></p>
+        <pre id="cList" class="copyList"></pre>
+      </details>
+    </div>
+    <div class="notes">
+      <h3>How it counts</h3>
+      <ul>
+        <li><b>A name or a file.</b> With a name, the character is new and every roll comes from the name. With a character file, its name and the rolls already stored in it are used, so it is exact for that character as it is now.</li>
+        <li><b>Crafting and station upgrades</b> use the game's own amounts. From quality 4 on, a level counts as 4 steps plus half a step per level above 4, so the upgrade to 4 costs more than the one to 3.</li>
+        <li><b>Each copy goes to the highest quality its station can reach first.</b> A station only gets one level per kind of extension, so some items stop below their max quality there (Deep North gear stops at 3).</li>
+        <li><b>Every Forge attempt costs one Idol</b>, success or failure, and Idols are never refunded. The station materials are not used at the Forge.</li>
+        <li><b>A break refunds 35%</b>, rounded up, of each refundable ingredient, counted from its craft amount and its per-level amount. The per-level amount is what the wiki lists as that ingredient's upgrade cost from quality 1 to 2. For an item that breaks at quality <i>level</i> (on its way to <i>level</i>&nbsp;+&nbsp;1):
+          <div class="formula">refund = ⌈ 0.35 × ( craft + ⌊ ( ⌊2<sup>min(2, level − 2)</sup>⌋ + (max(4, level) − 4) / 2 ) × per_level ⌋ ) ⌉
+            <span>level is the item's quality when it broke, craft is the ingredient's craft amount, per_level its upgrade cost from quality 1 to 2. ⌈ ⌉ rounds up, ⌊ ⌋ rounds down.</span></div>
+          For example, a Fenris Hood (20 Fenris Hair to craft, 5 per level) breaking at quality 5 returns ⌈ 0.35 × (20 + ⌊4.5 × 5⌋) ⌉ = ⌈ 0.35 × 42 ⌉ = 15 Fenris Hair. Rounding up means single ingredients, like a trophy or a mould, come back every time (except the staffs' moulds, below).</li>
+        <li><b>Deep North gear and staffs are crafted as a cast.</b> The finished item's own recipe is upgrade-only, so a new copy is crafted as a cast (using up its mould) and then cooked into the item in the Frost Foundry, which burns 5 Liquid Frost per cast. A copy therefore costs the cast's ingredients plus 5 Liquid Frost, and Liquid Frost is never refunded. Upgrades and break refunds use the finished item's upgrade recipe, which repeats the cast's ingredients.</li>
+        <li><b>Weapons made from another weapon count that weapon's whole recipe.</b> The Frostfire and Thunderblood weapons are made from a Nord weapon, and the Ashlands variants (Wound, Storm and Root Rippers and Fangs, the Bleeding, Primal, Scourging and Thundering weapons, Bloodgeon, Storm Star, Klossen and others) from their base weapon. Each copy uses up a whole base weapon, so the tool lists what it takes to craft one instead: a Frostfire Sword shows the Nord Sword's Bloodgold, mould, Timberwood and Liquid Frost, not "1 Nord Sword". Crafting takes the first matching base weapon in your inventory, whatever its quality, so carry only the one you mean to use.</li>
+        <li><b>Never refunded:</b> the Idols, Liquid Frost, a base weapon and everything crafted into it, the essence or gem of a variant (Frostfire and Thunderblood Essence, Bloodstone, Iolite, Jade), and anything the upgrade recipe leaves out (below). Only the remaining ingredients, like the metal, come back in part. The result lists what is never refunded for the chosen item.</li>
+        <li><b>The staffs never get their mould back.</b> For Northern Vengeance, Spirit Caller, Lightning Strike and Echo Spike, the upgrade recipe leaves out the mould that the cast uses up, while the Deep North armor and weapons list theirs. So a broken staff refunds its other ingredients but never the mould. That looks like a game bug, and Nord Knucklechains have a similar one: their cast takes 2 Long Claws, but their upgrade recipe lists 10 Timberwood instead, so a break never returns claws but does return Timberwood the craft never used.</li>
+        <li><b>Keep space in your inventory for the refund.</b> It goes straight into the inventory: each ingredient first tops up the stacks you already have, and whatever is left needs a free slot. If there is none, the game drops only a single item of it on the ground and the rest is lost; an ingredient that does not stack is lost completely. So keep a free slot for each refundable ingredient, or partial stacks with room for the refund. This tool assumes every refund arrives.</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
 <footer class="wrap foot">

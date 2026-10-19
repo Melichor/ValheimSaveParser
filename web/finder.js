@@ -26,12 +26,22 @@ const R = {
   result: byId("rResult"), summary: byId("rSummary"), plan: byId("rPlan"),
 };
 
+const C = {
+  form: byId("cForm"), item: byId("cItem"), items: byId("cItems"), target: byId("cTarget"), name: byId("cName"),
+  file: byId("cFile"), drop: byId("cDrop"), dropText: byId("cDropText"), dropHint: byId("cDropHint"),
+  clearFile: byId("cClearFile"), go: byId("cGo"), status: byId("cStatus"), statusText: byId("cStatusText"), error: byId("cError"),
+  result: byId("cResult"), summary: byId("cSummary"), facts: byId("cFacts"), rows: byId("cRows"), list: byId("cList"),
+  copies: byId("cCopies"), hist: byId("cHist"), download: byId("cDownload"), listNote: byId("cListNote"),
+};
+
 const STEP = 5;      // names added by each "Find more"
 let worker = null;
 let itemsLoaded = false;
 let found = [];      // the names listed so far: { name }
 let asked = 0;       // how many names the last request asked for
 let request = null;  // the settings of the current search, reused by "Find more"
+let costing = false;    // the cost tool is working, so worker errors belong to it
+let costItemsLoaded = false;
 let relaying = false;   // a relay plan is being worked out, so worker errors belong to the planner
 let predicting = false; // a dropped file is being read, so worker errors belong to the predictor
 
@@ -50,6 +60,7 @@ function busy(text) {
 }
 
 function fail(message) {
+  if (costing) return costFail(message);
   if (relaying) return relayFail(message);
   if (predicting) return predictFail(message);
   busy("");
@@ -64,6 +75,14 @@ function handle(msg) {
     busy("");
     if (!predicting) P.status.hidden = true;
     if (!relaying) R.status.hidden = true;
+  } else if (msg.type === "costItems") {
+    costItemsLoaded = true;
+    C.items.replaceChildren(...msg.items.map((name) => Object.assign(document.createElement("option"), { value: name })));
+    if (!costing) C.status.hidden = true;
+  } else if (msg.type === "costed") {
+    costing = false;
+    if (msg.error) return costFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
+    showCost(msg);
   } else if (msg.type === "relayed") {
     relaying = false;
     if (msg.error) return relayFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
@@ -303,3 +322,141 @@ R.item.addEventListener("focus", () => {
   R.statusText.textContent = "Loading the item list…";
   startWorker().postMessage({ type: "items" });
 }, { once: true });
+
+// ---------- the upgrade cost tool ----------
+
+function costFail(message) {
+  costing = false;
+  C.status.hidden = true;
+  C.go.disabled = false;
+  C.error.textContent = message;
+  C.error.hidden = false;
+}
+
+async function calculate() {
+  C.error.hidden = true;
+  const item = C.item.value.trim();
+  const file = costFile;
+  const name = C.name.value;                   // not trimmed: the name is used exactly as typed
+  if (!item) return costFail("Enter the name of an item.");
+  if (!file && !name) return costFail("Enter a character name or choose its character file.");
+  C.result.hidden = true;
+  C.go.disabled = true;
+  C.status.hidden = false;
+  C.statusText.textContent = (worker ? "Calculating…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…") +
+    " High targets can take a while: every copy is replayed.";
+  costing = true;
+  const msg = { type: "cost", item, target: C.target.value, name };
+  try {
+    if (file) msg.bytes = await file.arrayBuffer();
+  } catch (e) {
+    return costFail("Could not read that file.");
+  }
+  (worker || startWorker()).postMessage(msg, msg.bytes ? [msg.bytes] : []);
+}
+
+function showCost(r) {
+  C.status.hidden = true;
+  C.go.disabled = false;
+  C.result.hidden = false;
+  const who = r.source === "file" ? `${r.character} (from the file, ${r.savedSeeds} saved seed${r.savedSeeds === 1 ? "" : "s"})`
+    : `a new character named “${r.character}”`;
+  const breaks = r.copies - (r.reached ? 1 : 0);
+  C.summary.textContent = r.target <= r.cap
+    ? `${r.item} to quality ${r.target} by ${who}: no Forge needed, the station gets it there.`
+    : `${r.item} to quality ${r.target} by ${who}: ${r.copies.toLocaleString()} cop${r.copies === 1 ? "y" : "ies"}, ` +
+      `${r.attempts.toLocaleString()} Forge attempt${r.attempts === 1 ? "" : "s"}, ${breaks.toLocaleString()} break${breaks === 1 ? "" : "s"}.`;
+  const facts = [];
+  const where = r.station || "no station";
+  const made = r.via
+    ? `Crafted as ${r.via.cast} at ${where}, then cooked in the ${r.via.foundry} with ${r.via.perCast} ${r.via.fuel} per cast`
+    : `Crafted at ${where}`;
+  facts.push(`${made}; each copy is upgraded at ${where} to quality ${Math.min(r.cap, r.target)}` +
+    (r.cap < r.maxQuality ? `, as far as ${where} goes (it reaches level ${r.stationMaxLevel}).` : "."));
+  for (const g of r.gear || []) facts.push(`Each copy also takes a new ${g.name}, counted as what it takes to craft: ` +
+    g.parts.map((p) => `${p.amount} ${p.name}`).join(", ") + ".");
+  if (r.notRefunded && r.notRefunded.length) facts.push(`Its upgrade recipe leaves out the ${r.notRefunded.join(", ")} that ` +
+    "the craft takes, so a break never refunds it. That looks like a game bug.");
+  if (r.neverRefunded && r.neverRefunded.length) facts.push(`Never refunded on a break: ${r.neverRefunded.join(", ")}.`);
+  if (r.season) facts.push(`Its recipe is seasonal: only available during ${r.season}.`);
+  if (!r.reached) facts.push(`Not reached: still breaking after ${r.copies.toLocaleString()} copies, where the page stops. ` +
+    "The totals are for those copies; the command-line version can go further.");
+  C.facts.replaceChildren(...facts.map((t) => el("li", "", t)));
+  C.rows.replaceChildren(...r.rows.map((row) => {
+    const tr = el("tr", row.idol ? "idol" : "");
+    for (const v of [row.name, row.spent, row.refunded, row.net]) tr.append(el("td", "", typeof v === "number" ? v.toLocaleString() : v));
+    return tr;
+  }));
+  showCopies(r);
+}
+
+const LIST_SHOWN = 5000;   // lines shown on the page; the download always has every copy
+let copyText = "";         // the full list, for the download button
+let copyFile = "";
+
+function copyLine(steps, i, start) {
+  return `copy ${i + 1}: ${start} → ` + [...steps].map((ok, k) => `${start + k + 1}${ok === "1" ? "✓" : "✗"}`).join(" ");
+}
+
+function showCopies(r) {
+  const start = Math.min(r.cap, r.target);
+  C.copies.hidden = r.target <= r.cap;        // no Forge attempts, nothing to list
+  if (C.copies.hidden) return;
+  // how far the copies got: the quality each one reached before it broke (or the target, for the last one)
+  const reached = new Map();
+  for (const steps of r.list) {
+    const q = start + steps.split("").filter((c) => c === "1").length;
+    reached.set(q, (reached.get(q) || 0) + 1);
+  }
+  C.hist.replaceChildren(...[...reached.keys()].sort((a, b) => a - b).map((q) => {
+    const tr = el("tr");
+    tr.append(el("td", "", q === start ? `${q} (broke on its first attempt)` : q === r.target && r.reached ? `${q} (the one that made it)` : String(q)),
+      el("td", "", reached.get(q).toLocaleString()));
+    return tr;
+  }));
+  const lines = r.list.map((steps, i) => copyLine(steps, i, start));
+  copyText = `${r.item} to quality ${r.target}, upgraded by ${r.character}: ${r.copies} copies, ${r.attempts} Forge attempts\n` +
+    lines.join("\n") + "\n";
+  copyFile = `${r.item} to ${r.target} - ${r.character}.txt`.replace(/[\\/:*?"<>|]/g, "_");
+  C.list.textContent = lines.slice(0, LIST_SHOWN).join("\n");
+  C.listNote.textContent = lines.length > LIST_SHOWN
+    ? `Showing the first ${LIST_SHOWN.toLocaleString()} of ${lines.length.toLocaleString()} copies; the download has all of them.`
+    : `${lines.length.toLocaleString()} cop${lines.length === 1 ? "y" : "ies"}.`;
+}
+
+C.download.addEventListener("click", () => {
+  const url = URL.createObjectURL(new Blob([copyText], { type: "text/plain;charset=utf-8" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: copyFile || "copies.txt" });
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+C.form.addEventListener("submit", (e) => { e.preventDefault(); calculate(); });
+C.item.addEventListener("focus", () => {
+  if (costItemsLoaded) return;
+  C.status.hidden = false;
+  C.statusText.textContent = "Loading the item list…";
+  (worker || startWorker()).postMessage({ type: "costItems" });
+}, { once: true });
+
+// the cost tool's character file: dropped or chosen in the small drop area, used instead of the typed name
+let costFile = null;
+
+function chooseCostFile(file) {
+  costFile = file || null;
+  C.file.value = "";
+  C.drop.classList.toggle("chosen", !!costFile);
+  C.clearFile.hidden = !costFile;
+  C.name.disabled = !!costFile;
+  C.dropText.textContent = costFile ? `Using ${costFile.name}` : "";
+  if (!costFile) C.dropText.append("Or drop the character's ", el("code", "", ".fch"), " file here");
+  C.dropHint.textContent = costFile ? "its name and saved rolls are used; drop or click to choose another file"
+    : "or click to choose one; its name and saved rolls are used instead of the name above";
+}
+
+C.file.addEventListener("change", () => C.file.files[0] && chooseCostFile(C.file.files[0]));
+C.clearFile.addEventListener("click", () => chooseCostFile(null));
+C.drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); C.file.click(); } });
+for (const ev of ["dragenter", "dragover"]) C.drop.addEventListener(ev, (e) => { e.preventDefault(); C.drop.classList.add("over"); });
+for (const ev of ["dragleave", "drop"]) C.drop.addEventListener(ev, (e) => { e.preventDefault(); C.drop.classList.remove("over"); });
+C.drop.addEventListener("drop", (e) => { const f = e.dataTransfer.files[0]; if (f) chooseCostFile(f); });
