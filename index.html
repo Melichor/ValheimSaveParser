@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Save Parser</title>
 <meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character names and costs for upgrades at the Forge of Potential, and how many kills each rare creature drop is away. Everything runs in your browser.">
-<link rel="stylesheet" href="web/style.css?v=b3b0a17">
+<link rel="stylesheet" href="web/style.css?v=e1a070e">
 </head>
 <body>
 <header class="top">
@@ -267,7 +267,7 @@
         <li><b>Above 30% it is luck.</b> Every kill is an independent roll, with no counter.</li>
         <li><b>At 30% or less there is a counter.</b> With a chance <i>p</i>, the first drop comes within ⌊2&thinsp;/&thinsp;<i>p</i>⌋ kills, and after each drop the next one comes after 1 to ⌊2&thinsp;/&thinsp;<i>p</i>⌋&nbsp;+&nbsp;1 kills (the longest gap). Over many kills that is about the chance shown.</li>
         <li><b>“In N kills”</b> means the N-th kill from now drops it. Every kill of a creature that uses the counter counts it down.</li>
-        <li><b>Every star level has its own counter.</b> A drop of 30% or less gets a separate counter, and a separate row here, for each star level of the creature: killing a 1★ Greydwarf does not move the counter of the 0★ ones. If the stars raise the chance above 30%, that star level no longer uses a counter and every kill is an independent roll. Creatures that drop the same item at the same chance do share a counter (the Shared with column): every kind of skeleton counts towards the same skeleton trophy.</li>
+        <li><b>A counter belongs to the item and its chance after stars.</b> So a drop that stars make more likely gets a separate counter for each star level of the creature, and a separate row here: killing a 1★ Greydwarf does not move the counter of the 0★ ones. If the stars raise the chance above 30%, that star level no longer uses a counter (every kill is an independent roll) and is not listed. A drop whose chance stays the same at every star level, like the Jotun Witch's moulds, has one counter for all of them: any Hexen kill counts it down, whatever its stars, and its rows list the other star levels under Shared with. Creatures that drop the same item at the same chance share a counter too: every kind of skeleton counts towards the same skeleton trophy.</li>
         <li><b>The file is only as fresh as the last save.</b> The game saves the character every 30 minutes, when you log out and when you quit. Kills since then are not in it yet.</li>
         <li><b>In multiplayer, the game that owns the creature rolls the drop</b>, with its player's counters. That is usually whoever reached the area first (the host, in a hosted game, when it is a tie). Near the world spawn on a dedicated server the server itself can own creatures. It rolls their drops with counters of its own, which it keeps in memory until it restarts but never saves to any character file.</li>
         <li><b>Counters can carry over to the next character.</b> The game keeps the counters in memory and never clears them until you quit. Loading a character, even just showing it on the character selection screen, puts its own counters on top. Every counter the character has stored keeps its own value, but one it has not stored yet (it never killed anything that uses it) is copied from a character loaded earlier in the same session, and saved with it from then on. A new character has nothing stored, so it copies every counter; an existing character copies only the ones it is missing.</li>
@@ -300,9 +300,9 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
-<script src="web/page.js?v=b3b0a17"></script>
-<script src="web/app.js?v=b3b0a17"></script>
-<script src="web/finder.js?v=b3b0a17"></script>
-<script src="web/drops.js?v=b3b0a17"></script>
+<script src="web/page.js?v=e1a070e"></script>
+<script src="web/app.js?v=e1a070e"></script>
+<script src="web/finder.js?v=e1a070e"></script>
+<script src="web/drops.js?v=e1a070e"></script>
 </body>
 </html>

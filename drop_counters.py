@@ -1197,15 +1197,19 @@ def next_drop(row, counters):
 
 
 def sharing(row, index):
-    """The other creatures that use this row's counter: Creature.N, or Creature.* when the drop ignores stars."""
-    names = []
+    """Who else uses this row's counter: first the creature's own other star levels (when the drop ignores stars, they
+    all have the same chance and so the same counter), then the other creatures, as Creature.N, or Creature.* when the
+    drop ignores stars for them too."""
+    own, others = [], []
     for other in index.get(row.key, []):
         if other.creature == row.creature:
+            if other.stars != row.stars:
+                own.append(f"{other.creature}.{other.stars}")
             continue
         name = f"{other.creature}.*" if not other.scales else f"{other.creature}.{other.stars}"
-        if name not in names:
-            names.append(name)
-    return names
+        if name not in others:
+            others.append(name)
+    return own + others
 
 
 def shared_with(row, index, verbose):

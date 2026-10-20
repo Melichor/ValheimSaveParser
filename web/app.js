@@ -22,7 +22,7 @@ function loadScript() {
     runtime = (async () => {
       const [py, source] = await Promise.all([
         loadPyodide({ indexURL: PYODIDE_URL }),
-        fetch("achi_hunter.py?v=b3b0a17").then((r) => {
+        fetch("achi_hunter.py?v=e1a070e").then((r) => {
           if (!r.ok) throw new Error("Could not load achi_hunter.py");
           return r.text();
         }),
