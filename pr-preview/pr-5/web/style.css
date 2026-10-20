@@ -161,6 +161,7 @@ button:disabled { opacity: .55; cursor: default; }
 .formButtons { display: flex; flex-wrap: wrap; gap: 10px; flex-basis: 100%; }
 
 .finderForm label.grow { flex: 1 1 320px; }
+#drops .caveats code { white-space: nowrap; word-break: normal; }   /* filter examples, kept whole */
 .dropBar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
 .dropTable { border-collapse: collapse; min-width: min(100%, 640px); background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: .92rem; }
 .dropTable th, .dropTable td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }

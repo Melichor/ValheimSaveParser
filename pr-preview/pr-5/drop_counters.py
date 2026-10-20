@@ -19,13 +19,16 @@ How the game rolls a creature's drops (CharacterDrop.GenerateDropList, as of Val
   * In multiplayer the drop is rolled by the client that owns the creature, with that client's counters.
   * The NoPseudoDrops world key turns the counters off; every drop is then an independent roll.
 
-A filter is creature.item (at 0, 1 and 2 stars) or creature.N.item (at N stars). The names are prefab names (Greydwarf,
-TrophyGreydwarf) or display names ('Greydwarf trophy') in any case, and can use the wildcards * ? [ ].
+A filter is creature.item (at 0, 1 and 2 stars), creature.N.item (at N stars), creature.N (every drop at N stars) or a
+single word (the creature or the item). A name matches anywhere in the prefab name (Greydwarf, TrophyGreydwarf) or the
+display name ('Greydwarf trophy'), in any case, so a part of it is enough: greyd.troph. A full name matches just that
+one. An empty part or * is anything (.coins, Wolf.*), and * also stands for any run of letters (Mold*Legs).
 
     python3 drop_counters.py Character.fch                                 # every counter saved in the character
     python3 drop_counters.py Character.fch Greydwarf.TrophyGreydwarf       # one drop at 0, 1 and 2 stars
     python3 drop_counters.py Character.fch Greydwarf.1.TrophyGreydwarf     # ...at 1 star only
-    python3 drop_counters.py Character.fch 'Jotun*.MoldArmor*' '*.Coins'   # wildcards, several filters
+    python3 drop_counters.py Character.fch trophy                          # every trophy
+    python3 drop_counters.py Character.fch krigen.mold .coins              # parts of names, several filters
     python3 drop_counters.py A.fch B.fch Seeker.TrophySeeker               # several characters
     python3 drop_counters.py 'Troll.*'                                     # no save: only the chances and the rules
 """
@@ -1101,24 +1104,63 @@ def by_counter(rows):
     return index
 
 
+def is_stars(part):
+    return part in ("", "*") or part.isdigit()
+
+
 def parse_filter(text):
-    """creature.item or creature.N.item -> (creature pattern, star levels, item pattern)."""
-    parts = text.split(".")
-    if len(parts) == 2 and all(parts):
-        return parts[0], STARS, parts[1]
-    if len(parts) == 3 and parts[0] and parts[2] and (parts[1] == "*" or parts[1].isdigit()):
-        return parts[0], STARS if parts[1] == "*" else (int(parts[1]),), parts[2]
-    raise ValueError(f"{text!r} is not a filter: use creature.item or creature.N.item, for example "
-                     "Greydwarf.TrophyGreydwarf or Greydwarf.1.TrophyGreydwarf")
+    """A filter -> (creature pattern, star levels, item pattern, whether a match on either one is enough).
+
+    word                 the creature or the item       (trophy, krigen)
+    creature.item        at 0, 1 and 2 stars            (Greydwarf.TrophyGreydwarf, greyd.troph, .coins)
+    creature.N.item      at N stars                     (Greydwarf.1.TrophyGreydwarf)
+    creature.N           every drop at N stars          (Wolf.2)
+    An empty part or * is anything, and a trailing .* adds nothing, so the regex habit .*Trophy.* works too. A filter
+    that still makes no sense is read once more with every .* inside a part as * (.*Mold.*Legs is *Mold*Legs)."""
+    try:
+        return parse_parts(text)
+    except ValueError:
+        regex = re.sub(r"\.\*(?!\.)", "*", text)
+        if regex == text:
+            raise
+        try:
+            return parse_parts(regex)
+        except ValueError:
+            pass
+        raise
+
+
+def parse_parts(text):
+    parts = [p.strip() for p in text.split(".")]
+    while len(parts) > 2 and parts[-1] in ("", "*") and not (len(parts) == 3 and is_stars(parts[1])):
+        parts.pop()
+    if len(parts) == 1:
+        return parts[0], STARS, parts[0], True
+    if len(parts) == 2:
+        if parts[1].isdigit():
+            return parts[0], (int(parts[1]),), "", False
+        return parts[0], STARS, parts[1], False
+    if len(parts) == 3 and is_stars(parts[1]):
+        return parts[0], STARS if not parts[1].isdigit() else (int(parts[1]),), parts[2], False
+    raise ValueError(f"{text!r} is not a filter: use a name (trophy), creature.item (greyd.troph) or creature.N.item "
+                     "(Greydwarf.1.TrophyGreydwarf)")
 
 
 def matching(pattern, names):
-    """The prefab names (a dict's keys, display names as values) that the pattern matches: by prefab name, or by display
-    name when no prefab name matches (so Greydwarf is just Greydwarf, not also Greydwarf_Frozen, whose display name is
-    Greydwarf too; Krigen still finds JotunWarrior)."""
+    """The prefab names (a dict's keys, display names as values) that a pattern matches, in any case.
+
+    An empty pattern or * matches everything. A full prefab name, or else a full display name, matches just that one
+    (Greydwarf is not also Greydwarf_Frozen; Krigen is both Jotun warriors). Anything else matches anywhere in the
+    prefab or display name, with * for any run of letters (greyd, troph, Mold*Legs)."""
     pattern = pattern.lower()
-    by_prefab = {k for k in names if fnmatch.fnmatchcase(k.lower(), pattern)}
-    return by_prefab or {k for k, v in names.items() if v and fnmatch.fnmatchcase(v.lower(), pattern)}
+    if pattern in ("", "*"):
+        return set(names)
+    exact = {k for k in names if k.lower() == pattern} or {k for k, v in names.items() if v and v.lower() == pattern}
+    if exact:
+        return exact
+    inside = f"*{pattern}*"
+    return {k for k, v in names.items()
+            if fnmatch.fnmatchcase(k.lower(), inside) or (v and fnmatch.fnmatchcase(v.lower(), inside))}
 
 
 def select(filters):
@@ -1126,11 +1168,12 @@ def select(filters):
     picked, unmatched = {}, []
     creature_names = {c: DROPS[c][0] for c in DROPS}
     for text in filters:
-        creature_pat, levels, item_pat = parse_filter(text)
+        creature_pat, levels, item_pat, either = parse_filter(text)
         creatures, items = matching(creature_pat, creature_names), matching(item_pat, ITEM_NAMES)
         found = False
         for row in rows_at(levels):
-            if row.creature in creatures and row.item in items:
+            if (row.creature in creatures or row.item in items) if either else \
+                    (row.creature in creatures and row.item in items):
                 picked.setdefault((row.creature, row.stars, row.item, row.chance), row)
                 found = True
         if not found:
@@ -1272,9 +1315,11 @@ def web_drops(filters="", data=None):
 
 def main():
     ap = argparse.ArgumentParser(description="How far a character is from each rare creature drop in Valheim.",
-                                 epilog="A filter is creature.item (at 0, 1 and 2 stars) or creature.N.item (at N "
-                                 "stars), with prefab or display names and the wildcards * ? [ ]. Without a filter, "
-                                 "every counter saved in the character is shown.")
+                                 epilog="A filter is creature.item (at 0, 1 and 2 stars), creature.N.item (at N stars), "
+                                 "creature.N or a single word (the creature or the item). A part of a prefab or display "
+                                 "name is enough (greyd.troph, trophy); a full name matches just that one. An empty "
+                                 "part or * is anything (.coins). Without a filter, every counter saved in the "
+                                 "character is shown.")
     ap.add_argument("inputs", nargs="+", metavar="save.fch|filter", help=".fch character files and drop filters")
     ap.add_argument("-v", "--verbose", action="store_true", help="name every creature that shares a counter")
     args = ap.parse_args()
@@ -1326,4 +1371,8 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except BrokenPipeError:             # the output went into something like head, which stopped reading
+        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
+        sys.exit(1)
