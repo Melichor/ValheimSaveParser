@@ -54,6 +54,18 @@ python3 drop_counters.py 'Troll.*'                                    # no save:
 
 A filter is `creature.item` or `creature.N.item`, with prefab names (`Greydwarf`, `TrophyGreydwarf`) or display names (`'Greydwarf trophy'`). The drop table is built into the script; `tools/update_drop_data.py` rebuilds it from the game files after an update.
 
+## Mörkhalla ranker
+
+`morkhalla_ranker.py` (a single file, standard library only) ranks a world's Mörkhalla dungeons by how close to the world center a Jotun invasion lands when you break the Malicious Ice inside them. Nothing seeds the game's random generator for the invasion; the last thing that does is a location loading, which reseeds it from the world seed and the location's zone. Between that reseed and the ice breaking come other draws, a different number every time. So for each dungeon the script replays the generator from its reseed and counts, over every number of draws in between from 0 to `--window - 1`, how often the invasion lands within `--target` metres. Terrain is ignored apart from the world edge, the Ashlands and the Deep North, which never take an invasion. The other locations that load with a dungeon reseed the generator too, and the last one to load is the one that counts, so the script lists them and gives the worst score among them.
+
+```bash
+python3 morkhalla_ranker.py                                      # list the worlds it can find
+python3 morkhalla_ranker.py Woods3                               # a world by name, or pass its save folder
+python3 morkhalla_ranker.py Woods3 --window 50 --target 3000 --sort worst
+```
+
+It reads the world save the game writes now: a folder with `_main.N.fwl2` and `_main.N.db2`. A short window favours some dungeons strongly; over a long one every dungeon falls back towards the average, which the script prints.
+
 ## Game data tables
 
 `data/` holds tables extracted from the game files: every recipe (`recipes.csv`) and every item that can be found in the world with the earliest biome it appears in (`gatherables.csv`), plus the earliest biome in which each craftable item can be made (`craftable_biomes.csv`). See [`data/README.md`](data/README.md) for the columns and the rules, and `tools/extract_game_data.py` to regenerate them.
