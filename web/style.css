@@ -159,3 +159,20 @@ button:disabled { opacity: .55; cursor: default; }
 .dropSmall.chosen { border-style: solid; border-color: var(--accent); }
 .finderForm .where { flex-basis: 100%; margin: 0 2px; }
 .formButtons { display: flex; flex-wrap: wrap; gap: 10px; flex-basis: 100%; }
+
+.finderForm label.grow { flex: 1 1 320px; }
+#drops .caveats code { white-space: nowrap; word-break: normal; }   /* filter examples, kept whole */
+.dropBar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
+.dropTable { border-collapse: collapse; min-width: min(100%, 640px); background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: .92rem; }
+.dropTable th, .dropTable td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.dropTable th { font-size: .84rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.dropTable .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dropTable .from { display: block; color: var(--muted); font-size: .86rem; }
+.dropTable code.label { display: block; width: fit-content; margin-top: 2px; font-size: .78rem; color: var(--muted);
+  word-break: normal; overflow-wrap: break-word; }
+.dropTable .next { white-space: nowrap; }
+.dropTable .next .within { display: block; font-size: .84rem; }
+.dropTable .soon { color: var(--done); font-weight: 600; }
+.dropTable .quiet { color: var(--muted); }
+.dropTable .shared { color: var(--muted); font-size: .86rem; min-width: 160px; }
+.dropTable button.more { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; }
