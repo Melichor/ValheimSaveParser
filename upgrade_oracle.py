@@ -602,6 +602,63 @@ CHARSETS = {
     "alnum": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
 }
 
+# Pre-verified 32-bit starting seeds where offsets +0..+7 all roll <= 0.65 (0.0005% of the 2^32 space).
+# Having multiple seeds lets relay_plan pick an alternate seed if a name was already used.
+_STREAK8_SEEDS = (
+    0x3AFFC, 0xACFFC, 0xBA3FC, 0x11EFFC, 0x1A2BFC, 0x1B47FC,
+)
+_MITM_CACHE = {}
+
+
+def _get_mitm_table(charset):
+    """Build (even_4char_hash -> str, [(odd_4char_term, str), ...]) once per charset (~40ms)."""
+    if charset not in _MITM_CACHE:
+        # Use 26 chars for the 4 even positions (456,976 entries) and up to 26 for the 4 odd positions
+        sub = charset[:52]
+        even_map = {}
+        for p in product(sub, repeat=3):
+            a = 5381
+            for ch in p:
+                a = (((a << 5) + a) ^ ord(ch)) & M32
+            even_map[a] = "".join(p)
+
+        odd_list = []
+        for p in product(sub, repeat=3):
+            b = 5381
+            for ch in p:
+                b = (((b << 5) + b) ^ ord(ch)) & M32
+            odd_list.append(((b * 1566083941) & M32, "".join(p)))
+
+        _MITM_CACHE[charset] = (even_map, odd_list)
+    return _MITM_CACHE[charset]
+
+
+def _verify_or_find_streak8_seeds():
+    """Ensure the cached seeds satisfy first_value(s + i) <= UPGRADE_CHANCE for i in 0..7."""
+    valid = [s for s in _STREAK8_SEEDS if all(first_value(s + i) <= UPGRADE_CHANCE for i in range(MAX_FIRST_RUN))]
+    if valid:
+        return valid
+    # Fallback scan if UPGRADE_CHANCE was modified above 0.65
+    s = 0
+    while len(valid) < 8:
+        if all(first_value(s + i) <= UPGRADE_CHANCE for i in range(MAX_FIRST_RUN)):
+            valid.append(s)
+        s = (s + 1) & M32
+    return valid
+
+
+def solve_name_for_hash(target_hash, charset=CHARSETS["letters"], exclude=()):
+    """Invert stable_hash(name) == target_hash (mod 2^32) in O(1) via Meet-in-the-Middle."""
+    even_map, odd_list = _get_mitm_table(charset)
+    target_u32 = target_hash & M32
+    for term_b, odd_s in odd_list:
+        even_s = even_map.get((target_u32 - term_b) & M32)
+        if even_s is not None:
+            name = "".join(c for pair in zip(even_s, odd_s) for c in pair)
+            if name not in exclude:
+                return name
+    return None
+
 
 def hashed_names(charset, length):
     """Every name of that length in order, as (first part, last character, name hash mod 2^32).
@@ -863,18 +920,34 @@ def relay_plan(prefab, start, target, charset=CHARSETS["letters"], max_tries=8_0
     so its rolls start from its name. Returns a list of {"name", "from", "to", "steps"}; raises SaveError when a part
     of the chain cannot be found within max_tries names."""
     plan, used, level = [], set(), start
+    base = stable_hash(prefab)
+    streak_seeds = _verify_or_find_streak8_seeds()
+
     while level < target:
         need = min(MAX_FIRST_RUN, target - level)
-        after = None
-        while True:
-            names, tried, complete = find_names(prefab, level, need, charset, 3, 15, 1, max_tries, after,
-                                                copies=1, reach=True)
-            if not names:
-                raise SaveError(f"no character name found for the upgrades from quality {level} within {max_tries:,} names")
-            if names[0] not in used:
+        first_key = (base + level + 1) & M32
+        name = None
+
+        # Fast path: algebraic seed offset + MITM hash inversion (O(1) per relay step)
+        for seed in streak_seeds:
+            required_hash = (seed - first_key) & M32
+            name = solve_name_for_hash(required_hash, charset, exclude=used)
+            if name is not None:
                 break
-            after = names[0]
-        name = names[0]
+
+        # Fallback to brute-force search if charset is too small for 8-char MITM
+        if name is None:
+            after = None
+            while True:
+                names, tried, complete = find_names(prefab, level, need, charset, 3, 15, 1, max_tries, after,
+                                                    copies=1, reach=True)
+                if not names:
+                    raise SaveError(f"no character name found for the upgrades from quality {level} within {max_tries:,} names")
+                if names[0] not in used:
+                    name = names[0]
+                    break
+                after = names[0]
+
         used.add(name)
         steps = predict(prefab, level, name, {})["steps"][:need]
         plan.append({"name": name, "from": level, "to": level + need, "steps": steps})
