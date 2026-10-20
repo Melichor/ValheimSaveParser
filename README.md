@@ -12,7 +12,9 @@ python3 achi_hunter.py path/to/Character.fch
 
 You can visit the web version here: [https://melichor.github.io/ValheimSaveParser/index.html](https://melichor.github.io/ValheimSaveParser/index.html)
 
-It has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome and every list only shows the items you are missing that can be done up to that biome; each item shows its earliest biome.
+The page is called **Valheim Save Parser** and has a tab for each tool: **Valheim Achievement Hunter** (this script), **Upgrade name finder** (with the Relay planner), **Upgrade predictor** and **Upgrade cost** (all three below). Every tool that asks for a character file has a **"Where is my character file?"** guide under it.
+
+The achievement hunter has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome and every list only shows the items you are missing that can be done up to that biome; each item shows its earliest biome.
 
 ## Upgrade predictor
 
@@ -27,7 +29,7 @@ python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameper
 
 `--copies N` upgrades N copies of the item one after another with the same character: the first N-1 get exactly the wanted upgrades and break, and the last one gets past the level where they broke. Names like that are rare (about 1 in 10 million for 8 upgrades and 2 copies), so the search takes minutes.
 
-The web page has the same name search under **Upgrade name finder**: enter the item and its starting quality. Under it, the **Relay planner** finds a chain of new characters that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. At the bottom of the page, the **Upgrade predictor** takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The game keeps the case of the name you type, so type the names exactly as listed.
+The web page has the same name search in the **Upgrade name finder** tab: enter the item and its starting quality. Under it, the **Relay planner** finds a chain of new characters that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. The **Upgrade predictor** tab takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The game keeps the case of the name you type, so type the names exactly as listed.
 
 ## Upgrade cost
 
@@ -38,7 +40,7 @@ python3 upgrade_cost.py --item "Iron Sword" --target 10 --name Ragnar -v
 python3 upgrade_cost.py --item "Iron Sword" --target 10 --save Ragnar.fch
 ```
 
-It needs `upgrade_oracle.py` next to it. The web page has the same tool under **Upgrade cost**, at the bottom: enter the item, the target quality and a character name, or choose the character's file.
+It needs `upgrade_oracle.py` next to it. The web page has the same tool in the **Upgrade cost** tab: enter the item, the target quality and a character name, or choose the character's file.
 
 ## Game data tables
 

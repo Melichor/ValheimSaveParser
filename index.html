@@ -3,64 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Valheim Achievement Hunter</title>
-<meta name="description" content="Drop in a Valheim character file (.fch) and see exactly what you are still missing for each achievement. The analysis runs in your browser.">
+<title>Valheim Save Parser</title>
+<meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character names and costs for upgrades at the Forge of Potential. Everything runs in your browser.">
 <link rel="stylesheet" href="web/style.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <h1>Valheim Achievement Hunter</h1>
-    <p class="lead">Drop in a character file and see what each achievement still needs from you.</p>
+    <h1>Valheim Save Parser</h1>
+    <p class="lead">Tools for your Valheim character: the achievements you are still missing, and upgrades at the Forge of Potential. Everything runs in your browser.</p>
+    <nav class="tabs" role="tablist" aria-label="Tools">
+      <button type="button" role="tab" id="tab-hunter" aria-controls="hunter" aria-selected="true">Valheim Achievement Hunter</button>
+      <button type="button" role="tab" id="tab-finder" aria-controls="finder" aria-selected="false" tabindex="-1">Upgrade name finder</button>
+      <button type="button" role="tab" id="tab-predictor" aria-controls="predictor" aria-selected="false" tabindex="-1">Upgrade predictor</button>
+      <button type="button" role="tab" id="tab-cost" aria-controls="cost" aria-selected="false" tabindex="-1">Upgrade cost</button>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <section id="intro">
-    <label id="drop" class="drop" tabindex="0">
-      <input id="file" type="file" accept=".fch,.old,.new" hidden>
-      <strong>Drop your <code>.fch</code> file here</strong>
-      <span>or click to choose one</span>
-    </label>
-    <p class="privacy">Your file is analysed in this tab by the real <a href="achi_hunter.py">achi_hunter.py</a> script and is never uploaded.</p>
-    <details class="where">
-      <summary>Where is my character file?</summary>
-      <p><b>Local saves</b> (Steam Cloud off) are in a <code>characters_local</code> folder:</p>
-      <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code><br>
-         <b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
-      <p><b>Steam Cloud saves</b> are kept by Steam, not in the game's own folder:</p>
-      <p><code>&lt;Steam folder&gt;/userdata/&lt;your Steam ID number&gt;/892970/remote/characters</code></p>
-      <ul>
-        <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
-        <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
-        <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
-        <li><b>Tip:</b> once you are in the <code>userdata</code> folder, search it for your character's name or for <code>892970</code>. That finds the right folder and file straight away.</li>
-      </ul>
-      <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
-    </details>
-  </section>
-
-  <div id="status" class="status" role="status" hidden><span class="spin"></span><span id="statusText"></span></div>
-  <div id="error" class="error" role="alert" hidden></div>
-
-  <section id="results" hidden>
-    <div class="bar">
-      <div class="who"><strong id="fname"></strong><span id="worlds"></span></div>
-      <div class="controls">
-        <label class="check biome">I'm currently in
-          <select id="biome" aria-label="Biome you are in right now"></select>
-        </label>
-        <input id="search" type="search" placeholder="Search items…" aria-label="Search items">
-        <label class="check"><input id="showDone" type="checkbox"> Show completed</label>
-        <label class="check"><input id="hideDone" type="checkbox"> Hide finished lists</label>
-        <button id="download" type="button">Download JSON</button>
-        <button id="reset" type="button">Choose another file</button>
-      </div>
+  <section id="hunter" class="panel" role="tabpanel" aria-labelledby="tab-hunter">
+    <h2>Valheim Achievement Hunter</h2>
+    <div id="intro">
+      <p class="sub">Drop in a character file and see what each achievement still needs from you.</p>
+      <label id="drop" class="drop" tabindex="0">
+        <input id="file" type="file" accept=".fch,.old,.new" hidden>
+        <strong>Drop your <code>.fch</code> file here</strong>
+        <span>or click to choose one</span>
+      </label>
+      <p class="privacy">Your file is analysed in this tab by the real <a href="achi_hunter.py">achi_hunter.py</a> script and is never uploaded.</p>
+      <div data-where></div>
     </div>
-    <div id="cards" class="cards"></div>
+
+    <div id="status" class="status" role="status" hidden><span class="spin"></span><span id="statusText"></span></div>
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <section id="results" hidden>
+      <div class="bar">
+        <div class="who"><strong id="fname"></strong><span id="worlds"></span></div>
+        <div class="controls">
+          <label class="check biome">I'm currently in
+            <select id="biome" aria-label="Biome you are in right now"></select>
+          </label>
+          <input id="search" type="search" placeholder="Search items…" aria-label="Search items">
+          <label class="check"><input id="showDone" type="checkbox"> Show completed</label>
+          <label class="check"><input id="hideDone" type="checkbox"> Hide finished lists</label>
+          <button id="download" type="button">Download JSON</button>
+          <button id="reset" type="button">Choose another file</button>
+        </div>
+      </div>
+      <div id="cards" class="cards"></div>
+    </section>
   </section>
 
-  <section id="finder" class="finder">
+  <section id="finder" class="panel" role="tabpanel" aria-labelledby="tab-finder" hidden>
     <h2>Upgrade name finder</h2>
     <p class="sub">Every upgrade at the Forge of Potential is a dice roll, and the roll comes from the character that makes it: for a new character, from its name. Enter an item and the quality it starts at, and this finds names of new characters that give <b>8 upgrades in a row</b>, the most one character can get. To go further, the relay planner below finds a chain of characters that pass the item along. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and needs no save file.</p>
     <form id="finderForm" class="finderForm">
@@ -112,13 +108,13 @@
         <li><b>Unlock the item's recipe on each new character first.</b> A new character does not know the item's base recipe yet. It needs to encounter the workbench (crafting station) the item is crafted at and register every item that is required to craft it. Bring the materials for its upgrades too.</li>
         <li><b>Use an item that has not been upgraded at the Forge of Potential yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this won't work for it. (This page is based on Valheim 1.0.20.)</li>
         <li><b>Stop after the last upgrade listed.</b> With a name from the finder that is the 8th, and a 9th attempt would break the item. In a relay plan, each character stops after its own levels.</li>
-        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so in a relay plan that is the last character in the list. For a custom name, let a character with that name make the last upgrade. That roll comes from that character's name, not from the list, so check it first: in the <a href="#predictor">Upgrade predictor</a> below, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
+        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so in a relay plan that is the last character in the list. For a custom name, let a character with that name make the last upgrade. That roll comes from that character's name, not from the list, so check it first: in the <a href="#predictor">Upgrade predictor</a> tab, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
         <li><b>Each roll belongs to a level, not to the starting quality.</b> A name found for, say, quality 3 to 11 also works for any part of that range, such as 6 to 11, because the rolls for levels 7 to 11 are the same ones. Starting below the quality you searched for is not covered: those lower levels were never checked.</li>
       </ul>
     </div>
   </section>
 
-  <section id="predictor" class="finder">
+  <section id="predictor" class="panel" role="tabpanel" aria-labelledby="tab-predictor" hidden>
     <h2>Upgrade predictor</h2>
     <p class="sub">Drop a character file to see, for every upgradable item in its inventory, how many upgrades it can take at the Forge of Potential before it breaks. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and the file is never uploaded.</p>
     <label id="uDrop" class="drop" tabindex="0">
@@ -126,6 +122,7 @@
       <strong>Drop your <code>.fch</code> file here</strong>
       <span>or click to choose one</span>
     </label>
+    <div data-where></div>
     <p class="sub or">Or predict a single item without a file, as a new character with the name you enter. A new character has no saved seeds, so every roll comes from the name.</p>
     <form id="uForm" class="finderForm">
       <label>Item
@@ -158,9 +155,10 @@
       </ul>
     </div>
   </section>
-  <section id="cost" class="finder">
+
+  <section id="cost" class="panel" role="tabpanel" aria-labelledby="tab-cost" hidden>
     <h2>Upgrade cost</h2>
-    <p class="sub">What one character really pays to get an item to a quality at the Forge of Potential, without any name tricks. It crafts the item, upgrades it at its crafting station as far as that station goes, then tries the Forge. Every failed attempt breaks the item, so it crafts a new copy and starts again until one gets there. The rolls are that character's own, so the totals are exact for it, not an average.</p>
+    <p class="sub">What one character really pays to get an item to a quality at the Forge of Potential, without any name tricks. It crafts the item, upgrades it at its crafting station as far as that station goes, then tries the Forge. Every failed attempt breaks the item, so it crafts a new copy and starts again until one gets there. The rolls are that character's own, so the totals are exact for it, not an average. It runs <a href="upgrade_cost.py">upgrade_cost.py</a> (with <a href="upgrade_oracle.py">upgrade_oracle.py</a> for the rolls) in your browser, and a character file you choose is never uploaded.</p>
     <form id="cForm" class="finderForm">
       <label>Item
         <input id="cItem" list="cItems" placeholder="e.g. Fenris Hood" autocomplete="off" spellcheck="false" required>
@@ -177,6 +175,7 @@
         <strong id="cDropText">Or drop the character's <code>.fch</code> file here</strong>
         <span id="cDropHint">or click to choose one; its name and saved rolls are used instead of the name above</span>
       </label>
+      <div data-where></div>
       <div class="formButtons">
         <button id="cGo" type="submit" class="primary">Calculate</button>
         <button id="cClearFile" type="button" hidden>Use the name instead</button>
@@ -225,7 +224,27 @@
   <a href="https://github.com/Melichor/ValheimSaveParser">GitHub</a>. Not affiliated with Iron Gate.</p>
 </footer>
 
+<!-- the help under every place that asks for a .fch file; web/page.js copies it into each [data-where] -->
+<template id="whereHelp">
+  <details class="where">
+    <summary>Where is my character file?</summary>
+    <p><b>Local saves</b> (Steam Cloud off) are in a <code>characters_local</code> folder:</p>
+    <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code><br>
+       <b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
+    <p><b>Steam Cloud saves</b> are kept by Steam, not in the game's own folder:</p>
+    <p><code>&lt;Steam folder&gt;/userdata/&lt;your Steam ID number&gt;/892970/remote/characters</code></p>
+    <ul>
+      <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
+      <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
+      <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
+      <li><b>Tip:</b> once you are in the <code>userdata</code> folder, search it for your character's name or for <code>892970</code>. That finds the right folder and file straight away.</li>
+    </ul>
+    <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
+  </details>
+</template>
+
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
+<script src="web/page.js"></script>
 <script src="web/app.js"></script>
 <script src="web/finder.js"></script>
 </body>
