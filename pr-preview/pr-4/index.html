@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valheim Save Parser</title>
+<meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character names and costs for upgrades at the Forge of Potential. Everything runs in your browser.">
+<link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Valheim Save Parser</h1>
+    <p class="lead">Tools for your Valheim character: the achievements you are still missing, and upgrades at the Forge of Potential. Everything runs in your browser.</p>
+    <nav class="tabs" role="tablist" aria-label="Tools">
+      <button type="button" role="tab" id="tab-hunter" aria-controls="hunter" aria-selected="true">Valheim Achievement Hunter</button>
+      <button type="button" role="tab" id="tab-finder" aria-controls="finder" aria-selected="false" tabindex="-1">Upgrade name finder</button>
+      <button type="button" role="tab" id="tab-predictor" aria-controls="predictor" aria-selected="false" tabindex="-1">Upgrade predictor</button>
+      <button type="button" role="tab" id="tab-cost" aria-controls="cost" aria-selected="false" tabindex="-1">Upgrade cost</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="hunter" class="panel" role="tabpanel" aria-labelledby="tab-hunter">
+    <h2>Valheim Achievement Hunter</h2>
+    <div id="intro">
+      <p class="sub">Drop in a character file and see what each achievement still needs from you.</p>
+      <label id="drop" class="drop" tabindex="0">
+        <input id="file" type="file" accept=".fch,.old,.new" hidden>
+        <strong>Drop your <code>.fch</code> file here</strong>
+        <span>or click to choose one</span>
+      </label>
+      <p class="privacy">Your file is analysed in this tab by the real <a href="achi_hunter.py">achi_hunter.py</a> script and is never uploaded.</p>
+      <div data-where></div>
+    </div>
+
+    <div id="status" class="status" role="status" hidden><span class="spin"></span><span id="statusText"></span></div>
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <section id="results" hidden>
+      <div class="bar">
+        <div class="who"><strong id="fname"></strong><span id="worlds"></span></div>
+        <div class="controls">
+          <label class="check biome">I'm currently in
+            <select id="biome" aria-label="Biome you are in right now"></select>
+          </label>
+          <input id="search" type="search" placeholder="Search items…" aria-label="Search items">
+          <label class="check"><input id="showDone" type="checkbox"> Show completed</label>
+          <label class="check"><input id="hideDone" type="checkbox"> Hide finished lists</label>
+          <button id="download" type="button">Download JSON</button>
+          <button id="reset" type="button">Choose another file</button>
+        </div>
+      </div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </section>
+
+  <section id="finder" class="panel" role="tabpanel" aria-labelledby="tab-finder" hidden>
+    <h2>Upgrade name finder</h2>
+    <p class="sub">Every upgrade at the Forge of Potential is a dice roll, and the roll comes from the character that makes it: for a new character, from its name. Enter an item and the quality it starts at, and this finds names of new characters that give <b>8 upgrades in a row</b>, the most one character can get. To go further, the relay planner below finds a chain of characters that pass the item along. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and needs no save file.</p>
+    <form id="finderForm" class="finderForm">
+      <label>Item
+        <input id="fItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <datalist id="fItems"></datalist>
+      <label>Starting quality
+        <input id="fQuality" type="number" min="1" max="65535" value="1" required>
+      </label>
+      <button id="fGo" type="submit" class="primary">Find names</button>
+      <button id="fCancel" type="button" hidden>Cancel</button>
+    </form>
+    <div id="fStatus" class="status" role="status" hidden><span class="spin"></span><span id="fStatusText"></span></div>
+    <div id="fError" class="error" role="alert" hidden></div>
+    <div id="fResult" hidden>
+      <p id="fSummary" class="summary"></p>
+      <ol id="fNames" class="names"></ol>
+      <p><button id="fMore" type="button">Find more</button> <span id="fNote" class="muted"></span></p>
+    </div>
+
+    <h3 id="relay" class="subhead">Relay planner: more than 8 upgrades</h3>
+    <p class="sub">A chain of new characters can take an item as far as you want without breaking it: each one makes only the upgrades its own rolls get right, then hands the item to the next. Enter the item, its current quality and the quality you want.</p>
+    <form id="rForm" class="finderForm">
+      <label>Item
+        <input id="rItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <label>Current quality
+        <input id="rFrom" type="number" min="1" max="65535" value="1" required>
+      </label>
+      <label>Target quality
+        <input id="rTo" type="number" min="2" max="65535" value="20" required>
+      </label>
+      <button id="rGo" type="submit" class="primary">Plan</button>
+    </form>
+    <div id="rStatus" class="status" role="status" hidden><span class="spin"></span><span id="rStatusText"></span></div>
+    <div id="rError" class="error" role="alert" hidden></div>
+    <div id="rResult" hidden>
+      <p id="rSummary" class="summary"></p>
+      <ol id="rPlan" class="relayPlan"></ol>
+    </div>
+
+    <div class="notes">
+      <h3>Before you create the characters</h3>
+      <ul>
+        <li><b>The case of the name is saved.</b> The game keeps the name exactly as you type it, with its upper and lower case letters, even when the name box or the game shows it in capitals. <code>FazI</code> and <code>fazi</code> are different names with different rolls, so type it exactly as listed. (Only the file name is lowercase.)</li>
+        <li><b>Every upgrade must be made by the character listed for it.</b> Each roll comes from the character making that upgrade, so an upgrade made by anyone else is a different roll that the list does not cover. With a relay plan, go in order: each character makes only its own listed upgrades, puts the item in a chest, and the next character takes it out and continues.</li>
+        <li><b>Use new characters.</b> A name only works for the first item of this kind that character upgrades: once it has made an upgrade, the game stores a different roll for that item and level, so a second copy of the same item won't follow the list. The characters must never have upgraded this item type at the Forge of Potential before.</li>
+        <li><b>Unlock the item's recipe on each new character first.</b> A new character does not know the item's base recipe yet. It needs to encounter the workbench (crafting station) the item is crafted at and register every item that is required to craft it. Bring the materials for its upgrades too.</li>
+        <li><b>Use an item that has not been upgraded at the Forge of Potential yet.</b> If it was upgraded before the update, enter the level it has now. If it has already been upgraded on this update, this won't work for it. (This page is based on Valheim 1.0.20.)</li>
+        <li><b>Stop after the last upgrade listed.</b> With a name from the finder that is the 8th, and a 9th attempt would break the item. In a relay plan, each character stops after its own levels.</li>
+        <li><b>Want your own "Crafted by:" name?</b> The item shows the character that made its last upgrade, so in a relay plan that is the last character in the list. For a custom name, let a character with that name make the last upgrade. That roll comes from that character's name, not from the list, so check it first: in the <a href="#predictor">Upgrade predictor</a> tab, enter the item, the quality it has before that upgrade, and the custom name. If its first step works, the upgrade is safe. If it would break, stop a level or more earlier and check the custom name from there instead. This assumes a new character with that name, one that has not upgraded this item type at the Forge of Potential yet.</li>
+        <li><b>Each roll belongs to a level, not to the starting quality.</b> A name found for, say, quality 3 to 11 also works for any part of that range, such as 6 to 11, because the rolls for levels 7 to 11 are the same ones. Starting below the quality you searched for is not covered: those lower levels were never checked.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="predictor" class="panel" role="tabpanel" aria-labelledby="tab-predictor" hidden>
+    <h2>Upgrade predictor</h2>
+    <p class="sub">Drop a character file to see, for every upgradable item in its inventory, how many upgrades it can take at the Forge of Potential before it breaks. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and the file is never uploaded.</p>
+    <label id="uDrop" class="drop" tabindex="0">
+      <input id="uFile" type="file" accept=".fch,.old,.new" hidden>
+      <strong>Drop your <code>.fch</code> file here</strong>
+      <span>or click to choose one</span>
+    </label>
+    <div data-where></div>
+    <p class="sub or">Or predict a single item without a file, as a new character with the name you enter. A new character has no saved seeds, so every roll comes from the name.</p>
+    <form id="uForm" class="finderForm">
+      <label>Item
+        <input id="uItem" list="fItems" placeholder="e.g. Staff of Protection" autocomplete="off" spellcheck="false" required>
+      </label>
+      <label>Current quality
+        <input id="uQuality" type="number" min="1" max="65535" value="1" required>
+      </label>
+      <label>Character name
+        <input id="uName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false" required>
+      </label>
+      <button id="uGo" type="submit" class="primary">Predict</button>
+    </form>
+    <ul class="caveats">
+      <li>The item must not have been upgraded at the Forge of Potential before.</li>
+      <li>The character must not have upgraded this item type at the Forge of Potential before, with any copy of it. If it has, drop its character file above instead: that uses the rolls stored in the file.</li>
+    </ul>
+    <div id="uStatus" class="status" role="status" hidden><span class="spin"></span><span id="uStatusText"></span></div>
+    <div id="uError" class="error" role="alert" hidden></div>
+    <div id="uResult" hidden>
+      <p id="uSummary" class="summary"></p>
+      <ul id="uItems" class="predList"></ul>
+    </div>
+    <div class="notes">
+      <h3>How to read it</h3>
+      <ul>
+        <li>The roll for an upgrade comes from the character's name the first time it upgrades that item to that level, and from a stored seed in the file after that. The prediction uses whichever the file says applies, so it is exact for the next attempts of this character.</li>
+        <li>Each item is predicted as if it were the first of its kind you upgrade. With two copies of the same item, the second one continues from the seeds the first leaves behind, so its path differs.</li>
+        <li>An attempt that is not a success breaks the item, so each path ends with a break. You can stop before it: the path shows how far you would get.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cost" class="panel" role="tabpanel" aria-labelledby="tab-cost" hidden>
+    <h2>Upgrade cost</h2>
+    <p class="sub">What one character really pays to get an item to a quality at the Forge of Potential, without any name tricks. It crafts the item, upgrades it at its crafting station as far as that station goes, then tries the Forge. Every failed attempt breaks the item, so it crafts a new copy and starts again until one gets there. The rolls are that character's own, so the totals are exact for it, not an average.</p>
+    <form id="cForm" class="finderForm">
+      <label>Item
+        <input id="cItem" list="cItems" placeholder="e.g. Fenris Hood" autocomplete="off" spellcheck="false" required>
+      </label>
+      <datalist id="cItems"></datalist>
+      <label>Target quality
+        <input id="cTarget" type="number" min="2" max="65535" value="10" required>
+      </label>
+      <label>Character name
+        <input id="cName" placeholder="exactly as typed in game" autocomplete="off" spellcheck="false">
+      </label>
+      <label id="cDrop" class="drop dropSmall" tabindex="0">
+        <input id="cFile" type="file" accept=".fch,.old,.new" hidden>
+        <strong id="cDropText">Or drop the character's <code>.fch</code> file here</strong>
+        <span id="cDropHint">or click to choose one; its name and saved rolls are used instead of the name above</span>
+      </label>
+      <div data-where></div>
+      <div class="formButtons">
+        <button id="cGo" type="submit" class="primary">Calculate</button>
+        <button id="cClearFile" type="button" hidden>Use the name instead</button>
+      </div>
+    </form>
+    <div id="cStatus" class="status" role="status" hidden><span class="spin"></span><span id="cStatusText"></span></div>
+    <div id="cError" class="error" role="alert" hidden></div>
+    <div id="cResult" hidden>
+      <p id="cSummary" class="summary"></p>
+      <ul id="cFacts" class="caveats"></ul>
+      <div class="tableWrap">
+        <table class="costTable">
+          <thead><tr><th>Ingredient</th><th>Spent</th><th>Refunded</th><th>Net</th></tr></thead>
+          <tbody id="cRows"></tbody>
+        </table>
+      </div>
+      <details class="path" id="cCopies"><summary>Every copy</summary>
+        <div class="tableWrap"><table class="costTable"><thead><tr><th>Got to quality</th><th>Copies</th></tr></thead><tbody id="cHist"></tbody></table></div>
+        <p><button id="cDownload" type="button">Download every copy (.txt)</button> <span id="cListNote" class="muted"></span></p>
+        <pre id="cList" class="copyList"></pre>
+      </details>
+    </div>
+    <div class="notes">
+      <h3>How it counts</h3>
+      <ul>
+        <li><b>A name or a file.</b> With a name, the character is new and every roll comes from the name. With a character file, its name and the rolls already stored in it are used, so it is exact for that character as it is now.</li>
+        <li><b>Crafting and station upgrades</b> use the game's own amounts. From quality 4 on, a level counts as 4 steps plus half a step per level above 4, so the upgrade to 4 costs more than the one to 3.</li>
+        <li><b>Each copy goes to the highest quality its station can reach first.</b> A station only gets one level per kind of extension, so some items stop below their max quality there (Deep North gear stops at 3).</li>
+        <li><b>Every Forge attempt costs one Idol</b>, success or failure, and Idols are never refunded. The station materials are not used at the Forge.</li>
+        <li><b>A break refunds 35%</b>, rounded up, of each refundable ingredient, counted from its craft amount and its per-level amount. The per-level amount is what the wiki lists as that ingredient's upgrade cost from quality 1 to 2. For an item that breaks at quality <i>level</i> (on its way to <i>level</i>&nbsp;+&nbsp;1):
+          <div class="formula">refund = ⌈ 0.35 × ( craft + ⌊ ( ⌊2<sup>min(2, level − 2)</sup>⌋ + (max(4, level) − 4) / 2 ) × per_level ⌋ ) ⌉
+            <span>level is the item's quality when it broke, craft is the ingredient's craft amount, per_level its upgrade cost from quality 1 to 2. ⌈ ⌉ rounds up, ⌊ ⌋ rounds down.</span></div>
+          For example, a Fenris Hood (20 Fenris Hair to craft, 5 per level) breaking at quality 5 returns ⌈ 0.35 × (20 + ⌊4.5 × 5⌋) ⌉ = ⌈ 0.35 × 42 ⌉ = 15 Fenris Hair. Rounding up means single ingredients, like a trophy or a mould, come back every time (except the staffs' moulds, below).</li>
+        <li><b>Deep North gear and staffs are crafted as a cast.</b> The finished item's own recipe is upgrade-only, so a new copy is crafted as a cast (using up its mould) and then cooked into the item in the Frost Foundry, which burns 5 Liquid Frost per cast. A copy therefore costs the cast's ingredients plus 5 Liquid Frost, and Liquid Frost is never refunded. Upgrades and break refunds use the finished item's upgrade recipe, which repeats the cast's ingredients.</li>
+        <li><b>Weapons made from another weapon count that weapon's whole recipe.</b> The Frostfire and Thunderblood weapons are made from a Nord weapon, and the Ashlands variants (Wound, Storm and Root Rippers and Fangs, the Bleeding, Primal, Scourging and Thundering weapons, Bloodgeon, Storm Star, Klossen and others) from their base weapon. Each copy uses up a whole base weapon, so the tool lists what it takes to craft one instead: a Frostfire Sword shows the Nord Sword's Bloodgold, mould, Timberwood and Liquid Frost, not "1 Nord Sword". Crafting takes the first matching base weapon in your inventory, whatever its quality, so carry only the one you mean to use.</li>
+        <li><b>Never refunded:</b> the Idols, Liquid Frost, a base weapon and everything crafted into it, the essence or gem of a variant (Frostfire and Thunderblood Essence, Bloodstone, Iolite, Jade), and anything the upgrade recipe leaves out (below). Only the remaining ingredients, like the metal, come back in part. The result lists what is never refunded for the chosen item.</li>
+        <li><b>The staffs never get their mould back.</b> For Northern Vengeance, Spirit Caller, Lightning Strike and Echo Spike, the upgrade recipe leaves out the mould that the cast uses up, while the Deep North armor and weapons list theirs. So a broken staff refunds its other ingredients but never the mould. That looks like a game bug, and Nord Knucklechains have a similar one: their cast takes 2 Long Claws, but their upgrade recipe lists 10 Timberwood instead, so a break never returns claws but does return Timberwood the craft never used.</li>
+        <li><b>Keep space in your inventory for the refund.</b> It goes straight into the inventory: each ingredient first tops up the stacks you already have, and whatever is left needs a free slot. If there is none, the game drops only a single item of it on the ground and the rest is lost; an ingredient that does not stack is lost completely. So keep a free slot for each refundable ingredient, or partial stacks with room for the refund. This tool assumes every refund arrives.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Built from the game's own achievement rules (<span id="game">Valheim 1.0.16</span>). Source and command-line version on
+  <a href="https://github.com/Melichor/ValheimSaveParser">GitHub</a>. Not affiliated with Iron Gate.</p>
+</footer>
+
+<!-- the help under every place that asks for a .fch file; web/page.js copies it into each [data-where] -->
+<template id="whereHelp">
+  <details class="where">
+    <summary>Where is my character file?</summary>
+    <p><b>Local saves</b> (Steam Cloud off) are in a <code>characters_local</code> folder:</p>
+    <p><b>Windows:</b> <code>%USERPROFILE%\AppData\LocalLow\IronGate\Valheim\characters_local</code><br>
+       <b>Linux:</b> <code>~/.config/unity3d/IronGate/Valheim/characters_local</code></p>
+    <p><b>Steam Cloud saves</b> are kept by Steam, not in the game's own folder:</p>
+    <p><code>&lt;Steam folder&gt;/userdata/&lt;your Steam ID number&gt;/892970/remote/characters</code></p>
+    <ul>
+      <li><b>Steam folder:</b> <code>C:\Program Files (x86)\Steam</code> on Windows; <code>~/.steam/steam</code> or <code>~/.local/share/Steam</code> on Linux and Steam Deck (Debian may use <code>~/.steam/debian-installation</code>).</li>
+      <li><b>Steam ID number:</b> the numeric folder inside <code>userdata</code>. If there are several, take the most recently modified one.</li>
+      <li><b>Shortcut:</b> in Steam, right-click Valheim → Manage → Browse local files, then go up three folders to the Steam folder.</li>
+      <li><b>Tip:</b> once you are in the <code>userdata</code> folder, search it for your character's name or for <code>892970</code>. That finds the right folder and file straight away.</li>
+    </ul>
+    <p>The file is named after your character, e.g. <code>Ragnar.fch</code>. Ignore the <code>.fch.old</code> and <code>_backup_</code> copies; use the plain <code>.fch</code> file.</p>
+  </details>
+</template>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
+<script src="web/page.js"></script>
+<script src="web/app.js"></script>
+<script src="web/finder.js"></script>
+</body>
+</html>
