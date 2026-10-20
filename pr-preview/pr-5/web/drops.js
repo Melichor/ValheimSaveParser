@@ -28,7 +28,7 @@
   }
 
   function startWorker() {
-    worker = new Worker("web/drops-worker.js");
+    worker = new Worker("web/drops-worker.js?v=e607e5d");
     worker.onmessage = (e) => show(e.data);
     worker.onerror = () => fail("Could not start the Python runtime.");
     return worker;
@@ -70,13 +70,11 @@
 
   // ---------- the table ----------
 
-  const percent = (p) => (Math.min(p, 1) * 100).toFixed(2).replace(/\.?0+$/, "") + "%";
+  const percent = (p) => (p * 100).toFixed(2).replace(/\.?0+$/, "") + "%";
   const kills = (n) => `${n} kill${n === 1 ? "" : "s"}`;
 
+  // every row is a drop with a counter (30% or less): the script leaves out the ones every kill rolls for anew
   function nextCell(r) {
-    if (r.rule === "always") return el("td", "next", "every kill");
-    if (r.rule === "never") return el("td", "next quiet", "never");
-    if (r.rule === "roll") return el("td", "next quiet", "independent roll");
     if (r.next === null || r.next === undefined) {
       const td = el("td", "next quiet", "not started");
       td.append(el("span", "within", `within ${kills(r.within)}`));
@@ -100,10 +98,9 @@
     return td;
   }
 
-  // soonest first: counters by the kills left, then the ones not started yet, then drops that come every kill, then rolls
+  // soonest first: by the kills left, then the counters not started yet, by how soon their first drop can come at the latest
   function soonest(a, b) {
-    const rank = (r) => r.rule === "counter" ? (r.next != null ? r.next : 1000 + r.within)
-      : r.rule === "always" ? 1e6 : r.rule === "roll" ? 2e6 - r.chance : 3e6;
+    const rank = (r) => (r.next != null ? r.next : 1000 + r.within);
     return rank(a) - rank(b);
   }
 
@@ -118,8 +115,8 @@
         (r.saved ? "" : ". None yet: it has not killed anything with a rare drop since Valheim 1.0.20, or not saved since");
     const notes = [];
     for (const why of r.unmatched) notes.push(why[0].toUpperCase() + why.slice(1) + ".");   // "no drop matches …", or a star level it never has
-    if (r.always) notes.push(`${r.always} drop${r.always === 1 ? " that comes" : "s that come"} with every kill ` +
-      `${r.always === 1 ? "is" : "are"} not shown: there is nothing to count for ${r.always === 1 ? "it" : "them"}.`);
+    if (r.rolled) notes.push(`${r.rolled} drop${r.rolled === 1 ? "" : "s"} above 30% ${r.rolled === 1 ? "is" : "are"} not shown: ` +
+      `every kill rolls for ${r.rolled === 1 ? "it" : "them"} anew, with no counter.`);
     if (r.unknown.length) notes.push(`${r.unknown.length} saved counter${r.unknown.length === 1 ? " matches" : "s match"} no drop ` +
       "the page knows (a newer game version or a mod?).");
     D.note.textContent = notes.join(" ");
@@ -140,7 +137,7 @@
       drop.append(el("strong", "", row.itemName), el("span", "from", `${row.creatureName} · ${row.stars}★`), code);
       line.append(drop, el("td", "num", percent(row.chance)));
       if (withFile) line.append(nextCell(row));
-      line.append(el("td", "num", row.longestGap ? String(row.longestGap) : "–"), sharedCell(row.shared));
+      line.append(el("td", "num", String(row.longestGap)), sharedCell(row.shared));
       return line;
     }));
     if (!rows.length) {

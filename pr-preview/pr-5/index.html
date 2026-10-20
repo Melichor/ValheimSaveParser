@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Save Parser</title>
 <meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character names and costs for upgrades at the Forge of Potential, and how many kills each rare creature drop is away. Everything runs in your browser.">
-<link rel="stylesheet" href="web/style.css">
+<link rel="stylesheet" href="web/style.css?v=e607e5d">
 </head>
 <body>
 <header class="top">
@@ -236,9 +236,9 @@
       <button id="dClearFile" type="button" hidden>Remove the file</button>
     </form>
     <ul class="caveats">
-      <li>Part of a name is enough: <code>trophy</code> lists every trophy, <code>greyd.troph</code> the Greydwarf trophies, <code>.coins</code> every Coins drop. A single word matches the creature or the item, <code>creature.item</code> both, at every star level the creature can have (a boss has none). Drops that come with every kill are left out.</li>
+      <li>Part of a name is enough: <code>trophy</code> lists every trophy, <code>greyd.troph</code> the Greydwarf trophies, <code>.coins</code> every Coins drop. A single word matches the creature or the item, <code>creature.item</code> both, at every star level the creature can have (a boss has none). Only drops with a counter are listed: 30% or less after stars. Above that every kill is its own roll, so those are left out.</li>
       <li>For one star level, put it in the middle (<code>Greydwarf.1.TrophyGreydwarf</code>), or at the end for every drop at that level (<code>Wolf.2</code>). Names are prefab names or display names (<code>krigen</code>), in any case; a full name matches just that one, and <code>*</code> stands for anything. Separate several filters with commas.</li>
-      <li>Without a filter you get every counter saved in the file; without a file, only the chances and how each drop is rolled.</li>
+      <li>Without a filter you get every counter saved in the file; without a file, only the chances and the longest gaps.</li>
     </ul>
     <div id="dStatus" class="status" role="status" hidden><span class="spin"></span><span id="dStatusText"></span></div>
     <div id="dError" class="error" role="alert" hidden></div>
@@ -301,9 +301,9 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
-<script src="web/page.js"></script>
-<script src="web/app.js"></script>
-<script src="web/finder.js"></script>
-<script src="web/drops.js"></script>
+<script src="web/page.js?v=e607e5d"></script>
+<script src="web/app.js?v=e607e5d"></script>
+<script src="web/finder.js?v=e607e5d"></script>
+<script src="web/drops.js?v=e607e5d"></script>
 </body>
 </html>

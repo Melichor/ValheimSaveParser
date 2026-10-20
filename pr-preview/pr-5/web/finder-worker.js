@@ -16,7 +16,7 @@ let ready = null;
 let cost = null;     // the upgrade_cost module, imported the first time the cost tool is used
 
 const fetchText = (path) => fetch(path).then((r) => {
-  if (!r.ok) throw new Error("Could not load " + path.replace("../", ""));
+  if (!r.ok) throw new Error("Could not load " + path.replace("../", "").split("?")[0]);
   return r.text();
 });
 
@@ -24,7 +24,7 @@ function load() {
   if (!ready) {
     ready = (async () => {
       const [py, oracle, costSource] = await Promise.all([
-        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py"), fetchText("../upgrade_cost.py"),
+        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py?v=e607e5d"), fetchText("../upgrade_cost.py?v=e607e5d"),
       ]);
       py.FS.writeFile("upgrade_oracle.py", oracle);
       py.FS.writeFile("upgrade_cost.py", costSource);   // imports upgrade_oracle, so both sit side by side

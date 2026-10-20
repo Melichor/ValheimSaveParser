@@ -24,7 +24,8 @@ A filter is creature.item (at every star level the creature can have), creature.
 drop at N stars) or a single word (the creature or the item). A name matches anywhere in the prefab name (Greydwarf,
 TrophyGreydwarf) or the display name ('Greydwarf trophy'), in any case, so a part of it is enough: greyd.troph. A full
 name matches just that one. An empty part or * is anything (.coins, Wolf.*), and * also stands for any run of letters
-(Mold*Legs). Drops that come with every kill are left out of a filter's results: there is nothing to count for them.
+(Mold*Legs). A filter lists only the drops that use a counter (30% or less after stars); a drop above 30% at some star
+level is left out at that level, as every kill rolls for it anew.
 
     python3 drop_counters.py Character.fch                                 # every counter saved in the character
     python3 drop_counters.py Character.fch Greydwarf.TrophyGreydwarf       # one drop at every star level
@@ -32,7 +33,7 @@ name matches just that one. An empty part or * is anything (.coins, Wolf.*), and
     python3 drop_counters.py Character.fch trophy                          # every trophy
     python3 drop_counters.py Character.fch krigen.mold .coins              # parts of names, several filters
     python3 drop_counters.py A.fch B.fch Seeker.TrophySeeker               # several characters
-    python3 drop_counters.py 'Troll.*'                                     # no save: only the chances and the rules
+    python3 drop_counters.py 'Seeker.*'                                    # no save: only the chances and the gaps
 """
 import argparse
 import fnmatch
@@ -1151,9 +1152,9 @@ def matching(pattern, names):
 
 
 def select(filters):
-    """The rows the filters pick, in filter order and without repeats; how many drops they picked that come with every
-    kill (left out: there is nothing to count for them); and, for each filter that picked nothing, why."""
-    picked, always, unmatched = {}, set(), []
+    """The rows the filters pick, in filter order and without repeats; how many drops they picked that have no counter
+    (left out: above 30% every kill is its own roll); and, for each filter that picked nothing, why."""
+    picked, rolled, unmatched = {}, set(), []
     creature_names = {c: DROPS[c][0] for c in DROPS}
     for text in filters:
         creature_pat, levels, item_pat, either = parse_filter(text)
@@ -1168,13 +1169,13 @@ def select(filters):
             if wanted(row):
                 found = True
                 key = (row.creature, row.stars, row.item, row.chance)
-                if row.chance >= 1:
-                    always.add(key)
+                if row.key is None:
+                    rolled.add(key)
                 else:
                     picked.setdefault(key, row)
         if not found:
             unmatched.append(nothing_found(text, levels, wanted))
-    return list(picked.values()), len(always), unmatched
+    return list(picked.values()), len(rolled), unmatched
 
 
 def nothing_found(text, levels, wanted):
@@ -1195,21 +1196,10 @@ def nothing_found(text, levels, wanted):
 # ---------------------------------------------------------------------------------------------------------------
 
 def percent(p):
-    # stars can take a chance past 1 (a 50% drop at 2 stars is 2.0); the game then drops it every time
-    return f"{min(p, 1) * 100:.2f}".rstrip("0").rstrip(".") + "%"
-
-
-def rule(row):
-    if row.chance >= 1:
-        return "always"
-    if row.chance <= 0:
-        return "never"
-    return "counter" if row.key is not None else "roll"
+    return f"{p * 100:.2f}".rstrip("0").rstrip(".") + "%"
 
 
 def next_drop(row, counters):
-    if row.key is None:
-        return "every kill" if row.chance >= 1 else "-"
     if row.key not in counters:
         return f"not started (within {first_drop_within(row.chance)} kills)"
     n = max(counters[row.key], 1)
@@ -1236,14 +1226,13 @@ def shared_with(row, index, verbose):
 
 
 def print_table(rows, counters, index, verbose):
-    head = ["drop", "chance", "rule"] + (["next drop"] if counters is not None else []) + ["longest gap", "shared with"]
+    head = ["drop", "chance"] + (["next drop"] if counters is not None else []) + ["longest gap", "shared with"]
     lines = []
     for row in rows:
-        gap = str(first_drop_within(row.chance) + 1) if row.key is not None else "-"
-        cells = [label(row), percent(row.chance), rule(row)]
+        cells = [label(row), percent(row.chance)]
         if counters is not None:
             cells.append(next_drop(row, counters))
-        lines.append(cells + [gap, shared_with(row, index, verbose) if row.key is not None else ""])
+        lines.append(cells + [str(first_drop_within(row.chance) + 1), shared_with(row, index, verbose)])
     widths = [max(len(x[i]) for x in [head] + lines) for i in range(len(head))]
     right = {1, len(head) - 2}                  # chance and longest gap are numbers
     for cells in [head] + lines:
@@ -1285,15 +1274,12 @@ def split_filters(text):
 
 def row_json(row, counters, index):
     out = {"drop": label(row), "creature": row.creature, "creatureName": DROPS[row.creature][0], "stars": row.stars,
-           "item": row.item, "itemName": ITEM_NAMES.get(row.item, row.item), "chance": min(row.chance, 1),
-           "rule": rule(row)}
-    if row.key is not None:
-        out["within"] = first_drop_within(row.chance)
-        out["longestGap"] = out["within"] + 1
-        out["shared"] = sharing(row, index)
-        if counters is not None:
-            saved = counters.get(row.key)
-            out["next"] = None if saved is None else max(saved, 1)    # None: not started yet
+           "item": row.item, "itemName": ITEM_NAMES.get(row.item, row.item), "chance": row.chance,
+           "within": first_drop_within(row.chance), "longestGap": first_drop_within(row.chance) + 1,
+           "shared": sharing(row, index)}
+    if counters is not None:
+        saved = counters.get(row.key)
+        out["next"] = None if saved is None else max(saved, 1)        # None: not started yet
     return out
 
 
@@ -1302,7 +1288,7 @@ def web_drops(filters="", data=None):
     filter. `data` is the save's bytes (a Uint8Array from the page, or bytes), or None to show only the rules."""
     try:
         wanted = split_filters(filters)
-        rows, always, unmatched = select(wanted)
+        rows, rolled, unmatched = select(wanted)
         name = counters = None
         if data is not None:
             name, counters = load(bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data))
@@ -1313,7 +1299,7 @@ def web_drops(filters="", data=None):
     if counters is not None and not wanted:
         rows, unknown = saved_rows(counters, index)
     return json.dumps({"character": name, "saved": None if counters is None else len(counters), "filtered": bool(wanted),
-                       "unmatched": unmatched, "always": always, "rows": [row_json(r, counters, index) for r in rows],
+                       "unmatched": unmatched, "rolled": rolled, "rows": [row_json(r, counters, index) for r in rows],
                        "unknown": [[k, counters[k]] for k in unknown]})
 
 
@@ -1330,11 +1316,11 @@ def main():
     saves = [x for x in args.inputs if x.lower().endswith(".fch") or os.path.isfile(x)]
     filters = [x for x in args.inputs if x not in saves]
     try:
-        rows, always, unmatched = select(filters)
+        rows, rolled, unmatched = select(filters)
     except ValueError as e:
         ap.error(str(e))
-    left_out = f"\n{always} drop{'s' if always != 1 else ''} that come{'' if always != 1 else 's'} with every kill " \
-        "left out." if always else ""
+    left_out = f"\n{rolled} drop{'s' if rolled != 1 else ''} above 30% left out: every kill rolls for " \
+        f"{'them' if rolled != 1 else 'it'} anew, with no counter." if rolled else ""
     status = 0
 
     def fail(message):
