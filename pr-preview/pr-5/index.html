@@ -236,7 +236,7 @@
       <button id="dClearFile" type="button" hidden>Remove the file</button>
     </form>
     <ul class="caveats">
-      <li>Part of a name is enough: <code>trophy</code> lists every trophy, <code>greyd.troph</code> the Greydwarf trophies, <code>.coins</code> every Coins drop. A single word matches the creature or the item, <code>creature.item</code> both, at 0, 1 and 2 stars.</li>
+      <li>Part of a name is enough: <code>trophy</code> lists every trophy, <code>greyd.troph</code> the Greydwarf trophies, <code>.coins</code> every Coins drop. A single word matches the creature or the item, <code>creature.item</code> both, at every star level the creature can have (a boss has none). Drops that come with every kill are left out.</li>
       <li>For one star level, put it in the middle (<code>Greydwarf.1.TrophyGreydwarf</code>), or at the end for every drop at that level (<code>Wolf.2</code>). Names are prefab names or display names (<code>krigen</code>), in any case; a full name matches just that one, and <code>*</code> stands for anything. Separate several filters with commas.</li>
       <li>Without a filter you get every counter saved in the file; without a file, only the chances and how each drop is rolled.</li>
     </ul>
@@ -263,7 +263,7 @@
     <div class="notes">
       <h3>How the counters work</h3>
       <ul>
-        <li><b>Stars double the chance:</b> ×2 at one star, ×4 at two. A few drops ignore stars, such as Dvergr Soft Tissue and the Jotun Witch's moulds.</li>
+        <li><b>Stars double the chance:</b> ×2 at one star, ×4 at two. A few drops ignore stars, such as Dvergr Soft Tissue and the Jotun Witch's moulds. A creature only gets stars from the spawners that make it, so some never have any: the bosses, and creatures like Lox, Deathsquitos, Serpents and Stone Golems. The page only lists the star levels a creature can have.</li>
         <li><b>Above 30% it is luck.</b> Every kill is an independent roll, with no counter.</li>
         <li><b>At 30% or less there is a counter.</b> With a chance <i>p</i>, the first drop comes within ⌊2&thinsp;/&thinsp;<i>p</i>⌋ kills, and after each drop the next one comes after 1 to ⌊2&thinsp;/&thinsp;<i>p</i>⌋&nbsp;+&nbsp;1 kills (the longest gap). Over many kills that is about the chance shown.</li>
         <li><b>“In N kills”</b> means the N-th kill from now drops it. Every kill of a creature that uses the counter counts it down.</li>

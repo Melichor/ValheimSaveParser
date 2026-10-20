@@ -117,7 +117,9 @@
       : `${r.character}: ${r.saved} drop counter${r.saved === 1 ? "" : "s"} saved` +
         (r.saved ? "" : ". None yet: it has not killed anything with a rare drop since Valheim 1.0.20, or not saved since");
     const notes = [];
-    if (r.unmatched.length) notes.push(`No drop matches ${r.unmatched.map((f) => `“${f}”`).join(", ")}.`);
+    for (const why of r.unmatched) notes.push(why[0].toUpperCase() + why.slice(1) + ".");   // "no drop matches …", or a star level it never has
+    if (r.always) notes.push(`${r.always} drop${r.always === 1 ? " that comes" : "s that come"} with every kill ` +
+      `${r.always === 1 ? "is" : "are"} not shown: there is nothing to count for ${r.always === 1 ? "it" : "them"}.`);
     if (r.unknown.length) notes.push(`${r.unknown.length} saved counter${r.unknown.length === 1 ? " matches" : "s match"} no drop ` +
       "the page knows (a newer game version or a mod?).");
     D.note.textContent = notes.join(" ");
