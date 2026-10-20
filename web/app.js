@@ -1,6 +1,6 @@
 "use strict";
 
-/* Valheim Achievement Hunter web page.
+/* The Valheim Achievement Hunter tab of the page.
    The analysis is done by achi_hunter.py itself, run in the browser with Pyodide (Python compiled to WebAssembly).
    This file only loads the runtime, hands it the dropped file and draws the JSON that the script returns. */
 
