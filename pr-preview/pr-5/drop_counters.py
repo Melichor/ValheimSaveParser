@@ -255,12 +255,6 @@ DROPS = {
         ('Coins', 1, False),
         ('TrophyDvergr', 0.05, True),
     ]),
-    'DvergerTest': ('DvergerTest', 0, [
-        ('Coins', 0.25, True),
-        ('BlackMetalScrap', 1, True),
-        ('Pukeberries', 1, True),
-        ('TrophyGoblinShaman', 0.1, False),
-    ]),
     'Eikthyr': ('Eikthyr', 0, [
         ('TrophyEikthyr', 1, True),
         ('HardAntler', 1, False),
@@ -610,10 +604,6 @@ DROPS = {
     'Tick': ('Tick', 2, [
         ('GiantBloodSack', 1, False),
         ('TrophyTick', 0.05, True),
-    ]),
-    'TrainingDummy': ('TrainingDummy', 0, [
-        ('Entrails', 0.5, True),
-        ('TrophyDraugr', 0.1, True),
     ]),
     'Troll': ('Troll', 2, [
         ('Coins', 1, True),
@@ -1243,7 +1233,7 @@ def saved_rows(counters, index):
     """One row per saved counter, and the keys no drop uses.
 
     The row is the counter's most typical user (a drop that scales with stars, then the shortest creature name: Goblin
-    rather than DvergerTest); the other users are listed as sharing it."""
+    rather than GoblinArcher); the other users are listed as sharing it."""
     rows, unknown = [], []
     for key in counters:
         users = index.get(key)

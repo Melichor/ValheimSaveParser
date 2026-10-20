@@ -15,7 +15,7 @@ function load() {
     ready = (async () => {
       const [py, source] = await Promise.all([
         loadPyodide({ indexURL: PYODIDE_URL }),
-        fetch("../drop_counters.py?v=831ff00").then((r) => {
+        fetch("../drop_counters.py?v=e0b938b").then((r) => {
           if (!r.ok) throw new Error("Could not load drop_counters.py");
           return r.text();
         }),
