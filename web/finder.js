@@ -4,8 +4,8 @@
    in a row on an item, and the relay planner for a chain of characters that goes further. Nothing is uploaded and no
    save file is needed.
 
-   The predictor at the bottom of the page takes a dropped character file instead and asks the same worker what happens
-   to every upgradable item in its inventory. */
+   The predictor, in its own tab, takes a dropped character file instead and asks the same worker what happens to every
+   upgradable item in its inventory. The cost tool, in the last tab, uses the same worker too. */
 
 const byId = (id) => document.getElementById(id);
 const F = {
