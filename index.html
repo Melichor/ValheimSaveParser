@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Save Parser</title>
 <meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character names and costs for upgrades at the Forge of Potential, and how many kills each rare creature drop is away. Everything runs in your browser.">
-<link rel="stylesheet" href="web/style.css?v=e1a070e">
+<link rel="stylesheet" href="web/style.css?v=7baa23c">
 </head>
 <body>
 <header class="top">
@@ -103,6 +103,7 @@
     <div class="notes">
       <h3>Before you create the characters</h3>
       <ul>
+        <li class="warn"><b>DON'T GO PAST 10K TOTAL DAMAGE.</b> When an item's damage of all types added together comes to more than 10,000, the game marks it as a cheated item the next time it loads, and the mark stays even if the item is later brought back below that (a Club, for example, reaches it at quality 1,666).</li>
         <li><b>The case of the name is saved.</b> The game keeps the name exactly as you type it, with its upper and lower case letters, even when the name box or the game shows it in capitals. <code>FazI</code> and <code>fazi</code> are different names with different rolls, so type it exactly as listed. (Only the file name is lowercase.)</li>
         <li><b>Every upgrade must be made by the character listed for it.</b> Each roll comes from the character making that upgrade, so an upgrade made by anyone else is a different roll that the list does not cover. With a relay plan, go in order: each character makes only its own listed upgrades, puts the item in a chest, and the next character takes it out and continues.</li>
         <li><b>Use new characters.</b> A name only works for the first item of this kind that character upgrades: once it has made an upgrade, the game stores a different roll for that item and level, so a second copy of the same item won't follow the list. The characters must never have upgraded this item type at the Forge of Potential before.</li>
@@ -300,9 +301,9 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
-<script src="web/page.js?v=e1a070e"></script>
-<script src="web/app.js?v=e1a070e"></script>
-<script src="web/finder.js?v=e1a070e"></script>
-<script src="web/drops.js?v=e1a070e"></script>
+<script src="web/page.js?v=7baa23c"></script>
+<script src="web/app.js?v=7baa23c"></script>
+<script src="web/finder.js?v=7baa23c"></script>
+<script src="web/drops.js?v=7baa23c"></script>
 </body>
 </html>

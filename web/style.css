@@ -176,3 +176,5 @@ button:disabled { opacity: .55; cursor: default; }
 .dropTable .quiet { color: var(--muted); }
 .dropTable .shared { color: var(--muted); font-size: .86rem; min-width: 160px; }
 .dropTable button.more { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; }
+.notes li.warn { color: var(--warn); }
+.notes li.warn b { letter-spacing: .02em; }
