@@ -24,7 +24,7 @@ function load() {
   if (!ready) {
     ready = (async () => {
       const [py, oracle, costSource] = await Promise.all([
-        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py?v=7baa23c"), fetchText("../upgrade_cost.py?v=7baa23c"),
+        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py?v=8c670f1"), fetchText("../upgrade_cost.py?v=8c670f1"),
       ]);
       py.FS.writeFile("upgrade_oracle.py", oracle);
       py.FS.writeFile("upgrade_cost.py", costSource);   // imports upgrade_oracle, so both sit side by side

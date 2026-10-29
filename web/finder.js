@@ -46,7 +46,7 @@ let relaying = false;   // a relay plan is being worked out, so worker errors be
 let predicting = false; // a dropped file is being read, so worker errors belong to the predictor
 
 function startWorker() {
-  worker = new Worker("web/finder-worker.js?v=7baa23c");
+  worker = new Worker("web/finder-worker.js?v=8c670f1");
   worker.onmessage = (e) => handle(e.data);
   worker.onerror = () => fail("Could not start the Python runtime.");
   return worker;
@@ -91,7 +91,7 @@ function handle(msg) {
     predicting = false;
     if (msg.error) return predictFail(msg.error[0].toUpperCase() + msg.error.slice(1) + ".");
     if (msg.type === "predicted") showPrediction(msg);
-    else showPrediction({ character: msg.character, items: [msg.item], manual: true });
+    else showPrediction({ character: msg.character, typedAs: msg.typedAs, items: [msg.item], manual: true });
   } else if (msg.type === "error" || msg.error) {
     fail(msg.error || msg.message);
   } else if (msg.type === "result") {
@@ -226,13 +226,19 @@ function predictItem() {
   (worker || startWorker()).postMessage({ type: "predictItem", item, quality: P.quality.value, name });
 }
 
+// the game's name box changes some names as they are typed or pasted (upgrade_oracle.as_typed): say so
+function typedNote(r) {
+  return r.typedAs != null && r.typedAs !== r.character
+    ? `. Careful: the game's name box saves “${r.character}” as “${r.typedAs}”, which rolls differently` : "";
+}
+
 function showPrediction(r) {
   P.status.hidden = true;
   P.drop.classList.remove("busy");
   P.go.disabled = false;
   P.result.hidden = false;
   P.summary.textContent = r.manual
-    ? `As a new character named “${r.character}” (no saved seeds)`
+    ? `As a new character named “${r.character}” (no saved seeds)` + typedNote(r)
     : `${r.character}: ${r.items.length} upgradable item${r.items.length === 1 ? "" : "s"} in the inventory` +
       ` · ${r.savedSeeds} saved upgrade seed${r.savedSeeds === 1 ? "" : "s"}`;
   P.items.replaceChildren(...(r.items.length ? r.items.map((it) => {
@@ -360,7 +366,7 @@ function showCost(r) {
   C.go.disabled = false;
   C.result.hidden = false;
   const who = r.source === "file" ? `${r.character} (from the file, ${r.savedSeeds} saved seed${r.savedSeeds === 1 ? "" : "s"})`
-    : `a new character named “${r.character}”`;
+    : `a new character named “${r.character}”` + typedNote(r);
   const breaks = r.copies - (r.reached ? 1 : 0);
   C.summary.textContent = r.target <= r.cap
     ? `${r.item} to quality ${r.target} by ${who}: no Forge needed, the station gets it there.`
