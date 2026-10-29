@@ -430,6 +430,7 @@ def web_cost(item, target, name, data=None):
     # every copy's Forge attempts as a compact string, "1" a success and "0" the break: "110" went up twice, then broke
     listed = ["".join("1" if ok else "0" for _, _, ok, _ in c["steps"]) for c in copies]
     return json.dumps({"item": info["name"], "target": target, "character": name, "source": source,
+                       "typedAs": oracle.as_typed(name),
                        "savedSeeds": len(seeds), "station": info["station"], "cap": info["cap"],
                        "maxQuality": info["maxQuality"], "stationMaxLevel": info["stationMaxLevel"],
                        "season": info["season"], "via": info["via"], "notRefunded": info["notRefunded"],

@@ -25,7 +25,6 @@ import argparse
 import json
 import struct
 import sys
-from itertools import islice, product
 
 PROFILE_MIN_VERSION = 46
 PLAYER_DATA_VERSION = 34
@@ -598,33 +597,79 @@ def first_value(seed):
 
 CHARSETS = {
     "letters": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-    "lower": "abcdefghijklmnopqrstuvwxyz",
-    "alnum": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
 }
+NAME_LIMIT = 15                 # the character name box takes at most 15 characters
 
 
-def hashed_names(charset, length):
-    """Every name of that length in order, as (first part, last character, name hash mod 2^32).
+def as_typed(name):
+    """The name the game saves when `name` is typed or pasted into the new-character box.
 
-    The hash runs two lanes, one over the even and one over the odd positions, so everything but the last character is
-    hashed once per 52 names."""
-    last_even = (length - 1) % 2 == 0
-    for prefix in product(charset, repeat=length - 1):
-        a = b = 5381
-        for i, ch in enumerate(prefix):
+    The box is a TextMeshPro input field with the "Name" validation, which checks every character as it is added: the
+    first letter and a letter after a space or hyphen become capitals, a capital that does not follow a lower-case
+    letter, space, apostrophe or hyphen becomes lower case, and anything else that is not a letter is dropped, except
+    single spaces, hyphens and one apostrophe. So "DjCJ" is saved as "DjCj"."""
+    text = ""
+    for ch in name:
+        if len(text) >= NAME_LIMIT:
+            break
+        pos = len(text)
+        c = text[pos - 1] if text else " "
+        c2 = text[-1] if text else " "
+        if ch.isalpha():
+            if ch.islower() and (pos == 0 or c in " -"):
+                ch = ch.upper()
+            elif ch.isupper() and pos > 0 and c not in " '-" and not c.islower():
+                ch = ch.lower()
+            elif ch.isupper() and c2.isupper():
+                continue
+            text += ch
+        elif ch == "'" and c2 not in " '" and "'" not in text:
+            text += ch
+        elif ch == "-" and c.isalpha() and c2 != "-":
+            text += ch
+        elif ch in " -" and pos and c not in " '-" and c2 not in " '-":
+            text += ch
+    return text
+
+
+def hashed_names(charset, length, after=None):
+    """Every name of that length that the game's name box keeps as typed (see as_typed), in order, as
+    (first part, last character, name hash mod 2^32). With `after`, only the names that come after it.
+
+    For names of letters, the box keeps a name when it starts with a capital and every other capital follows a
+    lower-case letter. The hash runs two lanes, one over the even and one over the odd positions, and they are carried
+    from a name's first part to the next character, so each part is hashed once."""
+    order = {ch: i for i, ch in enumerate(charset)}
+    capitals = [ch for ch in charset if ch.isupper()]
+    lower = [ch for ch in charset if ch.islower()]
+    bound = after if after and len(after) == length else None
+
+    def walk(head, a, b, choices, on_bound):
+        i = len(head)
+        floor = order[bound[i]] if on_bound else -1
+        if i == length - 1:
             if i % 2 == 0:
-                a = (((a << 5) + a) ^ ord(ch)) & M32
+                a = ((a << 5) + a) & M32
+                for ch in choices:
+                    if order[ch] > floor:
+                        yield head, ch, ((a ^ ord(ch)) + b * 1566083941) & M32
             else:
-                b = (((b << 5) + b) ^ ord(ch)) & M32
-        head = "".join(prefix)
-        if last_even:
-            a = ((a << 5) + a) & M32
-            for ch in charset:
-                yield head, ch, ((a ^ ord(ch)) + b * 1566083941) & M32
-        else:
-            b = ((b << 5) + b) & M32
-            for ch in charset:
-                yield head, ch, (a + (b ^ ord(ch)) * 1566083941) & M32
+                b = ((b << 5) + b) & M32
+                for ch in choices:
+                    if order[ch] > floor:
+                        yield head, ch, (a + (b ^ ord(ch)) * 1566083941) & M32
+            return
+        for ch in choices:
+            if order[ch] < floor:
+                continue
+            nxt = charset if ch.islower() else lower
+            if i % 2 == 0:
+                yield from walk(head + ch, (((a << 5) + a) ^ ord(ch)) & M32, b, nxt, on_bound and order[ch] == floor)
+            else:
+                yield from walk(head + ch, a, (((b << 5) + b) ^ ord(ch)) & M32, nxt, on_bound and order[ch] == floor)
+
+    if length > 0:
+        yield from walk("", 5381, 5381, capitals, bound is not None)
 
 
 def matches(h, keys, target, copies):
@@ -673,6 +718,8 @@ def reaches(h, first_key, target, copies):
 def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None, copies=1, reach=False):
     """Character names (shortest first) whose rolls give exactly `target` upgrades, then a break (see matches() for copies).
 
+    Only names the game saves exactly as listed are returned (as_typed): "DjCJ" would be saved as "DjCj", a different name.
+
     A fresh character has no saved seeds, so each roll starts from the hash of the name plus the key of the level.
     `after` continues a search: it is the last name of the previous one, and the search resumes with the name after it.
     With reach=True the rule of reaches() is used instead.
@@ -682,13 +729,7 @@ def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tr
     first_key = keys[0]
     found, tried = [], 0
     for length in range(max(min_len, len(after or "")), max_len + 1):
-        names = hashed_names(charset, length)
-        if after and length == len(after):
-            skip = 0
-            for ch in after:
-                skip = skip * len(charset) + charset.index(ch)
-            names = islice(names, skip + 1, None)
-        for head, last, h in names:
+        for head, last, h in hashed_names(charset, length, after):
             tried += 1
             if tried > max_tries:
                 return found, tried - 1, False
@@ -851,8 +892,8 @@ def web_predict_item(item, quality, name):
         prefab = find_item(item)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"character": name, "item": {**predict(prefab, quality, name, {}), "name": UPGRADABLE[prefab],
-                                                   "stack": 1}})
+    return json.dumps({"character": name, "typedAs": as_typed(name),
+                       "item": {**predict(prefab, quality, name, {}), "name": UPGRADABLE[prefab], "stack": 1}})
 
 
 def relay_plan(prefab, start, target, charset=CHARSETS["letters"], max_tries=8_000_000):
@@ -920,7 +961,7 @@ def find_names_command(ap, args):
     except SaveError as e:
         ap.error(str(e))
     maxtries = args.maxtries or (5_000_000 if args.copies == 1 else 200_000_000)
-    names, tried, complete = find_names(prefab, args.quality, args.findnameperupgr, CHARSETS[args.charset],
+    names, tried, complete = find_names(prefab, args.quality, args.findnameperupgr, CHARSETS["letters"],
                                         args.minlen, args.maxlen, args.limit, maxtries, copies=args.copies)
     hits = []
     for n in names:
@@ -939,7 +980,7 @@ def find_names_command(ap, args):
         more = f", the same for copies 2 to {args.copies - 1}, and copy {args.copies} getting past that level"
     print(f"{UPGRADABLE[prefab]} from level {args.quality}: names where copy 1 gets exactly {args.findnameperupgr} "
           f"upgrade{'s' if args.findnameperupgr != 1 else ''} and breaks{more} "
-          f"(a new character, {args.charset}, {tried:,} names tried)")
+          f"(a new character, letters, {tried:,} names tried)")
     for h in hits:
         runs = h["copies"]
         for i, run in enumerate(runs):
@@ -976,8 +1017,6 @@ def main():
                     help="with --findnameperupgr: upgrade N copies of the item one after another with the same character. "
                     "The first N-1 get exactly the wanted upgrades and break; the last one gets past the level where they "
                     "broke (default: 1)")
-    ap.add_argument("--charset", choices=sorted(CHARSETS), default="letters",
-                    help="characters the name search may use, ASCII only (default: letters)")
     ap.add_argument("--minlen", type=int, default=3, help="shortest name to try (the game needs at least 3; default: 3)")
     ap.add_argument("--maxlen", type=int, default=15, help="longest name to try (default: 15)")
     ap.add_argument("--limit", type=int, default=10, help="stop after this many names (default: 10)")
@@ -1017,6 +1056,9 @@ def main():
     else:
         if args.charname is not None:
             print(f"As if the character were named {args.charname!r} (a new character: no saved seeds)")
+            if as_typed(args.charname) != args.charname:
+                print(f"Note: typed or pasted into the game's name box, {args.charname!r} is saved as "
+                      f"{as_typed(args.charname)!r}, which rolls differently")
         else:
             print(f"{save['name']}: {len(save['seeds'])} saved upgrade seed(s)")
         show(results, args.verbose)
