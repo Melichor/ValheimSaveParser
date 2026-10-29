@@ -1,6 +1,6 @@
 # Game data tables
 
-Generated from the installed game (Valheim 1.0.16, Deep North included) by `tools/extract_game_data.py`. Nothing here comes from a wiki.
+Generated from the installed game (Valheim 1.0.21) by `tools/extract_game_data.py`. Nothing here comes from a wiki.
 
 | File | What it is |
 |---|---|
@@ -94,3 +94,10 @@ python3 tools/update_script_biomes.py
 ```
 
 That rewrites the generated `BIOME_*` block in `achi_hunter.py`, which is how the script and the web page know the biome of each item, piece, creature, trophy and fish.
+
+The achievement lists themselves (what has to be crafted, built, killed, found or caught) are rebuilt from the same scan with the game's own rules:
+
+```bash
+python3 tools/update_achievement_lists.py data/raw.json --check   # show what would change
+python3 tools/update_achievement_lists.py data/raw.json           # rewrite the lists in achi_hunter.py
+```

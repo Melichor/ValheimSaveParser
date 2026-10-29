@@ -35,11 +35,13 @@ import sys
 
 
 # ---------------------------------------------------------------------------
-# What each achievement requires, rebuilt from the game's own rules (Valheim 1.0.16, Deep North included).
+# What each achievement requires, rebuilt from the game's own rules (Valheim 1.0.21).
 # The game fills these lists at start-up from its item database, so they are derived here the same way
 # (Achievements.Initialize / ObjectDB in assembly_valheim.dll). Tokens match the keys in the save's stat tables.
 # Regenerate after a game update.
 # ---------------------------------------------------------------------------
+
+# BEGIN GENERATED ACHIEVEMENT LISTS (tools/update_achievement_lists.py rewrites everything up to END GENERATED ACHIEVEMENT LISTS)
 
 # AllItemCraft: every recipe that needs a crafting station, minus the items the game excludes.
 # Station-less hand recipes (stone axe, club, ...), cooked food and smelting do not count here.
@@ -860,7 +862,7 @@ BUILDABLE = {
 }
 
 # KillAllCreatures / KillAllCreaturesHard: every character the game flags as "killed for achievements",
-# bosses split out into BOSSES below (the game lists them together, 108 in total).
+# bosses split out into BOSSES below (the game lists them together).
 ENEMIES = {
     '$enemy_abomination': 'Abomination',
     '$enemy_asksvin': 'Asksvin',
@@ -1041,6 +1043,7 @@ TROPHIES = {
     '$item_trophy_skeletonpoison': 'Rancid Remains Trophy',
     '$item_trophy_surtling': 'Surtling Trophy',
     '$item_trophy_tick': 'Tick Trophy',
+    '$item_trophy_troll': 'Troll Trophy',
     '$item_trophy_ulv': 'Ulv Trophy',
     '$item_trophy_volture': 'Volture Trophy',
     '$item_trophy_wolf': 'Wolf Trophy',
@@ -1283,7 +1286,7 @@ COOKED_FOOD = {
     '$item_yggdrasilporridge': 'Yggdrasil Porridge',
 }
 
-# AllMiniBosses (any difficulty): the five Hildir mini-bosses and Dyrnwyn-related fights
+# AllMiniBosses (any difficulty): the fixed list in the AllMiniBosses achievement
 MINIBOSSES = {
     '$enemy_fenringcultist_hildir': 'Geirrhafa',
     '$enemy_skeletonfire': 'Brenna',
@@ -1308,6 +1311,8 @@ FISH = {
     '$animal_fish12': 'Pufferfish',
 }
 
+# END GENERATED ACHIEVEMENT LISTS
+
 # Death achievements, from the game's Achievement assets (stat -> index into the 205 PlayerStatType values).
 # "DeathByAllTypes" needs all 16 of these kinds at least once.
 DEATH_KINDS = {"EnemyHit": 56, "Fall": 58, "Drowning": 59, "Burning": 60, "Freezing": 61, "Poisoned": 62,
@@ -1326,7 +1331,7 @@ MIN_PROFILE_VERSION = 46
 TESTED_PROFILE_VERSION = 47
 STAT_COUNT = 205
 SET_COUNT = 10
-GAME = "Valheim 1.0.16"
+GAME = "Valheim 1.0.21"
 
 
 # Earliest biome in which each death can happen (stated by hand, not read from the game files). Enemy hit, fall,
@@ -2266,6 +2271,7 @@ BIOME_FOUND = {
     '$item_trophy_skeletonpoison': 'Black Forest',
     '$item_trophy_surtling': 'Swamp',
     '$item_trophy_tick': 'Mistlands',
+    '$item_trophy_troll': 'Black Forest',
     '$item_trophy_ulv': 'Mountain',
     '$item_trophy_volture': 'Ashlands',
     '$item_trophy_wolf': 'Mountain',

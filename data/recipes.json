@@ -1926,9 +1926,9 @@
   "output_name": "Raw Kale Chips",
   "item_type": "Material",
   "output_amount": 4,
-  "station": "$piece_cauldron",
-  "station_name": "Cauldron",
-  "min_station_level": 6,
+  "station": "$piece_preptable",
+  "station_name": "Food Preparation Table",
+  "min_station_level": 1,
   "max_quality": 1,
   "any_one_ingredient": false,
   "enabled": true,
@@ -1943,7 +1943,7 @@
   ],
   "biome_needed": "Deep North",
   "biome_needed_inferred": "",
-  "biome_needed_direct": ""
+  "biome_needed_direct": "Deep North"
  },
  {
   "kind": "item",
@@ -4272,9 +4272,9 @@
   "output_name": "Oven Pancake Batter",
   "item_type": "Material",
   "output_amount": 1,
-  "station": "$piece_cauldron",
-  "station_name": "Cauldron",
-  "min_station_level": 6,
+  "station": "$piece_preptable",
+  "station_name": "Food Preparation Table",
+  "min_station_level": 1,
   "max_quality": 1,
   "any_one_ingredient": false,
   "enabled": true,
@@ -7516,9 +7516,9 @@
   "output_name": "Unbaked Poteitr",
   "item_type": "Material",
   "output_amount": 1,
-  "station": "$piece_cauldron",
-  "station_name": "Cauldron",
-  "min_station_level": 7,
+  "station": "$piece_preptable",
+  "station_name": "Food Preparation Table",
+  "min_station_level": 1,
   "max_quality": 1,
   "any_one_ingredient": false,
   "enabled": true,
@@ -13727,7 +13727,7 @@
     "token": "$item_trophy_moose",
     "name": "Moose Trophy",
     "amount": 1,
-    "per_level": 1
+    "per_level": 0
    },
    {
     "token": "$item_nornthread",

@@ -32997,7 +32997,7 @@
      "token": "$item_trophy_moose",
      "name": "Moose Trophy",
      "amount": 1,
-     "per_level": 1
+     "per_level": 0
     },
     {
      "token": "$item_nornthread",
@@ -34187,8 +34187,8 @@
    "limited_by_direct": [],
    "blocked_by": [],
    "still_blocked_by": [],
-   "station": "Cauldron",
-   "station_level": 6,
+   "station": "Food Preparation Table",
+   "station_level": 1,
    "ingredients": [
     {
      "token": "$item_moose_meat",
@@ -34269,17 +34269,19 @@
    "kind": "item",
    "type_or_category": "Material",
    "earliest_biome": "Deep North",
-   "earliest_biome_direct": "",
+   "earliest_biome_direct": "Deep North",
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
     "Kale"
    ],
-   "limited_by_direct": [],
+   "limited_by_direct": [
+    "Kale"
+   ],
    "blocked_by": [],
    "still_blocked_by": [],
-   "station": "Cauldron",
-   "station_level": 6,
+   "station": "Food Preparation Table",
+   "station_level": 1,
    "ingredients": [
     {
      "token": "$item_kale",
@@ -35177,8 +35179,8 @@
    "limited_by_direct": [],
    "blocked_by": [],
    "still_blocked_by": [],
-   "station": "Cauldron",
-   "station_level": 7,
+   "station": "Food Preparation Table",
+   "station_level": 1,
    "ingredients": [
     {
      "token": "$item_blubber",

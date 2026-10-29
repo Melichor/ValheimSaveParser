@@ -54,7 +54,7 @@ Wooden Missile,item,AmmoNonEquipable,20,Artisan Table,1,Corewood x5; Feathers x2
 Mushrooms Galore á la Mistlands,item,Material,1,Food Preparation Table,1,Misthare Supreme x1; Cooked Seeker Meat x3; Yggdrasil Porridge x1; Herbs of the Hidden Hills x1,False,1,Mistlands,,,,True,Recipe_FeastMistlands,$item_feastmistlands
 Bronze Nails,item,Material,20,Forge,1,Bronze x1,False,1,Black Forest,Black Forest,,,True,Recipe_BronzeNails,$item_bronzenails
 Club,item,OneHandedWeapon,1,(hand / no station),,Wood x6; Bone Fragments x0 (+5/upgrade level),False,4,Meadows,Meadows,,,True,Recipe_Club,$item_club
-Raw Kale Chips,item,Material,4,Cauldron,6,Kale x12,False,1,Deep North,,,,True,Recipe_KaleChips,$item_kalechips_uncooked
+Raw Kale Chips,item,Material,4,Food Preparation Table,1,Kale x12,False,1,Deep North,Deep North,,,True,Recipe_KaleChips,$item_kalechips_uncooked
 Yellow Dress with Beads,item,Chest,1,(hand / no station),,Deer Hide x6 (+6/upgrade level),False,4,,,,,False,Recipe_ArmorDress9,$item_chest_dress9
 Nimble Anklet,item,Trinket,1,Forge,1,Iron x5; Withered Bone x5; Surtling Trophy x1,False,1,Swamp,Swamp,,,True,Recipe_TrinketIronStamina,$item_trinketironstamina
 Krom,item,TwoHandedWeapon,1,Black Forge,1,Iron x30 (+15/upgrade level); Bronze x20 (+10/upgrade level); Scale Hide x5 (+5/upgrade level),False,4,Mistlands,Mistlands,,,True,Recipe_SwordKrom,$item_sword_krom
@@ -120,7 +120,7 @@ Deer Hide Cape,item,Shoulder,1,Workbench,2,Deer Hide x4 (+4/upgrade level); Bone
 Snow Shovel,item,TwoHandedWeapon,1,Black Forge,3,Finewood x5 (+1/upgrade level); Flametal x4 (+10/upgrade level); Embers x2,False,3,Ashlands,,,,True,Recipe_SnowShovel,$item_snowshovel
 Plain Blue Dress,item,Chest,1,(hand / no station),,Deer Hide x6 (+6/upgrade level),False,4,,,,,False,Recipe_ArmorDress4,$item_chest_dress4
 Yggdrasil Porridge,item,Consumable,1,Cauldron,5,Sap x4; Barley x3; Royal Jelly x2,False,1,Mistlands,,,,True,Recipe_YggdrasilPorridge,$item_yggdrasilporridge
-Oven Pancake Batter,item,Material,1,Cauldron,6,Moose Meat x1; Poteitr x2; Lingonberries x2; Oat Flour x2,False,1,Deep North,,,,True,Recipe_OvenPancake,$item_ovenpancake_uncooked
+Oven Pancake Batter,item,Material,1,Food Preparation Table,1,Moose Meat x1; Poteitr x2; Lingonberries x2; Oat Flour x2,False,1,Deep North,,,,True,Recipe_OvenPancake,$item_ovenpancake_uncooked
 Iron Brooch,item,Trinket,1,Forge,1,Iron x5; Ancient Bark x5; Leech Trophy x1,False,1,Swamp,Swamp,,,True,Recipe_TrinketIronHealth,$item_trinketironhealth
 Wooden Mace,item,OneHandedWeapon,1,Workbench,1,Wood x5 (+1/upgrade level); Finewood x3 (+10/upgrade level); Corewood x2 (+2/upgrade level),False,4,,,,,False,Recipe_MaceWood,$item_mace_wood
 Basalt Bomb,item,OneHandedWeapon,5,Workbench,1,Asksvin Hide x1; Asksvin Bladder x1; Proustite Powder x3,False,1,Ashlands,Ashlands,,,True,Recipe_BombLava,$item_lavabomb
@@ -208,7 +208,7 @@ Headdress of the Bear,item,Helmet,1,Workbench,2,Bear Hide x5 (+2/upgrade level);
 Cast: Nord Axe,item,Material,1,Black Forge,4,Bloodgold x20; Mould: Nord Axe x1; Timberwood x10,False,1,Deep North,,,,True,Recipe_AxeGoldUncooked,$item_axe_gold_uncooked
 Raw Fish,item,Material,1,Food Preparation Table,1,Perch x1; Pike x1; Tuna x1; Tetra x1; Trollfish x1; Giant Herring x1; Grouper x1; Coral Cod x1; Anglerfish x1; Northern Salmon x1; Magmafish x1; Pufferfish x1,True,1,Swamp,Swamp,,,True,Recipe_Fish1,$item_fish_raw
 Carapace Buckler,item,Shield,1,Black Forge,1,Carapace x16 (+8/upgrade level); Scale Hide x3 (+3/upgrade level); Refined Eitr x10 (+3/upgrade level),False,3,Mistlands,,,,True,Recipe_ShieldCarapaceBuckler,$item_shield_carapacebuckler
-Unbaked Poteitr,item,Material,1,Cauldron,7,Seal Blubber x1; Kale x2; Poteitr x1; Oat Flour x2,False,1,Deep North,,,,True,Recipe_BakedPoteitr,$item_bakedpoteitr_uncooked
+Unbaked Poteitr,item,Material,1,Food Preparation Table,1,Seal Blubber x1; Kale x2; Poteitr x1; Oat Flour x2,False,1,Deep North,,,,True,Recipe_BakedPoteitr,$item_bakedpoteitr_uncooked
 Thundering Berserkir Axes,item,TwoHandedWeapon,1,Black Forge,4,Berserkir Axes x1; Flametal x5 (+5/upgrade level); Iolite x1 (+1/upgrade level),False,4,Ashlands,,,,True,Recipe_AxeBerzerkr_Lightning,$item_axe_berzerkr_lightning
 Leather Helmet,item,Helmet,1,Workbench,2,Deer Hide x6 (+6/upgrade level); Bone Fragments x0 (+5/upgrade level),False,4,Meadows,Meadows,,,True,Recipe_HelmetLeather,$item_helmet_leather
 Frostfire Sledge,item,TwoHandedWeapon,1,Black Forge,4,Nord Sledge x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),False,4,Deep North,,,,True,Recipe_SledgeGold_FrostFire,$item_mace2h_gold_frostfire
@@ -383,7 +383,7 @@ Nord Axe,item,OneHandedWeapon,1,Black Forge,4,Bloodgold x20 (+10/upgrade level);
 Iron Greaves,item,Legs,1,Forge,2,Iron x20 (+5/upgrade level); Deer Hide x2,False,4,Swamp,Swamp,,,True,Recipe_ArmorIronLegs,$item_legs_iron
 Celebratory Cap,item,Helmet,1,Workbench,2,Deer Hide x2 (+1/upgrade level); Bronze x1 (+1/upgrade level); Bear Hide x1; Amber Pearl x1,False,4,Black Forest,,,,True,Recipe_HelmetCelebration,$item_helmet_celebration
 Plain Yellow Tunic,item,Chest,1,(hand / no station),,Deer Hide x6 (+6/upgrade level),False,4,,,,,False,Recipe_ArmorTunic7,$item_chest_tunic7
-Headdress of the Caller,item,Helmet,1,Galdr Table,3,Moose Sinew x2 (+1/upgrade level); Mould: Headdress of the Caller x1; Moose Trophy x1 (+1/upgrade level); Nornathread x3 (+2/upgrade level),False,4,Deep North,,,,True,Recipe_HelmetGoldMage,$item_helmet_mage_deepnorth
+Headdress of the Caller,item,Helmet,1,Galdr Table,3,Moose Sinew x2 (+1/upgrade level); Mould: Headdress of the Caller x1; Moose Trophy x1; Nornathread x3 (+2/upgrade level),False,4,Deep North,,,,True,Recipe_HelmetGoldMage,$item_helmet_mage_deepnorth
 Iron Shield,item,Shield,1,Forge,2,Finewood x10 (+10/upgrade level); Iron x6 (+3/upgrade level),False,3,,,,,False,Recipe_ShieldIronSquare,$item_shield_iron_square
 Silver Knife,item,OneHandedWeapon,1,Forge,3,Wood x2 (+1/upgrade level); Silver x10 (+5/upgrade level); Leather Scraps x3 (+1/upgrade level); Iron x2 (+1/upgrade level),False,4,Mountain,Mountain,,,True,Recipe_KnifeSilver,$item_knife_silver
 Finewood Bow,item,Bow,1,Workbench,1,Finewood x10 (+5/upgrade level); Corewood x10 (+5/upgrade level); Deer Hide x2 (+2/upgrade level),False,4,Black Forest,Black Forest,,,True,Recipe_BowFineWood,$item_bow_finewood

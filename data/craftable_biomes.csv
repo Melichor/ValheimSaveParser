@@ -917,7 +917,7 @@ Frostfire Mace,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nor
 Frostfire Sledge,item,TwoHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Sledge,,,,,,,Black Forge,4,Nord Sledge x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_mace2h_gold_frostfire
 Frostfire Spear,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Spear,,,,,,,Black Forge,4,Nord Spear x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_spear_gold_frostfire
 Frostfire Sword,item,OneHandedWeapon,Deep North,Bloodgold; Frostfire Essence; Nord Sword,,,,,,,Black Forge,4,Nord Sword x1; Bloodgold x20 (+10/upgrade level); Frostfire Essence x1 (+1/upgrade level),0,$item_sword_gold_frostfire
-Headdress of the Caller,item,Helmet,Deep North,Moose Sinew; Moose Trophy; Mould: Headdress of the Caller; Nornathread,,,,,,,Galdr Table,3,Moose Sinew x2 (+1/upgrade level); Mould: Headdress of the Caller x1; Moose Trophy x1 (+1/upgrade level); Nornathread x3 (+2/upgrade level),1,$item_helmet_mage_deepnorth
+Headdress of the Caller,item,Helmet,Deep North,Moose Sinew; Moose Trophy; Mould: Headdress of the Caller; Nornathread,,,,,,,Galdr Table,3,Moose Sinew x2 (+1/upgrade level); Mould: Headdress of the Caller x1; Moose Trophy x1; Nornathread x3 (+2/upgrade level),1,$item_helmet_mage_deepnorth
 Helmet of the Protector,item,Helmet,Deep North,Bloodgold; Moose Hide; Mould: Helmet of the Protector,,,,,,,Black Forge,4,Bloodgold x20 (+15/upgrade level); Mould: Helmet of the Protector x1; Moose Hide x4 (+3/upgrade level),1,$item_helmet_heavy_deepnorth
 Hood of the Vanguard,item,Helmet,Deep North,Moose Hide; Moose Sinew; Mould: Hood of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Seal Pelt x5 (+3/upgrade level); Mould: Hood of the Vanguard x1; Moose Hide x5 (+3/upgrade level); Moose Sinew x1 (+1/upgrade level),1,$item_helmet_medium_deepnorth
 Lightning Strike,item,TwoHandedWeapon,Deep North,Bloodgold; Nornathread; Thunderblood Essence,,,,,,,Galdr Table,3,Bloodgold x10 (+5/upgrade level); Nornathread x5 (+2/upgrade level); Thunderblood Essence x1 (+1/upgrade level),1,$item_staff_thunderblood
@@ -946,9 +946,9 @@ Northern Morning Fare,item,Material,Deep North,Cooked Moose Meat; Oat Flour; Pot
 Northern Vengeance,item,TwoHandedWeaponLeft,Deep North,Hexen Trophy; Ice; Nornathread,,,,,,,Galdr Table,3,Ice x10 (+5/upgrade level); Nornathread x5 (+2/upgrade level); Hexen Trophy x1,1,$item_staff_frostorbs
 Oat Milk,item,Consumable,Deep North,Ice; Oats,,,,,,,Mead Ketill,1,Oats x5; Ice x5,0,$item_oatmilk
 Oatmeal,item,Consumable,Deep North,Lingonberries; Oat Milk; Oats,,,,,,,Cauldron,6,Oats x2; Lingonberries x2; Oat Milk x1,0,$item_oatmeallingonberryjam
-Oven Pancake Batter,item,Material,Deep North,Lingonberries; Moose Meat; Oat Flour; Poteitr,,,,,,,Cauldron,6,Moose Meat x1; Poteitr x2; Lingonberries x2; Oat Flour x2,0,$item_ovenpancake_uncooked
+Oven Pancake Batter,item,Material,Deep North,Lingonberries; Moose Meat; Oat Flour; Poteitr,,,,,,,Food Preparation Table,1,Moose Meat x1; Poteitr x2; Lingonberries x2; Oat Flour x2,0,$item_ovenpancake_uncooked
 Pancakes,item,Consumable,Deep North,Oat Flour; Oat Milk,,,,,,,Cauldron,6,Oat Milk x1; Oat Flour x2; Egg x2; Blueberries x2,0,$item_pancakes
-Raw Kale Chips,item,Material,Deep North,Kale,,,,,,,Cauldron,6,Kale x12,0,$item_kalechips_uncooked
+Raw Kale Chips,item,Material,Deep North,Kale,Deep North,Kale,,,,,Food Preparation Table,1,Kale x12,0,$item_kalechips_uncooked
 Robes of the Caller,item,Chest,Deep North,Bloodgold; Moose Hide; Mould: Robes of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6 (+3/upgrade level); Mould: Robes of the Caller x1; Moose Hide x6 (+3/upgrade level); Nornathread x5 (+3/upgrade level),1,$item_chest_mage_deepnorth
 Seal Meat Soup,item,Consumable,Deep North,Ice; Kale; Seal Blubber,,,,,,,Cauldron,7,Seal Blubber x2; Kale x2; Ice x2,0,$item_sealsoup
 Smoked Fish,item,Consumable,Deep North,Kale; Poteitr,,,,,,,Cauldron,7,Raw Fish x1; Kale x1; Poteitr x1,0,$item_smokedfish
@@ -970,7 +970,7 @@ Thunderblood Sword,item,OneHandedWeapon,Deep North,Bloodgold; Nord Sword; Thunde
 Trousers of the Caller,item,Legs,Deep North,Bloodgold; Moose Hide; Mould: Trousers of the Caller; Nornathread,,,,,,,Galdr Table,3,Bloodgold x6 (+3/upgrade level); Mould: Trousers of the Caller x1; Moose Hide x6 (+3/upgrade level); Nornathread x5 (+3/upgrade level),1,$item_legs_mage_deepnorth
 Trousers of the Protector,item,Legs,Deep North,Bloodgold; Leather Straps; Moose Hide; Mould: Trousers of the Protector,,,,,,,Black Forge,4,Bloodgold x20 (+15/upgrade level); Mould: Trousers of the Protector x1; Moose Hide x8 (+3/upgrade level); Leather Straps x4 (+3/upgrade level),1,$item_legs_heavy_deepnorth
 Trousers of the Vanguard,item,Legs,Deep North,Bloodgold; Elaking Hair Bundle; Mould: Trousers of the Vanguard; Seal Pelt,,,,,,,Black Forge,4,Bloodgold x12 (+6/upgrade level); Mould: Trousers of the Vanguard x1; Elaking Hair Bundle x8 (+4/upgrade level); Seal Pelt x4 (+2/upgrade level),1,$item_legs_medium_deepnorth
-Unbaked Poteitr,item,Material,Deep North,Kale; Oat Flour; Poteitr; Seal Blubber,,,,,,,Cauldron,7,Seal Blubber x1; Kale x2; Poteitr x1; Oat Flour x2,0,$item_bakedpoteitr_uncooked
+Unbaked Poteitr,item,Material,Deep North,Kale; Oat Flour; Poteitr; Seal Blubber,,,,,,,Food Preparation Table,1,Seal Blubber x1; Kale x2; Poteitr x1; Oat Flour x2,0,$item_bakedpoteitr_uncooked
 Witch Crown,item,Trinket,Deep North,Bloodgold; Hexen Trophy; Nornathread,,,,,,,Black Forge,1,Bloodgold x5; Nornathread x5; Hexen Trophy x1,0,$item_trinketbloodgoldstamina
 Antler Throne,piece,Furniture,Deep North,Moose Hide; Moose Trophy; Timberwood,Deep North,Moose Hide; Moose Trophy; Timberwood,,,,,Workbench,,Timberwood x15; Moose Trophy x1; Moose Hide x5,0,$piece_moose_throne
 Baked Poteitr,piece,Feasts,Deep North,Baked Poteitr,,,,,,,(none),,Baked Poteitr x1,0,$item_bakedpoteitr

@@ -155,7 +155,7 @@ The tool only reads the file; it never writes to it. Copy it somewhere first if 
 
 ## How it works
 
-The list of what each achievement needs was **not guessed from wikis**. It was rebuilt from the game's own data and code (Valheim 1.0.16): the achievement definitions, the item database, recipes, build tables and character flags. The game fills most of these lists when it starts, and the tool reproduces the same rules, including the game's hand-maintained exclusions. That is why, for example:
+The list of what each achievement needs was **not guessed from wikis**. It was rebuilt from the game's own data and code (Valheim 1.0.21): the achievement definitions, the item database, recipes, build tables and character flags. The game fills most of these lists when it starts, and the tool reproduces the same rules, including the game's hand-maintained exclusions. That is why, for example:
 
 - hand-crafted recipes with no station (stone axe, club, ...) do **not** count towards "craft everything" but **do** count towards "craft every weapon";
 - Cultivator and Hoe pieces do not count towards "build everything";
@@ -166,6 +166,6 @@ The save stores ten sets of statistics, one per difficulty (`RawStats`, `Any`, `
 
 ## Limitations
 
-- Written for **profile version 46** saves from **Valheim 1.0.16**; version 47 is tested too, and newer versions are read with a warning. A game update may add items, pieces or creatures; the lists near the top of the script are plain Python dictionaries (token to display name) and need regenerating after an update. Older versions, or a save whose stat count differs from what the script expects (a sign that the game changed its stats list), are rejected with an error message.
+- Written for **profile version 46 and 47** saves (Valheim 1.0.16 to 1.0.21); newer versions are read with a warning. A game update may add items, pieces or creatures; the lists near the top of the script are generated from the game files and need regenerating after an update (`tools/update_achievement_lists.py` and `tools/update_script_biomes.py`). Older versions, or a save whose stat count differs from what the script expects (a sign that the game changed its stats list), are rejected with an error message.
 - The terminal output shows the game's internal names (for example `charred_melee_Dyrnwyn`, `trophy_boar`) without the `$item_` / `$enemy_` prefixes; the web page and `--json` also carry display names where the game has one.
 - The in-game achievement list can differ slightly if the game build you play has a different item set (for example a modded game).

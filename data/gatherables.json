@@ -1552,8 +1552,7 @@
    "earliest_biome_direct": "Black Forest",
    "biomes": [
     "Black Forest",
-    "Mountain",
-    "Deep North"
+    "Mountain"
    ],
    "sources": [
     "destructible",
@@ -1567,9 +1566,7 @@
     "firtree_blackforest",
     "firtree_mountain",
     "firtree_small_blackforest",
-    "firtree_small_mountain",
-    "snowfirtree",
-    "snowfirtree_sparse"
+    "firtree_small_mountain"
    ]
   },
   {

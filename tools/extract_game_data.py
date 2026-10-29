@@ -209,7 +209,23 @@ def scan(game_dir, log=print):
             elif "m_grownPrefab" in tt and "m_growTime" in tt:
                 out["eggs"].append({**base, "grown": pp(tt["m_grownPrefab"]), "growTime": tt.get("m_growTime")})
             elif "m_items" in tt and "m_recipes" in tt:
-                out["objectdb"].append({**base, "items": [pp(x) for x in tt["m_items"]]})
+                out["objectdb"].append({**base, "items": [pp(x) for x in tt["m_items"]],
+                                        "recipes": [pp(x) for x in tt["m_recipes"]]})
+            elif "m_isDynamicallyPopulated" in tt and "m_id" in tt:
+                # one Achievement asset: the fixed lists it checks (the dynamic ones are rebuilt by the game at start)
+                def stats(key):
+                    return [t.get("m_stat") for t in tt.get(key, []) if isinstance(t, dict)]
+                out["achievementdefs"].append({**base, "id": tt["m_id"], "name": tt.get("m_name"),
+                                               "dynamic": tt["m_isDynamicallyPopulated"],
+                                               "difficulty": tt.get("m_difficultyRequirement"),
+                                               "enemies": [(t.get("m_stat"), t.get("m_modifier"))
+                                                           for t in tt.get("m_enemyStatsTriggers", [])],
+                                               "pickables": stats("m_pickableTriggers"),
+                                               "pickups": stats("m_itemPickupTriggers"),
+                                               "crafts": stats("m_itemCraftTriggers"),
+                                               "foods": stats("m_foodEatenTriggers"),
+                                               "pieces": stats("m_piecePlacedTriggers"),
+                                               "playerStats": [t.get("m_stat") for t in tt.get("m_statTrigger", [])]})
             elif "m_consumablesExcluded" in tt:
                 out["achievements"].append({**base, "itemsExcluded": [pp(x) for x in tt.get("m_itemsExcluded", [])],
                                             "consumablesExcluded": [pp(x) for x in tt["m_consumablesExcluded"]]})

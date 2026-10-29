@@ -60,7 +60,7 @@ Coal,Material,Black Forest,Black Forest,Black Forest; Swamp; Mountain; Deep Nort
 Copper Ore,Material,Black Forest,Black Forest,Black Forest,fishing bonus; mining,fishing bonus: Black Forest; mining: Black Forest,Fish5; rock4_copper_blackforest,$item_copperore
 Corewood,Material,Black Forest,Black Forest,Black Forest; Deep North,destructible; tree,destructible: Deep North; tree: Black Forest,Pinetree_01_blackforest; TheHole01,$item_roundlog
 Ectoplasm,Material,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Crypt2; Crypt3; Crypt4; Hildir_crypt,$item_ectoplasm
-Fir Cone,Material,Black Forest,Black Forest,Black Forest; Mountain; Deep North,destructible; tree,destructible: Black Forest; tree: Black Forest,firtree_blackforest; firtree_mountain; firtree_small_blackforest; firtree_small_mountain; snowfirtree; snowfirtree_sparse,$item_fircone
+Fir Cone,Material,Black Forest,Black Forest,Black Forest; Mountain,destructible; tree,destructible: Black Forest; tree: Black Forest,firtree_blackforest; firtree_mountain; firtree_small_blackforest; firtree_small_mountain,$item_fircone
 Pine Cone,Material,Black Forest,Black Forest,Black Forest; Deep North,tree,tree: Black Forest,Pinetree_01_blackforest; pinetree_snow; pinetree_snow_dead,$item_pinecone
 Surtling Core,Material,Black Forest,Black Forest,Black Forest; Swamp; Mistlands,creature; destructible; fishing bonus; pickable,creature: Swamp; destructible: Mistlands; fishing bonus: Ashlands; pickable: Black Forest,Crypt2; Crypt3; Crypt4; FireHole; Fish11; Hildir_crypt,$item_surtlingcore
 Thistle,Material,Black Forest,Black Forest,Black Forest; Swamp,pickable,pickable: Black Forest,pickable_thistle_swamp_blackforest,$item_thistle
