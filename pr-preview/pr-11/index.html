@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Save Parser</title>
 <meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character creation times and costs for upgrades at the Forge of Potential, and how many kills each rare creature drop is away. Everything runs in your browser.">
-<link rel="stylesheet" href="web/style.css?v=44575aa">
+<link rel="stylesheet" href="web/style.css?v=cae414b">
 </head>
 <body>
 <header class="top">
@@ -17,6 +17,7 @@
       <button type="button" role="tab" id="tab-finder" aria-controls="finder" aria-selected="false" tabindex="-1">Upgrade time finder</button>
       <button type="button" role="tab" id="tab-predictor" aria-controls="predictor" aria-selected="false" tabindex="-1">Upgrade predictor</button>
       <button type="button" role="tab" id="tab-cost" aria-controls="cost" aria-selected="false" tabindex="-1">Upgrade cost</button>
+      <button type="button" role="tab" id="tab-timer" aria-controls="timer" aria-selected="false" tabindex="-1">Creation timer</button>
       <button type="button" role="tab" id="tab-drops" aria-controls="drops" aria-selected="false" tabindex="-1">Drop counters</button>
     </nav>
   </div>
@@ -80,6 +81,10 @@
       <label>Search from
         <input id="fStart" type="datetime-local" step="1" required>
       </label>
+      <label title="The time zone of the computer that runs the game: the times are its local times">Time zone
+        <input id="fTz" list="tzList" placeholder="e.g. Europe/Prague or +02:00" autocomplete="off" spellcheck="false" required>
+      </label>
+      <datalist id="tzList"></datalist>
       <button id="fGo" type="submit" class="primary">Find times</button>
       <button id="fCancel" type="button" hidden>Cancel</button>
     </form>
@@ -116,6 +121,9 @@
       <label>Start at
         <input id="rStart" type="datetime-local" step="1" required>
       </label>
+      <label title="The time zone of the computer that runs the game: the times are its local times">Time zone
+        <input id="rTz" list="tzList" placeholder="e.g. Europe/Prague or +02:00" autocomplete="off" spellcheck="false" required>
+      </label>
       <button id="rGo" type="submit" class="primary">Plan</button>
     </form>
     <div id="rStatus" class="status" role="status" hidden><span class="spin"></span><span id="rStatusText"></span></div>
@@ -129,7 +137,7 @@
       <h3>Before you create the characters</h3>
       <ul>
         <li class="warn"><b>DON'T GO PAST 10K TOTAL DAMAGE.</b> When an item's damage of all types added together comes to more than 10,000, the game marks it as a cheated item the next time it loads, and the mark stays even if the item is later brought back below that (a Club, for example, reaches it at quality 1,666).</li>
-        <li><b>The creation second is what counts.</b> The game takes the time when you press the button that creates the character, and only the whole second is kept. Have the clock of the computer running the game in view (with seconds) and press it during the listed second. You can wait for that time, or set the computer's clock to just before it. A time zone change or summer time doesn't change anything: the game reads the time back exactly as the clock showed it.</li>
+        <li><b>The creation second is what counts.</b> The game takes the time when you press the button that creates the character, and only the whole second is kept. Have the clock of the computer running the game in view (with seconds) and press it during the listed second. You can wait for that time, or set the computer's clock to just before it. Set <b>Time zone</b> to the zone of that computer (it starts as your browser's): the times are its local times, and the finder leaves out the times its clock skips when summer time starts. Otherwise the zone changes nothing: the game reads the time back exactly as the clock showed it.</li>
         <li><b>Check before you upgrade.</b> Load the new character once and quit, then drop its <code>.fch</code> file in the <a href="#predictor">Upgrade predictor</a> tab: it shows the creation time the game saved and the path that time gives. If you missed the second, delete the character and try again.</li>
         <li><b>The name doesn't matter.</b> Name the characters whatever you like. The item shows the character that made its last upgrade as "Crafted by:", so in a relay plan the last character's name ends up on the item.</li>
         <li><b>Every upgrade must be made by the character listed for it.</b> Each roll comes from the character making that upgrade, so an upgrade made by anyone else is a different roll that the list does not cover. With a relay plan, go in order: each character makes only its own listed upgrades, puts the item in a chest, and the next character takes it out and continues.</li>
@@ -145,6 +153,11 @@
   <section id="predictor" class="panel" role="tabpanel" aria-labelledby="tab-predictor" hidden>
     <h2>Upgrade predictor</h2>
     <p class="sub">Drop a character file to see, for every upgradable item in its inventory, how many upgrades it can take at the Forge of Potential before it breaks. It runs <a href="upgrade_oracle.py">upgrade_oracle.py</a> in your browser and the file is never uploaded.</p>
+    <div class="finderForm">
+      <label title="The time zone of the computer that runs the game: a dropped file's creation time is read in it, and the time below is a local time there">Time zone
+        <input id="uTz" list="tzList" placeholder="e.g. Europe/Prague or +02:00" autocomplete="off" spellcheck="false" required>
+      </label>
+    </div>
     <label id="uDrop" class="drop" tabindex="0">
       <input id="uFile" type="file" accept=".fch,.old,.new" hidden>
       <strong>Drop your <code>.fch</code> file here</strong>
@@ -178,7 +191,7 @@
       <h3>How to read it</h3>
       <ul>
         <li>The roll for an upgrade comes from the character's creation time the first time it upgrades that item to that level, and from a stored seed in the file after that. The prediction uses whichever the file says applies, so it is exact for the next attempts of this character.</li>
-        <li><b>The time zone matters for a file.</b> The file stores the creation time in UTC, and the game turns it into local time with the time zone of the computer it runs on. This page uses your browser's time zone (<span data-tz></span>), so drop the file on the computer you play on, or check that the creation time shown matches the game's <code>Created:</code>. If not, use the command-line version with <code>--tz</code>.</li>
+        <li><b>The time zone matters for a file.</b> The file stores the creation time in UTC, and the game turns it into local time with the time zone of the computer it runs on. The <b>Time zone</b> field above sets that zone; it starts as your browser's (<span data-tz></span>). Check that the creation time shown matches the game's <code>Created:</code>; if not, the zone is wrong.</li>
         <li>Each item is predicted as if it were the first of its kind you upgrade. With two copies of the same item, the second one continues from the seeds the first leaves behind, so its path differs.</li>
         <li>An attempt that is not a success breaks the item, so each path ends with a break. You can stop before it: the path shows how far you would get.</li>
       </ul>
@@ -198,6 +211,9 @@
       </label>
       <label>Created
         <input id="cCreated" type="datetime-local" step="1">
+      </label>
+      <label title="The time zone of the computer that runs the game: the creation time is a local time there, and a chosen file's creation time is read in it">Time zone
+        <input id="cTz" list="tzList" placeholder="e.g. Europe/Prague or +02:00" autocomplete="off" spellcheck="false" required>
       </label>
       <label id="cDrop" class="drop dropSmall" tabindex="0">
         <input id="cFile" type="file" accept=".fch,.old,.new" hidden>
@@ -230,7 +246,7 @@
     <div class="notes">
       <h3>How it counts</h3>
       <ul>
-        <li><b>A creation time or a file.</b> With a creation time, the character is new and every roll comes from that time (the game's <code>Created:</code>). With a character file, its creation time (read in your browser's time zone, <span data-tz></span>) and the rolls already stored in it are used, so it is exact for that character as it is now.</li>
+        <li><b>A creation time or a file.</b> With a creation time, the character is new and every roll comes from that time (the game's <code>Created:</code>). With a character file, its creation time (read in the <b>Time zone</b> field, which starts as your browser's, <span data-tz></span>) and the rolls already stored in it are used, so it is exact for that character as it is now.</li>
         <li><b>Crafting and station upgrades</b> use the game's own amounts. From quality 4 on, a level counts as 4 steps plus half a step per level above 4, so the upgrade to 4 costs more than the one to 3.</li>
         <li><b>Each copy goes to the highest quality its station can reach first.</b> A station only gets one level per kind of extension, so some items stop below their max quality there (Deep North gear stops at 3).</li>
         <li><b>Every Forge attempt costs one Idol</b>, success or failure, and Idols are never refunded. The station materials are not used at the Forge.</li>
@@ -243,6 +259,58 @@
         <li><b>Never refunded:</b> the Idols, Liquid Frost, a base weapon and everything crafted into it, the essence or gem of a variant (Frostfire and Thunderblood Essence, Bloodstone, Iolite, Jade), and anything the upgrade recipe leaves out (below). Only the remaining ingredients, like the metal, come back in part. The result lists what is never refunded for the chosen item.</li>
         <li><b>The staffs never get their mould back.</b> For Northern Vengeance, Spirit Caller, Lightning Strike and Echo Spike, the upgrade recipe leaves out the mould that the cast uses up, while the Deep North armor and weapons list theirs. So a broken staff refunds its other ingredients but never the mould. That looks like a game bug, and Nord Knucklechains have a similar one: their cast takes 2 Long Claws, but their upgrade recipe lists 10 Timberwood instead, so a break never returns claws but does return Timberwood the craft never used.</li>
         <li><b>Keep space in your inventory for the refund.</b> It goes straight into the inventory: each ingredient first tops up the stacks you already have, and whatever is left needs a free slot. If there is none, the game drops only a single item of it on the ground and the rest is lost; an ingredient that does not stack is lost completely. So keep a free slot for each refundable ingredient, or partial stacks with room for the refund. This tool assumes every refund arrives.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="timer" class="panel" role="tabpanel" aria-labelledby="tab-timer" hidden>
+    <h2>Creation timer</h2>
+    <p class="sub">Beeps you onto a creation time from the <a href="#finder">Upgrade time finder</a>: four faint beeps one second apart, then a loud fifth one exactly on the time. Press the button that creates the character on the fifth beep. The beeps follow this computer's clock, so run it on the computer that runs the game (or one whose clock matches it).</p>
+    <form id="tForm" class="finderForm">
+      <label>Time
+        <input id="tTime" type="datetime-local" step="1" required>
+      </label>
+      <label title="The time zone of the computer that runs the game: the time is its local time">Time zone
+        <input id="tTz" list="tzList" placeholder="e.g. Europe/Prague or +02:00" autocomplete="off" spellcheck="false" required>
+      </label>
+      <label title="Moves every beep: a positive number makes them later, a negative one earlier">Shift (ms)
+        <input id="tShift" type="number" step="10" min="-5000" max="5000" value="0" required>
+      </label>
+      <div class="formButtons">
+        <button id="tGo" type="submit" class="primary">Start</button>
+        <button id="tStop" type="button" hidden>Stop</button>
+        <button id="tTest" type="button">Test in 5 s</button>
+      </div>
+    </form>
+    <div id="tError" class="error" role="alert" hidden></div>
+    <div class="timerBox">
+      <div><span class="muted">Clock now (<span id="tZoneName"></span>)</span><output id="tClock" class="timerClock">--:--:--.---</output></div>
+      <div><span class="muted" id="tLeftLabel">Next beep</span><output id="tLeft" class="timerLeft">–</output></div>
+    </div>
+    <p id="tState" class="summary" role="status"></p>
+
+    <h3 id="timerCheck" class="subhead">Check the result</h3>
+    <p class="sub">After creating the character, load it once and quit, then drop its <code>.fch</code> file here. It compares the creation time the game saved with the timer's time above and suggests a shift if you missed. The timer is not changed: set the shift yourself.</p>
+    <label id="vDrop" class="drop dropSmall" tabindex="0">
+      <input id="vFile" type="file" accept=".fch,.old,.new" hidden>
+      <strong>Drop the new character's <code>.fch</code> file here</strong>
+      <span>or click to choose one; it is read in this browser and never uploaded</span>
+    </label>
+    <div data-where></div>
+    <div id="vStatus" class="status" role="status" hidden><span class="spin"></span><span id="vStatusText"></span></div>
+    <div id="vError" class="error" role="alert" hidden></div>
+    <div id="vResult" class="verdict" hidden>
+      <p id="vSummary" class="summary"></p>
+      <ul id="vFacts" class="caveats"></ul>
+    </div>
+    <div class="notes">
+      <h3>How to use it</h3>
+      <ul>
+        <li><b>The fifth beep marks the start of the second.</b> The game keeps only the whole second in which you press the button, so anything from the fifth beep until just before the next second counts. Pressing right after you hear it lands a few hundred milliseconds in, which is safe.</li>
+        <li><b>Shift moves all five beeps</b>, in milliseconds: <code>+300</code> makes them 0.3 s later, <code>-200</code> 0.2 s earlier. If you tend to press on the beat or a little ahead of it, a shift of about <code>+300</code> to <code>+500</code> puts your press safely inside the second. It is remembered in this browser.</li>
+        <li><b>Calibrate with the test.</b> <i>Test in 5 s</i> plays the same five beeps on the next whole second five seconds away; compare the loud beep with the clock above, or with a clock showing seconds on the game's computer, and adjust the shift until they agree. The beeps already allow for the sound output delay the browser reports; Bluetooth headphones can add more.</li>
+        <li><b>Keep this tab open.</b> The beeps are scheduled with the audio clock about 15 seconds ahead, so they stay on time even if the tab is in the background then, but the browser must not be closed or asleep. Starting the timer also unlocks sound, which browsers only allow after a click.</li>
+        <li><b>Check afterwards.</b> Load the new character once, quit, and drop its file under <a href="#timerCheck">Check the result</a>: it shows the creation time the game saved, how many seconds off it is and what shift to try. The <a href="#predictor">Upgrade predictor</a> then shows the upgrade path that time gives.</li>
       </ul>
     </div>
   </section>
@@ -328,9 +396,10 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
-<script src="web/page.js?v=44575aa"></script>
-<script src="web/app.js?v=44575aa"></script>
-<script src="web/finder.js?v=44575aa"></script>
-<script src="web/drops.js?v=44575aa"></script>
+<script src="web/page.js?v=cae414b"></script>
+<script src="web/app.js?v=cae414b"></script>
+<script src="web/finder.js?v=cae414b"></script>
+<script src="web/timer.js?v=cae414b"></script>
+<script src="web/drops.js?v=cae414b"></script>
 </body>
 </html>

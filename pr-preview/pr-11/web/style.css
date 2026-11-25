@@ -179,3 +179,12 @@ button:disabled { opacity: .55; cursor: default; }
 .dropTable button.more { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; }
 .notes li.warn { color: var(--warn); }
 .notes li.warn b { letter-spacing: .02em; }
+
+/* the creation timer */
+.timerBox { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 18px 0 4px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.timerBox > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.timerClock, .timerLeft { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(1.6rem, 7vw, 2.4rem); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.timerLeft.go { color: var(--accent); }
+.verdict { margin-top: 10px; padding: 4px 16px 12px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--muted); border-radius: 8px; }
+.verdict.hit { border-left-color: var(--done); }
+.verdict.miss { border-left-color: var(--accent); }

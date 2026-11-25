@@ -415,7 +415,7 @@ def web_cost_items():
 def web_cost(item, target, created, data=None, tz=None):
     """JSON for the page's cost tool. `created` is a new character's local creation date and time
     ("YYYY-MM-DDTHH:MM[:SS]"). `data` is a character file's bytes instead (then its creation date, read in time zone
-    `tz` (default: the browser's), and its seeds are used)."""
+    `tz` (default: the browser's), and its seeds are used). A typed time is a local time in `tz` too."""
     try:
         target = int(target)
         if not 1 <= target <= oracle.WEB_MAX_QUALITY:
@@ -423,13 +423,16 @@ def web_cost(item, target, created, data=None, tz=None):
         prefab = find(item)
         if data is not None and type(data).__name__ != "JsNull":
             save = oracle.load(bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data))
-            zone = oracle.parse_tz(tz or None)
+            zone = oracle.web_zone(tz)
             wall = oracle.local_wall(save["created"], zone)
+            label = oracle.web_zone_label(zone, save["created"])
             name, seeds, source = save["name"], save["seeds"], "file"
         elif not created:
             raise oracle.SaveError("enter the character's creation date and time or choose a character file")
         else:
-            wall = oracle.parse_created(created, None)[1]
+            zone = oracle.web_zone(tz)
+            wall = oracle.checked_wall(created, zone)
+            label = oracle.web_zone_label(zone, oracle.wall_instant(wall, zone))
             name, seeds, source = None, {}, "created"
         char_base = oracle.ticks_hash(oracle.wall_ticks(wall))
         copies, spent, refunded, done = simulate(prefab, target, char_base, seeds, WEB_MAX_COPIES)
@@ -442,7 +445,7 @@ def web_cost(item, target, created, data=None, tz=None):
     # every copy's Forge attempts as a compact string, "1" a success and "0" the break: "110" went up twice, then broke
     listed = ["".join("1" if ok else "0" for _, _, ok, _ in c["steps"]) for c in copies]
     return json.dumps({"item": info["name"], "target": target, "character": name, "source": source,
-                       "created": oracle.fmt_wall(wall),
+                       "created": oracle.fmt_wall(wall), "timeZone": label,
                        "savedSeeds": len(seeds), "station": info["station"], "cap": info["cap"],
                        "maxQuality": info["maxQuality"], "stationMaxLevel": info["stationMaxLevel"],
                        "season": info["season"], "via": info["via"], "notRefunded": info["notRefunded"],

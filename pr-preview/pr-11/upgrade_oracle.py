@@ -487,35 +487,53 @@ def read_item(r):
     return {"prefab": prefab, "quality": quality, "stack": stack, "equipped": bool(flags & 2)}
 
 
+def read_header(r):
+    """Read a save's profile up to and including the creation date: (name, created as Unix seconds, UTC)."""
+    version = r.take("i")
+    if not PROFILE_MIN_VERSION <= version <= 1000:
+        raise SaveError("this is not a supported Valheim .fch character file")
+    if (r.take("i"), r.take("i")) != (STAT_COUNT, SET_COUNT):
+        raise SaveError("the game's save layout changed and the script needs updating")
+    for _ in range(SET_COUNT):
+        r.skip(4 * STAT_COUNT)
+        for _ in range(3):
+            r.skip_dict()
+        for _ in range(r.take("i")):
+            r.skip_dict()
+        for _ in range(5):                  # picked up, crafted, pickables, foods eaten, pieces built
+            r.skip_dict()
+    r.skip(1)                               # first spawn
+    for _ in range(r.take("i")):            # per-world data
+        r.skip(8 + 1 + 12 + 1 + 12 + 1 + 12 + 12)
+        if r.take("?"):
+            r.skip(r.take("i"))             # map
+    name = r.string()
+    r.skip(8)                               # player id
+    r.string()                              # start seed
+    r.skip(1)                               # used cheats
+    created = r.take("q")                   # date created: Unix seconds (UTC)
+    return name, created
+
+
+def read_created(source):
+    """Only the character name and creation date of a save (a path or bytes): enough for a character that was just
+    created, and independent of the rest of the file's layout. Returns (name, Unix seconds, UTC)."""
+    raw = bytes(source) if isinstance(source, (bytes, bytearray)) else open(source, "rb").read()
+    try:
+        return read_header(Reader(raw[4:4 + struct.unpack_from("<i", raw, 0)[0]]))
+    except SaveError:
+        raise
+    except (struct.error, IndexError, UnicodeDecodeError, OverflowError):
+        raise SaveError("this is not a supported Valheim .fch character file")
+
+
 def load(source):
     """The character name, the inventory and the stored upgrade seeds of a save (a path or bytes)."""
     raw = bytes(source) if isinstance(source, (bytes, bytearray)) else open(source, "rb").read()
     try:
         data = raw[4:4 + struct.unpack_from("<i", raw, 0)[0]]
         r = Reader(data)
-        version = r.take("i")
-        if not PROFILE_MIN_VERSION <= version <= 1000:
-            raise SaveError("this is not a supported Valheim .fch character file")
-        if (r.take("i"), r.take("i")) != (STAT_COUNT, SET_COUNT):
-            raise SaveError("the game's save layout changed and the script needs updating")
-        for _ in range(SET_COUNT):
-            r.skip(4 * STAT_COUNT)
-            for _ in range(3):
-                r.skip_dict()
-            for _ in range(r.take("i")):
-                r.skip_dict()
-            for _ in range(5):                  # picked up, crafted, pickables, foods eaten, pieces built
-                r.skip_dict()
-        r.skip(1)                               # first spawn
-        for _ in range(r.take("i")):            # per-world data
-            r.skip(8 + 1 + 12 + 1 + 12 + 1 + 12 + 12)
-            if r.take("?"):
-                r.skip(r.take("i"))             # map
-        name = r.string()
-        r.skip(8)                               # player id
-        r.string()                              # start seed
-        r.skip(1)                               # used cheats
-        created = r.take("q")                   # date created: Unix seconds (UTC)
+        name, created = read_header(r)
         if not r.take("?"):
             raise SaveError("this character has no player data yet")
         blob_len = r.take("i")
@@ -680,14 +698,27 @@ def from_wall_seconds(sec):
     return datetime.datetime(1, 1, 1) + datetime.timedelta(seconds=sec)
 
 
-def find_times(prefab, quality, target, start, limit, max_tries, copies=1, reach=False):
+def wall_instant(wall, tz):
+    """Unix seconds of a naive local date and time in tz (None: this machine's zone)."""
+    return int(wall.timestamp() if tz is None else wall.replace(tzinfo=tz).timestamp())
+
+
+def wall_exists(wall, tz):
+    """Does this local date and time ever show on a clock in tz? Not when summer time skips it (the clock jumps from
+    02:00 to 03:00, say), so a character can never be created at it there."""
+    return local_wall(wall_instant(wall, tz), tz) == wall
+
+
+def find_times(prefab, quality, target, start, limit, max_tries, copies=1, reach=False, tz=False):
     """Creation times, from `start` (a naive local date and time) on, at which a new character's `prefab`, starting at
     `quality`, gets exactly `target` upgrades and then breaks (see matches() for copies; with reach=True the rule of
     reaches() is used instead).
 
     A new character's default seeds come from the local date and time it was created at, to the second, as the clock of
     the computer running the game showed it. The save stores that moment in UTC and the game turns it back into the
-    same local time, so the time zone does not matter here: only the wall-clock second does.
+    same local time, so the time zone does not change the rolls: only the wall-clock second does. It decides which
+    seconds exist, though: with `tz` (None for this machine's zone, False to skip the check), times that the clock
+    skips there (the start of summer time) are left out.
     Returns (naive datetimes, number of seconds tried)."""
     item_hash = stable_hash(prefab)
     keys = [(item_hash + quality + 1 + i) & M32 for i in range(target + 1)]
@@ -697,7 +728,10 @@ def find_times(prefab, quality, target, start, limit, max_tries, copies=1, reach
         sec = first + i
         h = ticks_hash(sec * TICKS_PER_SECOND)
         if reaches(h, keys[0], target, copies) if reach else matches(h, keys, target, copies):
-            found.append(from_wall_seconds(sec))
+            wall = from_wall_seconds(sec)
+            if tz is not False and not wall_exists(wall, tz):
+                continue
+            found.append(wall)
             if len(found) >= limit:
                 return found, i + 1
     return found, max_tries
@@ -825,17 +859,35 @@ def web_items():
     return json.dumps(sorted(UPGRADABLE.values(), key=str.lower))
 
 
-def start_wall(text):
-    """A search start from the page: a local date and time ("YYYY-MM-DDTHH:MM[:SS]"), or this machine's now."""
+def start_wall(text, zone=None):
+    """A search start from the page: a local date and time ("YYYY-MM-DDTHH:MM[:SS]"), or now in `zone`."""
     if text:
-        return parse_created(text, None)[1]
-    return datetime.datetime.now().replace(microsecond=0)
+        return parse_created(text, zone)[1]
+    return local_wall(int(datetime.datetime.now().timestamp()), zone)
 
 
-def web_find(item, quality, limit, after="", start="", upgrades=MAX_FIRST_RUN):
+def web_zone(tz):
+    """The time zone a page field names ("" or None: the browser's own, which Pyodide's localtime follows)."""
+    return parse_tz(tz or None)
+
+
+def web_zone_label(zone, at=None):
+    return tz_label(zone, at).replace("this machine's", "your browser's")
+
+
+def checked_wall(text, zone):
+    """A local date and time typed on the page, which must exist on a clock in `zone`."""
+    wall = parse_created(text, zone)[1]
+    if not wall_exists(wall, zone):
+        raise SaveError(f"{fmt_wall(wall)} never shows on a clock in {web_zone_label(zone)}: summer time skips it")
+    return wall
+
+
+def web_find(item, quality, limit, after="", start="", upgrades=MAX_FIRST_RUN, tz=""):
     """JSON for the time finder: creation times (local, from `start` on) at which a new character gets exactly
-    `upgrades` upgrades (then a break) on `item` starting at `quality`. `after` is the last time of an earlier answer; the search continues
-    from the second after it."""
+    `upgrades` upgrades (then a break) on `item` starting at `quality`. `after` is the last time of an earlier answer;
+    the search continues from the second after it. `tz` is the time zone of the computer running the game: the times
+    are local times there, and seconds its clock skips are left out."""
     try:
         quality, limit, upgrades = int(quality), int(limit), int(upgrades)
         if not 1 <= quality <= WEB_MAX_QUALITY:
@@ -843,13 +895,14 @@ def web_find(item, quality, limit, after="", start="", upgrades=MAX_FIRST_RUN):
         if not 1 <= upgrades <= MAX_FIRST_RUN:
             raise SaveError(f"the upgrades in a row must be between 1 and {MAX_FIRST_RUN}")
         prefab = find_item(item)
-        begin = (parse_created(after, None)[1] + datetime.timedelta(seconds=1)) if after else start_wall(start)
-        times, tried = find_times(prefab, quality, upgrades, begin, max(1, min(limit, 100)), WEB_MAX_SECONDS)
+        zone = web_zone(tz)
+        begin = (parse_created(after, zone)[1] + datetime.timedelta(seconds=1)) if after else start_wall(start, zone)
+        times, tried = find_times(prefab, quality, upgrades, begin, max(1, min(limit, 100)), WEB_MAX_SECONDS, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
     return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": upgrades,
                        "times": [fmt_wall(t) for t in times], "start": fmt_wall(begin), "tried": tried,
-                       "end": fmt_wall(begin + datetime.timedelta(seconds=tried - 1))})
+                       "end": fmt_wall(begin + datetime.timedelta(seconds=tried - 1)), "timeZone": web_zone_label(zone)})
 
 
 def web_predict(data, tz=None):
@@ -860,35 +913,49 @@ def web_predict(data, tz=None):
     try:
         raw = bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data)
         save = load(raw)
-        zone = parse_tz(tz or None)
+        zone = web_zone(tz)
         items = run(save, date_base(save["created"], zone))
     except SaveError as e:
         return json.dumps({"error": str(e)})
     items.sort(key=lambda p: (-p["upgrades"], p["name"].lower()))
     return json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": items,
                        "created": local_wall(save["created"], zone).strftime("%Y-%m-%d %H:%M:%S"),
-                       "timeZone": tz_label(zone, save["created"]).replace("this machine's", "your browser's")})
+                       "timeZone": web_zone_label(zone, save["created"])})
 
 
-def web_predict_item(item, quality, created):
+def web_created(data, tz=""):
+    """JSON for the timer's check: the name and creation time of a dropped save, as Unix seconds and as the local time
+    in time zone `tz` (default: the browser's)."""
+    try:
+        raw = bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data)
+        name, created = read_created(raw)
+        zone = web_zone(tz)
+    except SaveError as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"character": name, "createdUnix": created, "created": fmt_wall(local_wall(created, zone)),
+                       "timeZone": web_zone_label(zone, created)})
+
+
+def web_predict_item(item, quality, created, tz=""):
     """JSON for the predictor's manual form: one item at a quality, for a new character (no saved seeds) created at the
-    local date and time `created` ("YYYY-MM-DDTHH:MM[:SS]")."""
+    local date and time `created` ("YYYY-MM-DDTHH:MM[:SS]") in time zone `tz` (default: the browser's)."""
     try:
         quality = int(quality)
         if not 1 <= quality <= WEB_MAX_QUALITY:
             raise SaveError(f"the quality must be between 1 and {WEB_MAX_QUALITY}")
         if not created:
             raise SaveError("enter the character's creation date and time")
-        wall = parse_created(created, None)[1]
+        zone = web_zone(tz)
+        wall = checked_wall(created, zone)
         prefab = find_item(item)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"created": fmt_wall(wall),
+    return json.dumps({"created": fmt_wall(wall), "timeZone": web_zone_label(zone, wall_instant(wall, zone)),
                        "item": {**predict(prefab, quality, ticks_hash(wall_ticks(wall)), {}), "name": UPGRADABLE[prefab],
                                 "stack": 1}})
 
 
-def relay_plan(prefab, start, target, begin, per=MAX_FIRST_RUN, gap=60, max_tries=WEB_MAX_SECONDS):
+def relay_plan(prefab, start, target, begin, per=MAX_FIRST_RUN, gap=60, max_tries=WEB_MAX_SECONDS, tz=False):
     """A chain of new characters that takes the item from `start` to `target` without breaking it.
 
     Each character makes only upgrades its own rolls get right: the first character takes `per` levels (at most
@@ -899,7 +966,7 @@ def relay_plan(prefab, start, target, begin, per=MAX_FIRST_RUN, gap=60, max_trie
     plan, level, at = [], start, begin
     while level < target:
         need = min(per, target - level)
-        times, tried = find_times(prefab, level, need, at, 1, max_tries, reach=True)
+        times, tried = find_times(prefab, level, need, at, 1, max_tries, reach=True, tz=tz)
         if not times:
             raise SaveError(f"no creation time found for the upgrades from quality {level} within {max_tries:,} seconds "
                             f"from {fmt_wall(at)}")
@@ -911,9 +978,10 @@ def relay_plan(prefab, start, target, begin, per=MAX_FIRST_RUN, gap=60, max_trie
     return plan
 
 
-def web_relay(item, start, target, begin="", per=4):
+def web_relay(item, start, target, begin="", per=4, tz=""):
     """JSON for the relay planner. `begin`: the local date and time to search from (default: now); `per`: the levels
-    each character takes (fewer means more characters, but times much closer together)."""
+    each character takes (fewer means more characters, but times much closer together); `tz`: the time zone of the
+    computer running the game (default: the browser's)."""
     try:
         start, target, per = int(start), int(target), int(per)
         if not 1 <= per <= MAX_FIRST_RUN:
@@ -923,10 +991,12 @@ def web_relay(item, start, target, begin="", per=4):
         if target <= start:
             raise SaveError("the target quality must be higher than the current quality")
         prefab = find_item(item)
-        plan = relay_plan(prefab, start, target, start_wall(begin), per)
+        zone = web_zone(tz)
+        plan = relay_plan(prefab, start, target, start_wall(begin, zone), per, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "per": per, "plan": plan})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "per": per, "plan": plan,
+                       "timeZone": web_zone_label(zone)})
 
 
 def tz_offset_seconds(t, tz):
@@ -962,7 +1032,7 @@ def find_times_command(ap, args, tz):
     except SaveError as e:
         ap.error(str(e))
     maxtries = args.maxtries or (31 * 86400 if args.copies == 1 else 366 * 86400)
-    times, tried = find_times(prefab, args.quality, args.findtime, start, args.limit, maxtries, args.copies)
+    times, tried = find_times(prefab, args.quality, args.findtime, start, args.limit, maxtries, args.copies, tz=tz)
     hits = []
     for t in times:
         shared = {}                                 # the seeds the copies leave behind for each other
