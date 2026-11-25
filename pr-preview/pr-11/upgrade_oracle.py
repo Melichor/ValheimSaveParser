@@ -866,6 +866,12 @@ def start_wall(text, zone=None):
     return local_wall(int(datetime.datetime.now().timestamp()), zone)
 
 
+def not_before_now(wall, zone):
+    """`wall`, or the next second in `zone` when `wall` has already gone: the page never lists a time that has passed."""
+    soon = local_wall(int(datetime.datetime.now().timestamp()) + 1, zone)
+    return max(wall, soon)
+
+
 def web_zone(tz):
     """The time zone a page field names ("" or None: the browser's own, which Pyodide's localtime follows)."""
     return parse_tz(tz or None)
@@ -897,6 +903,7 @@ def web_find(item, quality, limit, after="", start="", upgrades=MAX_FIRST_RUN, t
         prefab = find_item(item)
         zone = web_zone(tz)
         begin = (parse_created(after, zone)[1] + datetime.timedelta(seconds=1)) if after else start_wall(start, zone)
+        begin = not_before_now(begin, zone)
         times, tried = find_times(prefab, quality, upgrades, begin, max(1, min(limit, 100)), WEB_MAX_SECONDS, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
@@ -992,7 +999,7 @@ def web_relay(item, start, target, begin="", per=4, tz=""):
             raise SaveError("the target quality must be higher than the current quality")
         prefab = find_item(item)
         zone = web_zone(tz)
-        plan = relay_plan(prefab, start, target, start_wall(begin, zone), per, tz=zone)
+        plan = relay_plan(prefab, start, target, not_before_now(start_wall(begin, zone), zone), per, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
     return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "per": per, "plan": plan,

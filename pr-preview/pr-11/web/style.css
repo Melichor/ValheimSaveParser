@@ -188,3 +188,5 @@ button:disabled { opacity: .55; cursor: default; }
 .verdict { margin-top: 10px; padding: 4px 16px 12px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--muted); border-radius: 8px; }
 .verdict.hit { border-left-color: var(--done); }
 .verdict.miss { border-left-color: var(--accent); }
+.suggest { display: flex; flex-direction: column; gap: 2px; margin: 8px 0 4px; padding: 8px 12px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
+.suggest #vSuggest { font-weight: 600; }

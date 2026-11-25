@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Valheim Save Parser</title>
 <meta name="description" content="Tools for a Valheim character file (.fch): what each achievement still needs, character creation times and costs for upgrades at the Forge of Potential, and how many kills each rare creature drop is away. Everything runs in your browser.">
-<link rel="stylesheet" href="web/style.css?v=cae414b">
+<link rel="stylesheet" href="web/style.css?v=da18a23">
 </head>
 <body>
 <header class="top">
@@ -137,7 +137,7 @@
       <h3>Before you create the characters</h3>
       <ul>
         <li class="warn"><b>DON'T GO PAST 10K TOTAL DAMAGE.</b> When an item's damage of all types added together comes to more than 10,000, the game marks it as a cheated item the next time it loads, and the mark stays even if the item is later brought back below that (a Club, for example, reaches it at quality 1,666).</li>
-        <li><b>The creation second is what counts.</b> The game takes the time when you press the button that creates the character, and only the whole second is kept. Have the clock of the computer running the game in view (with seconds) and press it during the listed second. You can wait for that time, or set the computer's clock to just before it. Set <b>Time zone</b> to the zone of that computer (it starts as your browser's): the times are its local times, and the finder leaves out the times its clock skips when summer time starts. Otherwise the zone changes nothing: the game reads the time back exactly as the clock showed it.</li>
+        <li><b>The creation second is what counts.</b> The game takes the time when you press <b>Done</b> after typing the new character's name (pressing <b>New</b> before it is safe: that only opens the screen), and only the whole second is kept. The <a href="#timer">Creation timer</a> beeps you onto it. Have the clock of the computer running the game in view (with seconds) and press it during the listed second. You can wait for that time, or set the computer's clock to just before it. Set <b>Time zone</b> to the zone of that computer (it starts as your browser's): the times are its local times, and the finder leaves out the times its clock skips when summer time starts. Otherwise the zone changes nothing: the game reads the time back exactly as the clock showed it.</li>
         <li><b>Check before you upgrade.</b> Load the new character once and quit, then drop its <code>.fch</code> file in the <a href="#predictor">Upgrade predictor</a> tab: it shows the creation time the game saved and the path that time gives. If you missed the second, delete the character and try again.</li>
         <li><b>The name doesn't matter.</b> Name the characters whatever you like. The item shows the character that made its last upgrade as "Crafted by:", so in a relay plan the last character's name ends up on the item.</li>
         <li><b>Every upgrade must be made by the character listed for it.</b> Each roll comes from the character making that upgrade, so an upgrade made by anyone else is a different roll that the list does not cover. With a relay plan, go in order: each character makes only its own listed upgrades, puts the item in a chest, and the next character takes it out and continues.</li>
@@ -265,7 +265,7 @@
 
   <section id="timer" class="panel" role="tabpanel" aria-labelledby="tab-timer" hidden>
     <h2>Creation timer</h2>
-    <p class="sub">Beeps you onto a creation time from the <a href="#finder">Upgrade time finder</a>: four faint beeps one second apart, then a loud fifth one exactly on the time. Press the button that creates the character on the fifth beep. The beeps follow this computer's clock, so run it on the computer that runs the game (or one whose clock matches it).</p>
+    <p class="sub">Beeps you onto a creation time from the <a href="#finder">Upgrade time finder</a>: four faint beeps one second apart, then a loud fifth one exactly on the time. Press <b>Done</b> (after typing the name) on the fifth beep. The beeps follow this computer's clock, so run it on the computer that runs the game (or one whose clock matches it).</p>
     <form id="tForm" class="finderForm">
       <label>Time
         <input id="tTime" type="datetime-local" step="1" required>
@@ -290,7 +290,7 @@
     <p id="tState" class="summary" role="status"></p>
 
     <h3 id="timerCheck" class="subhead">Check the result</h3>
-    <p class="sub">After creating the character, load it once and quit, then drop its <code>.fch</code> file here. It compares the creation time the game saved with the timer's time above and suggests a shift if you missed. The timer is not changed: set the shift yourself.</p>
+    <p class="sub">After creating the character, load it once and quit, then drop its <code>.fch</code> file here. It compares the creation time the game saved with the timer's time above and suggests how to set the timer (the shift, or the time zone) for the next try. The timer is not changed: set it yourself.</p>
     <label id="vDrop" class="drop dropSmall" tabindex="0">
       <input id="vFile" type="file" accept=".fch,.old,.new" hidden>
       <strong>Drop the new character's <code>.fch</code> file here</strong>
@@ -301,12 +301,14 @@
     <div id="vError" class="error" role="alert" hidden></div>
     <div id="vResult" class="verdict" hidden>
       <p id="vSummary" class="summary"></p>
+      <p class="suggest"><span class="muted">Suggested timer setting</span><span id="vSuggest"></span></p>
       <ul id="vFacts" class="caveats"></ul>
     </div>
     <div class="notes">
       <h3>How to use it</h3>
       <ul>
-        <li><b>The fifth beep marks the start of the second.</b> The game keeps only the whole second in which you press the button, so anything from the fifth beep until just before the next second counts. Pressing right after you hear it lands a few hundred milliseconds in, which is safe.</li>
+        <li class="warn"><b>The press that counts is Done.</b> In the character selection, pressing <b>New</b> is safe: it only opens the new character screen, and the time is not taken yet. Take your time there: type the name (at least 3 letters, or Done stays greyed out) and pick the looks. The creation time is taken the moment you press <b>Done</b>, so that is the press to put on the fifth beep. (If the game then says the cloud storage is full and you choose to save locally, the time is taken when you confirm that instead.)</li>
+        <li><b>The fifth beep marks the start of the second.</b> The game keeps only the whole second in which you press Done, so anything from the fifth beep until just before the next second counts. Pressing right after you hear it lands a few hundred milliseconds in, which is safe.</li>
         <li><b>Shift moves all five beeps</b>, in milliseconds: <code>+300</code> makes them 0.3 s later, <code>-200</code> 0.2 s earlier. If you tend to press on the beat or a little ahead of it, a shift of about <code>+300</code> to <code>+500</code> puts your press safely inside the second. It is remembered in this browser.</li>
         <li><b>Calibrate with the test.</b> <i>Test in 5 s</i> plays the same five beeps on the next whole second five seconds away; compare the loud beep with the clock above, or with a clock showing seconds on the game's computer, and adjust the shift until they agree. The beeps already allow for the sound output delay the browser reports; Bluetooth headphones can add more.</li>
         <li><b>Keep this tab open.</b> The beeps are scheduled with the audio clock about 15 seconds ahead, so they stay on time even if the tab is in the background then, but the browser must not be closed or asleep. Starting the timer also unlocks sound, which browsers only allow after a click.</li>
@@ -396,10 +398,10 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"></script>
-<script src="web/page.js?v=cae414b"></script>
-<script src="web/app.js?v=cae414b"></script>
-<script src="web/finder.js?v=cae414b"></script>
-<script src="web/timer.js?v=cae414b"></script>
-<script src="web/drops.js?v=cae414b"></script>
+<script src="web/page.js?v=da18a23"></script>
+<script src="web/app.js?v=da18a23"></script>
+<script src="web/finder.js?v=da18a23"></script>
+<script src="web/timer.js?v=da18a23"></script>
+<script src="web/drops.js?v=da18a23"></script>
 </body>
 </html>

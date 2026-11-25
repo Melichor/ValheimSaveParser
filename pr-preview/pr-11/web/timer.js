@@ -223,7 +223,7 @@ window.openTimer = (time, tz) => {
 
 const V = {
   drop: byId("vDrop"), file: byId("vFile"), status: byId("vStatus"), statusText: byId("vStatusText"), error: byId("vError"),
-  result: byId("vResult"), summary: byId("vSummary"), facts: byId("vFacts"),
+  result: byId("vResult"), summary: byId("vSummary"), suggest: byId("vSuggest"), facts: byId("vFacts"),
 };
 
 function checkFail(message) {
@@ -250,6 +250,22 @@ async function check(file) {
   (worker || startWorker()).postMessage({ type: "created", bytes, tz: T.tz.value.trim() }, [bytes]);
 }
 
+// the UTC offset (minutes) of zone tz at epoch ms, or null for an unknown zone
+function zoneOffsetMin(ms, tz) {
+  const w = wallParts(ms, tz);
+  return w ? Math.round((Date.UTC(w.y, w.mo - 1, w.d, w.h, w.mi, w.s) - Math.floor(ms / 1000) * 1000) / 60000) : null;
+}
+
+const fmtOffset = (min) => `${min < 0 ? "-" : "+"}${pad(Math.floor(Math.abs(min) / 60))}:${pad(Math.abs(min) % 60)}`;
+
+// up to three zone names with UTC offset `min` at epoch ms, the browser's own first when it fits
+function zonesWithOffset(min, ms) {
+  let zones = [];
+  try { zones = Intl.supportedValuesOf("timeZone"); } catch { /* none to suggest */ }
+  const fit = (z) => zoneOffsetMin(ms, z) === min;
+  return [...new Set([TIME_ZONE, ...zones])].filter((z) => z && fit(z)).slice(0, 3);
+}
+
 window.onCreatedRead = (msg) => {
   if (!window.timerChecking) return;
   window.timerChecking = false;
@@ -257,35 +273,68 @@ window.onCreatedRead = (msg) => {
   V.drop.classList.remove("busy");
   if (msg.error) return checkFail(msg.error[0].toUpperCase() + msg.error.slice(1).replace(/\.?$/, "."));
   const tz = T.tz.value.trim();
+  const zoneShown = tz || TIME_ZONE;
   const target = wallToMs(T.time.value, tz);
+  const createdMs = msg.createdUnix * 1000;
   const aimed = T.time.value.replace("T", " ") + (T.time.value.length === 16 ? ":00" : "");
-  const diff = Math.round((msg.createdUnix * 1000 - target) / 1000);       // whole seconds: late > 0, early < 0
+  const diff = Math.round((createdMs - target) / 1000);       // whole seconds: late > 0, early < 0
   const shift = shiftMs();
-  const facts = [`The game saved ${msg.created} (${msg.timeZone}); the timer is set to ${aimed} (${tz || TIME_ZONE}).`];
+  // a miss of whole quarter hours (plus a few seconds) is a time zone mismatch, not a late press
+  const zoneMiss = Math.round(diff / 900) * 900;
+  const rest = diff - zoneMiss;
+  const facts = [`The game saved ${msg.created} (${msg.timeZone}); the timer is set to ${aimed} (${zoneShown}).`];
+  let suggest;
   V.result.classList.toggle("hit", diff === 0);
   V.result.classList.toggle("miss", diff !== 0);
   if (diff === 0) {
     V.summary.textContent = `${msg.character}: created exactly on the timer's second.`;
-    facts.push(`The press landed inside the target second, so the shift you used (now ${fmtShift(shift)}) works. ` +
-      "The save keeps only whole seconds, so it cannot tell how close to the edge of the second it was.");
+    suggest = `Keep Shift at ${fmtShift(shift)} and Time zone at ${zoneShown}; for the next character, only set Time.`;
+    facts.push("The press landed inside the target second, so the shift you used works. The save keeps only whole " +
+      "seconds, so it cannot tell how close to the edge of the second it was.");
+  } else if (zoneMiss !== 0 && Math.abs(rest) <= 30) {
+    const n = Math.abs(diff);
+    V.summary.textContent = `${msg.character}: created ${n.toLocaleString()} s too ${diff > 0 ? "late" : "early"}` +
+      ` – that is the time zone, not your timing.`;
+    const timerOffset = zoneOffsetMin(createdMs, tz);
+    const gameOffset = timerOffset === null ? null : timerOffset - zoneMiss / 60;
+    const names = gameOffset === null ? [] : zonesWithOffset(gameOffset, createdMs);
+    const restShift = shift - rest * 1000;
+    suggest = (gameOffset === null ? "Set Time zone to the game computer's zone" :
+      `Set Time zone to ${names.length ? names.join(", ") + " or " : ""}${fmtOffset(gameOffset)}`) +
+      (rest ? `, and Shift to about ${fmtShift(restShift)} (now ${fmtShift(shift)})` : `, and keep Shift at ${fmtShift(shift)}`) + ".";
+    facts.push(`The miss is ${Math.abs(zoneMiss / 3600)} hour${Math.abs(zoneMiss) === 3600 ? "" : "s"}` +
+      (rest ? ` and ${Math.abs(rest)} s` : "") + ". Whole hours (or quarter hours) mean the timer counted in a different " +
+      "time zone than the game computer's clock: the game computer was on " +
+      (gameOffset === null ? "another offset" : `UTC${fmtOffset(gameOffset)}`) + " at the time" +
+      (timerOffset === null ? "." : `, the timer on UTC${fmtOffset(timerOffset)}.`) +
+      (rest ? ` The ${Math.abs(rest)} s left over are your timing: the press came that much too ${rest > 0 ? "late" : "early"}.` : ""));
+  } else if (Math.abs(diff) > 30) {
+    V.summary.textContent = `${msg.character}: created ${Math.abs(diff).toLocaleString()} s too ${diff > 0 ? "late" : "early"}.`;
+    suggest = "No timer setting fixes this: the miss is too large for a late or early press, and not a time zone difference.";
+    facts.push("Check that the timer's Time is the time you aimed for and that this is the new character's file. If it " +
+      "is, this computer's clock and the game computer's disagree: set both to the internet time, or run the timer on " +
+      "the game computer.");
   } else {
     const n = Math.abs(diff), late = diff > 0;
-    V.summary.textContent = `${msg.character}: created ${n.toLocaleString()} s too ${late ? "late" : "early"}.`;
+    const suggested = Math.round((shift - diff * 1000) / 10) * 10;
+    V.summary.textContent = `${msg.character}: created ${n} s too ${late ? "late" : "early"}.`;
+    suggest = Math.abs(suggested) <= 5000
+      ? `Set Shift to about ${fmtShift(suggested)} (now ${fmtShift(shift)}) and keep Time zone at ${zoneShown}.`
+      : `Shift would need ${fmtShift(suggested)}, beyond the ±5000 ms it allows: set this computer's clock (or the ` +
+        "game computer's) to the internet time instead, so the two agree.";
     facts.push(late
       ? `The press came between ${n} and ${n + 1} s after the start of the target second.`
       : `The press came between ${n - 1 || "0"} and ${n} s before the start of the target second.`);
-    if (n % 3600 === 0 && n <= 14 * 3600) {
-      facts.push(`That is exactly ${n / 3600} hour${n === 3600 ? "" : "s"}: the time zone field is probably not the game computer's zone, or summer time differs. Fix the zone rather than the shift.`);
-    } else if (n > 30) {
-      facts.push("That is far off for a missed beep: check that the timer is set to the time you aimed for, that this is the new character's file, and that this computer's clock matches the game computer's.");
+    if (Math.abs(suggested) <= 5000) {
+      facts.push(`That shift moves the beeps ${n * 1000} ms ${late ? "earlier" : "later"}, assuming ${fmtShift(shift)} was ` +
+        "the shift when you pressed. The save keeps only whole seconds, so it is right to about ±500 ms: check it with " +
+        "Test in 5 s.");
     } else {
-      const suggested = shift - diff * 1000;
-      facts.push(`Try a shift of about ${fmtShift(suggested)} (now ${fmtShift(shift)}, assuming that was the shift when you pressed): ` +
-        `it moves the beeps ${n * 1000} ms ${late ? "earlier" : "later"}. The save keeps only whole seconds, so this is right to about ±500 ms.` +
-        (Math.abs(suggested) > 5000 ? " That is beyond the ±5000 ms the shift allows: check this computer's clock against the game computer's." : ""));
-      facts.push("The timer is not changed: set the shift yourself, check it with Test in 5 s, and try again with a new character.");
+      facts.push("A miss this large usually means the two computers' clocks disagree by that much, not a slow press.");
     }
   }
+  facts.push("Nothing here changes the timer: set it yourself, then try again with a new character.");
+  V.suggest.textContent = suggest;
   V.facts.replaceChildren(...facts.map((t) => el("li", "", t)));
   V.result.hidden = false;
 };

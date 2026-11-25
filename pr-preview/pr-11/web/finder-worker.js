@@ -28,7 +28,7 @@ function load() {
   if (!ready) {
     ready = (async () => {
       const [py, oracle, costSource] = await Promise.all([
-        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py?v=cae414b"), fetchText("../upgrade_cost.py?v=cae414b"),
+        loadPyodide({ indexURL: PYODIDE_URL }), fetchText("../upgrade_oracle.py?v=da18a23"), fetchText("../upgrade_cost.py?v=da18a23"),
       ]);
       await py.loadPackage("tzdata");                   // the time zone database, for named zones (zoneinfo)
       py.FS.writeFile("upgrade_oracle.py", oracle);

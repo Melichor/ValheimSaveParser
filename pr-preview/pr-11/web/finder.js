@@ -49,7 +49,7 @@ let predicting = false; // a dropped file is being read, so worker errors belong
 let relayZone = "";     // the time zone of the last relay plan, for its "in 3 h" hints
 
 function startWorker() {
-  worker = new Worker("web/finder-worker.js?v=cae414b");
+  worker = new Worker("web/finder-worker.js?v=da18a23");
   worker.onmessage = (e) => handle(e.data);
   worker.onerror = () => fail("Could not start the Python runtime.");
   return worker;
@@ -227,24 +227,48 @@ function timerButton(time, tz) {
 
 // ---------- results ----------
 
+// times that have already gone are never shown: they are left out whenever the list is drawn, and once a second the
+// rows are checked in place (a gone one is removed, the others get a fresh "in 3 min" hint)
+const notGone = (time) => { const ms = wallToMs(time, request && request.tz); return ms === null || ms > Date.now(); };
+
 function showResult(r, over) {
+  found = found.filter(notGone);
   F.result.hidden = false;
   F.summary.textContent = `${r.item}, starting at quality ${r.from}: create the character at one of these times ` +
     `(the game computer's clock in ${r.timeZone}, to the second) for exactly ${r.upgrades} upgrade${r.upgrades === 1 ? "" : "s"} before it breaks`;
   F.names.replaceChildren(...found.map((time) => {
     const li = el("li");
+    li.dataset.time = time;
     const top = el("div", "nameRow");
-    top.append(el("code", "", time), el("span", "muted", fromNow(time, request && request.tz)),
+    top.append(el("code", "", time), el("span", "muted hint", fromNow(time, request && request.tz)),
       timerButton(time, request && request.tz));
     li.append(top);
     return li;
   }));
   F.more.hidden = false;
-  F.note.textContent = found.length === 0
+  const wanted = request && request.start ? request.start.replace("T", " ") : "";
+  const moved = wanted && wanted < r.start && !request.more ? ` The search started now (${r.start}): earlier times have gone.` : "";
+  F.note.textContent = (found.length === 0
     ? `No time found in the ${Math.round(r.tried / 86400)} days after ${r.start}.`
     : over ? `No more within ${Math.round(r.tried / 86400)} days; Find more keeps looking after that.`
-      : `${r.tried.toLocaleString()} seconds searched this time.`;
+      : `${r.tried.toLocaleString()} seconds searched this time.`) + moved;
 }
+
+setInterval(() => {
+  if (F.result.hidden || !found.length) return;
+  for (const li of [...F.names.children]) {
+    const time = li.dataset.time;
+    if (!time) continue;
+    if (!notGone(time)) {
+      li.remove();
+      found = found.filter((t) => t !== time);
+    } else {
+      const hint = li.querySelector(".hint");
+      if (hint) hint.textContent = fromNow(time, request && request.tz);
+    }
+  }
+  if (!found.length) F.note.textContent = "Every time listed has gone: use Find more or search again.";
+}, 1000);
 
 function search(more) {
   F.error.hidden = true;
@@ -255,6 +279,7 @@ function search(more) {
     const tz = F.tz.value.trim();
     request = { type: "find", item, quality: F.quality.value, upgrades: F.upgrades.value, tz, start: F.start.value || localNow(tz) };
   }
+  request.more = more;
   asked = STEP;
   busy(itemsLoaded ? "Searching creation times…" : "Starting the Python runtime (about 10 MB, cached after the first visit), then searching…");
   // "Find more" continues after the last time listed, or after the range the last search covered when it found nothing
