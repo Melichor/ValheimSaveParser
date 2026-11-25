@@ -11,7 +11,7 @@
 const byId = (id) => document.getElementById(id);
 const F = {
   form: byId("finderForm"), item: byId("fItem"), items: byId("fItems"), quality: byId("fQuality"), upgrades: byId("fUpgrades"),
-  start: byId("fStart"), tz: byId("fTz"), go: byId("fGo"), cancel: byId("fCancel"),
+  start: byId("fStart"), go: byId("fGo"), cancel: byId("fCancel"),
   status: byId("fStatus"), statusText: byId("fStatusText"), error: byId("fError"),
   result: byId("fResult"), summary: byId("fSummary"), names: byId("fNames"), more: byId("fMore"), note: byId("fNote"),
 };
@@ -19,17 +19,17 @@ const F = {
 const P = {
   drop: byId("uDrop"), file: byId("uFile"), status: byId("uStatus"), statusText: byId("uStatusText"), error: byId("uError"),
   result: byId("uResult"), summary: byId("uSummary"), items: byId("uItems"),
-  form: byId("uForm"), item: byId("uItem"), quality: byId("uQuality"), created: byId("uCreated"), tz: byId("uTz"), go: byId("uGo"),
+  form: byId("uForm"), item: byId("uItem"), quality: byId("uQuality"), created: byId("uCreated"), go: byId("uGo"),
 };
 
 const R = {
-  form: byId("rForm"), item: byId("rItem"), from: byId("rFrom"), to: byId("rTo"), per: byId("rPer"), start: byId("rStart"), tz: byId("rTz"), go: byId("rGo"),
+  form: byId("rForm"), item: byId("rItem"), from: byId("rFrom"), to: byId("rTo"), per: byId("rPer"), start: byId("rStart"), go: byId("rGo"),
   status: byId("rStatus"), statusText: byId("rStatusText"), error: byId("rError"),
   result: byId("rResult"), summary: byId("rSummary"), plan: byId("rPlan"),
 };
 
 const C = {
-  form: byId("cForm"), item: byId("cItem"), items: byId("cItems"), target: byId("cTarget"), created: byId("cCreated"), tz: byId("cTz"),
+  form: byId("cForm"), item: byId("cItem"), items: byId("cItems"), target: byId("cTarget"), created: byId("cCreated"),
   file: byId("cFile"), drop: byId("cDrop"), dropText: byId("cDropText"), dropHint: byId("cDropHint"),
   clearFile: byId("cClearFile"), go: byId("cGo"), status: byId("cStatus"), statusText: byId("cStatusText"), error: byId("cError"),
   result: byId("cResult"), summary: byId("cSummary"), facts: byId("cFacts"), rows: byId("cRows"), list: byId("cList"),
@@ -49,7 +49,7 @@ let predicting = false; // a dropped file is being read, so worker errors belong
 let relayZone = "";     // the time zone of the last relay plan, for its "in 3 h" hints
 
 function startWorker() {
-  worker = new Worker("web/finder-worker.js?v=da18a23");
+  worker = new Worker("web/finder-worker.js?v=b373998");
   worker.onmessage = (e) => handle(e.data);
   worker.onerror = () => fail("Could not start the Python runtime.");
   return worker;
@@ -109,7 +109,7 @@ function handle(msg) {
 }
 
 // ---------- local times ----------
-// Every time on the page is a local time in a time zone field (the zone of the computer running the game), which
+// Every time on the page is a local time in the shared time zone choice (#zone: the zone of the computer running the game), which
 // starts as the browser's own. A zone is an IANA name ("Europe/Prague"), "UTC" or a fixed offset ("+02:00").
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -167,21 +167,67 @@ function fromNow(text, tz) {
   return s >= 0 ? `in ${span}` : `${span} ago`;
 }
 
-// the time zone fields: one shared list of zone names, every field starting as the browser's zone
+// the shared time zone choice above the tabs (#zone): the zone of the computer that runs the game. Every upgrade tool
+// and the timer read their times in it. It lists every zone the browser knows, grouped by region and with its UTC
+// offset now, plus fixed offsets, and starts as the browser's own zone.
+const ZONE = byId("zone");
+const zone = () => ZONE.value;
+const FIXED_OFFSETS = [-720, -660, -600, -570, -540, -480, -420, -360, -300, -240, -210, -180, -120, -60, 0, 60, 120, 180,
+  210, 240, 270, 300, 330, 345, 360, 390, 420, 480, 525, 540, 570, 600, 630, 660, 720, 765, 780, 840];
 {
+  const option = (value, label) => Object.assign(document.createElement("option"), { value, textContent: label });
+  const now = Date.now();
+  const utcLabel = (z) => {
+    const w = wallParts(now, z);
+    if (!w) return "";
+    const min = Math.round((Date.UTC(w.y, w.mo - 1, w.d, w.h, w.mi, w.s) - Math.floor(now / 1000) * 1000) / 60000);
+    return ` (UTC${min < 0 ? "−" : "+"}${pad(Math.floor(Math.abs(min) / 60))}:${pad(Math.abs(min) % 60)})`;
+  };
   let zones = [];
-  try { zones = Intl.supportedValuesOf("timeZone"); } catch { /* an older browser: the field still takes typed names */ }
-  byId("tzList").replaceChildren(...["UTC", ...zones.filter((z) => z !== "UTC")]
-    .map((z) => Object.assign(document.createElement("option"), { value: z })));
+  try { zones = Intl.supportedValuesOf("timeZone"); } catch { /* an older browser: only the fixed offsets and its own zone */ }
+  if (TIME_ZONE && !zones.includes(TIME_ZONE)) zones = [TIME_ZONE, ...zones];
+  const groups = new Map();
+  for (const z of zones) {
+    const region = z.includes("/") ? z.split("/")[0] : "Other";
+    if (!groups.has(region)) groups.set(region, []);
+    groups.get(region).push(z);
+  }
+  const parts = [];
+  if (TIME_ZONE) parts.push(option(TIME_ZONE, `${TIME_ZONE}${utcLabel(TIME_ZONE)} – yours`));
+  const fixed = document.createElement("optgroup");
+  fixed.label = "UTC and fixed offsets";
+  fixed.append(option("UTC", "UTC"), ...FIXED_OFFSETS.filter((m) => m).map((m) => {
+    const v = `${m < 0 ? "-" : "+"}${pad(Math.floor(Math.abs(m) / 60))}:${pad(Math.abs(m) % 60)}`;
+    return option(v, `UTC${v.replace("-", "−")}`);
+  }));
+  parts.push(fixed);
+  for (const [region, list] of [...groups].sort((x, y) => x[0].localeCompare(y[0]))) {
+    const g = document.createElement("optgroup");
+    g.label = region;
+    g.append(...list.filter((z) => z !== TIME_ZONE).sort().map((z) => option(z, z.replace(/_/g, " ") + utcLabel(z))));
+    if (g.children.length) parts.push(g);
+  }
+  ZONE.replaceChildren(...parts);
+  ZONE.value = TIME_ZONE || "UTC";
+}
+// set the shared zone from a value (an IANA name or offset); adds it when the list does not have it
+function setZone(tz) {
+  if (!tz) return;
+  if (![...ZONE.options].some((o) => o.value === tz)) ZONE.prepend(Object.assign(document.createElement("option"), { value: tz, textContent: tz }));
+  if (ZONE.value !== tz) { ZONE.value = tz; ZONE.dispatchEvent(new Event("change")); }
 }
 for (const e of document.querySelectorAll("[data-tz]")) e.textContent = TIME_ZONE || "unknown";
-for (const f of [F, R, P, C]) f.tz.value = TIME_ZONE;
-// a search start follows its zone field (now there) until it is changed by hand
+// a search start means "now" (in the zone) until it is changed by hand: it follows the zone, and a search refreshes it
+// to the moment it starts
 for (const f of [F, R]) {
-  let auto = true;
-  f.start.value = localNow(f.tz.value);
-  f.start.addEventListener("input", () => { auto = false; });
-  f.tz.addEventListener("change", () => { if (auto) f.start.value = localNow(f.tz.value); });
+  f.start.dataset.auto = "1";
+  f.start.value = localNow(zone());
+  f.start.addEventListener("input", () => { f.start.dataset.auto = ""; });
+  ZONE.addEventListener("change", () => { if (f.start.dataset.auto) f.start.value = localNow(zone()); });
+}
+function searchStart(f, tz) {
+  if (f.start.dataset.auto || !f.start.value) f.start.value = localNow(tz);
+  return f.start.value;
 }
 
 // ---------- the upgrade path ----------
@@ -247,7 +293,8 @@ function showResult(r, over) {
   }));
   F.more.hidden = false;
   const wanted = request && request.start ? request.start.replace("T", " ") : "";
-  const moved = wanted && wanted < r.start && !request.more ? ` The search started now (${r.start}): earlier times have gone.` : "";
+  const lag = wanted ? wallToMs(r.start, request.tz) - wallToMs(wanted, request.tz) : 0;   // ms the start was moved up
+  const moved = lag > 5000 && !request.more ? ` The search started now (${r.start}): earlier times have gone.` : "";
   F.note.textContent = (found.length === 0
     ? `No time found in the ${Math.round(r.tried / 86400)} days after ${r.start}.`
     : over ? `No more within ${Math.round(r.tried / 86400)} days; Find more keeps looking after that.`
@@ -276,8 +323,8 @@ function search(more) {
     const item = F.item.value.trim();
     if (!item) return fail("Enter the name of an item.");
     found = [];
-    const tz = F.tz.value.trim();
-    request = { type: "find", item, quality: F.quality.value, upgrades: F.upgrades.value, tz, start: F.start.value || localNow(tz) };
+    const tz = zone();
+    request = { type: "find", item, quality: F.quality.value, upgrades: F.upgrades.value, tz, start: searchStart(F, tz) };
   }
   request.more = more;
   asked = STEP;
@@ -321,7 +368,7 @@ async function predict(file) {
   try {
     const bytes = await file.arrayBuffer();
     predicting = true;
-    (worker || startWorker()).postMessage({ type: "predict", bytes, tz: P.tz.value.trim() }, [bytes]);
+    (worker || startWorker()).postMessage({ type: "predict", bytes, tz: zone() }, [bytes]);
   } catch (e) {
     predictFail("Could not read that file.");
   }
@@ -339,7 +386,7 @@ function predictItem() {
   P.status.hidden = false;
   P.statusText.textContent = worker ? "Predicting…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…";
   predicting = true;
-  (worker || startWorker()).postMessage({ type: "predictItem", item, quality: P.quality.value, created, tz: P.tz.value.trim() });
+  (worker || startWorker()).postMessage({ type: "predictItem", item, quality: P.quality.value, created, tz: zone() });
 }
 
 function showPrediction(r) {
@@ -400,10 +447,10 @@ function plan() {
   R.statusText.textContent = (worker ? "Finding creation times…" : "Starting the Python runtime (about 10 MB, cached after the first visit), then finding creation times…") +
     (Number(R.per.value) > 4 ? " With more than 4 levels per character, each hand-over can take a while." : "");
   relaying = true;
-  const tz = R.tz.value.trim();
+  const tz = zone();
   relayZone = tz;
   (worker || startWorker()).postMessage({ type: "relay", item, from: R.from.value, to: R.to.value,
-    per: R.per.value, tz, start: R.start.value || localNow(tz) });
+    per: R.per.value, tz, start: searchStart(R, tz) });
 }
 
 function showRelay(r) {
@@ -461,7 +508,7 @@ async function calculate() {
   C.statusText.textContent = (worker ? "Calculating…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…") +
     " High targets can take a while: every copy is replayed.";
   costing = true;
-  const msg = { type: "cost", item, target: C.target.value, created, tz: C.tz.value.trim() };
+  const msg = { type: "cost", item, target: C.target.value, created, tz: zone() };
   try {
     if (file) msg.bytes = await file.arrayBuffer();
   } catch (e) {

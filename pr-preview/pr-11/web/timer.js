@@ -1,9 +1,9 @@
 "use strict";
 
 /* Creation timer. Beeps four times faintly, one second apart, and a fifth time loudly exactly on a chosen local time, so
-   a new character can be created during that second. The time is a local time in the time zone field; the shift (ms)
-   moves every beep. Uses the time helpers of web/finder.js (wallParts, wallToMs, localNow, TIME_ZONE, el), which loads
-   first.
+   a new character can be created during that second. The time is a local time in the shared time zone (#zone); the shift (ms)
+   moves every beep. Uses the time helpers of web/finder.js (wallParts, wallToMs, localNow, TIME_ZONE, el) and its shared
+   time zone choice (zone(), setZone, ZONE), which loads first.
 
    The beeps are Web Audio oscillators started at an exact time on the audio clock, which is far steadier than page
    timers (those can be late by tens of milliseconds, or by seconds in a background tab). The audio clock is mapped to
@@ -12,7 +12,7 @@
    delay is allowed for and the sound is heard on time; delay the browser cannot see (Bluetooth) is what Shift is for. */
 
 const T = {
-  form: byId("tForm"), time: byId("tTime"), tz: byId("tTz"), shift: byId("tShift"), go: byId("tGo"), stop: byId("tStop"),
+  form: byId("tForm"), time: byId("tTime"), shift: byId("tShift"), go: byId("tGo"), stop: byId("tStop"),
   test: byId("tTest"), error: byId("tError"), clock: byId("tClock"), zoneName: byId("tZoneName"), left: byId("tLeft"),
   leftLabel: byId("tLeftLabel"), state: byId("tState"),
 };
@@ -24,8 +24,11 @@ const SHIFT_KEY = "valheim-timer-shift";
 let audio = null;                // the AudioContext, made on the first click (browsers only allow sound after one)
 let run = null;                  // the running timer: { target (epoch ms of the loud beep), label, nodes, scheduled }
 
-T.tz.value = TIME_ZONE;
-T.time.value = localNow(TIME_ZONE);
+// the time starts as now in the shared zone, and follows the zone until it is changed by hand
+let timeAuto = true;
+T.time.value = localNow(zone());
+T.time.addEventListener("input", () => { timeAuto = false; });
+ZONE.addEventListener("change", () => { if (timeAuto) T.time.value = localNow(zone()); });
 try { const v = localStorage.getItem(SHIFT_KEY); if (v !== null && v !== "") T.shift.value = v; } catch { /* no storage */ }
 
 const shiftMs = () => { const v = Number(T.shift.value); return Number.isFinite(v) ? Math.max(-5000, Math.min(5000, v)) : 0; };
@@ -163,7 +166,7 @@ setInterval(tick, 200);
 
 // the clock and the countdown, every frame while the tab is visible
 function draw() {
-  const tz = run ? run.tz : T.tz.value.trim();
+  const tz = run ? run.tz : zone();
   T.zoneName.textContent = tz || TIME_ZONE || "this browser";
   T.clock.textContent = fmtClock(Date.now(), tz);
   if (run) {
@@ -181,7 +184,7 @@ requestAnimationFrame(draw);
 
 T.form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const tz = T.tz.value.trim();
+  const tz = zone();
   const shown = T.time.value.replace("T", " ") + (T.time.value.length === 16 ? ":00" : "");
   start(T.time.value, tz, `${shown} (${tz || TIME_ZONE})`);
 });
@@ -189,7 +192,7 @@ T.stop.addEventListener("click", () => stop());
 
 // a test run: the loud beep on the next whole second that is at least five seconds away
 T.test.addEventListener("click", () => {
-  const tz = T.tz.value.trim();
+  const tz = zone();
   const at = Math.ceil((Date.now() + 5000) / 1000) * 1000;
   const w = wallParts(at, tz);
   if (!w) return fail("Unknown time zone: use a name such as Europe/Prague, UTC or an offset such as +02:00.");
@@ -209,7 +212,8 @@ T.shift.addEventListener("input", () => {
 // the finder and the relay planner open the timer with one of their times (see timerButton in web/finder.js)
 window.openTimer = (time, tz) => {
   T.time.value = time.replace(" ", "T");
-  T.tz.value = tz || TIME_ZONE;
+  timeAuto = false;
+  setZone(tz || TIME_ZONE);
   T.error.hidden = true;
   document.getElementById("tab-timer").click();
   T.time.focus();
@@ -238,8 +242,8 @@ async function check(file) {
   V.error.hidden = true;
   V.result.hidden = true;
   V.file.value = "";
-  if (wallToMs(T.time.value, T.tz.value.trim()) === null) {
-    return checkFail("Set the timer's time and time zone above to the time you aimed for first.");
+  if (wallToMs(T.time.value, zone()) === null) {
+    return checkFail("Set the timer's time (and the time zone at the top of the page) to the time you aimed for first.");
   }
   let bytes;
   try { bytes = await file.arrayBuffer(); } catch { return checkFail("Could not read that file."); }
@@ -247,7 +251,7 @@ async function check(file) {
   V.status.hidden = false;
   V.statusText.textContent = worker ? "Reading the file…" : "Starting the Python runtime (about 10 MB, cached after the first visit)…";
   window.timerChecking = true;
-  (worker || startWorker()).postMessage({ type: "created", bytes, tz: T.tz.value.trim() }, [bytes]);
+  (worker || startWorker()).postMessage({ type: "created", bytes, tz: zone() }, [bytes]);
 }
 
 // the UTC offset (minutes) of zone tz at epoch ms, or null for an unknown zone
@@ -272,7 +276,7 @@ window.onCreatedRead = (msg) => {
   V.status.hidden = true;
   V.drop.classList.remove("busy");
   if (msg.error) return checkFail(msg.error[0].toUpperCase() + msg.error.slice(1).replace(/\.?$/, "."));
-  const tz = T.tz.value.trim();
+  const tz = zone();
   const zoneShown = tz || TIME_ZONE;
   const target = wallToMs(T.time.value, tz);
   const createdMs = msg.createdUnix * 1000;

@@ -190,3 +190,8 @@ button:disabled { opacity: .55; cursor: default; }
 .verdict.miss { border-left-color: var(--accent); }
 .suggest { display: flex; flex-direction: column; gap: 2px; margin: 8px 0 4px; padding: 8px 12px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
 .suggest #vSuggest { font-weight: 600; }
+
+/* the shared time zone choice above the tabs */
+.zoneBar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 4px 0 12px; font-size: .92rem; }
+.zoneBar label { font-weight: 600; }
+.zoneBar select { font: inherit; max-width: 100%; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
