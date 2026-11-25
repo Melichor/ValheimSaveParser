@@ -28,7 +28,7 @@
   }
 
   function startWorker() {
-    worker = new Worker("web/drops-worker.js?v=b373998");
+    worker = new Worker("web/drops-worker.js?v=182c4e3");
     worker.onmessage = (e) => show(e.data);
     worker.onerror = () => fail("Could not start the Python runtime.");
     return worker;

@@ -49,7 +49,7 @@ let predicting = false; // a dropped file is being read, so worker errors belong
 let relayZone = "";     // the time zone of the last relay plan, for its "in 3 h" hints
 
 function startWorker() {
-  worker = new Worker("web/finder-worker.js?v=b373998");
+  worker = new Worker("web/finder-worker.js?v=182c4e3");
   worker.onmessage = (e) => handle(e.data);
   worker.onerror = () => fail("Could not start the Python runtime.");
   return worker;
