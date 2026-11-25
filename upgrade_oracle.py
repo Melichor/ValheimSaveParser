@@ -3,25 +3,31 @@
 
 Reads a Valheim character file (.fch, profile version 46 and up, player data version 34). Python 3, standard library only.
 
-How the game decides an upgrade (Valheim, InventoryGui.DoCrafting and Player.GetItemUpgradeChance):
+How the game decides an upgrade (Valheim 1.0.30, InventoryGui.DoCrafting and Player.GetItemUpgradeChance):
   * Each attempt is keyed by the item's prefab name hash plus the level it is being upgraded to.
   * The roll is Unity's Random.value after Random.InitState(seed). The seed is the one stored in the character for that
-    key, or, when the key was never used, the hash of the character name plus the key.
+    key, or, when the key was never used, m_dateCreated.GetHashCode() plus the key.
   * After the roll the game stores a new random seed for the key, so the next attempt on the same key is a different roll.
   * The attempt succeeds when UPGRADE_CHANCE >= roll, destroys the item when BREAK_CHANCE >= 1 - roll, and otherwise
     lowers the item by one level.
-The rolls therefore depend on nothing but the character name and the seeds saved in the file, which is what this script
-replays. Unity's generator (a xorshift128 seeded as s[i] = s[i-1] * 1812433253 + 1) was taken from the game's UnityPlayer.so.
+The character part of the default seed is its creation date. The save keeps it as Unix seconds (UTC); the game loads it
+as DateTimeOffset.FromUnixTimeSeconds(s).LocalDateTime, i.e. in the time zone of the machine running the game (with the
+offset in force at that instant), and hashes the local ticks: (int)ticks ^ (int)(ticks >> 32). So the rolls depend on
+the creation stamp, the game machine's time zone and the seeds saved in the file, which is what this script replays.
+(Valheim 1.0.20 to 1.0.29 used the hash of the character name instead; the web page's name tools still follow that.)
+Unity's generator (a xorshift128 seeded as s[i] = s[i-1] * 1812433253 + 1) was taken from the game's UnityPlayer.so.
 
     python3 upgrade_oracle.py Character.fch                  # the upgradable items in the inventory
+    python3 upgrade_oracle.py Character.fch --tz Europe/Prague   # ...if the game runs in another zone than this machine
     python3 upgrade_oracle.py Character.fch --item SwordIron # a fresh item, or --quality N for one that is already upgraded
     python3 upgrade_oracle.py Character.fch --all            # every upgradable item from level 1
     python3 upgrade_oracle.py Character.fch --check          # compare the saved seeds with what the generator predicts
-    python3 upgrade_oracle.py Character.fch --charname Ragnar # the same items for a fresh character with another name
-    python3 upgrade_oracle.py --item SwordIron --quality 1 --findnameperupgr 6   # names that give exactly 6 upgrades (no save)
-    python3 upgrade_oracle.py --item SwordIron --quality 4 --findnameperupgr 8 --copies 2   # ...and a second copy that gets past the break
+    python3 upgrade_oracle.py --created "2026-11-25 14:03:07" --item SwordIron   # a new character created at that local time
+    python3 upgrade_oracle.py --item SwordIron --quality 1 --findtime 6         # creation times that give exactly 6 upgrades
+    python3 upgrade_oracle.py --item SwordIron --quality 4 --findtime 5 --copies 2   # ...and a second copy that gets past the break
 """
 import argparse
+import datetime
 import json
 import struct
 import sys
@@ -59,22 +65,10 @@ UPGRADABLE = {
     'ArmorDeepNorthMagelegs': 'Trousers of the Caller',
     'ArmorDeepNorthMediumChest': 'Chestpiece of the Vanguard',
     'ArmorDeepNorthMediumlegs': 'Trousers of the Vanguard',
-    'ArmorDress1': 'Plain Brown Dress',
-    'ArmorDress10': 'Simple Undyed Dress',
-    'ArmorDress2': 'Brown Dress with Shawl',
-    'ArmorDress3': 'Brown Dress with Beads',
-    'ArmorDress4': 'Plain Blue Dress',
-    'ArmorDress5': 'Blue Dress with Shawl',
-    'ArmorDress6': 'Blue Dress with Beads',
-    'ArmorDress7': 'Plain Yellow Dress',
-    'ArmorDress8': 'Yellow Dress with Shawl',
-    'ArmorDress9': 'Yellow Dress with Beads',
     'ArmorFenringChest': 'Fenris Coat',
     'ArmorFenringLegs': 'Fenris Leggings',
     'ArmorFlametalChest': 'Flametal Breastplate',
     'ArmorFlametalLegs': 'Flametal Greaves',
-    'ArmorHarvester1': 'Harvest Tunic',
-    'ArmorHarvester2': 'Harvest Dress',
     'ArmorIronChest': 'Iron Scale Mail',
     'ArmorIronLegs': 'Iron Greaves',
     'ArmorLeatherChest': 'Leather Tunic',
@@ -93,16 +87,6 @@ UPGRADABLE = {
     'ArmorRootLegs': 'Root Leggings',
     'ArmorTrollLeatherChest': 'Troll Leather Tunic',
     'ArmorTrollLeatherLegs': 'Troll Leather Trousers',
-    'ArmorTunic1': 'Plain Blue Tunic',
-    'ArmorTunic10': 'Simple Undyed Tunic',
-    'ArmorTunic2': 'Blue Tunic with Cape',
-    'ArmorTunic3': 'Blue Tunic with Beads',
-    'ArmorTunic4': 'Plain Red Tunic',
-    'ArmorTunic5': 'Red Tunic with Cape',
-    'ArmorTunic6': 'Red Tunic with Beads',
-    'ArmorTunic7': 'Plain Yellow Tunic',
-    'ArmorTunic8': 'Yellow Tunic with Cape',
-    'ArmorTunic9': 'Yellow Tunic with Beads',
     'ArmorWolfChest': 'Wolf Hide Chestpiece',
     'ArmorWolfLegs': 'Wolf Hide Trousers',
     'AtgeirBlackmetal': 'Black Metal Atgeir',
@@ -112,7 +96,6 @@ UPGRADABLE = {
     'AtgeirGold_FrostFire': 'Frostfire Atgeir',
     'AtgeirHimminAfl': 'Himminafl',
     'AtgeirIron': 'Iron Atgeir',
-    'AtgeirWood': 'Wooden Atgeir',
     'AxeBerzerkr': 'Berserkir Axes',
     'AxeBerzerkrBlood': 'Bleeding Berserkir Axes',
     'AxeBerzerkrLightning': 'Thundering Berserkir Axes',
@@ -127,7 +110,6 @@ UPGRADABLE = {
     'AxeIron': 'Iron Axe',
     'AxeJotunBane': 'Jotun Bane',
     'AxeStone': 'Stone Axe',
-    'AxeWood': 'Wooden Axe',
     'Battleaxe': 'Battleaxe',
     'BattleaxeBlackmetal': 'Black Metal Battleaxe',
     'BattleaxeCrystal': 'Crystal Battleaxe',
@@ -135,7 +117,6 @@ UPGRADABLE = {
     'BattleaxeGold_BloodLightning': 'Thunderblood Greataxe',
     'BattleaxeGold_FrostFire': 'Frostfire Greataxe',
     'BattleaxeSkullSplittur': 'Skull Splittur',
-    'BattleaxeWood': 'Wooden Battleaxe',
     'Bow': 'Crude Bow',
     'BowAshlands': 'Ash Fang',
     'BowAshlandsBlood': 'Blood Fang',
@@ -169,7 +150,6 @@ UPGRADABLE = {
     'CrossbowRipperLightning': 'Storm Ripper',
     'CrossbowRipperNature': 'Root Ripper',
     'Cultivator': 'Cultivator',
-    'Feaster': 'Serving Tray',
     'FistBjornClaw': 'Paws of the Bear',
     'FistBjornUndeadClaw': 'Vilebone Maulclaws',
     'FistFenrirClaw': 'Flesh Rippers',
@@ -183,22 +163,13 @@ UPGRADABLE = {
     'HelmetBronze': 'Bronze Helmet',
     'HelmetCarapace': 'Carapace Helmet',
     'HelmetCelebration': 'Celebratory Cap',
+    'HelmetDNHeavy': 'Helmet of the Protector',
     'HelmetDNMage': 'Headdress of the Caller',
     'HelmetDNMediumHood': 'Hood of the Vanguard',
     'HelmetDrake': 'Drake Helmet',
     'HelmetFenring': 'Fenris Hood',
     'HelmetFishingHat': 'Fishing Hat',
     'HelmetFlametal': 'Flametal Helmet',
-    'HelmetHat1': 'Blue Tied Headscarf',
-    'HelmetHat10': 'Simple Purple Cap',
-    'HelmetHat2': 'Green Twisted Headscarf',
-    'HelmetHat3': 'Brown Fur Cap',
-    'HelmetHat4': 'Extravagant Green Cap',
-    'HelmetHat5': 'Simple Red Cap',
-    'HelmetHat6': 'Yellow Tied Headscarf',
-    'HelmetHat7': 'Red Twisted Headscarf',
-    'HelmetHat8': 'Grey Fur Cap',
-    'HelmetHat9': 'Extravagant Orange Cap',
     'HelmetIron': 'Iron Helmet',
     'HelmetLeather': 'Leather Helmet',
     'HelmetLox': 'Lox Fur Hood',
@@ -208,7 +179,6 @@ UPGRADABLE = {
     'HelmetPadded': 'Padded Helmet',
     'HelmetPointyHat': 'Pointy Hat',
     'HelmetRoot': 'Root Mask',
-    'HelmetStrawHat': 'Straw Hat',
     'HelmetTrollLeather': 'Troll Leather Hood',
     'Hoe': 'Hoe',
     'KnifeBlackMetal': 'Black Metal Knife',
@@ -220,8 +190,6 @@ UPGRADABLE = {
     'KnifeGold_FrostFire': 'Frostfire Dagger',
     'KnifeSilver': 'Silver Knife',
     'KnifeSkollAndHati': 'Skoll and Hati',
-    'KnifeVoid': 'Voidcaller',
-    'KnifeWood': 'Wooden Knife',
     'MaceBronze': 'Bronze Mace',
     'MaceEldner': 'Flametal Mace',
     'MaceEldnerBlood': 'Bloodgeon',
@@ -233,7 +201,6 @@ UPGRADABLE = {
     'MaceIron': 'Iron Mace',
     'MaceNeedle': 'Porcupine',
     'MaceSilver': 'Frostner',
-    'MaceWood': 'Wooden Mace',
     'PickaxeBlackMetal': 'Black Metal Pickaxe',
     'PickaxeBronze': 'Bronze Pickaxe',
     'PickaxeIron': 'Iron Pickaxe',
@@ -251,7 +218,6 @@ UPGRADABLE = {
     'ShieldGoldBuckler': 'Nord Buckler',
     'ShieldGoldTower': 'Nord Greatshield',
     'ShieldIronBuckler': 'Iron Buckler',
-    'ShieldIronSquare': 'Iron Shield',
     'ShieldIronTower': 'Iron Tower Shield',
     'ShieldRoots': 'Shield of Roots',
     'ShieldSerpentscale': 'Serpent Scale Shield',
@@ -265,7 +231,6 @@ UPGRADABLE = {
     'SledgeGold_FrostFire': 'Frostfire Sledge',
     'SledgeIron': 'Iron Sledge',
     'SledgeStagbreaker': 'Stagbreaker',
-    'SledgeWood': 'Wooden Sledge',
     'SpearBronze': 'Bronze Spear',
     'SpearCarapace': 'Carapace Spear',
     'SpearElderbark': 'Ancient Bark Spear',
@@ -278,7 +243,6 @@ UPGRADABLE = {
     'SpearSplitner_Lightning': 'Splitnir the Storming',
     'SpearSplitner_Nature': 'Splitnir the Primal',
     'SpearWolfFang': 'Fang Spear',
-    'SpearWood': 'Wooden Spear',
     'StaffClusterbomb': 'Staff of Fracturing',
     'StaffFireball': 'Staff of Embers',
     'StaffFrostOrbs': 'Northern Vengeance',
@@ -313,7 +277,6 @@ UPGRADABLE = {
     'THSwordSlayerBlood': 'Brutal Slayer',
     'THSwordSlayerLightning': 'Scourging Slayer',
     'THSwordSlayerNature': 'Primal Slayer',
-    'THSwordWood': 'Wooden Greatsword',
 }
 # END GENERATED UPGRADABLE
 
@@ -348,6 +311,83 @@ def stable_hash(text):
             break
         b = s32(((b << 5) + b) ^ ord(text[i + 1]))
     return s32(a + b * 1566083941)
+
+
+UNIX_EPOCH_SECONDS = 62135596800       # seconds from 0001-01-01 (DateTime tick 0) to 1970-01-01
+TICKS_PER_SECOND = 10_000_000
+
+
+def parse_tz(text):
+    """A time zone from --tz: None or "local" (this machine's), "UTC", an IANA name ("Europe/Prague") or a fixed
+    offset ("+02:00", "-0430"). Returns a tzinfo, or None for this machine's own zone."""
+    if text is None or text.lower() == "local":
+        return None
+    t = text.strip()
+    if t.upper() in ("UTC", "Z", "GMT"):
+        return datetime.timezone.utc
+    if t[:1] in "+-" and t[1:].replace(":", "").isdigit():
+        digits = t[1:].replace(":", "")
+        if len(digits) <= 2:
+            digits = digits.zfill(2) + "00"
+        if len(digits) != 4 or int(digits[2:]) >= 60 or int(digits[:2]) > 14:
+            raise SaveError(f"{text!r} is not a time zone offset like +02:00")
+        minutes = int(digits[:2]) * 60 + int(digits[2:])
+        return datetime.timezone(datetime.timedelta(minutes=-minutes if t[0] == "-" else minutes))
+    try:
+        import zoneinfo
+        return zoneinfo.ZoneInfo(t)
+    except Exception:
+        raise SaveError(f"unknown time zone {text!r}: use an IANA name such as Europe/Prague, UTC or an offset "
+                        "such as +02:00")
+
+
+def tz_label(tz, at=None):
+    """The zone's name, plus the UTC offset in force at Unix second `at` when given."""
+    name = "this machine's time zone" if tz is None else str(getattr(tz, "key", None) or tz)
+    if at is None or isinstance(tz, datetime.timezone):
+        return name
+    off = tz_offset_seconds(at, tz)
+    return f"{name}, UTC{'+' if off >= 0 else '-'}{abs(off) // 3600:02d}:{abs(off) % 3600 // 60:02d}"
+
+
+def local_wall(created, tz):
+    """The local date and time the game holds for a creation stamp (Unix seconds, UTC), as Valheim 1.0.30 loads it:
+    DateTimeOffset.FromUnixTimeSeconds(created).LocalDateTime, with the offset in force at that instant."""
+    utc = datetime.datetime.fromtimestamp(created, datetime.timezone.utc)
+    local = utc.astimezone() if tz is None else utc.astimezone(tz)
+    return local.replace(tzinfo=None)
+
+
+def wall_ticks(wall):
+    """DateTime.Ticks of a naive local date and time (whole seconds; the save keeps nothing finer)."""
+    delta = wall.replace(microsecond=0) - datetime.datetime(1, 1, 1)
+    return (delta.days * 86400 + delta.seconds) * TICKS_PER_SECOND
+
+
+def ticks_hash(ticks):
+    """DateTime.GetHashCode() as in the game's mscorlib: (int)ticks ^ (int)(ticks >> 32)."""
+    return s32((ticks & M32) ^ ((ticks >> 32) & M32))
+
+
+def date_base(created, tz):
+    """The part of every default seed that comes from the character: m_dateCreated.GetHashCode()."""
+    return ticks_hash(wall_ticks(local_wall(created, tz)))
+
+
+def parse_created(text, tz):
+    """--created: the in-game "Created:" date and time (local, "YYYY-MM-DD HH:MM:SS"), or "@" + Unix seconds as the
+    save stores it. Returns (Unix seconds or None, naive local datetime)."""
+    t = text.strip()
+    if t.startswith("@") and t[1:].lstrip("-").isdigit():
+        created = int(t[1:])
+        return created, local_wall(created, tz)
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%dT%H:%M", "%Y-%m-%d"):
+        try:
+            return None, datetime.datetime.strptime(t, fmt)
+        except ValueError:
+            pass
+    raise SaveError(f"cannot read the creation date {text!r}: use \"YYYY-MM-DD HH:MM:SS\" (the in-game local time) or "
+                    "@<unix seconds>")
 
 
 VALUE_SCALE = struct.unpack("<f", bytes.fromhex("01000034"))[0]     # the constant UnityPlayer.so multiplies by
@@ -447,34 +487,53 @@ def read_item(r):
     return {"prefab": prefab, "quality": quality, "stack": stack, "equipped": bool(flags & 2)}
 
 
+def read_header(r):
+    """Read a save's profile up to and including the creation date: (name, created as Unix seconds, UTC)."""
+    version = r.take("i")
+    if not PROFILE_MIN_VERSION <= version <= 1000:
+        raise SaveError("this is not a supported Valheim .fch character file")
+    if (r.take("i"), r.take("i")) != (STAT_COUNT, SET_COUNT):
+        raise SaveError("the game's save layout changed and the script needs updating")
+    for _ in range(SET_COUNT):
+        r.skip(4 * STAT_COUNT)
+        for _ in range(3):
+            r.skip_dict()
+        for _ in range(r.take("i")):
+            r.skip_dict()
+        for _ in range(5):                  # picked up, crafted, pickables, foods eaten, pieces built
+            r.skip_dict()
+    r.skip(1)                               # first spawn
+    for _ in range(r.take("i")):            # per-world data
+        r.skip(8 + 1 + 12 + 1 + 12 + 1 + 12 + 12)
+        if r.take("?"):
+            r.skip(r.take("i"))             # map
+    name = r.string()
+    r.skip(8)                               # player id
+    r.string()                              # start seed
+    r.skip(1)                               # used cheats
+    created = r.take("q")                   # date created: Unix seconds (UTC)
+    return name, created
+
+
+def read_created(source):
+    """Only the character name and creation date of a save (a path or bytes): enough for a character that was just
+    created, and independent of the rest of the file's layout. Returns (name, Unix seconds, UTC)."""
+    raw = bytes(source) if isinstance(source, (bytes, bytearray)) else open(source, "rb").read()
+    try:
+        return read_header(Reader(raw[4:4 + struct.unpack_from("<i", raw, 0)[0]]))
+    except SaveError:
+        raise
+    except (struct.error, IndexError, UnicodeDecodeError, OverflowError):
+        raise SaveError("this is not a supported Valheim .fch character file")
+
+
 def load(source):
     """The character name, the inventory and the stored upgrade seeds of a save (a path or bytes)."""
     raw = bytes(source) if isinstance(source, (bytes, bytearray)) else open(source, "rb").read()
     try:
         data = raw[4:4 + struct.unpack_from("<i", raw, 0)[0]]
         r = Reader(data)
-        version = r.take("i")
-        if not PROFILE_MIN_VERSION <= version <= 1000:
-            raise SaveError("this is not a supported Valheim .fch character file")
-        if (r.take("i"), r.take("i")) != (STAT_COUNT, SET_COUNT):
-            raise SaveError("the game's save layout changed and the script needs updating")
-        for _ in range(SET_COUNT):
-            r.skip(4 * STAT_COUNT)
-            for _ in range(3):
-                r.skip_dict()
-            for _ in range(r.take("i")):
-                r.skip_dict()
-            for _ in range(5):                  # picked up, crafted, pickables, foods eaten, pieces built
-                r.skip_dict()
-        r.skip(1)                               # first spawn
-        for _ in range(r.take("i")):            # per-world data
-            r.skip(8 + 1 + 12 + 1 + 12 + 1 + 12 + 12)
-            if r.take("?"):
-                r.skip(r.take("i"))             # map
-        name = r.string()
-        r.skip(8)                               # player id
-        r.string()                              # start seed
-        r.skip(1 + 8)                           # used cheats, date created
+        name, created = read_header(r)
         if not r.take("?"):
             raise SaveError("this character has no player data yet")
         blob_len = r.take("i")
@@ -534,28 +593,30 @@ def load(source):
     except (struct.error, IndexError, UnicodeDecodeError, OverflowError):
         raise SaveError("this is not a supported Valheim .fch character file, or its layout changed and the script "
                         "needs updating")
-    return {"name": name, "items": items, "seeds": seeds}
+    return {"name": name, "created": created, "items": items, "seeds": seeds}
 
 
 # ---------------------------------------------------------------------------------------------------------------
 # The prediction
 # ---------------------------------------------------------------------------------------------------------------
 
-def predict(prefab, quality, name, seeds, update=False):
+def predict(prefab, quality, base, seeds, update=False):
     """Replay upgrade attempts on an item until it breaks. Returns a dict describing the run.
+
+    `base` is what the character adds to a key for a default seed: date_base() of its creation date (Valheim 1.0.30
+    and newer), or stable_hash() of its name (1.0.20 to 1.0.29).
 
     The replay updates the seeds as the game would. They are copied first, unless `update` is true: then the dict that
     was passed in is changed, so the next copy of the item continues from the seeds this one left behind."""
     if not update:
         seeds = dict(seeds)
-    base = stable_hash(prefab)
-    name_hash = stable_hash(name)
+    item_hash = stable_hash(prefab)
     level, steps = quality, []
     for _ in range(MAX_ATTEMPTS):
         target = level + 1
-        key = s32(base + target)
+        key = s32(item_hash + target)
         saved = key in seeds
-        seed = seeds[key] if saved else s32(name_hash + key)
+        seed = seeds[key] if saved else s32(base + key)
         value, seeds[key] = roll(seed)
         if UPGRADE_CHANCE >= value:
             outcome, level = "success", target
@@ -585,95 +646,8 @@ def fast_roll(seed):
     return f32(f32(first & 0x7FFFFF) * VALUE_SCALE), second % 99999999
 
 
-def first_value(seed):
-    """Random.value after InitState(seed), the one roll a first attempt needs (a faster path for the name search)."""
-    s0 = seed & M32
-    s1 = (s0 * 0x6C078965 + 1) & M32
-    s2 = (s1 * 0x6C078965 + 1) & M32
-    s3 = (s2 * 0x6C078965 + 1) & M32
-    t = (s0 ^ (s0 << 11)) & M32
-    return f32(f32(((t ^ s3 ^ (t >> 8) ^ (s3 >> 19)) & M32) & 0x7FFFFF) * VALUE_SCALE)
-
-
-CHARSETS = {
-    "letters": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-}
-NAME_LIMIT = 15                 # the character name box takes at most 15 characters
-
-
-def as_typed(name):
-    """The name the game saves when `name` is typed or pasted into the new-character box.
-
-    The box is a TextMeshPro input field with the "Name" validation, which checks every character as it is added: the
-    first letter and a letter after a space or hyphen become capitals, a capital that does not follow a lower-case
-    letter, space, apostrophe or hyphen becomes lower case, and anything else that is not a letter is dropped, except
-    single spaces, hyphens and one apostrophe. So "DjCJ" is saved as "DjCj"."""
-    text = ""
-    for ch in name:
-        if len(text) >= NAME_LIMIT:
-            break
-        pos = len(text)
-        c = text[pos - 1] if text else " "
-        c2 = text[-1] if text else " "
-        if ch.isalpha():
-            if ch.islower() and (pos == 0 or c in " -"):
-                ch = ch.upper()
-            elif ch.isupper() and pos > 0 and c not in " '-" and not c.islower():
-                ch = ch.lower()
-            elif ch.isupper() and c2.isupper():
-                continue
-            text += ch
-        elif ch == "'" and c2 not in " '" and "'" not in text:
-            text += ch
-        elif ch == "-" and c.isalpha() and c2 != "-":
-            text += ch
-        elif ch in " -" and pos and c not in " '-" and c2 not in " '-":
-            text += ch
-    return text
-
-
-def hashed_names(charset, length, after=None):
-    """Every name of that length that the game's name box keeps as typed (see as_typed), in order, as
-    (first part, last character, name hash mod 2^32). With `after`, only the names that come after it.
-
-    For names of letters, the box keeps a name when it starts with a capital and every other capital follows a
-    lower-case letter. The hash runs two lanes, one over the even and one over the odd positions, and they are carried
-    from a name's first part to the next character, so each part is hashed once."""
-    order = {ch: i for i, ch in enumerate(charset)}
-    capitals = [ch for ch in charset if ch.isupper()]
-    lower = [ch for ch in charset if ch.islower()]
-    bound = after if after and len(after) == length else None
-
-    def walk(head, a, b, choices, on_bound):
-        i = len(head)
-        floor = order[bound[i]] if on_bound else -1
-        if i == length - 1:
-            if i % 2 == 0:
-                a = ((a << 5) + a) & M32
-                for ch in choices:
-                    if order[ch] > floor:
-                        yield head, ch, ((a ^ ord(ch)) + b * 1566083941) & M32
-            else:
-                b = ((b << 5) + b) & M32
-                for ch in choices:
-                    if order[ch] > floor:
-                        yield head, ch, (a + (b ^ ord(ch)) * 1566083941) & M32
-            return
-        for ch in choices:
-            if order[ch] < floor:
-                continue
-            nxt = charset if ch.islower() else lower
-            if i % 2 == 0:
-                yield from walk(head + ch, (((a << 5) + a) ^ ord(ch)) & M32, b, nxt, on_bound and order[ch] == floor)
-            else:
-                yield from walk(head + ch, a, (((b << 5) + b) ^ ord(ch)) & M32, nxt, on_bound and order[ch] == floor)
-
-    if length > 0:
-        yield from walk("", 5381, 5381, capitals, bound is not None)
-
-
 def matches(h, keys, target, copies):
-    """Does a new character whose name hashes to h get the wanted result?
+    """Does a new character whose creation time hashes to h get the wanted result?
 
     One copy: exactly `target` upgrades, then a break. Several copies, upgraded one after another with the seeds the
     previous ones left behind: every copy but the last gets exactly `target` upgrades and breaks, and the last one
@@ -694,7 +668,7 @@ def matches(h, keys, target, copies):
 def reaches(h, first_key, target, copies):
     """The relay planner's rule (with one copy): the character gets at least `target` upgrades in a row. With more copies,
     copies 1 to N-1 are upgraded one after another until each breaks, and the last copy then gets `target` upgrades. All copies start at the same level, and `first_key` is
-    the key of the first level they go to. Returns True when a character whose name hashes to h manages that."""
+    the key of the first level they go to. Returns True when a character whose creation time hashes to h manages that."""
     seeds = {}                                      # level index -> the seed its next attempt starts from
     for copy in range(copies):
         kept = copy == copies - 1
@@ -715,29 +689,56 @@ def reaches(h, first_key, target, copies):
     return False
 
 
-def find_names(prefab, quality, target, charset, min_len, max_len, limit, max_tries, after=None, copies=1, reach=False):
-    """Character names (shortest first) whose rolls give exactly `target` upgrades, then a break (see matches() for copies).
+def wall_seconds(wall):
+    """Whole seconds from 0001-01-01 to a naive local date and time."""
+    return wall_ticks(wall) // TICKS_PER_SECOND
 
-    Only names the game saves exactly as listed are returned (as_typed): "DjCJ" would be saved as "DjCj", a different name.
 
-    A fresh character has no saved seeds, so each roll starts from the hash of the name plus the key of the level.
-    `after` continues a search: it is the last name of the previous one, and the search resumes with the name after it.
-    With reach=True the rule of reaches() is used instead.
-    Returns (names, number of names tried, whether the search covered every name up to max_len)."""
-    base = stable_hash(prefab)
-    keys = [(base + quality + 1 + i) & M32 for i in range(target + 1)]
-    first_key = keys[0]
-    found, tried = [], 0
-    for length in range(max(min_len, len(after or "")), max_len + 1):
-        for head, last, h in hashed_names(charset, length, after):
-            tried += 1
-            if tried > max_tries:
-                return found, tried - 1, False
-            if reaches(h, first_key, target, copies) if reach else matches(h, keys, target, copies):
-                found.append(head + last)
-                if len(found) >= limit:
-                    return found, tried, False
-    return found, tried, True
+def from_wall_seconds(sec):
+    return datetime.datetime(1, 1, 1) + datetime.timedelta(seconds=sec)
+
+
+def wall_instant(wall, tz):
+    """Unix seconds of a naive local date and time in tz (None: this machine's zone)."""
+    return int(wall.timestamp() if tz is None else wall.replace(tzinfo=tz).timestamp())
+
+
+def wall_exists(wall, tz):
+    """Does this local date and time ever show on a clock in tz? Not when summer time skips it (the clock jumps from
+    02:00 to 03:00, say), so a character can never be created at it there."""
+    return local_wall(wall_instant(wall, tz), tz) == wall
+
+
+def find_times(prefab, quality, target, start, limit, max_tries, copies=1, reach=False, tz=False):
+    """Creation times, from `start` (a naive local date and time) on, at which a new character's `prefab`, starting at
+    `quality`, gets exactly `target` upgrades and then breaks (see matches() for copies; with reach=True the rule of
+    reaches() is used instead).
+
+    A new character's default seeds come from the local date and time it was created at, to the second, as the clock of
+    the computer running the game showed it. The save stores that moment in UTC and the game turns it back into the
+    same local time, so the time zone does not change the rolls: only the wall-clock second does. It decides which
+    seconds exist, though: with `tz` (None for this machine's zone, False to skip the check), times that the clock
+    skips there (the start of summer time) are left out.
+    Returns (naive datetimes, number of seconds tried)."""
+    item_hash = stable_hash(prefab)
+    keys = [(item_hash + quality + 1 + i) & M32 for i in range(target + 1)]
+    first = wall_seconds(start)
+    found = []
+    for i in range(max_tries):
+        sec = first + i
+        h = ticks_hash(sec * TICKS_PER_SECOND)
+        if reaches(h, keys[0], target, copies) if reach else matches(h, keys, target, copies):
+            wall = from_wall_seconds(sec)
+            if tz is not False and not wall_exists(wall, tz):
+                continue
+            found.append(wall)
+            if len(found) >= limit:
+                return found, i + 1
+    return found, max_tries
+
+
+def fmt_wall(wall):
+    return wall.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def find_item(text):
@@ -753,45 +754,50 @@ def find_item(text):
                     f"{text!r} matches several items: " + ", ".join(sorted(matches)[:12]))
 
 
-def run(save, item=None, quality=1, every=False):
-    """Predictions for the chosen items, as a list of dicts."""
+def run(save, base, item=None, quality=1, every=False):
+    """Predictions for the chosen items, as a list of dicts. `base`: see predict()."""
     out = []
     if item:
         prefab = find_item(item)
-        out.append({**predict(prefab, quality, save["name"], save["seeds"]), "name": UPGRADABLE[prefab], "stack": 1})
+        out.append({**predict(prefab, quality, base, save["seeds"]), "name": UPGRADABLE[prefab], "stack": 1})
     elif every:
         for prefab in UPGRADABLE:
-            out.append({**predict(prefab, 1, save["name"], save["seeds"]), "name": UPGRADABLE[prefab], "stack": 1})
+            out.append({**predict(prefab, 1, base, save["seeds"]), "name": UPGRADABLE[prefab], "stack": 1})
     else:
         by_hash = {stable_hash(p): p for p in UPGRADABLE}
         for it in save["items"]:
             prefab = by_hash.get(it["prefab"])
             if prefab:
-                out.append({**predict(prefab, it["quality"], save["name"], save["seeds"]), "name": UPGRADABLE[prefab],
+                out.append({**predict(prefab, it["quality"], base, save["seeds"]), "name": UPGRADABLE[prefab],
                             "stack": it["stack"], "equipped": it["equipped"]})
     return out
 
 
-def check(save, deepest=25):
+def check(save, base, deepest=25):
     """Compare each saved seed with the seed the generator predicts for it (the seed stored after a first attempt)."""
     by_key = {}
     for prefab, shown in UPGRADABLE.items():
         for level in range(2, 40):
             by_key[s32(stable_hash(prefab) + level)] = (prefab, shown, level)
-    name_hash = stable_hash(save["name"])
     rows = []
     for key, stored in sorted(save["seeds"].items()):
         known = by_key.get(key)
         if not known:
             rows.append({"key": key, "item": None, "attempts": None})
             continue
-        seed, attempts = s32(name_hash + key), None
-        for n in range(1, deepest + 1):
-            seed = roll(seed)[1]
-            if seed == stored:
-                attempts = n
+        rule, attempts = None, None
+        for name, b in (("date", base), ("name", stable_hash(save["name"]) if save.get("name") else None)):
+            if b is None:
+                continue
+            seed = s32(b + key)
+            for n in range(1, deepest + 1):
+                seed = roll(seed)[1]
+                if seed == stored:
+                    rule, attempts = name, n
+                    break
+            if attempts:
                 break
-        rows.append({"key": key, "item": known[1], "level": known[2], "attempts": attempts})
+        rows.append({"key": key, "item": known[1], "level": known[2], "attempts": attempts, "rule": rule})
     return rows
 
 
@@ -824,15 +830,18 @@ def show_check(rows):
     if not rows:
         print("This character has no saved upgrade seeds yet: no upgrade has been attempted at the Forge of Potential.")
         return
-    ok = sum(1 for r in rows if r["attempts"])
+    ok = sum(1 for r in rows if r["rule"] == "date")
+    old = sum(1 for r in rows if r["rule"] == "name")
     for r in rows:
         if r["item"] is None:
             print(f"key {r['key']}: not one of the known upgradable items")
         elif r["attempts"]:
-            print(f"{r['item']} to level {r['level']}: seed matches after {r['attempts']} attempt(s)")
+            how = "" if r["rule"] == "date" else " (from the character name: made before Valheim 1.0.30)"
+            print(f"{r['item']} to level {r['level']}: seed matches after {r['attempts']} attempt(s){how}")
         else:
-            print(f"{r['item']} to level {r['level']}: seed does NOT match the generator")
-    print(f"{ok} of {len(rows)} saved seeds reproduced")
+            print(f"{r['item']} to level {r['level']}: seed does NOT match the generator (wrong --tz or --created?)")
+    print(f"{ok} of {len(rows)} saved seeds reproduced from the creation date"
+          + (f", {old} more from the character name (made before 1.0.30)" if old else ""))
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -841,6 +850,8 @@ def show_check(rows):
 
 # The game saves an item's quality as an unsigned 16-bit number, so this is the highest quality an item can have.
 WEB_MAX_QUALITY = 65535
+# The most seconds one web search tries (about 93 days of creation times).
+WEB_MAX_SECONDS = 8_000_000
 
 
 def web_items():
@@ -848,129 +859,196 @@ def web_items():
     return json.dumps(sorted(UPGRADABLE.values(), key=str.lower))
 
 
-def web_find(item, quality, limit, after=""):
-    """JSON for the name finder: character names that give MAX_FIRST_RUN upgrades on `item` starting at `quality`.
+def start_wall(text, zone=None):
+    """A search start from the page: a local date and time ("YYYY-MM-DDTHH:MM[:SS]"), or now in `zone`."""
+    if text:
+        return parse_created(text, zone)[1]
+    return local_wall(int(datetime.datetime.now().timestamp()), zone)
 
-    `after` is the last name of an earlier answer; the search continues from there."""
+
+def not_before_now(wall, zone):
+    """`wall`, or the next second in `zone` when `wall` has already gone: the page never lists a time that has passed."""
+    soon = local_wall(int(datetime.datetime.now().timestamp()) + 1, zone)
+    return max(wall, soon)
+
+
+def web_zone(tz):
+    """The time zone a page field names ("" or None: the browser's own, which Pyodide's localtime follows)."""
+    return parse_tz(tz or None)
+
+
+def web_zone_label(zone, at=None):
+    return tz_label(zone, at).replace("this machine's", "your browser's")
+
+
+def checked_wall(text, zone):
+    """A local date and time typed on the page, which must exist on a clock in `zone`."""
+    wall = parse_created(text, zone)[1]
+    if not wall_exists(wall, zone):
+        raise SaveError(f"{fmt_wall(wall)} never shows on a clock in {web_zone_label(zone)}: summer time skips it")
+    return wall
+
+
+def web_find(item, quality, limit, after="", start="", upgrades=MAX_FIRST_RUN, tz=""):
+    """JSON for the time finder: creation times (local, from `start` on) at which a new character gets exactly
+    `upgrades` upgrades (then a break) on `item` starting at `quality`. `after` is the last time of an earlier answer;
+    the search continues from the second after it. `tz` is the time zone of the computer running the game: the times
+    are local times there, and seconds its clock skips are left out."""
     try:
-        quality, limit = int(quality), int(limit)
+        quality, limit, upgrades = int(quality), int(limit), int(upgrades)
         if not 1 <= quality <= WEB_MAX_QUALITY:
             raise SaveError(f"the starting quality must be between 1 and {WEB_MAX_QUALITY}")
+        if not 1 <= upgrades <= MAX_FIRST_RUN:
+            raise SaveError(f"the upgrades in a row must be between 1 and {MAX_FIRST_RUN}")
         prefab = find_item(item)
-        if any(c not in CHARSETS["letters"] for c in after or ""):
-            raise SaveError("cannot continue from that name")
-        names, tried, complete = find_names(prefab, quality, MAX_FIRST_RUN, CHARSETS["letters"], 3, 15,
-                                            max(1, min(limit, 100)), 8_000_000, after or None)
+        zone = web_zone(tz)
+        begin = (parse_created(after, zone)[1] + datetime.timedelta(seconds=1)) if after else start_wall(start, zone)
+        begin = not_before_now(begin, zone)
+        times, tried = find_times(prefab, quality, upgrades, begin, max(1, min(limit, 100)), WEB_MAX_SECONDS, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": MAX_FIRST_RUN, "names": names,
-                       "tried": tried, "complete": complete})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": quality, "upgrades": upgrades,
+                       "times": [fmt_wall(t) for t in times], "start": fmt_wall(begin), "tried": tried,
+                       "end": fmt_wall(begin + datetime.timedelta(seconds=tried - 1)), "timeZone": web_zone_label(zone)})
 
 
-def web_predict(data):
+def web_predict(data, tz=None):
     """JSON for the web page's save predictor: what happens to every upgradable item in the character's inventory.
 
-    `data` is the file's bytes (a Uint8Array from the page, or bytes)."""
+    `data` is the file's bytes (a Uint8Array from the page, or bytes). The default seeds come from the creation date in
+    the file, read in time zone `tz` (see parse_tz; by default the browser's own zone, which Pyodide's localtime uses)."""
     try:
         raw = bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data)
         save = load(raw)
-        items = run(save)
+        zone = web_zone(tz)
+        items = run(save, date_base(save["created"], zone))
     except SaveError as e:
         return json.dumps({"error": str(e)})
     items.sort(key=lambda p: (-p["upgrades"], p["name"].lower()))
-    return json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": items})
+    return json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": items,
+                       "created": local_wall(save["created"], zone).strftime("%Y-%m-%d %H:%M:%S"),
+                       "timeZone": web_zone_label(zone, save["created"])})
 
 
-def web_predict_item(item, quality, name):
-    """JSON for the predictor's manual form: one item at a quality, for a new character with that name (no saved seeds)."""
+def web_created(data, tz=""):
+    """JSON for the timer's check: the name and creation time of a dropped save, as Unix seconds and as the local time
+    in time zone `tz` (default: the browser's)."""
+    try:
+        raw = bytes(data.to_py()) if hasattr(data, "to_py") else bytes(data)
+        name, created = read_created(raw)
+        zone = web_zone(tz)
+    except SaveError as e:
+        return json.dumps({"error": str(e)})
+    return json.dumps({"character": name, "createdUnix": created, "created": fmt_wall(local_wall(created, zone)),
+                       "timeZone": web_zone_label(zone, created)})
+
+
+def web_predict_item(item, quality, created, tz=""):
+    """JSON for the predictor's manual form: one item at a quality, for a new character (no saved seeds) created at the
+    local date and time `created` ("YYYY-MM-DDTHH:MM[:SS]") in time zone `tz` (default: the browser's)."""
     try:
         quality = int(quality)
         if not 1 <= quality <= WEB_MAX_QUALITY:
             raise SaveError(f"the quality must be between 1 and {WEB_MAX_QUALITY}")
-        if not name:
-            raise SaveError("enter a character name")
+        if not created:
+            raise SaveError("enter the character's creation date and time")
+        zone = web_zone(tz)
+        wall = checked_wall(created, zone)
         prefab = find_item(item)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"character": name, "typedAs": as_typed(name),
-                       "item": {**predict(prefab, quality, name, {}), "name": UPGRADABLE[prefab], "stack": 1}})
+    return json.dumps({"created": fmt_wall(wall), "timeZone": web_zone_label(zone, wall_instant(wall, zone)),
+                       "item": {**predict(prefab, quality, ticks_hash(wall_ticks(wall)), {}), "name": UPGRADABLE[prefab],
+                                "stack": 1}})
 
 
-def relay_plan(prefab, start, target, charset=CHARSETS["letters"], max_tries=8_000_000):
+def relay_plan(prefab, start, target, begin, per=MAX_FIRST_RUN, gap=60, max_tries=WEB_MAX_SECONDS, tz=False):
     """A chain of new characters that takes the item from `start` to `target` without breaking it.
 
-    Each character makes only upgrades its own rolls get right: the first character takes as many levels as one
-    character can (MAX_FIRST_RUN), hands the item over, and the next one continues from there. Every character is new,
-    so its rolls start from its name. Returns a list of {"name", "from", "to", "steps"}; raises SaveError when a part
-    of the chain cannot be found within max_tries names."""
-    plan, used, level = [], set(), start
+    Each character makes only upgrades its own rolls get right: the first character takes `per` levels (at most
+    MAX_FIRST_RUN), hands the item over, and the next one continues from there. Every character is new, so its rolls
+    start from its creation time; the times are found one after another from `begin` (a naive local date and time),
+    each at least `gap` seconds after the one before, to leave time to create the characters. Returns a list of {"created", "from", "to", "steps"}; raises SaveError when a part of the chain cannot be
+    found within max_tries seconds."""
+    plan, level, at = [], start, begin
     while level < target:
-        need = min(MAX_FIRST_RUN, target - level)
-        after = None
-        while True:
-            names, tried, complete = find_names(prefab, level, need, charset, 3, 15, 1, max_tries, after,
-                                                copies=1, reach=True)
-            if not names:
-                raise SaveError(f"no character name found for the upgrades from quality {level} within {max_tries:,} names")
-            if names[0] not in used:
-                break
-            after = names[0]
-        name = names[0]
-        used.add(name)
-        steps = predict(prefab, level, name, {})["steps"][:need]
-        plan.append({"name": name, "from": level, "to": level + need, "steps": steps})
+        need = min(per, target - level)
+        times, tried = find_times(prefab, level, need, at, 1, max_tries, reach=True, tz=tz)
+        if not times:
+            raise SaveError(f"no creation time found for the upgrades from quality {level} within {max_tries:,} seconds "
+                            f"from {fmt_wall(at)}")
+        when = times[0]
+        steps = predict(prefab, level, ticks_hash(wall_ticks(when)), {})["steps"][:need]
+        plan.append({"created": fmt_wall(when), "from": level, "to": level + need, "steps": steps})
         level += need
+        at = when + datetime.timedelta(seconds=gap)
     return plan
 
 
-def web_relay(item, start, target):
-    """JSON for the relay planner."""
+def web_relay(item, start, target, begin="", per=4, tz=""):
+    """JSON for the relay planner. `begin`: the local date and time to search from (default: now); `per`: the levels
+    each character takes (fewer means more characters, but times much closer together); `tz`: the time zone of the
+    computer running the game (default: the browser's)."""
     try:
-        start, target = int(start), int(target)
+        start, target, per = int(start), int(target), int(per)
+        if not 1 <= per <= MAX_FIRST_RUN:
+            raise SaveError(f"the levels per character must be between 1 and {MAX_FIRST_RUN}")
         if not 1 <= start <= WEB_MAX_QUALITY or not 1 <= target <= WEB_MAX_QUALITY:
             raise SaveError(f"the qualities must be between 1 and {WEB_MAX_QUALITY}")
         if target <= start:
             raise SaveError("the target quality must be higher than the current quality")
         prefab = find_item(item)
-        plan = relay_plan(prefab, start, target)
+        zone = web_zone(tz)
+        plan = relay_plan(prefab, start, target, not_before_now(start_wall(begin, zone), zone), per, tz=zone)
     except (SaveError, ValueError) as e:
         return json.dumps({"error": str(e)})
-    return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "plan": plan})
+    return json.dumps({"item": UPGRADABLE[prefab], "from": start, "to": target, "per": per, "plan": plan,
+                       "timeZone": web_zone_label(zone)})
 
 
-def find_names_command(ap, args):
-    """--findnameperupgr: needs no save, only the item and the level it starts at."""
+def tz_offset_seconds(t, tz):
+    """The UTC offset (seconds) in force at Unix second t in tz (None: this machine's zone)."""
+    dt = datetime.datetime.fromtimestamp(t, datetime.timezone.utc)
+    off = (dt.astimezone() if tz is None else dt.astimezone(tz)).utcoffset()
+    return int(off.total_seconds())
+
+
+def find_times_command(ap, args, tz):
+    """--findtime: needs no save, only the item, its starting level and where to start looking."""
     if args.save:
-        ap.error("--findnameperupgr works without a save file: a new character has no saved seeds, so only the item and "
-                 "its starting level matter. Drop the save path")
+        ap.error("--findtime works without a save file: a new character has no saved seeds. Drop the save path")
     if not args.item:
-        ap.error("--findnameperupgr needs a specific item: add --item NAME")
+        ap.error("--findtime needs a specific item: add --item NAME")
     if args.quality is None:
-        ap.error("--findnameperupgr needs the level the item starts at: add --quality N (use 1 for a fresh item)")
-    if args.charname is not None or args.check or args.all:
-        ap.error("--findnameperupgr cannot be combined with --charname, --check or --all")
+        ap.error("--findtime needs the level the item starts at: add --quality N (use 1 for a fresh item)")
+    if args.check or args.all:
+        ap.error("--findtime cannot be combined with --check or --all")
     if not 1 <= args.copies <= 5:
         ap.error("--copies must be between 1 and 5")
-    if args.quality < 1 or args.findnameperupgr < 0 or args.minlen < 3 or args.maxlen < args.minlen:
-        ap.error("need --quality >= 1, N >= 0, --minlen >= 3 and --maxlen >= --minlen")
-    if args.findnameperupgr > MAX_FIRST_RUN:
-        ap.error(f"no name can give more than {MAX_FIRST_RUN} upgrades before the first break: the first rolls "
+    if args.quality < 1 or args.findtime < 0:
+        ap.error("need --quality >= 1 and N >= 0")
+    if args.findtime > MAX_FIRST_RUN:
+        ap.error(f"no character can get more than {MAX_FIRST_RUN} upgrades before the first break: the first rolls "
                  "of consecutive levels are correlated (all 2^32 starting seeds were checked)")
     try:
         prefab = find_item(args.item)
+        if args.created:
+            start = parse_created(args.created, tz)[1]
+        else:
+            start = (datetime.datetime.now() if tz is None else datetime.datetime.now(tz)).replace(tzinfo=None, microsecond=0)
     except SaveError as e:
         ap.error(str(e))
-    maxtries = args.maxtries or (5_000_000 if args.copies == 1 else 200_000_000)
-    names, tried, complete = find_names(prefab, args.quality, args.findnameperupgr, CHARSETS["letters"],
-                                        args.minlen, args.maxlen, args.limit, maxtries, copies=args.copies)
+    maxtries = args.maxtries or (31 * 86400 if args.copies == 1 else 366 * 86400)
+    times, tried = find_times(prefab, args.quality, args.findtime, start, args.limit, maxtries, args.copies, tz=tz)
     hits = []
-    for n in names:
+    for t in times:
         shared = {}                                 # the seeds the copies leave behind for each other
-        runs = [predict(prefab, args.quality, n, shared, update=True) for _ in range(args.copies)]
-        hits.append({**runs[0], "name": UPGRADABLE[prefab], "character": n, "copies": runs})
+        base = ticks_hash(wall_ticks(t))
+        runs = [predict(prefab, args.quality, base, shared, update=True) for _ in range(args.copies)]
+        hits.append({**runs[0], "name": UPGRADABLE[prefab], "createdLocal": fmt_wall(t), "copies": runs})
     if args.json:
-        print(json.dumps({"item": prefab, "from": args.quality, "upgrades": args.findnameperupgr, "copies": args.copies,
-                          "tried": tried, "complete": complete, "names": hits}, indent=1))
+        print(json.dumps({"item": prefab, "from": args.quality, "upgrades": args.findtime, "copies": args.copies,
+                          "start": fmt_wall(start), "tried": tried, "times": hits}, indent=1))
         return
     if args.copies == 1:
         more = ""
@@ -978,90 +1056,106 @@ def find_names_command(ap, args):
         more = ", then a second copy reaching the level where the first one broke"
     else:
         more = f", the same for copies 2 to {args.copies - 1}, and copy {args.copies} getting past that level"
-    print(f"{UPGRADABLE[prefab]} from level {args.quality}: names where copy 1 gets exactly {args.findnameperupgr} "
-          f"upgrade{'s' if args.findnameperupgr != 1 else ''} and breaks{more} "
-          f"(a new character, letters, {tried:,} names tried)")
+    print(f"{UPGRADABLE[prefab]} from level {args.quality}: character creation times where copy 1 gets exactly "
+          f"{args.findtime} upgrade{'s' if args.findtime != 1 else ''} and breaks{more}")
+    print(f"(the local time on the clock of the computer running the game; {tried:,} seconds searched from "
+          f"{fmt_wall(start)})")
     for h in hits:
         runs = h["copies"]
-        for i, run in enumerate(runs):
+        for i, r in enumerate(runs):
             last = args.copies > 1 and i == args.copies - 1
-            assert run["upgrades"] >= args.findnameperupgr + (1 if last else 0) and (last or run["broke"]), "name check failed"
-        print(f"  {h['character']}" + ("" if args.copies == 1 else
+            assert r["upgrades"] >= args.findtime + (1 if last else 0) and (last or r["broke"]), "time check failed"
+        print(f"  {h['createdLocal']}" + ("" if args.copies == 1 else
               "   (" + "; ".join(f"copy {i + 1}: {r['upgrades']} upgrades" + (f", breaks going to {r['breaksAt']}" if r["broke"] else "")
                                   for i, r in enumerate(runs)) + ")"))
         if args.verbose:
-            for i, run in enumerate(runs):
+            for i, r in enumerate(runs):
                 if args.copies > 1:
                     print(f"      copy {i + 1}:")
-                for st in run["steps"]:
+                for st in r["steps"]:
                     print(f"      to level {st['to']}: roll {st['roll']:.4f} -> {st['outcome']}")
     if not hits:
-        print("  none found" + ("" if complete else " yet; raise --maxtries or --maxlen"))
-    elif len(hits) < args.limit:
-        print("  (that is every name in the search range)" if complete else "  (stopped at the --maxtries limit)")
+        print("  none found yet; raise --maxtries")
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Predict how many upgrades an item can take before it breaks.")
-    ap.add_argument("save", nargs="?", help="path to the .fch character file (not used with --findnameperupgr)")
+    ap = argparse.ArgumentParser(
+        description="Predict how many upgrades an item can take at the Forge of Potential before it breaks "
+                    "(Valheim 1.0.30 and newer: first rolls come from the character's creation date and time zone).")
+    ap.add_argument("save", nargs="?", help="path to the .fch character file (optional with --created, not used with "
+                    "--findtime)")
+    ap.add_argument("--tz", help="time zone of the machine that runs the game: an IANA name (Europe/Prague), UTC or an "
+                    "offset (+02:00). The game turns the saved UTC creation stamp into local time with it, so it changes "
+                    "every first roll (default: this machine's zone)")
+    ap.add_argument("--created", help="the character's creation date and time instead of the one in the save: the "
+                    "in-game local time as \"YYYY-MM-DD HH:MM:SS\" (shown as Created: in the game's texts), or @<unix "
+                    "seconds> as the save stores it. Without a save: predict for a new character (no saved seeds). With "
+                    "--findtime: where the search starts (default: now)")
     ap.add_argument("--item", help="a prefab name or display name (e.g. SwordIron or 'Iron Sword') instead of the inventory")
-    ap.add_argument("--quality", type=int, help="level the --item starts at (default: 1; required with --findnameperupgr)")
+    ap.add_argument("--quality", type=int, help="level the --item starts at (default: 1; required with --findtime)")
     ap.add_argument("--all", action="store_true", help="every upgradable item, starting from level 1")
     ap.add_argument("-v", "--verbose", action="store_true", help="show every roll")
-    ap.add_argument("--charname", help="predict as if the items belonged to a new character with this name (its first "
-                    "rolls start from the name, and it has no saved seeds)")
-    ap.add_argument("--findnameperupgr", type=int, metavar="N",
-                    help="search for character names whose --item, starting at --quality, gets exactly N upgrades before "
-                    "it breaks (needs --item and --quality, takes no save file)")
+    ap.add_argument("--findtime", type=int, metavar="N",
+                    help="search for character creation times (second by second, from --created or now) at which a new "
+                    "character's --item, starting at --quality, gets exactly N upgrades before it breaks")
     ap.add_argument("--copies", type=int, default=1, metavar="N",
-                    help="with --findnameperupgr: upgrade N copies of the item one after another with the same character. "
+                    help="with --findtime: upgrade N copies of the item one after another with the same character. "
                     "The first N-1 get exactly the wanted upgrades and break; the last one gets past the level where they "
                     "broke (default: 1)")
-    ap.add_argument("--minlen", type=int, default=3, help="shortest name to try (the game needs at least 3; default: 3)")
-    ap.add_argument("--maxlen", type=int, default=15, help="longest name to try (default: 15)")
-    ap.add_argument("--limit", type=int, default=10, help="stop after this many names (default: 10)")
+    ap.add_argument("--limit", type=int, default=10, help="with --findtime: stop after this many times (default: 10)")
     ap.add_argument("--maxtries", type=int,
-                    help="stop after trying this many names (default: 5000000, or 200000000 with --copies above 1)")
-    ap.add_argument("--check", action="store_true", help="compare the saved seeds with the generator")
+                    help="with --findtime: seconds to search (default: 31 days, or a year with --copies above 1)")
+    ap.add_argument("--check", action="store_true", help="compare the saved seeds with the generator (a good test of "
+                    "--tz: with the right zone, first-attempt seeds match)")
     ap.add_argument("--json", action="store_true", help="print the result as JSON")
     args = ap.parse_args()
-    if args.findnameperupgr is not None:
-        find_names_command(ap, args)
+    try:
+        tz = parse_tz(args.tz)
+    except SaveError as e:
+        ap.error(str(e))
+    if args.findtime is not None:
+        find_times_command(ap, args, tz)
         return
-    if not args.save:
-        ap.error("the path to the .fch character file is required")
+    if not args.save and not args.created:
+        ap.error("give the path to the .fch character file, or --created for a new character")
     quality = 1 if args.quality is None else args.quality
     try:
-        save = load(args.save)
-        if args.charname is not None:
+        if args.save:
+            save = load(args.save)
+        else:
+            if not args.item and not args.all:
+                ap.error("without a save there is no inventory: add --item NAME or --all")
             if args.check:
-                ap.error("--check compares the saved seeds, which belong to the character in the file; drop --charname")
-            save = {**save, "name": args.charname, "seeds": {}}
+                ap.error("--check needs a save file")
+            save = {"name": None, "created": None, "items": [], "seeds": {}}
+        if args.created:
+            created, wall = parse_created(args.created, tz)
+        else:
+            created, wall = save["created"], local_wall(save["created"], tz)
+        base = ticks_hash(wall_ticks(wall))
         if args.check:
-            rows = check(save)
+            rows = check(save, base)
             if args.json:
                 print(json.dumps(rows, indent=1))
             else:
                 show_check(rows)
             return
-        results = run(save, args.item, quality, args.all)
+        results = run(save, base, args.item, quality, args.all)
     except FileNotFoundError:
         ap.error(f"file not found: {args.save}")
     except OSError as e:
         ap.error(f"cannot read {args.save}: {e.strerror or e}")
     except SaveError as e:
-        ap.error(f"{args.save}: {e}")
+        ap.error(f"{args.save}: {e}" if args.save else str(e))
+    shown = wall.strftime("%Y-%m-%d %H:%M:%S")
+    zone = "as given" if created is None else tz_label(tz, created)
     if args.json:
-        print(json.dumps({"character": save["name"], "savedSeeds": len(save["seeds"]), "items": results}, indent=1))
-    else:
-        if args.charname is not None:
-            print(f"As if the character were named {args.charname!r} (a new character: no saved seeds)")
-            if as_typed(args.charname) != args.charname:
-                print(f"Note: typed or pasted into the game's name box, {args.charname!r} is saved as "
-                      f"{as_typed(args.charname)!r}, which rolls differently")
-        else:
-            print(f"{save['name']}: {len(save['seeds'])} saved upgrade seed(s)")
-        show(results, args.verbose)
+        print(json.dumps({"character": save["name"], "created": created, "createdLocal": shown, "timeZone": zone,
+                          "seedBase": base, "savedSeeds": len(save["seeds"]), "items": results}, indent=1))
+        return
+    who = save["name"] or "A new character"
+    print(f"{who}: created {shown} local time ({zone}), {len(save['seeds'])} saved upgrade seed(s)")
+    show(results, args.verbose)
 
 
 if __name__ == "__main__":
