@@ -940,6 +940,56 @@
    "earliest_biome_direct": "",
    "biomes": [
     "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse12"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
+    "Deep North"
+   ],
+   "sources": [
+    "loot"
+   ],
+   "earliest_by_source": {
+    "loot": "Meadows"
+   },
+   "examples": [
+    "ShipSetting01",
+    "WoodFarm1",
+    "WoodHouse1",
+    "WoodHouse10",
+    "WoodHouse11",
+    "WoodHouse12"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Meadows",
+   "earliest_biome_direct": "",
+   "biomes": [
+    "Meadows",
     "Black Forest",
     "Swamp",
     "Deep North"
@@ -960,8 +1010,8 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name",
+   "item": "$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Meadows",
    "earliest_biome_direct": "",
@@ -1642,8 +1692,8 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
-   "name": "item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name",
+   "item": "$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Black Forest",
    "earliest_biome_direct": "",
@@ -1667,8 +1717,8 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name",
+   "item": "$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Black Forest",
    "earliest_biome_direct": "",
@@ -2107,8 +2157,7 @@
    "earliest_biome": "Swamp",
    "earliest_biome_direct": "",
    "biomes": [
-    "Swamp",
-    "Plains"
+    "Swamp"
    ],
    "sources": [
     "loot"
@@ -2117,12 +2166,10 @@
     "loot": "Swamp"
    },
    "examples": [
-    "GoblinCamp2",
     "Grave1",
-    "Hildir_plainsfortress",
-    "Ruin3",
-    "StoneHouse1_heath",
-    "StoneHouse5_heath"
+    "SunkenCrypt4",
+    "SwampRuin1",
+    "SwampRuin2"
    ]
   },
   {
@@ -2411,8 +2458,8 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
-   "name": "item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name",
+   "item": "$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Swamp",
    "earliest_biome_direct": "",
@@ -2437,14 +2484,15 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name",
+   "item": "$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Swamp",
    "earliest_biome_direct": "",
    "biomes": [
     "Swamp",
-    "Mountain"
+    "Mountain",
+    "Deep North"
    ],
    "sources": [
     "loot"
@@ -2457,8 +2505,8 @@
     "AbandonedLogCabin03",
     "AbandonedLogCabin04",
     "Grave1",
-    "MountainWell1",
-    "StoneTowerRuins04"
+    "Hildir_cave",
+    "MountainCave02"
    ]
   },
   {
@@ -3068,20 +3116,22 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
-   "name": "item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name",
+   "item": "$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Mountain",
-   "earliest_biome_direct": "",
+   "earliest_biome_direct": "Plains",
    "biomes": [
     "Mountain",
     "Plains",
     "Deep North"
    ],
    "sources": [
+    "destructible",
     "loot"
    ],
    "earliest_by_source": {
+    "destructible": "Plains",
     "loot": "Mountain"
    },
    "examples": [
@@ -3094,20 +3144,22 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name",
+   "item": "$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
    "item_type": "Material",
    "earliest_biome": "Mountain",
-   "earliest_biome_direct": "",
+   "earliest_biome_direct": "Plains",
    "biomes": [
     "Mountain",
     "Plains",
     "Deep North"
    ],
    "sources": [
+    "destructible",
     "loot"
    ],
    "earliest_by_source": {
+    "destructible": "Plains",
     "loot": "Mountain"
    },
    "examples": [
@@ -3401,9 +3453,6 @@
     "loot": "Plains"
    },
    "examples": [
-    "GoblinCamp2",
-    "Hildir_plainsfortress",
-    "Ruin3",
     "StoneHenge1",
     "StoneHenge2",
     "StoneHenge3"
@@ -3683,60 +3732,6 @@
    ]
   },
   {
-   "item": "$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
-   "name": "item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name",
-   "item_type": "Material",
-   "earliest_biome": "Plains",
-   "earliest_biome_direct": "Plains",
-   "biomes": [
-    "Plains",
-    "Mistlands"
-   ],
-   "sources": [
-    "destructible",
-    "loot"
-   ],
-   "earliest_by_source": {
-    "destructible": "Plains",
-    "loot": "Plains"
-   },
-   "examples": [
-    "GoblinCamp2",
-    "Hildir_plainsfortress",
-    "Mistlands_DvergrTownEntrance1",
-    "Mistlands_DvergrTownEntrance2",
-    "Mistlands_GuardTower1_ruined_new",
-    "Mistlands_GuardTower1_ruined_new2"
-   ]
-  },
-  {
-   "item": "$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name",
-   "item_type": "Material",
-   "earliest_biome": "Plains",
-   "earliest_biome_direct": "Plains",
-   "biomes": [
-    "Plains",
-    "Mistlands"
-   ],
-   "sources": [
-    "destructible",
-    "loot"
-   ],
-   "earliest_by_source": {
-    "destructible": "Plains",
-    "loot": "Plains"
-   },
-   "examples": [
-    "GoblinCamp2",
-    "Hildir_plainsfortress",
-    "Mistlands_DvergrTownEntrance1",
-    "Mistlands_DvergrTownEntrance2",
-    "Mistlands_GuardTower1_ruined_new",
-    "Mistlands_GuardTower1_ruined_new2"
-   ]
-  },
-  {
    "item": "$item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name",
    "name": "item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name",
    "item_type": "Material",
@@ -3753,7 +3748,7 @@
    ],
    "earliest_by_source": {
     "destructible": "Plains",
-    "loot": "Mistlands"
+    "loot": "Plains"
    },
    "examples": [
     "CharredFortress",
@@ -3781,7 +3776,7 @@
    ],
    "earliest_by_source": {
     "destructible": "Plains",
-    "loot": "Mistlands"
+    "loot": "Plains"
    },
    "examples": [
     "CharredFortress",
@@ -4103,30 +4098,6 @@
     "StoneHouse1_heath",
     "StoneHouse5_heath",
     "StoneTower1"
-   ]
-  },
-  {
-   "item": "$item_arrow_needle",
-   "name": "Needle Arrow",
-   "item_type": "Ammo",
-   "earliest_biome": "Mistlands",
-   "earliest_biome_direct": "",
-   "biomes": [
-    "Mistlands"
-   ],
-   "sources": [
-    "loot"
-   ],
-   "earliest_by_source": {
-    "loot": "Mistlands"
-   },
-   "examples": [
-    "Mistlands_DvergrTownEntrance1",
-    "Mistlands_DvergrTownEntrance2",
-    "Mistlands_GuardTower1_ruined_new",
-    "Mistlands_GuardTower1_ruined_new2",
-    "Mistlands_GuardTower3_ruined_new",
-    "Mistlands_RockSpire1"
    ]
   },
   {
@@ -4720,6 +4691,62 @@
     "YggaShoot2",
     "YggaShoot3",
     "YggaShoot_small1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
+   "name": "item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
+   ]
+  },
+  {
+   "item": "$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
+   "name": "item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
+   "item_type": "Material",
+   "earliest_biome": "Mistlands",
+   "earliest_biome_direct": "Ashlands",
+   "biomes": [
+    "Mistlands",
+    "Ashlands",
+    "Deep North"
+   ],
+   "sources": [
+    "destructible",
+    "loot"
+   ],
+   "earliest_by_source": {
+    "destructible": "Ashlands",
+    "loot": "Mistlands"
+   },
+   "examples": [
+    "CharredFortress",
+    "CharredRuins1",
+    "CharredRuins2",
+    "CharredRuins3",
+    "CharredRuins4",
+    "CharredTowerRuins1"
    ]
   },
   {
@@ -5831,60 +5858,6 @@
    "examples": [
     "Volture",
     "VoltureNest"
-   ]
-  },
-  {
-   "item": "$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
-   "name": "item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name",
-   "item_type": "Material",
-   "earliest_biome": "Ashlands",
-   "earliest_biome_direct": "Ashlands",
-   "biomes": [
-    "Ashlands",
-    "Deep North"
-   ],
-   "sources": [
-    "destructible",
-    "loot"
-   ],
-   "earliest_by_source": {
-    "destructible": "Ashlands",
-    "loot": "Ashlands"
-   },
-   "examples": [
-    "CharredFortress",
-    "CharredRuins1",
-    "CharredRuins2",
-    "CharredRuins3",
-    "CharredRuins4",
-    "CharredTowerRuins1"
-   ]
-  },
-  {
-   "item": "$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
-   "name": "item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name",
-   "item_type": "Material",
-   "earliest_biome": "Ashlands",
-   "earliest_biome_direct": "Ashlands",
-   "biomes": [
-    "Ashlands",
-    "Deep North"
-   ],
-   "sources": [
-    "destructible",
-    "loot"
-   ],
-   "earliest_by_source": {
-    "destructible": "Ashlands",
-    "loot": "Ashlands"
-   },
-   "examples": [
-    "CharredFortress",
-    "CharredRuins1",
-    "CharredRuins2",
-    "CharredRuins3",
-    "CharredRuins4",
-    "CharredTowerRuins1"
    ]
   },
   {

@@ -33,8 +33,10 @@ Ruby,Material,Meadows,,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; De
 Silver Necklace,Material,Meadows,Mountain,Meadows; Black Forest; Mountain; Plains; Ashlands; Deep North,destructible; loot; pickable,destructible: Deep North; loot: Meadows; pickable: Mountain,Crypt2; Crypt3; Crypt4; DG_Hole; Hildir_cave; Hildir_crypt,$item_silvernecklace
 Stone,Material,Meadows,Meadows,Meadows; Black Forest; Ocean; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; fishing bonus; loot; mining; pickable,creature: Meadows; destructible: Meadows; fishing bonus: Meadows; loot: Black Forest; mining: Meadows; pickable: Meadows,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; CharredFortress; Dolmen01; Dolmen02,$item_stone
 Wood,Material,Meadows,Meadows,Meadows; Black Forest; Swamp; Mountain; Plains; Mistlands; Ashlands; Deep North,creature; destructible; loot; pickable; tree,creature: Meadows; destructible: Meadows; loot: Black Forest; pickable: Meadows; tree: Meadows,BogWitch_Camp; CharredTowerRuins1_dvergr; CharredTowerRuins2; Crypt2; Crypt3; Crypt4,$item_wood
-item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name,Material,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12,$item_upgrader_tier0 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name,Material,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01; WoodFarm1; WoodHouse1; WoodHouse10; WoodHouse11; WoodHouse12,$item_upgrader_tier0 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name,Material,Meadows,,Meadows; Black Forest; Swamp; Deep North,loot,loot: Meadows,Crypt2; Crypt3; Crypt4; Hildir_crypt; Ruin1; Ruin2,$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name
 Wooden Axe,OneHandedWeapon,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01,$item_axe_wood
 Wooden Knife,OneHandedWeapon,Meadows,,Meadows; Deep North,loot,loot: Meadows,ShipSetting01,$item_knife_wood
 Wooden Mace,OneHandedWeapon,Meadows,,Meadows,loot,loot: Meadows,WoodVillage1,$item_mace_wood
@@ -64,8 +66,8 @@ Surtling Core,Material,Black Forest,Black Forest,Black Forest; Swamp; Mistlands,
 Thistle,Material,Black Forest,Black Forest,Black Forest; Swamp,pickable,pickable: Black Forest,pickable_thistle_swamp_blackforest,$item_thistle
 Tin Ore,Material,Black Forest,Black Forest,Black Forest; Deep North,destructible; fishing bonus,destructible: Black Forest; fishing bonus: Ocean,Fish3; Ruin2; TheHole01; minerock_tin_blackforest,$item_tinore
 Troll Hide,Material,Black Forest,Black Forest,Black Forest,creature; fishing bonus,creature: Black Forest; fishing bonus: Black Forest,Fish5; Troll; TrollCave02,$item_trollhide
-item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier1 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier1 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name,Material,Black Forest,,Black Forest; Swamp,loot,loot: Black Forest,Crypt2; Crypt3; Crypt4; Grave1; Hildir_crypt; Ruin1,$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name
 Ancient Seed,Misc,Black Forest,Black Forest,Black Forest,creature; destructible,creature: Black Forest; destructible: Black Forest,Greydwarf_camp1; Ruin2; StoneTowerRuins03; greydwarf ELITE,$item_ancientseed
 Hildir's Brass Chest,Misc,Black Forest,Black Forest,Black Forest,creature,creature: Black Forest,Hildir_crypt,$item_chest_hildir1
 Swamp Key,Misc,Black Forest,,Black Forest,boss,boss: Black Forest,GDKing,$item_cryptkey
@@ -86,7 +88,7 @@ Serpent Meat,Material,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_s
 Serpent Scale,Material,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_serpentscale
 Serpent Trophy,Trophy,Ocean,Ocean,Ocean,creature,creature: Ocean,Serpent,$item_trophy_serpent
 Ironhead Arrow,Ammo,Swamp,,Swamp,loot,loot: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2,$item_arrow_iron
-Poison Arrow,Ammo,Swamp,,Swamp; Plains,loot,loot: Swamp,GoblinCamp2; Grave1; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath,$item_arrow_poison
+Poison Arrow,Ammo,Swamp,,Swamp,loot,loot: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2,$item_arrow_poison
 Giant Herring,Fish,Swamp,Swamp,Swamp,fishing,fishing: Swamp,Fish6,$animal_fish6
 Ancient Bark,Material,Swamp,Swamp,Swamp,loot; tree,loot: Swamp; tree: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2; swamptree1,$item_elderbark
 Bloodbag,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Leech,$item_bloodbag
@@ -99,8 +101,8 @@ Scrap Iron,Material,Swamp,Swamp,Swamp; Plains; Mistlands; Deep North,creature; d
 Turnip Seeds,Material,Swamp,Swamp,Swamp,pickable,pickable: Swamp,pickable_seedturnip_swamp,$item_turnipseeds
 Withered Bone,Material,Swamp,Swamp,Swamp,loot; mining,loot: Swamp; mining: Swamp,Grave1; SunkenCrypt4; SwampRuin1; SwampRuin2; mudpile_beacon,$item_witheredbone
 Writhan Roots,Material,Swamp,Swamp,Swamp,creature,creature: Swamp,Writhan,$item_writhanroots
-item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name,Material,Swamp,,Swamp; Mountain; Deep North,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; Hildir_cave; MountainCave02,$item_upgrader_tier2 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name,Material,Swamp,,Swamp; Mountain,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; MountainWell1; StoneTowerRuins04,$item_upgrader_tier2 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name,Material,Swamp,,Swamp; Mountain; Deep North,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; Hildir_cave; MountainCave02,$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name,Material,Swamp,,Swamp; Mountain; Deep North,loot,loot: Swamp,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; Grave1; Hildir_cave; MountainCave02,$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name
 Abomination Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Abomination,$item_trophy_abomination
 Blob Trophy,Trophy,Swamp,Swamp,Swamp,creature,creature: Swamp,Blob; BlobElite; SunkenCrypt4,$item_trophy_blob
 Bonemass Trophy,Trophy,Swamp,,Swamp,boss,boss: Swamp,Bonemass,$item_trophy_bonemass
@@ -129,8 +131,8 @@ Silver Ore,Material,Mountain,Mountain,Mountain,mining,mining: Mountain,silvervei
 Wolf Fang,Material,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Fenring; Hildir_cave; MountainCave02; Wolf,$item_wolffang
 Wolf Meat,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_wolf_meat
 Wolf Pelt,Material,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_wolfpelt
-item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name,Material,Mountain,,Mountain; Plains; Deep North,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier3 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name,Material,Mountain,,Mountain; Plains; Deep North,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier3 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name,Material,Mountain,Plains,Mountain; Plains; Deep North,destructible; loot,destructible: Plains; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name,Material,Mountain,Plains,Mountain; Plains; Deep North,destructible; loot,destructible: Plains; loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; GoblinCamp2; Hildir_cave; Hildir_plainsfortress,$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name
 Dragon Egg,Misc,Mountain,Mountain,Mountain,pickable,pickable: Mountain,DrakeNest01,$item_dragonegg
 Dragon Tear,Misc,Mountain,,Mountain,boss,boss: Mountain,Dragonqueen,$item_dragontear
 Hildir's Silver Chest,Misc,Mountain,Mountain,Mountain; Deep North,creature,creature: Mountain,Hildir_cave; MountainCave02,$item_chest_hildir2
@@ -144,7 +146,7 @@ Ulv Trophy,Trophy,Mountain,Mountain,Mountain; Deep North,creature,creature: Moun
 Wolf Trophy,Trophy,Mountain,Mountain,Mountain,creature,creature: Mountain,Wolf,$item_trophy_wolf
 Fishing Rod,TwoHandedWeapon,Mountain,Mountain,Mountain; Deep North,pickable,pickable: Mountain,MountainCave02,$item_fishingrod
 Wooden Battleaxe,TwoHandedWeapon,Mountain,,Mountain,loot,loot: Mountain,AbandonedLogCabin02; AbandonedLogCabin03; AbandonedLogCabin04; MountainWell1; StoneTowerRuins04; StoneTowerRuins05,$item_battleaxe_wood
-Obsidian Arrow,Ammo,Plains,,Plains,loot,loot: Plains,GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHenge1; StoneHenge2; StoneHenge3,$item_arrow_obsidian
+Obsidian Arrow,Ammo,Plains,,Plains,loot,loot: Plains,StoneHenge1; StoneHenge2; StoneHenge3,$item_arrow_obsidian
 Cloudberries,Consumable,Plains,Plains,Plains,pickable,pickable: Plains,cloudberrybush_heath,$item_cloudberries
 Rotten Meat,Consumable,Plains,Plains,Plains; Ashlands,creature; destructible,creature: Plains; destructible: Ashlands,MorgenHole1; MorgenHole2; MorgenHole3; Unbjorn,$item_meat_rotten
 Grouper,Fish,Plains,Plains,Plains,fishing,fishing: Plains,Fish7,$animal_fish7
@@ -157,10 +159,8 @@ Needle,Material,Plains,Plains,Plains,creature; loot,creature: Plains; loot: Plai
 Sharpening Stone,Material,Plains,,Plains,loot,loot: Plains,GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath; StoneTower1,$item_sharpeningstone
 Tar,Material,Plains,Plains,Plains; Deep North,creature; pickable,creature: Plains; pickable: Plains,TarPit1; TarPit2; TarPit3,$item_tar
 Vile Ribcage,Material,Plains,Plains,Plains,creature,creature: Plains,Unbjorn,$item_UndeadBjornRibcage
-item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands,destructible; loot,destructible: Plains; loot: Plains,GoblinCamp2; Hildir_plainsfortress; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_upgrader_tier4 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands,destructible; loot,destructible: Plains; loot: Plains,GoblinCamp2; Hildir_plainsfortress; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_upgrader_tier4 $item_upgrader_weapon $item_upgrader_name
-item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name
+item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Plains,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name,Material,Plains,Plains,Plains; Mistlands; Ashlands,destructible; loot,destructible: Plains; loot: Plains,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier5 $item_upgrader_weapon $item_upgrader_name
 Egg,Misc,Plains,,Plains,loot,loot: Plains,Hildir_plainsfortress,$item_chicken_egg
 Fuling Totem,Misc,Plains,Plains,Plains,creature; loot; pickable,creature: Plains; loot: Plains; pickable: Plains,GoblinBrute; GoblinCamp2; StoneHenge1; StoneHenge2; StoneHenge3; StoneHenge4,$item_goblintotem
 Hildir's Bronze Chest,Misc,Plains,Plains,Plains,creature,creature: Plains,GoblinShaman_Hildir,$item_chest_hildir3
@@ -176,7 +176,6 @@ Vile Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,Unbjorn,$item_
 Yagluth Trophy,Trophy,Plains,,Plains,boss,boss: Plains,GoblinKing,$item_trophy_goblinking
 Zil Trophy,Trophy,Plains,Plains,Plains,creature,creature: Plains,GoblinShaman_Hildir,$item_trophy_shamanbro
 Wooden Atgeir,TwoHandedWeapon,Plains,,Plains,loot,loot: Plains,GoblinCamp2; Hildir_plainsfortress; Ruin3; StoneHouse1_heath; StoneHouse5_heath; StoneTower1,$item_atgeir_wood
-Needle Arrow,Ammo,Mistlands,,Mistlands,loot,loot: Mistlands,Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2; Mistlands_GuardTower3_ruined_new; Mistlands_RockSpire1,$item_arrow_needle
 Jotun Puffs,Consumable,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,mushroom_jotunpuffs,$item_jotunpuffs
 Magecap,Consumable,Mistlands,Mistlands,Mistlands,pickable,pickable: Mistlands,mushroom_magecap,$item_magecap
 Minor Healing Mead,Consumable,Mistlands,Ashlands,Mistlands; Ashlands,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1; Mistlands_DvergrTownEntrance1,$item_mead_hp_minor
@@ -203,6 +202,8 @@ Sealbreaker Fragment,Material,Mistlands,,Mistlands,loot,loot: Mistlands,dungeons
 Seeker Meat,Material,Mistlands,Mistlands,Mistlands,creature,creature: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_Excavation3; Mistlands_GuardTower1_ruined_new; Mistlands_GuardTower1_ruined_new2,$item_bug_meat
 Soft Tissue,Material,Mistlands,Mistlands,Mistlands; Ashlands,creature; destructible; fishing bonus; mining,creature: Mistlands; destructible: Mistlands; fishing bonus: Mistlands; mining: Mistlands,CharredTowerRuins1_dvergr; Dverger; Fish9; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_Excavation3,$item_softtissue
 Yggdrasil Wood,Material,Mistlands,Mistlands,Mistlands,destructible; tree,destructible: Mistlands; tree: Mistlands,Mistlands_GuardTower1_ruined_new2; Mistlands_GuardTower3_ruined_new; YggaShoot1; YggaShoot2; YggaShoot3; YggaShoot_small1,$item_yggdrasilwood
+item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name,Material,Mistlands,Ashlands,Mistlands; Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name
+item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name,Material,Mistlands,Ashlands,Mistlands; Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Mistlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name
 Dvergr Tankard,OneHandedWeapon,Mistlands,Mistlands,Mistlands,loot; pickable,loot: Mistlands; pickable: Mistlands,Mistlands_DvergrBossEntrance1; Mistlands_DvergrTownEntrance1; Mistlands_DvergrTownEntrance2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new; Mistlands_Lighthouse1_new,$item_dvergrtankard
 Dvergr Lantern,Torch,Mistlands,Mistlands,Mistlands; Ashlands,pickable,pickable: Mistlands,CharredTowerRuins1_dvergr; Mistlands_DvergrBossEntrance1; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new,$item_lantern
 Dvergr Trophy,Trophy,Mistlands,Mistlands,Mistlands; Ashlands,creature,creature: Mistlands,CharredTowerRuins1_dvergr; Dverger; Mistlands_Excavation1; Mistlands_Excavation2; Mistlands_GuardTower1_new; Mistlands_GuardTower2_new,$item_trophy_dvergr
@@ -253,8 +254,6 @@ Silver,Material,Ashlands,Ashlands,Ashlands,destructible; fishing bonus,destructi
 Sulfur,Material,Ashlands,Ashlands,Ashlands,creature; destructible; pickable,creature: Ashlands; destructible: Ashlands; pickable: Ashlands,Lava Blob; SulfurArch,$item_sulfurstone
 Vineberry Seeds,Material,Ashlands,Ashlands,Ashlands,pickable,pickable: Ashlands,CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4,$item_vineberryseeds
 Volture Meat,Material,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Volture; VoltureNest,$item_volture_meat
-item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name,Material,Ashlands,Ashlands,Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Ashlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_armor $item_upgrader_name
-item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name,Material,Ashlands,Ashlands,Ashlands; Deep North,destructible; loot,destructible: Ashlands; loot: Ashlands,CharredFortress; CharredRuins1; CharredRuins2; CharredRuins3; CharredRuins4; CharredTowerRuins1,$item_upgrader_tier6 $item_upgrader_weapon $item_upgrader_name
 Volture Egg,Misc,Ashlands,Ashlands,Ashlands,creature; pickable,creature: Ashlands; pickable: Ashlands,Volture; VoltureNest,$item_voltureegg
 Asksvin Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Asksvin [DAY],$item_trophy_asksvin
 Bonemaw Trophy,Trophy,Ashlands,Ashlands,Ashlands,creature,creature: Ashlands,Bonemaw Serpent,$item_trophy_bonemaw

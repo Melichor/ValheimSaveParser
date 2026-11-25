@@ -12,39 +12,35 @@ python3 achi_hunter.py path/to/Character.fch
 
 You can visit the web version here: [https://melichor.github.io/ValheimSaveParser/index.html](https://melichor.github.io/ValheimSaveParser/index.html)
 
-The page is called **Valheim Save Parser** and has a tab for each tool: **Valheim Achievement Hunter** (this script), **Upgrade time finder** (with the Relay planner), **Upgrade predictor**, **Upgrade cost** (all three below), **Creation timer**. Every tool that asks for a character file has a **"Where is my character file?"** guide under it.
+The page is called **Valheim Save Parser** and has a tab for each tool: **Valheim Achievement Hunter** (this script), **Upgrade name finder** (with the Relay planner), **Upgrade predictor** and **Upgrade cost** (all three below). Every tool that asks for a character file has a **"Where is my character file?"** guide under it.
 
 The achievement hunter has an **"I'm currently in"** dropdown (default: Deep North). Pick a biome and every list only shows the items you are missing that can be done up to that biome; each item shows its earliest biome.
 
 ## Upgrade predictor
 
-`upgrade_oracle.py` (also a single file, standard library only) predicts how many times an item can be upgraded at the Forge of Potential before it breaks. A character's first attempt on each item and level is a fixed roll, and the script replays it. Since Valheim 1.0.30 that roll comes from the character's creation date (before, 1.0.20 to 1.0.29, from its name). The save stores the date as UTC seconds, but the game hashes it as local time on the machine running the game, so the time zone matters: `--tz` sets it (default: this machine's). The stats page of the in-game compendium (and the console's `stats` command) shows the exact local value as `Created:`, and `--created` takes that instead of the save. The script can also search for creation times that give up to 8 upgrades in a row (the most a new character can get):
+`upgrade_oracle.py` (also a single file, standard library only) predicts how many times an item can be upgraded at the Forge of Potential before it breaks. A character's first attempt on each item and level is a fixed roll that depends only on the character's name, and the script replays it. It can also search for character names that give 8 upgrades in a row (the most a new character can get):
 
 ```bash
 python3 upgrade_oracle.py Character.fch                       # the upgradable items in the inventory
-python3 upgrade_oracle.py Character.fch --tz Europe/Prague    # if the game runs in another time zone than this machine
-python3 upgrade_oracle.py Character.fch --check               # do the saved seeds match? (a test of --tz)
-python3 upgrade_oracle.py --created "2026-11-25 21:29:31" --item 'Iron Sword'   # a new character created at that local time
-python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findtime 8   # creation times from now on, no save needed
-python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findtime 5 --copies 2   # slow: a second copy must get past the break
+python3 upgrade_oracle.py Character.fch --charname Ragnar     # the same items for a new character with another name
+python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameperupgr 8   # names, no save needed
+python3 upgrade_oracle.py --item 'Staff of Protection' --quality 4 --findnameperupgr 8 --copies 2   # slow: a second copy must get past the break
 ```
 
-`--copies N` upgrades N copies of the item one after another with the same character: the first N-1 get exactly the wanted upgrades and break, and the last one gets past the level where they broke. Creation times like that are rare (8 upgrades come about once in 200,000 seconds; with 2 copies far less often), so the search can take long.
+`--copies N` upgrades N copies of the item one after another with the same character: the first N-1 get exactly the wanted upgrades and break, and the last one gets past the level where they broke. Names like that are rare (about 1 in 10 million for 8 upgrades and 2 copies), so the search takes minutes.
 
-A new character's rolls depend only on the second it was created, as the clock of the computer running the game showed it: the game stores that moment in UTC and turns it back into the same local time, so for a new character the time zone does not matter. Press **Done** on the new-character screen during the listed second (that press stamps the time; **New** before it does not); wait for the second, or set the clock to just before it, load it once, and check the saved creation time with `upgrade_oracle.py Character.fch`.
-
-The web page has the same search in the **Upgrade time finder** tab: enter the item, its starting quality and how many upgrades in a row you want (8 come about once in 2 to 3 days of creation times, 5 about once in 2 hours, 4 about once in 15 seconds). Under it, the **Relay planner** finds a chain of new characters, with their creation times, that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. With 4 levels per character, the times are about a minute apart. Each time has a **Timer** button that opens the **Creation timer** tab: it beeps four times faintly, one second apart, and a fifth time loudly exactly on the time (in the chosen time zone), so you can press **Done** (after typing the name; pressing **New** before it is safe) on it. A shift in milliseconds moves every beep, to make up for your reaction or your audio delay; *Test in 5 s* plays the same beeps on a whole second for calibrating it. Under it, **Check the result** takes the new character's file and says how many seconds the saved creation time is off from the timer's time, with the shift to try next (it never changes the timer itself). The **Upgrade predictor** tab takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. It reads the file's creation time in the time zone chosen at the top of the page (the zone of the computer that runs the game), which starts as the browser's own.
+The web page has the same name search in the **Upgrade name finder** tab: enter the item and its starting quality. Under it, the **Relay planner** finds a chain of new characters that takes an item from its current quality to a target quality without breaking it: each character makes only the upgrades its own rolls get right, then hands the item on. The **Upgrade predictor** tab takes a dropped character file and shows what the script prints for it: every upgradable item in the inventory, how many upgrades it can take before it breaks, and the path. The case of the name matters, and since 1.0.21 the game's name box changes some names as they are typed or pasted (it capitalises the first letter and lowers a capital that follows another capital, so `DjCJ` would become `DjCj`). The finder only lists names the box leaves unchanged; check the name reads exactly as listed before you create the character.
 
 ## Upgrade cost
 
-`upgrade_cost.py` works out what one character really pays to get an item to a quality at the Forge of Potential, without any creation-time tricks: it crafts the item, upgrades it at its crafting station as far as that station goes (Deep North gear stops at 3 there), then tries the Forge; every failed attempt breaks the item, so it crafts a new copy and starts again. The rolls are the character's own, replayed from its creation time and the seeds stored in its file, so the totals are exact for that character: crafting and station materials, Idols (one per attempt, never refunded), and the part of the materials a break refunds.
+`upgrade_cost.py` works out what one character really pays to get an item to a quality at the Forge of Potential, without any name tricks: it crafts the item, upgrades it at its crafting station as far as that station goes (Deep North gear stops at 3 there), then tries the Forge; every failed attempt breaks the item, so it crafts a new copy and starts again. The rolls are the character's own, replayed from its name and the seeds stored in its file, so the totals are exact for that character: crafting and station materials, Idols (one per attempt, never refunded), and the part of the materials a break refunds.
 
 ```bash
-python3 upgrade_cost.py --item "Iron Sword" --target 10 --created "2026-11-25 21:29:31" -v   # a new character
-python3 upgrade_cost.py --item "Iron Sword" --target 10 --save Ragnar.fch    # add --tz if the game runs in another time zone
+python3 upgrade_cost.py --item "Iron Sword" --target 10 --name Ragnar -v
+python3 upgrade_cost.py --item "Iron Sword" --target 10 --save Ragnar.fch
 ```
 
-It needs `upgrade_oracle.py` next to it. The web page has the same tool in the **Upgrade cost** tab: enter the item, the target quality and the character's creation time, or choose the character's file.
+It needs `upgrade_oracle.py` next to it. The web page has the same tool in the **Upgrade cost** tab: enter the item, the target quality and a character name, or choose the character's file.
 
 ## Drop counters
 
@@ -159,7 +155,7 @@ The tool only reads the file; it never writes to it. Copy it somewhere first if 
 
 ## How it works
 
-The list of what each achievement needs was **not guessed from wikis**. It was rebuilt from the game's own data and code (Valheim 1.0.30): the achievement definitions, the item database, recipes, build tables and character flags. The game fills most of these lists when it starts, and the tool reproduces the same rules, including the game's hand-maintained exclusions. That is why, for example:
+The list of what each achievement needs was **not guessed from wikis**. It was rebuilt from the game's own data and code (Valheim 1.0.21): the achievement definitions, the item database, recipes, build tables and character flags. The game fills most of these lists when it starts, and the tool reproduces the same rules, including the game's hand-maintained exclusions. That is why, for example:
 
 - hand-crafted recipes with no station (stone axe, club, ...) do **not** count towards "craft everything" but **do** count towards "craft every weapon";
 - Cultivator and Hoe pieces do not count towards "build everything";
@@ -170,6 +166,6 @@ The save stores ten sets of statistics, one per difficulty (`RawStats`, `Any`, `
 
 ## Limitations
 
-- Written for **profile version 46 and 47** saves (Valheim 1.0.16 to 1.0.30); newer versions are read with a warning. A game update may add items, pieces or creatures; the lists near the top of the script are generated from the game files and need regenerating after an update (`tools/update_achievement_lists.py` and `tools/update_script_biomes.py`). Older versions, or a save whose stat count differs from what the script expects (a sign that the game changed its stats list), are rejected with an error message.
+- Written for **profile version 46 and 47** saves (Valheim 1.0.16 to 1.0.21); newer versions are read with a warning. A game update may add items, pieces or creatures; the lists near the top of the script are generated from the game files and need regenerating after an update (`tools/update_achievement_lists.py` and `tools/update_script_biomes.py`). Older versions, or a save whose stat count differs from what the script expects (a sign that the game changed its stats list), are rejected with an error message.
 - The terminal output shows the game's internal names (for example `charred_melee_Dyrnwyn`, `trophy_boar`) without the `$item_` / `$enemy_` prefixes; the web page and `--json` also carry display names where the game has one.
 - The in-game achievement list can differ slightly if the game build you play has a different item set (for example a modded game).

@@ -17809,41 +17809,6 @@
    "other_recipes": 0
   },
   {
-   "item": "$piece_darkwoodbeam_67",
-   "name": "Darkwood Beam 67°",
-   "kind": "piece",
-   "type_or_category": "Deep North",
-   "earliest_biome": "Plains",
-   "earliest_biome_direct": "Plains",
-   "earliest_biome_inferred": "",
-   "inferred_from": [],
-   "limited_by": [
-    "Tar"
-   ],
-   "limited_by_direct": [
-    "Tar"
-   ],
-   "blocked_by": [],
-   "still_blocked_by": [],
-   "station": "Workbench",
-   "station_level": "",
-   "ingredients": [
-    {
-     "token": "$item_wood",
-     "name": "Wood",
-     "amount": 2,
-     "per_level": 0
-    },
-    {
-     "token": "$item_tar",
-     "name": "Tar",
-     "amount": 1,
-     "per_level": 0
-    }
-   ],
-   "other_recipes": 0
-  },
-  {
    "item": "$piece_darkwoodchair",
    "name": "Darkwood Chair",
    "kind": "piece",
@@ -19118,6 +19083,41 @@
      "token": "$item_finewood",
      "name": "Finewood",
      "amount": 10,
+     "per_level": 0
+    },
+    {
+     "token": "$item_tar",
+     "name": "Tar",
+     "amount": 1,
+     "per_level": 0
+    }
+   ],
+   "other_recipes": 0
+  },
+  {
+   "item": "$piece_darkwoodbeam67",
+   "name": "piece_darkwoodbeam67",
+   "kind": "piece",
+   "type_or_category": "Deep North",
+   "earliest_biome": "Plains",
+   "earliest_biome_direct": "Plains",
+   "earliest_biome_inferred": "",
+   "inferred_from": [],
+   "limited_by": [
+    "Tar"
+   ],
+   "limited_by_direct": [
+    "Tar"
+   ],
+   "blocked_by": [],
+   "still_blocked_by": [],
+   "station": "Workbench",
+   "station_level": "",
+   "ingredients": [
+    {
+     "token": "$item_wood",
+     "name": "Wood",
+     "amount": 2,
      "per_level": 0
     },
     {
@@ -28916,9 +28916,9 @@
    "earliest_biome_inferred": "",
    "inferred_from": [],
    "limited_by": [
-    "Charred Skull",
     "Flametal",
-    "Grausten"
+    "Grausten",
+    "Warrior Trophy"
    ],
    "limited_by_direct": [],
    "blocked_by": [],
@@ -28933,8 +28933,8 @@
      "per_level": 0
     },
     {
-     "token": "$item_charredskull",
-     "name": "Charred Skull",
+     "token": "$item_trophy_charredmelee",
+     "name": "Warrior Trophy",
      "amount": 5,
      "per_level": 0
     },
