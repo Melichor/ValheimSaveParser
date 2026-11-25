@@ -499,6 +499,7 @@ Darkwood Beam 2 m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench
 Darkwood Beam 26°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam_26
 Darkwood Beam 4 m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x4; Tar x1,0,$piece_darkwoodbeam4
 Darkwood Beam 45°,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam_45
+Darkwood Beam 67°,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam_67
 Darkwood Chair,piece,Furniture,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x4; Tar x1; Iron Nails x5; Deer Hide x1,0,$piece_darkwoodchair
 Darkwood Gate,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Forge,,Wood x16; Iron x4; Tar x2,0,$piece_darkwoodgate
 Darkwood Pole 2m,piece,Building (workbench),Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodpole
@@ -535,7 +536,6 @@ White Banner,piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workben
 White and Blue Striped Banner,piece,Furniture,Plains,Cloudberries,Plains,Cloudberries,,,,,Workbench,,Leather Scraps x6; Finewood x2; Blueberries x2; Cloudberries x3,0,$piece_banner07
 Wisp Fountain,piece,Crafting,Plains,Torn Spirit,,,,,,,Stonecutter,,Stone x10; Torn Spirit x1,0,$piece_wisplure
 Wolf Adornment,piece,Misc,Plains,Tar,Plains,Tar,,,,,Workbench,,Finewood x10; Tar x1,0,$piece_darkwoodwolf
-piece_darkwoodbeam67,piece,Deep North,Plains,Tar,Plains,Tar,,,,,Workbench,,Wood x2; Tar x1,0,$piece_darkwoodbeam67
 Barley Flour,smelting,Misc,Plains,Barley,,,,,,,Windmill,,Barley x1,0,$item_barleyflour
 Black Metal,smelting,Material,Plains,Black Metal Scrap,,,,,,,Blast Furnace,,Black Metal Scrap x1,0,$item_blackmetal
 Linen Thread,smelting,Material,Plains,Flax,,,,,,,Spinning Wheel,,Flax x1,0,$item_linenthread
@@ -806,7 +806,7 @@ Gem Cutter,piece,Crafting,Ashlands,Ashwood; Bloodstone; Flametal; Morgen Sinew,,
 Grausten Arched Roof,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_arch
 Grausten Arched Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_archcorner
 Grausten Arched Roof Corner,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x5,0,$piece_grausten_roof45_archcorner2
-Grausten Chest,piece,Deep North,Ashlands,Flametal; Grausten; Warrior Trophy,,,,,,,Workbench,,Grausten x10; Warrior Trophy x5; Flametal x2,0,$piece_chestgrausten
+Grausten Chest,piece,Deep North,Ashlands,Charred Skull; Flametal; Grausten,,,,,,,Workbench,,Grausten x10; Charred Skull x5; Flametal x2,0,$piece_chestgrausten
 Grausten Floor 1x1,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x2,0,$piece_grausten_floor1x1
 Grausten Floor 2x2,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x4,0,$piece_grausten_floor2x2
 Grausten Floor 4x4,piece,Building (stonecutter),Ashlands,Grausten,Ashlands,Grausten,,,,,Stonecutter,,Grausten x8,0,$piece_grausten_floor4x4

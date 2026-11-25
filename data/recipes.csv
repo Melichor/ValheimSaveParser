@@ -24,6 +24,7 @@ Frostfire Knucklechains,item,TwoHandedWeapon,1,Black Forge,4,Nord Knucklechains 
 Wolf Fur Cape,item,Shoulder,1,Workbench,2,Wolf Pelt x6 (+4/upgrade level); Silver x4 (+2/upgrade level); Wolf Trophy x1,False,4,Mountain,Mountain,,,True,Recipe_CapeWolf,$item_cape_wolf
 Voidcaller,item,OneHandedWeapon,1,Galdr Table,3,Ectoplasm x1; Ectoplasm x8 (+10/upgrade level); Bloodgold x2 (+10/upgrade level),False,4,,,,,False,Recipe_KnifeVoid,$item_knife_void
 Explosive Payload,item,Material,5,Workbench,1,Asksvin Hide x2; Sulfur x2; Proustite Powder x3,False,1,Ashlands,Ashlands,,,True,Recipe_BombSiege,$item_catapult_ammo
+Headband,item,Helmet,1,Workbench,1,Wood x5 (+1/upgrade level),False,4,,,,,False,Recipe_HelmetSweatBand,$item_helmet_sweatband
 Smoke Bomb,item,OneHandedWeapon,10,Workbench,1,Smoke Puff x1; Asksvin Bladder x1,False,1,Ashlands,Ashlands,,,True,Recipe_BombSmoke,$item_smokebomb
 Yellow Tunic with Beads,item,Chest,1,(hand / no station),,Deer Hide x6 (+6/upgrade level),False,4,,,,,False,Recipe_ArmorTunic9,$item_chest_tunic9
 Bronze Pendant,item,Trinket,1,Forge,1,Bronze x5; Bear Trophy x1; Ruby x3,False,1,Black Forest,,,,True,Recipe_TrinketBronzeStamina,$item_trinketbronzestamina
@@ -179,6 +180,7 @@ Wolf Jerky,item,Consumable,2,Cauldron,3,Wolf Meat x1; Honey x1,False,1,Mountain,
 Splitnir the Storming,item,OneHandedWeapon,1,Black Forge,4,Splitnir x1; Flametal x6 (+6/upgrade level); Iolite x1 (+1/upgrade level),False,4,Ashlands,,,,True,Recipe_SpearSplitner_Lightning,$item_spear_splitner_lightning
 Grausten Payload,item,Material,5,Workbench,1,Grausten x10,False,1,Ashlands,Ashlands,,,True,Recipe_CatapultPayload_Grausten,$item_catapult_training_ammo
 Cast: Hood of the Vanguard,item,Material,1,Black Forge,4,Seal Pelt x5; Mould: Hood of the Vanguard x1; Moose Hide x5; Moose Sinew x1,False,1,Deep North,,,,True,Recipe_HelmetGoldMediumUncooked,$item_helmet_medium_gold_uncooked
+Crown of Roots,item,Helmet,1,Workbench,1,Wood x5 (+1/upgrade level),False,4,,,,,False,Recipe_HelmetRootCrown,$item_helmet_rootcrown
 Silver Arrow,item,Ammo,20,Forge,3,Wood x8; Silver x1; Feathers x2,False,1,Mountain,Mountain,,,True,Recipe_ArrowSilver,$item_arrow_silver
 Nord Buckler,item,Shield,1,Black Forge,4,Bloodgold x10 (+5/upgrade level); Mould: Nord Buckler x1; Timberwood x10 (+5/upgrade level),False,3,Deep North,,,,True,Recipe_ShieldBucklerGold,$item_shield_goldbuckler
 Bronze Atgeir,item,TwoHandedWeapon,1,Forge,1,Wood x10; Bronze x8 (+4/upgrade level); Leather Scraps x2,False,4,Black Forest,Black Forest,,,True,Recipe_AtgeirBronze,$item_atgeir_bronze
@@ -689,7 +691,7 @@ Darkwood Beam 2 m,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plai
 Darkwood Beam 4 m,piece,Building (workbench),1,Workbench,,Wood x4; Tar x1,,,Plains,Plains,,,True,darkwood_beam4x4,$piece_darkwoodbeam4
 Darkwood Beam 26°,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_beam_26,$piece_darkwoodbeam_26
 Darkwood Beam 45°,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_beam_45,$piece_darkwoodbeam_45
-piece_darkwoodbeam67,piece,Deep North,1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_beam_67,$piece_darkwoodbeam67
+Darkwood Beam 67°,piece,Deep North,1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_beam_67,$piece_darkwoodbeam_67
 Darkwood Arch,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_arch,$piece_darkwoodarch
 Shingle Roof 26°,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_roof,$piece_darkwoodroof26
 Shingle Roof 45°,piece,Building (workbench),1,Workbench,,Wood x2; Tar x1,,,Plains,Plains,,,True,darkwood_roof_45,$piece_darkwoodroof45
@@ -904,7 +906,7 @@ Personal Chest,piece,Furniture,1,Workbench,,Finewood x10; Iron x8,,,Swamp,Swamp,
 Barrel,piece,Furniture,1,Workbench,,Wood x10; Barrel Hoops x1,,,Black Forest,Black Forest,,,True,piece_chest_barrel,$piece_chestbarrel
 Treasure Chest,piece,Misc,1,Workbench,,Coins x99; Ruby x5; Silver Necklace x2; Finewood x8; Silver x2,,,Mountain,,,,True,piece_chest_treasure,$piece_chesttreasure
 Black Metal Chest,piece,Furniture,1,Workbench,,Wood x10; Tar x2; Black Metal x6,,,Plains,,,,True,piece_chest_blackmetal,$piece_chestblackmetal
-Grausten Chest,piece,Deep North,1,Workbench,,Grausten x10; Warrior Trophy x5; Flametal x2,,,Ashlands,,,,True,piece_chest_grausten,$piece_chestgrausten
+Grausten Chest,piece,Deep North,1,Workbench,,Grausten x10; Charred Skull x5; Flametal x2,,,Ashlands,,,,True,piece_chest_grausten,$piece_chestgrausten
 Medium Green Pot,piece,Furniture,1,(none),,Pot Shard x4; Charcoal Resin x1,,,Ashlands,Ashlands,,,True,piece_pot1,$piece_pot_medium_green
 Large Green Pot,piece,Furniture,1,(none),,Pot Shard x5; Charcoal Resin x1,,,Ashlands,Ashlands,,,True,piece_pot2,$piece_pot_large_green
 Small Green Pot,piece,Furniture,1,(none),,Pot Shard x3; Charcoal Resin x1,,,Ashlands,Ashlands,,,True,piece_pot3,$piece_pot_small_green
