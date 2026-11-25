@@ -100,10 +100,9 @@ select { padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; b
 button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
 button:disabled { opacity: .55; cursor: default; }
 .summary { margin: 16px 0 6px; font-weight: 600; }
-.names { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 8px; }
+.names { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 8px; }
 .names li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
-.names code { font-size: 1.05rem; background: none; padding: 0; white-space: nowrap; }
-.names .muted, .relayPlan .muted { white-space: nowrap; }
+.names code { font-size: 1.05rem; background: none; padding: 0; }
 .names button { padding: 3px 9px; font-size: .84rem; }
 .muted { color: var(--muted); font-size: .9rem; }
 .notes { margin-top: 18px; padding: 12px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
@@ -179,19 +178,3 @@ button:disabled { opacity: .55; cursor: default; }
 .dropTable button.more { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; cursor: pointer; }
 .notes li.warn { color: var(--warn); }
 .notes li.warn b { letter-spacing: .02em; }
-
-/* the creation timer */
-.timerBox { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 18px 0 4px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
-.timerBox > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.timerClock, .timerLeft { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(1.6rem, 7vw, 2.4rem); font-variant-numeric: tabular-nums; line-height: 1.2; }
-.timerLeft.go { color: var(--accent); }
-.verdict { margin-top: 10px; padding: 4px 16px 12px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--muted); border-radius: 8px; }
-.verdict.hit { border-left-color: var(--done); }
-.verdict.miss { border-left-color: var(--accent); }
-.suggest { display: flex; flex-direction: column; gap: 2px; margin: 8px 0 4px; padding: 8px 12px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
-.suggest #vSuggest { font-weight: 600; }
-
-/* the shared time zone choice above the tabs */
-.zoneBar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 4px 0 12px; font-size: .92rem; }
-.zoneBar label { font-weight: 600; }
-.zoneBar select { font: inherit; max-width: 100%; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }

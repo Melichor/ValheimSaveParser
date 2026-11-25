@@ -8,7 +8,7 @@ Developer tool. It reads raw.json, which tools/extract_game_data.py writes, so i
     python3 tools/update_achievement_lists.py data/raw.json            # rewrite the block
     python3 tools/update_achievement_lists.py data/raw.json --check    # only show what would change
 
-The dynamic lists follow the game's own code (Achievements.Initialize and ObjectDB in assembly_valheim.dll, 1.0.30):
+The dynamic lists follow the game's own code (Achievements.Initialize and ObjectDB in assembly_valheim.dll, 1.0.21):
   * AllItemCraft: every recipe in the item database that has a crafting station, minus the excluded items.
   * AllWeaponCraft: every recipe whose item is a weapon (one-handed, two-handed, bow, torch), minus excluded items.
   * AllFoodCooked: every recipe for an item with food value, plus every food a cooking station produces.
