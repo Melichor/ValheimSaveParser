@@ -1,6 +1,6 @@
 # Game data tables
 
-Generated from the installed game (Valheim 1.0.21) by `tools/extract_game_data.py`. Nothing here comes from a wiki.
+Generated from the installed game (Valheim 1.0.30) by `tools/extract_game_data.py`. Nothing here comes from a wiki.
 
 | File | What it is |
 |---|---|
@@ -50,7 +50,7 @@ These are stated assumptions, kept together at the top of `tools/derive.py` (`MA
 - Draugr and Draugr Elite belong to the Swamp, even though the data also puts Draugr in the Meadows village ruins; what they drop (Draugr Trophy, Entrails) is Swamp too.
 - Chickens and hens only come from eggs, so they are Plains. The Spirit Caller animals are Deep North. Things a player makes follow what makes them: the training dummy T.W.I.G. (Black Forest, for the materials to build it), the Dead Raiser's skeleton (Mistlands) and the Trollstav's troll (Ashlands).
 - Petrified Tissue (the gold ore item, smelted into Bloodgold at the Blast Furnace) is mined from the corpse of a Gammeltroll in Deep North. The corpse's location is not placed in the data, so this is stated by hand.
-- Each boss key maps to the biome of that boss (Eikthyr Meadows, the Elder Black Forest, Bonemass Swamp, Moder Mountain, Yagluth Plains, the Queen Mistlands, Fader Ashlands, the Frozen King Deep North). Hildir's quest keys map to the biome of his miniboss: Brenna (Black Forest), Geirrhafa (Mountain), Zil & Thungr (Plains). Hildir himself is in Meadows.
+- Each boss key maps to the biome of that boss (Eikthyr Meadows, the Elder Black Forest, Bonemass Swamp, Moder Mountain, Yagluth Plains, the Queen Mistlands, Fader Ashlands, the Frozen King Deep North: he sets `defeated_frozenking` after his first phase and `defeated_frozenking_p3` after his last). The Sea Serpent's key (`defeated_serpent`, for the Bog Witch's Seafarer's Herbs) maps to the Ocean, and the Writhan's to the Swamp. Hildir's quest keys map to the biome of his miniboss: Brenna (Black Forest), Geirrhafa (Mountain), Zil & Thungr (Plains). Hildir himself is in Meadows.
 - Zil is spawned by code together with Thungr in the Plains fortress, and the Frozen King's arena (`DN_Bossroom`) is in no location list, so they are placed by hand in Plains and Deep North.
 - Spawns that only happen during the Fimbulvinter event (Elakingar, Jotun warriors and witches, meteors) are not counted as normal world spawns.
 

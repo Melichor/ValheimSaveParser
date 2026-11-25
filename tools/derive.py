@@ -94,9 +94,13 @@ CREATURE_BIOME_OVERRIDE = {"$enemy_draugr": 2, "$enemy_draugrelite": 2}
 # Ivy gives no berries (confirmed by playing). Vineberry Clusters come from the Ashlands vine only.
 FARMING_EXCLUDE = {("$piece_sapling_vinegreen", "$item_vineberry")}
 # A trader item that needs a defeated boss is only as early as that boss's biome (key -> Heightmap.Biome bit).
+# The keys are the ones the creatures set when they die (Character.m_defeatSetGlobalKey): the Frozen King sets
+# defeated_frozenking at the end of his first phase and defeated_frozenking_p3 at the end of the last one, and the Sea
+# Serpent sets defeated_serpent (the Bog Witch's Seafarer's Herbs need it).
 KEY_BIOME = {"defeated_eikthyr": 1, "defeated_gdking": 8, "defeated_bonemass": 2, "defeated_dragon": 4,
-             "defeated_goblinking": 16, "defeated_queen": 512, "defeated_fader": 32, "defeated_frozenking_p3": 64,
-             "defeated_writhan": 2, "Hildir1": 8, "Hildir2": 4, "Hildir3": 16}   # Hildir1-3: Brenna, Geirrhafa, Zil & Thungr
+             "defeated_goblinking": 16, "defeated_queen": 512, "defeated_fader": 32, "defeated_frozenking": 64,
+             "defeated_frozenking_p3": 64, "defeated_serpent": 256, "defeated_writhan": 2,
+             "Hildir1": 8, "Hildir2": 4, "Hildir3": 16}   # Hildir1-3: Brenna, Geirrhafa, Zil & Thungr
 
 
 def biome_names(mask):

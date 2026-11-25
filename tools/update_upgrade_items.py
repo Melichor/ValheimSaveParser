@@ -7,7 +7,9 @@ Developer tool. It reads raw.json, which tools/extract_game_data.py writes, so i
     python3 tools/update_upgrade_items.py data/raw.json
 
 An item can be upgraded at the Forge of Potential when its recipe has an upgrader ingredient (the Upgrader0Armor,
-Upgrader3Weapon, ... items). Every upgrader item must have the same odds, because the script uses one pair of numbers.
+Upgrader3Weapon, ... items) and the recipe is enabled or belongs to a season: Player.GetAvailableRecipes skips a disabled
+recipe outside its season, so the Forge never offers it (Hildir's clothes, the wooden weapons, Crown of Roots, ...).
+tools/update_cost_data.py uses the same rule. Every upgrader item must have the same odds, because the script uses one pair of numbers.
 """
 import json
 import re
@@ -22,10 +24,13 @@ def build(raw):
     items = {}
     for i in raw["items"]:
         items.setdefault(i["pid"], i)
+    if "seasons" not in raw:
+        sys.exit("raw.json has no seasons: rescan the game with tools/extract_game_data.py --rescan")
+    in_season = {pid for season in raw["seasons"] for pid in season["recipes"]}
     names, odds = {}, set()
     for r in raw["recipes"]:
         upgraders = [x for x in r["resources"] if x["upgrader"]]
-        if not upgraders or r["item"] not in items:
+        if not upgraders or r["item"] not in items or not (r.get("enabled") or r["pid"] in in_season):
             continue
         for u in upgraders:
             i = items[u["item"]]

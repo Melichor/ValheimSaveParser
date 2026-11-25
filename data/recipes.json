@@ -884,6 +884,31 @@
  },
  {
   "kind": "item",
+  "output": "$item_helmet_sweatband",
+  "output_name": "Headband",
+  "item_type": "Helmet",
+  "output_amount": 1,
+  "station": "$piece_workbench",
+  "station_name": "Workbench",
+  "min_station_level": 1,
+  "max_quality": 4,
+  "any_one_ingredient": false,
+  "enabled": false,
+  "recipe_asset": "Recipe_HelmetSweatBand",
+  "ingredients": [
+   {
+    "token": "$item_wood",
+    "name": "Wood",
+    "amount": 5,
+    "per_level": 1
+   }
+  ],
+  "biome_needed": "",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": ""
+ },
+ {
+  "kind": "item",
   "output": "$item_smokebomb",
   "output_name": "Smoke Bomb",
   "item_type": "OneHandedWeapon",
@@ -6386,6 +6411,31 @@
    }
   ],
   "biome_needed": "Deep North",
+  "biome_needed_inferred": "",
+  "biome_needed_direct": ""
+ },
+ {
+  "kind": "item",
+  "output": "$item_helmet_rootcrown",
+  "output_name": "Crown of Roots",
+  "item_type": "Helmet",
+  "output_amount": 1,
+  "station": "$piece_workbench",
+  "station_name": "Workbench",
+  "min_station_level": 1,
+  "max_quality": 4,
+  "any_one_ingredient": false,
+  "enabled": false,
+  "recipe_asset": "Recipe_HelmetRootCrown",
+  "ingredients": [
+   {
+    "token": "$item_wood",
+    "name": "Wood",
+    "amount": 5,
+    "per_level": 1
+   }
+  ],
+  "biome_needed": "",
   "biome_needed_inferred": "",
   "biome_needed_direct": ""
  },
@@ -22594,8 +22644,8 @@
  },
  {
   "kind": "piece",
-  "output": "$piece_darkwoodbeam67",
-  "output_name": "piece_darkwoodbeam67",
+  "output": "$piece_darkwoodbeam_67",
+  "output_name": "Darkwood Beam 67°",
   "item_type": "Piece",
   "category": "Deep North",
   "build_table": "Hammer",
@@ -28996,8 +29046,8 @@
     "per_level": 0
    },
    {
-    "token": "$item_trophy_charredmelee",
-    "name": "Warrior Trophy",
+    "token": "$item_charredskull",
+    "name": "Charred Skull",
     "amount": 5,
     "per_level": 0
    },

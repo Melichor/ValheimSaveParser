@@ -35,7 +35,7 @@ import sys
 
 
 # ---------------------------------------------------------------------------
-# What each achievement requires, rebuilt from the game's own rules (Valheim 1.0.21).
+# What each achievement requires, rebuilt from the game's own rules (Valheim 1.0.30).
 # The game fills these lists at start-up from its item database, so they are derived here the same way
 # (Achievements.Initialize / ObjectDB in assembly_valheim.dll). Tokens match the keys in the save's stat tables.
 # Regenerate after a game update.
@@ -239,6 +239,7 @@ CRAFTABLE = {
     '$item_helmet_medium_gold_uncooked': 'Cast: Hood of the Vanguard',
     '$item_helmet_padded': 'Padded Helmet',
     '$item_helmet_root': 'Root Mask',
+    '$item_helmet_rootcrown': 'Crown of Roots',
     '$item_helmet_trollleather': 'Troll Leather Hood',
     '$item_hoe': 'Hoe',
     '$item_honeyglazedchickenuncooked': 'Uncooked Honey Glazed Chicken',
@@ -587,9 +588,9 @@ BUILDABLE = {
     '$piece_darkwoodarch': 'Darkwood Arch',
     '$piece_darkwoodbeam': 'Darkwood Beam 2 m',
     '$piece_darkwoodbeam4': 'Darkwood Beam 4 m',
-    '$piece_darkwoodbeam67': 'Darkwood Beam 67°',
     '$piece_darkwoodbeam_26': 'Darkwood Beam 26°',
     '$piece_darkwoodbeam_45': 'Darkwood Beam 45°',
+    '$piece_darkwoodbeam_67': 'Darkwood Beam 67°',
     '$piece_darkwoodchair': 'Darkwood Chair',
     '$piece_darkwooddecowall': 'Carved Darkwood Divider',
     '$piece_darkwoodgate': 'Darkwood Gate',
@@ -1331,7 +1332,7 @@ MIN_PROFILE_VERSION = 46
 TESTED_PROFILE_VERSION = 47
 STAT_COUNT = 205
 SET_COUNT = 10
-GAME = "Valheim 1.0.21"
+GAME = "Valheim 1.0.30"
 
 
 # Earliest biome in which each death can happen (stated by hand, not read from the game files). Enemy hit, fall,
@@ -1922,7 +1923,6 @@ BIOME_PIECE = {
     '$piece_darkwoodarch': 'Plains',
     '$piece_darkwoodbeam': 'Plains',
     '$piece_darkwoodbeam4': 'Plains',
-    '$piece_darkwoodbeam67': 'Plains',
     '$piece_darkwoodbeam_26': 'Plains',
     '$piece_darkwoodbeam_45': 'Plains',
     '$piece_darkwoodchair': 'Plains',
