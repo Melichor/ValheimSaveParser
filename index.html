@@ -189,6 +189,30 @@
         <li>An attempt that is not a success breaks the item, so each path ends with a break. You can stop before it: the path shows how far you would get.</li>
       </ul>
     </div>
+
+    <div class="notes">
+    <h3>F.A.Q.</h3>
+      <p class="sub">Note that the information below is accurate as of game version 1.0.30</p>
+
+      <details class="where">
+        <summary>What is the Forge of Potential?</summary>
+        <p>The Forge of Potential is an upgrade station that allows you to upgrade equipment beyond what its normal crafting station allows. Each attempt costs one Battle or Protection idol. The Forge uses a 65% success threshold. A success raises the item by one quality level. A failure destroys the item and returns some eligible crafting/upgrade materials, excluding idols.</p>
+      </details>
+
+      <details class="where">
+        <summary>How can upgrades be predicted if they are a random chance?</summary>
+        <p>Upgrades can be predicted because the game uses a deterministic, seeded random number generator. When an upgrade attempt is made, a character's saved seed for that item type and target quality is used, if one exists. Otherwise, it derives a starting seed from the character's creation time in the game computer's time zone, the item type, and the target quality. The game generates the roll when you attempt the upgrade, but the predictor can calculate it ahead of time by replicating the game's random number generation process for a given seed. After each upgrade attempt in game, the game saves the next seed for that same kind of upgrade (i.e. the same item type and target quality).</p>
+
+        <p>The Forge still uses the 65% success threshold. Once the predictor knows which seed the game will use, it can determine whether the attempt will succeed or break the item.</p>
+      </details>
+
+      <details class="where">
+        <summary>How does the predetermined design of the Forge of Potential affect normal gameplay?</summary>
+        <p>In an ideal world, it wouldn't. Despite the ability to predict upgrade outcomes, the normal gameplay experience remains mostly unchanged, as you find out the result when you make the attempt. If you play without the predictor, each upgrade still feels like a relatively fair roll of the dice. The predictor gives players who use it advance information for planning their upgrades.</p>
+
+        <p>Note that there are some measurable differences compared to independent random rolls, due to how the game's deterministic random number generator is implemented. Fresh upgrade streaks (where the character is attempting each target quality for that item type for the first time) are harder to maintain than one would expect from independent 65% success rolls. While the Forge does use the same 65% success threshold each time, the first rolls at consecutive quality levels are linked through the seed, creating subtle correlations between them. Across all starting seeds, about 65% pass the first upgrade, but of those, only about 51% pass the second upgrade, not 65% like an independent roll would suggest. This same pattern is what limits a fresh streak to at most eight consecutive successes.</p>
+      </details>
+    </div>
   </section>
 
   <section id="cost" class="panel" role="tabpanel" aria-labelledby="tab-cost" hidden>
